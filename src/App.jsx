@@ -9,6 +9,7 @@ import {
 import LoginPage from "./pages/LoginPage";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import DashboardRoutes from "./Routes/DashboardRoutes";
+import Layout from "./Components/Layout/Layout";
 
 const App = () => {
   // const { user } = useAuth();
@@ -41,9 +42,9 @@ const App = () => {
     //     </Routes>
     //   </Router>
     // </AuthProvider>
-    <>
-      <LoginPage />
-    </>
+    <Router>
+      <Layout />
+    </Router>
   );
 };
 
