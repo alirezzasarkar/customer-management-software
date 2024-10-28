@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { AuthProvider, useAuth } from "./components/Authentication/AuthContext";
+import { AuthProvider, useAuth } from "./Components/Authentication/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import DashboardRoutes from "./Routes/DashboardRoutes";
