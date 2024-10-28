@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: Shabnam;
+    src: url(./Assets/Fonts/Shabnam.woff);
+}
+
+body {
+    font-family: 'Shabnam', sans-serif;
+}  
