@@ -43,7 +43,7 @@ const App = () => {
     //   </Router>
     // </AuthProvider>
     <Router>
-      <Layout />
+      <DashboardRoutes />
     </Router>
   );
 };
