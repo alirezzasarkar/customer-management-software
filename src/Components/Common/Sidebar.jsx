@@ -7,8 +7,8 @@ const Sidebar = () => {
       <img src="/src/Assets/Icons/AdklayLogo.svg" alt="" className="mb-4" />
       <SidebarItem
         to="/"
-        icon="/src/Assets/Icons/Sidbar/icon.svg"
-        label="متن تست"
+        icon="/src/Assets/Icons/Sidbar/dashboard.svg"
+        label="داشبورد"
       />
       <SidebarItem
         to="/"
