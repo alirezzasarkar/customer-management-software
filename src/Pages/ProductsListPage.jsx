@@ -4,57 +4,57 @@ import ProductsList from "../Components/Products/ProductsList";
 const initialData = [
   {
     id: 1,
-    productName: "گوشی موبایل",
-    productPrice: "۷۵۰۰۰۰۰",
+    product_name: "گوشی موبایل",
+    price: "۷۵۰۰۰۰۰",
     category: "الکترونیک",
   },
   {
     id: 2,
-    productName: "لپ‌تاپ",
-    productPrice: "۲۵۰۰۰۰۰۰",
+    product_name: "لپ‌تاپ",
+    price: "۲۵۰۰۰۰۰۰",
     category: "کامپیوتر",
   },
   {
     id: 3,
-    productName: "تلویزیون",
-    productPrice: "۱۸۰۰۰۰۰۰",
+    product_name: "تلویزیون",
+    price: "۱۸۰۰۰۰۰۰",
     category: "الکترونیک",
   },
   {
     id: 4,
-    productName: "ماشین لباسشویی",
-    productPrice: "۱۴۰۰۰۰۰۰",
+    product_name: "ماشین لباسشویی",
+    price: "۱۴۰۰۰۰۰۰",
     category: "لوازم خانگی",
   },
   {
     id: 5,
-    productName: "یخچال",
-    productPrice: "۲۲۰۰۰۰۰۰",
+    product_name: "یخچال",
+    price: "۲۲۰۰۰۰۰۰",
     category: "لوازم خانگی",
   },
   {
     id: 6,
-    productName: "تبلت",
-    productPrice: "۵۰۰۰۰۰۰",
+    product_name: "تبلت",
+    price: "۵۰۰۰۰۰۰",
     category: "الکترونیک",
   },
   {
     id: 7,
-    productName: "دوربین دیجیتال",
-    productPrice: "۷۰۰۰۰۰۰",
+    product_name: "دوربین دیجیتال",
+    price: "۷۰۰۰۰۰۰",
     category: "دوربین و عکاسی",
   },
   {
     id: 8,
-    productName: "چاپگر",
-    productPrice: "۴۰۰۰۰۰۰",
+    product_name: "چاپگر",
+    price: "۴۰۰۰۰۰۰",
     category: "کامپیوتر",
   },
 ];
 
 const columns = [
-  { id: "productName", label: "نام محصول" },
-  { id: "productPrice", label: "قیمت محصول" },
+  { id: "product_name", label: "نام محصول" },
+  { id: "price", label: "قیمت محصول" },
   { id: "category", label: "دسته بندی" },
 ];
 

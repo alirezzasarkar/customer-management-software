@@ -14,8 +14,8 @@ const ProductsList = ({ data, columns }) => {
   const handleSearch = (searchTerm) => {
     const result = data.filter(
       (item) =>
-        item.productName.includes(searchTerm) ||
-        item.productPrice.includes(searchTerm) ||
+        item.product_name.includes(searchTerm) ||
+        item.price.includes(searchTerm) ||
         item.category.includes(searchTerm)
     );
     setFilteredData(result);
