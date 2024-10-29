@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "./../Components/Layout/Layout";
-import CampaignListPage from "../Pages/CampaignListPage";
+import EmployeeListPage from "../Pages/EmployeeListPage";
 
 const DashboardRoutes = () => {
   return (
     <Layout>
       {/* <Routes> */}
-      <CampaignListPage />
+      <EmployeeListPage />
       {/* </Routes> */}
     </Layout>
   );
