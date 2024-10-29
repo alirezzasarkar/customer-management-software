@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "./../Components/Layout/Layout";
-import SalesOpportunitiesListPage from "../Pages/SalesOpportunitiesListPage";
+import ProductsListPage from "../Pages/ProductsListPage";
 
 const DashboardRoutes = () => {
   return (
     <Layout>
       {/* <Routes> */}
-      <SalesOpportunitiesListPage />
+      <ProductsListPage />
       {/* </Routes> */}
     </Layout>
   );
