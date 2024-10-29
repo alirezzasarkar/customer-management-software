@@ -9,7 +9,7 @@ const SidebarItem = ({ to, icon, label }) => {
       to={to}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="text-white w-10 h-10 rounded-full bg-customBlue hover:bg-blue-800 flex items-center justify-center relative"
+      className="text-white w-8 h-8 rounded-full bg-customBlue hover:bg-blue-800 flex items-center justify-center relative"
     >
       <img src={icon} alt={label} />
       {hovered && (

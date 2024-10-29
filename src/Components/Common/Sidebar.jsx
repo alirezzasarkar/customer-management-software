@@ -3,7 +3,7 @@ import SidebarItem from "./SidebarItem";
 
 const Sidebar = () => {
   return (
-    <div className="h-auto w-24 bg-customBlue flex flex-col space-y-10 justify-between items-center py-4">
+    <div className="h-auto w-24 bg-customBlue flex flex-col space-y-10 items-center py-4">
       <img src="/src/Assets/Icons/AdklayLogo.svg" alt="" className="mb-4" />
       <SidebarItem
         to="/"
