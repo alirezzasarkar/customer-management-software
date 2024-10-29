@@ -42,7 +42,7 @@ const App = () => {
     //   </Router>
     // </AuthProvider>
     <>
-      <LoginPage />
+      <ForgetPasswordPage />
     </>
   );
 };
