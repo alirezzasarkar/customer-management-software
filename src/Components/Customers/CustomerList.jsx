@@ -15,9 +15,9 @@ const CustomerList = ({ data, columns }) => {
   const handleSearch = (searchTerm) => {
     const result = data.filter(
       (item) =>
-        item.fullName.includes(searchTerm) ||
+        item.full_name.includes(searchTerm) ||
         item.email.includes(searchTerm) ||
-        item.phoneNumber.includes(searchTerm)
+        item.phone_number.includes(searchTerm)
     );
     setFilteredData(result);
   };
