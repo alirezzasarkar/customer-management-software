@@ -1,11 +1,10 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 const Button = ({ width, height, backgroundColor, text, textColor }) => {
   return (
     <div>
       <button
-        className={`rounded-lg ${width} ${height} ${backgroundColor} ${textColor}`}
+        className={`rounded-lg ${width} ${height} ${backgroundColor} ${textColor} Auth-Button`}
       >
         {text}
       </button>
