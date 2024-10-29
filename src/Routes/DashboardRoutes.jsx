@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "./../Components/Layout/Layout";
-import EmployeeListPage from "../Pages/EmployeeListPage";
+import CustomerListPage from "../Pages/CustomerListPage";
 
 const DashboardRoutes = () => {
   return (
     <Layout>
       {/* <Routes> */}
-      <EmployeeListPage />
+      <CustomerListPage />
       {/* </Routes> */}
     </Layout>
   );
