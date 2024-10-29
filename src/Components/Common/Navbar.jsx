@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-24 flex items-center justify-between px-14">
+    <div className="w-full h-24 flex items-center justify-between px-12">
       <div className="flex items-center space-x-4">
         <Link
           to="/"
