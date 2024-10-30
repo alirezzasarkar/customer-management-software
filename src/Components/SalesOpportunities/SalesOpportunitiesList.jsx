@@ -17,8 +17,7 @@ const SalesOpportunitiesList = ({ data, columns }) => {
       (item) =>
         item.fullName.includes(searchTerm) ||
         item.opportunityPriority.includes(searchTerm) ||
-        item.totalAmount.includes(searchTerm) ||
-        item.followUpDate.includes(searchTerm)
+        item.totalAmount.includes(searchTerm)
     );
     setFilteredData(result);
   };
