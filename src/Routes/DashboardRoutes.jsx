@@ -8,6 +8,7 @@ import ProductsListPage from "./../Pages/ProductsListPage";
 import CustomerListPage from "./../Pages/CustomerListPage";
 import EmployeeListPage from "./../Pages/EmployeeListPage";
 import ContractListPage from "./../Pages/ContractListPage";
+import NotificationListPage from "../Pages/NotificationListPage";
 
 const DashboardRoutes = () => {
   return (
@@ -55,10 +56,10 @@ const DashboardRoutes = () => {
           element={<NotificationEntry />}
         /> */}
 
-        {/* <Route
+        <Route
           path="/dashboard/notification/list"
-          element={<NotificationList />}
-        /> */}
+          element={<NotificationListPage />}
+        />
 
         {/* <Route path="/dashboard/products/entry" element={<ProductsEntry />} /> */}
 
