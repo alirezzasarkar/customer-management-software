@@ -30,7 +30,7 @@ const ContractList = ({ data, columns }) => {
 
   return (
     <>
-      <Title title="لیست قراردادها" />
+      <Title title="لیست فاکتور ها" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <div className="flex justify-between px-2 py-3">
           <Sorting onSort={handleSort} columns={columns} />
