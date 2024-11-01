@@ -4,42 +4,110 @@ import SidebarItem from "./SidebarItem";
 const Sidebar = () => {
   return (
     <div className="h-auto w-24 bg-customBlue flex flex-col space-y-10 items-center py-4">
-      <img src="/src/Assets/Icons/AdklayLogo.svg" alt="" className="mb-4" />
+      <img src="/src/Assets/Icons/AdklayLogo.svg" alt="Logo" className="mb-4" />
+
       <SidebarItem
-        to="/"
+        to="/dashboard"
         icon="/src/Assets/Icons/Sidbar/dashboard.svg"
         label="داشبورد"
       />
+
       <SidebarItem
-        to="/"
-        icon="/src/Assets/Icons/Sidbar/icon.svg"
-        label="متن تست"
+        to="/dashboard/sales-opportunities"
+        icon="/src/Assets/Icons/Sidbar/sales-opportunities.svg"
+        label="فرصت فروش"
+        subItems={[
+          {
+            label: "ثبت فرصت فروش",
+            to: "/dashboard/sales-opportunities/entry",
+          },
+          {
+            label: "لیست فرصت های فروش",
+            to: "/dashboard/sales-opportunities/list",
+          },
+        ]}
       />
+
       <SidebarItem
-        to="/"
-        icon="/src/Assets/Icons/Sidbar/icon.svg"
-        label="متن تست"
+        to="/dashboard/marketing"
+        icon="/src/Assets/Icons/Sidbar/marketing.svg"
+        label="مارکتینگ"
+        subItems={[
+          { label: "ثبت کمپین", to: "/dashboard/marketing/entry" },
+          { label: "لیست کمپین ها", to: "/dashboard/marketing/list" },
+        ]}
       />
+
       <SidebarItem
-        to="/"
-        icon="/src/Assets/Icons/Sidbar/icon.svg"
-        label="متن تست"
+        to="/dashboard/contract"
+        icon="/src/Assets/Icons/Sidbar/contract.svg"
+        label="قراردادها"
+        subItems={[
+          { label: "ثبت قرارداد", to: "/dashboard/contract/entry" },
+          { label: "لیست قرارداد ها", to: "/dashboard/contract/list" },
+        ]}
       />
+
       <SidebarItem
-        to="/"
-        icon="/src/Assets/Icons/Sidbar/icon.svg"
-        label="متن تست"
+        to="/dashboard/employees"
+        icon="/src/Assets/Icons/Sidbar/employees.svg"
+        label="کارمندان"
+        subItems={[
+          { label: "ثبت کارمند", to: "/dashboard/employees/entry" },
+          { label: "لیست کارمندان", to: "/dashboard/employees/list" },
+        ]}
       />
+
       <SidebarItem
-        to="/"
-        icon="/src/Assets/Icons/Sidbar/icon.svg"
-        label="متن تست"
+        to="/dashboard/customers"
+        icon="/src/Assets/Icons/Sidbar/customer.svg"
+        label="مشتریان"
+        subItems={[
+          { label: "ثبت مشتری", to: "/dashboard/customers/entry" },
+          { label: "لیست مشتریان", to: "/dashboard/customers/list" },
+        ]}
       />
+
       <SidebarItem
-        to="/"
-        icon="/src/Assets/Icons/Sidbar/icon.svg"
-        label="متن تست"
+        to="/dashboard/notification"
+        icon="/src/Assets/Icons/Sidbar/notification.svg"
+        label="اطلاع رسانی"
+        subItems={[
+          { label: "ارسال پیام", to: "/dashboard/notification/entry" },
+          { label: "لیست پیام ها", to: "/dashboard/notification/list" },
+        ]}
       />
+
+      <SidebarItem
+        to="/dashboard/products"
+        icon="/src/Assets/Icons/Sidbar/product.svg"
+        label="محصولات"
+        subItems={[
+          { label: "ثبت محصول", to: "/dashboard/products/entry" },
+          { label: "لیست محصولات", to: "/dashboard/products/list" },
+        ]}
+      />
+
+      <SidebarItem
+        to="/dashboard/invoice"
+        icon="/src/Assets/Icons/Sidbar/invoice.svg"
+        label="فاکتور"
+        subItems={[
+          { label: "ثبت فاکتور", to: "/dashboard/invoice/entry" },
+          { label: "لیست فاکتور ها", to: "/dashboard/invoice/list" },
+        ]}
+      />
+
+      <SidebarItem
+        to="/dashboard/pre-invoice"
+        icon="/src/Assets/Icons/Sidbar/pre-invoice.svg"
+        label="پیش فاکتور"
+        subItems={[
+          { label: "ثبت پیش فاکتور", to: "/dashboard/pre-invoice/entry" },
+          { label: "لیست پیش فاکتور ها", to: "/dashboard/pre-invoice/list" },
+        ]}
+      />
+
       <SidebarItem
         to="/"
         icon="/src/Assets/Icons/Sidbar/log-out.svg"
