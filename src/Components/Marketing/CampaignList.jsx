@@ -15,7 +15,7 @@ const CampaignList = ({ data, columns }) => {
   const handleSearch = (searchTerm) => {
     const result = data.filter(
       (item) =>
-        item.campaignName.includes(searchTerm) ||
+        item.campaign_name.includes(searchTerm) ||
         item.campaignStatus.includes(searchTerm)
     );
     setFilteredData(result);
