@@ -1,15 +1,28 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const AuthInput = ({ label, placeholdertext, input_type, icon }) => {
+const AuthInput = ({
+  label,
+  placeholdertext,
+  input_type,
+  icon,
+  verification,
+}) => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
 
   const toggleVisibility = () => {
     setPasswordVisibility((prev) => !prev);
   };
 
+  const handleTextButtonClick = () => {
+    // Add functionality here for the text button
+    alert("Text button clicked!");
+  };
+
   return (
-    <label className="relative block rounded-md border-[1px] border-[#757575] shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 ">
+    <label
+      className={`relative block rounded-md border-[1px] border-[#757575] shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 ${verification}`}
+    >
       {icon && (
         <img
           src={icon}
@@ -26,11 +39,10 @@ const AuthInput = ({ label, placeholdertext, input_type, icon }) => {
         placeholder={placeholdertext}
       />
 
-      <span className="pointer-events-none absolute start-[1.9rem] top-0 -translate-y-[65%] bg-[#F1F1F9] p-0.5  text-gray-700 transition-all text-sm font-semibold">
+      <span className="pointer-events-none absolute start-[1.9rem] top-0 -translate-y-[65%] bg-[#F1F1F9] p-0.5 text-gray-700 transition-all text-sm font-semibold">
         {label}
       </span>
 
-      {/* this section renders when the input is password */}
       {input_type === "password" && (
         <button
           type="button"
@@ -41,14 +53,23 @@ const AuthInput = ({ label, placeholdertext, input_type, icon }) => {
             src={
               passwordVisibility
                 ? "/src/Assets/Icons/eye-closed.svg"
-                : "/src/Assets/Icons/eye-closed.svg"
+                : "/src/Assets/Icons/eye-open.svg"
             }
             alt="Toggle Password Visibility"
             className="w-5 h-5 text-gray-400"
           />
         </button>
       )}
-      {/* this section renders when the input is password */}
+
+      {verification === "verfication-button" && (
+        <button
+          type="button"
+          onClick={handleTextButtonClick}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#153D8A] h-full text-white rounded-l-md text-xs w-14"
+        >
+          کد تایید
+        </button>
+      )}
     </label>
   );
 };
@@ -58,6 +79,7 @@ AuthInput.propTypes = {
   placeholdertext: PropTypes.string.isRequired,
   input_type: PropTypes.string.isRequired,
   icon: PropTypes.string,
+  verification: PropTypes.string,
 };
 
 export default AuthInput;
