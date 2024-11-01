@@ -41,10 +41,10 @@ const Sidebar = () => {
       <SidebarItem
         to="/dashboard/contract/list"
         icon="/src/Assets/Icons/Sidbar/contract.svg"
-        label="قراردادها"
+        label="فاکتور ها"
         subItems={[
-          { label: "ثبت قرارداد", to: "/dashboard/contract/entry" },
-          { label: "لیست قرارداد ها", to: "/dashboard/contract/list" },
+          { label: "ثبت فاکتور", to: "/dashboard/invoice/entry" },
+          { label: "لیست فاکتور ها", to: "/dashboard/invoice/list" },
         ]}
       />
 
