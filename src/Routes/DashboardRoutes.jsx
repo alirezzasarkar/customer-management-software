@@ -2,13 +2,14 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./../Components/Layout/Layout";
-import SalesOpportunitiesListPage from "./../Pages/SalesOpportunitiesListPage";
+// import SalesOpportunitiesListPage from "./../Pages/SalesOpportunitiesListPage";
 import CampaignListPage from "./../Pages/CampaignListPage";
 import ProductsListPage from "./../Pages/ProductsListPage";
 import CustomerListPage from "./../Pages/CustomerListPage";
 import EmployeeListPage from "./../Pages/EmployeeListPage";
 import ContractListPage from "./../Pages/ContractListPage";
 import NotificationListPage from "../Pages/NotificationListPage";
+import SalesOpportunitiesEntryPage from "../Pages/SalesOpportunitiesEntryPage";
 
 const DashboardRoutes = () => {
   return (
