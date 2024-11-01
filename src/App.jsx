@@ -10,6 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import DashboardRoutes from "./Routes/DashboardRoutes";
 import Layout from "./Components/Layout/Layout";
+import ResetPasswordPage from "./Pages/ResetPasswordPage";
 
 const App = () => {
   // const { user } = useAuth();
