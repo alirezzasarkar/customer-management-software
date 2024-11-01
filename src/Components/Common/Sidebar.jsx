@@ -13,7 +13,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/sales-opportunities"
+        to="/dashboard/sales-opportunities/list"
         icon="/src/Assets/Icons/Sidbar/sales-opportunities.svg"
         label="فرصت فروش"
         subItems={[
@@ -29,7 +29,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/marketing"
+        to="/dashboard/marketing/list"
         icon="/src/Assets/Icons/Sidbar/marketing.svg"
         label="مارکتینگ"
         subItems={[
@@ -39,7 +39,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/contract"
+        to="/dashboard/contract/list"
         icon="/src/Assets/Icons/Sidbar/contract.svg"
         label="قراردادها"
         subItems={[
@@ -49,7 +49,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/employees"
+        to="/dashboard/employees/list"
         icon="/src/Assets/Icons/Sidbar/employees.svg"
         label="کارمندان"
         subItems={[
@@ -59,7 +59,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/customers"
+        to="/dashboard/customers/list"
         icon="/src/Assets/Icons/Sidbar/customer.svg"
         label="مشتریان"
         subItems={[
@@ -69,7 +69,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/notification"
+        to="/dashboard/notification/list"
         icon="/src/Assets/Icons/Sidbar/notification.svg"
         label="اطلاع رسانی"
         subItems={[
@@ -79,7 +79,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/products"
+        to="/dashboard/products/list"
         icon="/src/Assets/Icons/Sidbar/product.svg"
         label="محصولات"
         subItems={[
@@ -89,7 +89,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/invoice"
+        to="/dashboard/invoice/list"
         icon="/src/Assets/Icons/Sidbar/invoice.svg"
         label="فاکتور"
         subItems={[
@@ -99,7 +99,7 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/pre-invoice"
+        to="/dashboard/pre-invoice/list"
         icon="/src/Assets/Icons/Sidbar/pre-invoice.svg"
         label="پیش فاکتور"
         subItems={[
