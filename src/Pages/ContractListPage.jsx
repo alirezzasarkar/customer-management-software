@@ -63,8 +63,8 @@ const initialData = [
 const columns = [
   { id: "name", label: "نام و نام خانوادگی" },
   { id: "date", label: "تاریخ ثبت" },
-  { id: "amount", label: "مبلغ قرارداد" },
-  { id: "status", label: "وضعیت قرارداد" },
+  { id: "amount", label: "مبلغ فاکتور" },
+  { id: "status", label: "وضعیت فاکتور" },
 ];
 
 const ContractListPage = () => {
