@@ -34,9 +34,9 @@ const DashboardRoutes = () => {
           element={<CampaignListPage />}
         />
 
-        {/* <Route path="/dashboard/contract/entry" element={<ContractEntry />} /> */}
+        {/* <Route path="/dashboard/invoice/entry" element={<ContractEntry />} /> */}
 
-        <Route path="/dashboard/contract/list" element={<ContractListPage />} />
+        <Route path="/dashboard/invoice/list" element={<ContractListPage />} />
 
         {/* <Route path="/dashboard/employees/entry" element={<EmployeesEntry />} /> */}
 
@@ -65,20 +65,6 @@ const DashboardRoutes = () => {
         {/* <Route path="/dashboard/products/entry" element={<ProductsEntry />} /> */}
 
         <Route path="/dashboard/products/list" element={<ProductsListPage />} />
-
-        {/* <Route path="/dashboard/invoice/entry" element={<InvoiceEntry />} /> */}
-
-        {/* <Route path="/dashboard/invoice/list" element={<InvoiceList />} /> */}
-
-        {/* <Route
-          path="/dashboard/pre-invoice/entry"
-          element={<PreInvoiceEntry />}
-        /> */}
-
-        {/* <Route
-          path="/dashboard/pre-invoice/list"
-          element={<PreInvoiceList />}
-        /> */}
       </Routes>
     </Layout>
   );
