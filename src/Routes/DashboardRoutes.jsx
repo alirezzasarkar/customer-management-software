@@ -1,13 +1,12 @@
 import React from "react";
 import Layout from "./../Components/Layout/Layout";
-import ContractListPage from "../Pages/ContractListPage";
-import AddContractPage from "../Pages/AddContractPage";
+import EmployeeListPage from "../Pages/EmployeeListPage";
 
 const DashboardRoutes = () => {
   return (
     <Layout>
       {/* <Routes> */}
-      <ContractListPage />
+      <EmployeeListPage />
       {/* </Routes> */}
     </Layout>
   );
