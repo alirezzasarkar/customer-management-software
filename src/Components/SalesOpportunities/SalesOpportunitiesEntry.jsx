@@ -9,7 +9,7 @@ import DashboardButton from "../Common/DashboardButton";
 const SalesOpportunitiesEntry = () => {
   return (
     <div>
-      <Title title="ورود اطلاعات" />
+      <Title title="ثبت فرصت فروش" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7">
           <div className="flex justify-between">
