@@ -11,6 +11,7 @@ import NotificationListPage from "../Pages/NotificationListPage";
 import SalesOpportunitiesListPage from "./../Pages/SalesOpportunitiesListPage";
 import SalesOpportunitiesEntryPage from "./../Pages/SalesOpportunitiesEntryPage";
 import CustomersEntry from "../Components/Customers/CustomersEntry";
+import NotificationEntryPage from "../Pages/NotificationEntryPage";
 
 const DashboardRoutes = () => {
   return (
@@ -53,10 +54,10 @@ const DashboardRoutes = () => {
           element={<CustomerListPage />}
         />
 
-        {/* <Route
+        <Route
           path="/dashboard/notification/entry"
-          element={<NotificationEntry />}
-        /> */}
+          element={<NotificationEntryPage />}
+        />
 
         <Route
           path="/dashboard/notification/list"
