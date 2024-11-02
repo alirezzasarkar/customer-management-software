@@ -37,11 +37,7 @@ const SalesOpportunitiesEntry = () => {
               icon="/src/Assets/Icons/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"
-            />
-            <DashboardButton
-              inner_text="ویرایش اطلاعات "
-              icon="/src/Assets/Icons/Edit_Icon.svg"
-              bg_color="bg-[#FF6500]"
+              hover_state="hover:bg-[#288c41]"
             />
           </div>
         </form>
