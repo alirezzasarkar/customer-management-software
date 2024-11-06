@@ -1,9 +1,12 @@
 import EmployeeEntry from "../Components/Employees/EmployeeEntry";
 
-export const EmployeeEntryPage = () => {
+const EmployeeEntryPage = () => {
   return (
     <div>
       <EmployeeEntry />
     </div>
   );
 };
+
+
+export default EmployeeEntryPage;

@@ -13,6 +13,7 @@ import SalesOpportunitiesEntryPage from "./../Pages/SalesOpportunitiesEntryPage"
 import CustomersEntry from "../Components/Customers/CustomersEntry";
 import CampaignEntryPage from "../Pages/CampaignEntryPage";
 import ContractEntryPage from './../Pages/ContractEntryPage';
+import { EmployeeEntryPage } from './../Pages/EmployeeEntryPage';
 
 const DashboardRoutes = () => {
   return (
