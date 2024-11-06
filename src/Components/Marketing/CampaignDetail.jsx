@@ -1,0 +1,9 @@
+
+
+const CampaignDetail = () => {
+  return (
+    <div>CampaignDetail</div>
+  )
+}
+
+export default CampaignDetail
