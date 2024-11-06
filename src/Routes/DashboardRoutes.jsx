@@ -39,7 +39,10 @@ const DashboardRoutes = () => {
           element={<CampaignListPage />}
         />
 
-        {/* <Route path="/dashboard/invoice/entry" element={<ContractEntry />} /> */}
+        <Route
+          path="/dashboard/invoice/entry"
+          element={<ContractEntryPage />}
+        />
 
         <Route path="/dashboard/invoice/list" element={<ContractListPage />} />
 
