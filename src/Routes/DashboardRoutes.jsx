@@ -15,6 +15,7 @@ import CampaignEntryPage from "../Pages/CampaignEntryPage";
 import ContractEntryPage from './../Pages/ContractEntryPage';
 import NotificationEntryPage from "../Pages/NotificationEntryPage";
 import EmployeeEntryPage from './../Pages/EmployeeEntryPage';
+import ProductsEntryPage from "../Pages/ProductsEntryPage";
 
 const DashboardRoutes = () => {
   return (
@@ -76,7 +77,10 @@ const DashboardRoutes = () => {
           element={<NotificationListPage />}
         />
 
-        {/* <Route path="/dashboard/products/entry" element={<ProductsEntry />} /> */}
+        <Route
+          path="/dashboard/products/entry"
+          element={<ProductsEntryPage />}
+        />
 
         <Route path="/dashboard/products/list" element={<ProductsListPage />} />
       </Routes>
