@@ -3,11 +3,12 @@ const DashboardButton = ({
   bg_color,
   icon,
   button_type,
-  hover_state,
+  border_color,
+  text_color,
 }) => {
   return (
     <button
-      className={`flex items-center gap-2 px-3 py-2 h-9 ${bg_color} ${hover_state} text-white font-semibold rounded-md text-xs`}
+      className={`flex items-center justify-center gap-2 px-3 py-2 h-9 w-36 ${bg_color} ${border_color} ${text_color} text-white font-semibold rounded-md text-xs`}
       type={button_type}
     >
       <span>{inner_text}</span>
