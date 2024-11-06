@@ -39,16 +39,6 @@ const Sidebar = () => {
       />
 
       <SidebarItem
-        to="/dashboard/contract/list"
-        icon="/src/Assets/Icons/Sidbar/contract.svg"
-        label="فاکتور ها"
-        subItems={[
-          { label: "ثبت فاکتور", to: "/dashboard/invoice/entry" },
-          { label: "لیست فاکتور ها", to: "/dashboard/invoice/list" },
-        ]}
-      />
-
-      <SidebarItem
         to="/dashboard/employees/list"
         icon="/src/Assets/Icons/Sidbar/employees.svg"
         label="کارمندان"
