@@ -1,7 +1,7 @@
 import Title from "../Common/Title";
 import DashboardButton from './../Common/DashboardButton';
 
-const SalesOpportunitiesDetail = () => {
+const CampaignDetail = () => {
   return (
     <>
       <Title title="جزئیات کمپین" />
@@ -51,4 +51,4 @@ const SalesOpportunitiesDetail = () => {
   );
 };
 
-export default SalesOpportunitiesDetail;
+export default CampaignDetail;
