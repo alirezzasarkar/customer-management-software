@@ -39,7 +39,7 @@ const SalesOpportunitiesDetail = () => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-5 mt-10">
+        <div className="flex justify-center gap-5 mt-20">
             <DashboardButton
               inner_text="ویرایش اطلاعات"
               icon="/src/Assets/Icons/edit.svg"
