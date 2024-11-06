@@ -47,7 +47,10 @@ const DashboardRoutes = () => {
 
         <Route path="/dashboard/invoice/list" element={<ContractListPage />} />
 
-        {/* <Route path="/dashboard/employees/entry" element={<EmployeesEntry />} /> */}
+        <Route
+          path="/dashboard/employees/entry"
+          element={<EmployeeEntryPage />}
+        />
 
         <Route
           path="/dashboard/employees/list"
