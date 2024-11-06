@@ -10,6 +10,8 @@ import ContractListPage from "./../Pages/ContractListPage";
 import NotificationListPage from "../Pages/NotificationListPage";
 import SalesOpportunitiesListPage from "./../Pages/SalesOpportunitiesListPage";
 import SalesOpportunitiesEntryPage from "./../Pages/SalesOpportunitiesEntryPage";
+import CustomersEntry from "../Components/Customers/CustomersEntry";
+import CampaignEntryPage from "../Pages/CampaignEntryPage";
 
 const DashboardRoutes = () => {
   return (
@@ -27,7 +29,10 @@ const DashboardRoutes = () => {
           element={<SalesOpportunitiesListPage />}
         />
 
-        {/* <Route path="/dashboard/marketing/entry" element={<MarketingEntry />} /> */}
+        <Route
+          path="/dashboard/marketing/entry"
+          element={<CampaignEntryPage />}
+        />
 
         <Route
           path="/dashboard/marketing/list"
@@ -45,7 +50,7 @@ const DashboardRoutes = () => {
           element={<EmployeeListPage />}
         />
 
-        {/* <Route path="/dashboard/customers/entry" element={<CustomersEntry />} /> */}
+        <Route path="/dashboard/customers/entry" element={<CustomersEntry />} />
 
         <Route
           path="/dashboard/customers/list"
