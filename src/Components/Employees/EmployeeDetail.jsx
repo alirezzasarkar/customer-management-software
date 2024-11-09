@@ -44,13 +44,14 @@ const EmployeeDetail = () => {
             </span>
             <p className="text-gray-700 mt-2">۱۳۸۱/۰۴/۱۱</p>
           </div>
+          <div className="flex flex-col">
+            <span className="text-sm text-blue-800 font-semibold">
+              آیدی تلگرام
+            </span>
+            <p className="text-gray-700 mt-2">۱۳۸۱/۰۴/۱۱</p>
+          </div>
         </div>
-        <div className="flex flex-col">
-          <span className="text-sm text-blue-800 font-semibold">
-            آیدی تلگرام
-          </span>
-          <p className="text-gray-700 mt-2">۱۳۸۱/۰۴/۱۱</p>
-        </div>
+
         <div className="flex justify-center gap-5 mt-10">
           <DashboardButton
             inner_text="ویرایش اطلاعات"
