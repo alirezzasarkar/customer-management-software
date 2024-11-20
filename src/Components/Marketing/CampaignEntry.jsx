@@ -1,17 +1,17 @@
-import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
-import DashBoardInputs from "../Common/DashboardInputs";
-import PersianDatePicker from "../Common/DatePicker";
 import DashboardDropDown from "../Common/DashboardDropDown";
+import DashBoardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
+import PersianDatePicker from "../Common/DatePicker";
+import Title from "../Common/Title";
 
 const CampaignEntry = () => {
   return (
     <div>
       <Title title="وارد کردن کمپین " />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
-        <form className="flex flex-col gap-7">
-          <div className="flex justify-between">
+      <div className="bg-gray-100 p-5 sm:mx-6 mx-0 rounded-md">
+        <form className="flex sm:justify-between  flex-col gap-5">
+          <div className="flex sm:flex-row justify-between flex-col gap-7">
             <DashBoardInputs
               lable_text="نام کمپین"
               placeholder_text="نام کمپین خود را وارد کنید"
@@ -19,7 +19,7 @@ const CampaignEntry = () => {
             <PersianDatePicker label_text="شروع کمپین" />
             <PersianDatePicker label_text="پایان کمپین" />
           </div>
-          <div className="flex gap-16">
+          <div className="flex sm:gap-16 sm:flex-row  flex-col gap-7">
             <DashboardDropDown label_text="مخاطبین هدف" />
             <DashboardTextarea
               label_text="متن پیام"
