@@ -1,19 +1,19 @@
-import DashboardInputs from "../Common/DashBoardInputs";
-import Title from "../Common/Title";
-import PersianDatePicker from "../Common/DatePicker";
 import DashboardButton from "../Common/DashboardButton";
+import DashboardInputs from "../Common/DashBoardInputs";
+import PersianDatePicker from "../Common/DatePicker";
 import ProfileImage from "../Common/ProfileImage";
+import Title from "../Common/Title";
 
 const CustomersEntry = () => {
   return (
-    <>
+    <div>
       <Title title=" وارد کردن پروفایل مشتریان" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md ">
         <form className="flex flex-col gap-7">
           <div className="p-4">
             <ProfileImage upload_text="عکس خود را اپلود کنید" />
           </div>
-          <div className="flex justify-between">
+          <div className="flex flex-col sm:flex-row justify-between gap-7">
             <DashboardInputs
               lable_text="نام و نام خانوادگی"
               placeholder_text="نام و نام خانوادگی خود را وارد کنید"
@@ -27,7 +27,7 @@ const CustomersEntry = () => {
               placeholder_text="ایمیل خود را وارد کنید"
             />
           </div>
-          <div className="flex justify-between">
+          <div className="flex flex-col sm:flex-row justify-between gap-7">
             <DashboardInputs
               lable_text="شماره تماس"
               placeholder_text="شماره تماس خود را وارد کنید"
@@ -52,7 +52,7 @@ const CustomersEntry = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
