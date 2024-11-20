@@ -1,45 +1,82 @@
 import React from "react";
-import { BiDotsHorizontalRounded, BiDotsVerticalRounded } from "react-icons/bi";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
 
 const Table = ({ columns, data }) => {
   return (
-    <div className="overflow-x-auto bg-white rounded-lg">
-      <table className="min-w-full text-center">
-        <thead className="bg-gray-100 border-b">
-          <tr>
-            {columns.map((column) => (
-              <th
-                key={column.id}
-                className="py-4 text-sm font-semibold text-blue-800"
-              >
-                {column.label}
-              </th>
-            ))}
-            <th className="px-6 py-4 font-semibold text-blue-800">جزئیات</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row, rowIndex) => (
-            <tr
-              key={row.id}
-              className={`${
-                rowIndex % 2 === 0 ? "bg-white" : "bg-gray-50"
-              } border-b hover:bg-gray-100`}
-            >
+    <div className="bg-white rounded-lg overflow-hidden">
+      {/* Desktop Table */}
+      <div className="hidden md:block overflow-x-auto">
+        <table className="min-w-full text-center">
+          <thead className="bg-gray-100 border-b">
+            <tr>
               {columns.map((column) => (
-                <td key={column.id} className="px-6 py-4 text-sm text-gray-700">
-                  {row[column.id]}
-                </td>
+                <th
+                  key={column.id}
+                  className="py-4 text-sm md:text-base font-semibold text-blue-800"
+                >
+                  {column.label}
+                </th>
               ))}
-              <td className="px-6 py-4 text-center">
-                <button className="text-xl text-green-600 hover:text-green-800">
-                  <BiDotsHorizontalRounded />
-                </button>
-              </td>
+              <th className="px-6 py-4 font-semibold text-sm md:text-base text-blue-800">
+                جزئیات
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.map((row, rowIndex) => (
+              <tr
+                key={row.id}
+                className={`${
+                  rowIndex % 2 === 0 ? "bg-white" : "bg-gray-50"
+                } border-b hover:bg-gray-100`}
+              >
+                {columns.map((column) => (
+                  <td
+                    key={column.id}
+                    className="px-6 py-4 text-xs md:text-sm text-gray-700"
+                  >
+                    {row[column.id]}
+                  </td>
+                ))}
+                <td className="px-6 py-4 text-center">
+                  <button className="text-lg md:text-xl text-green-600 hover:text-green-800">
+                    <BiDotsHorizontalRounded />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Mobile Cards */}
+      <div className="md:hidden space-y-4">
+        {data.map((row) => (
+          <div
+            key={row.id}
+            className="bg-gray-50 p-4 rounded-lg shadow-sm border"
+          >
+            {columns.map((column) => (
+              <div key={column.id} className="flex justify-between py-2">
+                <span className="font-semibold text-xs md:text-sm text-gray-600">
+                  {column.label}:
+                </span>
+                <span className="text-xs md:text-sm text-gray-700">
+                  {row[column.id]}
+                </span>
+              </div>
+            ))}
+            <div className="flex justify-between items-center pt-2 border-t mt-2">
+              <span className="font-semibold text-xs md:text-sm text-gray-600">
+                جزئیات:
+              </span>
+              <button className="text-lg md:text-xl text-green-600 hover:text-green-800">
+                <BiDotsHorizontalRounded />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
