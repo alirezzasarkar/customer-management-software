@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function DashboardDropDown({ label_text }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,7 @@ export default function DashboardDropDown({ label_text }) {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative flex flex-col w-[30%]">
+    <div ref={dropdownRef} className="relative flex flex-col sm:w-[30%]">
       <label className="text-[#153D8A] px-2" htmlFor="dropdown">
         {label_text}
       </label>
