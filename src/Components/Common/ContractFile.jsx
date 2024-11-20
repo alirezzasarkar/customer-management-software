@@ -1,6 +1,6 @@
 const ContractFile = () => {
   return (
-    <div className="w-[30%] mt-8">
+    <div className="sm:w-[30%] mt-8">
       <div className="border-2 border-dashed border-[#153D8A] rounded-lg p-4 flex items-center  bg-gray-100 h-12 ">
         <label
           htmlFor="fileUpload"

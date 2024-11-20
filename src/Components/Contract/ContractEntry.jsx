@@ -1,18 +1,18 @@
+import ContractFile from "../Common/ContractFile";
+import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDown from "../Common/DashBoardDropDown";
 import DashBoardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
-import DashboardButton from "../Common/DashboardButton";
-import ContractFile from "../Common/ContractFile";
 
 const ContractEntry = () => {
   return (
     <div>
       <Title title="وارد کردن فاکتور" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
-        <form className="flex flex-col gap-7">
-          <div className="flex justify-between">
+      <div className="bg-gray-100 p-5 sm:mx-6 mx-0 rounded-md">
+        <form className="flex sm:justify-between sm:flex-row flex-col gap-5">
+          <div className="flex justify-between sm:flex-row flex-col gap-7">
             <DashBoardInputs
               lable_text="نام و نام خانوادگی"
               placeholder_text="نام و نام خانوادگی خود را وارد کنید"
@@ -20,7 +20,7 @@ const ContractEntry = () => {
             <DashboardDropDown label_text="محصولات" />
             <DashboardDropDown label_text="مبلغ فاکتور" />
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between sm:flex-row flex-col gap-7">
             <PersianDatePicker label_text="تاریخ ثبت فاکتور" />
             <DashboardTextarea
               label_text="شرایط فاکتور"
