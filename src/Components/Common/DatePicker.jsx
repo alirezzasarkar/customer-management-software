@@ -1,8 +1,8 @@
 import { useState } from "react";
-import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { FaCalendarAlt } from "react-icons/fa";
+import DatePicker from "react-multi-date-picker";
 
 const PersianDatePicker = ({ onChange, label_text }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -13,7 +13,7 @@ const PersianDatePicker = ({ onChange, label_text }) => {
   };
 
   return (
-    <div className="w-[30%]">
+    <div className="sm:w-[30%]">
       <label htmlFor="" className="px-2 text-[#153D8A]">
         {label_text}
       </label>
