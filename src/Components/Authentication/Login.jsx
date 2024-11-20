@@ -1,6 +1,6 @@
-import AuthLayout from "../Layout/AuthLayout";
 import Button from "../Common/AuthButton";
 import AuthInput from "../Common/AuthInput";
+import AuthLayout from "../Layout/AuthLayout";
 
 const Login = () => {
   return (
@@ -25,7 +25,7 @@ const Login = () => {
       <Button
         width="w-full"
         textColor="text-[#E1E1EA]"
-        height="h-10"
+        height="h-12"
         backgroundColor="bg-[#153D8A]"
         text="وارد شوید"
       />

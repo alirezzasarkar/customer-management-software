@@ -2,15 +2,15 @@ import PropTypes from "prop-types";
 
 const AuthLayout = ({ children, title }) => {
   return (
-    <main className="flex md:flex-row flex-col justify-evenly items-center h-screen bg-[#F1F1F9]">
-      <form className="space-y-7 md:w-[23%]">
+    <main className="flex md:flex-row flex-col justify-evenly items-center h-dvh bg-[#F1F1F9] ">
+      <form className="space-y-7 md:w-[23%] w-4/5">
         <h1 className="text-center font-bold text-5xl mb-14 text-[#424242]">
           {title}
         </h1>
         {children}
       </form>
       <div
-        className="relative h-full w-[30%] bg-cover"
+        className="relative h-full w-[30%] bg-cover sm:block hidden"
         style={{
           backgroundImage: "url('/src/Assets/Icons/Blue_Background.svg')",
         }}
