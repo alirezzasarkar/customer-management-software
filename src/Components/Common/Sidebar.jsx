@@ -8,7 +8,7 @@ const Sidebar = () => {
   return (
     <>
       <button
-        className="md:hidden absolute top-4 left-4 z-50 bg-customBlue text-white p-2 rounded-md shadow-lg"
+        className="md:hidden absolute top-6 left-4 z-50 bg-customBlue text-white p-2 rounded-md shadow-lg"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
       >
         {isMobileOpen ? (

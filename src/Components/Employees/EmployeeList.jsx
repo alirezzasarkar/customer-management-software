@@ -34,7 +34,9 @@ const EmployeeList = ({ data, columns }) => {
       <Title title="لیست کارمندان" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <div className="flex justify-between px-2 py-3">
-          <Sorting onSort={handleSort} columns={columns} />
+          <div className="hidden md:block">
+            <Sorting onSort={handleSort} columns={columns} />
+          </div>
           <Search onSearch={handleSearch} />
         </div>
         <Table columns={columns} data={filteredData} />

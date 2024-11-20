@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <button
           onClick={handleBack}
-          className="w-11 h-11 bg-customBlue rounded-full flex items-center justify-center text-white hover:bg-blue-800"
+          className="hidden md:flex w-11 h-11 bg-customBlue rounded-full items-center justify-center text-white hover:bg-blue-800"
         >
           <IoIosArrowBack />
         </button>
