@@ -1,17 +1,17 @@
-import Title from "../Common/Title";
-import DashboardInputs from "../Common/DashBoardInputs";
-import DashboardDropDown from "../Common/DashBoardDropDown";
-import DashboardTextarea from "../Common/DashboardTextarea";
 import DashboardButton from "../Common/DashboardButton";
+import DashboardDropDown from "../Common/DashBoardDropDown";
+import DashboardInputs from "../Common/DashBoardInputs";
+import DashboardTextarea from "../Common/DashboardTextarea";
 import ProductImage from "../Common/ProductImage";
+import Title from "../Common/Title";
 
 const ProductListEntry = () => {
   return (
     <>
       <Title title=" وارد کردن محصول" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
-        <form className="flex flex-col gap-7">
-          <div className="flex justify-between">
+      <div className="bg-gray-100 p-5 sm:mx-6 mx-0 rounded-md">
+        <form className="sm:justify-between flex flex-col gap-7">
+          <div className=" flex justify-between sm:flex-row flex-col gap-7">
             <DashboardInputs
               lable_text="نام محصول"
               placeholder_text="نام محصول خود را وارد کنید"
@@ -25,7 +25,7 @@ const ProductListEntry = () => {
               placeholder_text="۱۱۰ × ۲۱۵ × ۲۰ سانتی متر "
             />
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between sm:flex-row flex-col gap-7">
             <DashboardDropDown label_text="دسته بندی محصول" />
             <DashboardInputs
               lable_text="قیمت محصول"
