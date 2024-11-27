@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Table from "../Common/Table";
+import React, { useEffect, useState } from "react";
 import Search from "../Common/Search";
 import Sorting from "../Common/Sorting";
+import Table from "../Common/Table";
 import Title from "../Common/Title";
 
 const SalesOpportunitiesList = ({ data, columns }) => {
@@ -30,9 +30,9 @@ const SalesOpportunitiesList = ({ data, columns }) => {
   };
 
   return (
-    <>
+    <div className="">
       <Title title="لیست فرصت های فروش" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <div className="flex justify-between px-2 py-3">
           <div className="hidden md:block">
             <Sorting onSort={handleSort} columns={columns} />
@@ -41,7 +41,7 @@ const SalesOpportunitiesList = ({ data, columns }) => {
         </div>
         <Table columns={columns} data={filteredData} />
       </div>
-    </>
+    </div>
   );
 };
 
