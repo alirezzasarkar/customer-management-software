@@ -11,7 +11,7 @@ const ContractEntry = () => {
     <div>
       <Title title="وارد کردن فاکتور" />
       <div className="bg-gray-100 p-5 sm:mx-6 mx-0 rounded-md">
-        <form className="flex sm:justify-between sm:flex-row flex-col gap-5">
+        <form className="flex sm:justify-between flex-col gap-5">
           <div className="flex justify-between sm:flex-row flex-col gap-7">
             <DashBoardInputs
               lable_text="نام و نام خانوادگی"
