@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Table from "../Common/Table";
+import React, { useEffect, useState } from "react";
 import Search from "../Common/Search";
 import Sorting from "../Common/Sorting";
+import Table from "../Common/Table";
 import Title from "../Common/Title";
 
 const CustomerList = ({ data, columns }) => {
@@ -32,7 +32,7 @@ const CustomerList = ({ data, columns }) => {
   return (
     <>
       <Title title="لیست مشتریان" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <div className="flex justify-between px-2 py-3">
           <div className="hidden md:block">
             <Sorting onSort={handleSort} columns={columns} />
