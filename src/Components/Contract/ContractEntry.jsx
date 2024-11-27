@@ -1,10 +1,10 @@
+import ContractFile from "../Common/ContractFile";
+import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDown from "../Common/DashBoardDropDown";
 import DashBoardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
-import DashboardButton from "../Common/DashboardButton";
-import ContractFile from "../Common/ContractFile";
 
 const ContractEntry = () => {
   return (

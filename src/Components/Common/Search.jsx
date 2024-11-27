@@ -11,7 +11,7 @@ const Search = ({ onSearch }) => {
   };
 
   return (
-    <div className="items-center mb-4">
+    <div className="items-center mb-4 w-full sm:w-auto">
       <div className="relative flex items-center w-full max-w-xs">
         <span className="absolute left-2 text-gray-500">
           <BiSearch />
