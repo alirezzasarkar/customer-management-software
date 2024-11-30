@@ -19,12 +19,12 @@ const CustomerDetail = () => {
   return (
     <>
       <Title title="جزئیات پروفایل مشتری" />
-      <div className="bg-gray-100 p-10 mx-6 rounded-md">
+      <div className="bg-gray-100 sm:p-10 p-5 sm:mx-6 rounded-md ">
         <div className="flex mb-10">
           <div className="w-24 h-24 bg-gray-200 flex items-center justify-center rounded-full border-4 border-yellow-400"></div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               نام و نام خانوادگی
@@ -82,7 +82,7 @@ const CustomerDetail = () => {
         </div>
       </div>
 
-      <div className="bg-gray-100 mx-6 rounded-md mt-7">
+      <div className="bg-gray-100 sm:mx-6 rounded-md mt-7">
         <Table columns={columns} data={initialData} />
       </div>
     </>
