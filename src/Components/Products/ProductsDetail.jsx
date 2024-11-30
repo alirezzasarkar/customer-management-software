@@ -1,27 +1,34 @@
 import Title from "../Common/Title";
-import DashboardButton from './../Common/DashboardButton';
+import DashboardButton from "./../Common/DashboardButton";
 
 const ProductDetail = () => {
   return (
     <>
       <Title title="جزئیات محصول" />
-      <div className="bg-gray-100 p-10 mx-6 rounded-md">
-        
-        <div className="grid grid-cols-3 gap-4 mb-8">
+      <div className="bg-gray-100 sm:p-10 p-5 sm:mx-6 rounded-md">
+        <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mb-8">
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">نام محصول</span>
+            <span className="text-sm text-blue-800 font-semibold">
+              نام محصول
+            </span>
             <p className="text-gray-700 mt-2">درب ضد سرقت</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">رنگ محصول</span>
+            <span className="text-sm text-blue-800 font-semibold">
+              رنگ محصول
+            </span>
             <p className="text-gray-700 mt-2">قهوه ای تیره</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">اندازه محصول</span>
+            <span className="text-sm text-blue-800 font-semibold">
+              اندازه محصول
+            </span>
             <p className="text-gray-700 mt-2">110 × 215 × 20 سانتی متر</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">قیمت محصول</span>
+            <span className="text-sm text-blue-800 font-semibold">
+              قیمت محصول
+            </span>
             <p className="text-gray-700 mt-2">۳۰,۰۰۰,۰۰۰ تومان</p>
           </div>
           <div className="flex flex-col">
@@ -29,15 +36,21 @@ const ProductDetail = () => {
             <p className="text-gray-700 mt-2">پیش فروش</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">دسته بندی محصول</span>
+            <span className="text-sm text-blue-800 font-semibold">
+              دسته بندی محصول
+            </span>
             <p className="text-gray-700 mt-2">روکش چوبی درب</p>
           </div>
         </div>
 
         <div className="flex flex-col mt-8">
-          <span className="text-sm text-blue-800 font-semibold">مستندات تکمیلی</span>
+          <span className="text-sm text-blue-800 font-semibold">
+            مستندات تکمیلی
+          </span>
           <p className="text-gray-700 mt-2 leading-relaxed">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+            استفاده از طراحان گرافیک است. لورم ایپسوم متن ساختگی با تولید سادگی
+            نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
           </p>
         </div>
 
@@ -61,7 +74,6 @@ const ProductDetail = () => {
             hover_state="hover:bg-[#FF0000]"
           />
         </div>
-
       </div>
     </>
   );
