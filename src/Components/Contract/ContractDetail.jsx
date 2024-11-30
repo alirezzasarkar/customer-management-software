@@ -39,8 +39,8 @@ const ContractDetail = () => {
   return (
     <>
       <Title title="جزئیات فاکتور" />
-      <div className="bg-gray-100 p-10 mx-6 rounded-md">
-        <div className="grid grid-cols-3 gap-4 mb-8">
+      <div className="bg-gray-100 sm:p-10 p-5 sm:mx-6 rounded-md">
+        <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               نام و نام خانوادگی
@@ -91,7 +91,7 @@ const ContractDetail = () => {
         </div>
       </div>
 
-      <div className="bg-gray-100 mx-6 rounded-md mt-7">
+      <div className="bg-gray-100 sm:mx-6 rounded-md mt-7">
         <Table columns={columns} data={initialData} />
       </div>
     </>
