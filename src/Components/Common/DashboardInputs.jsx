@@ -1,6 +1,6 @@
 const DashboardInputs = ({ lable_text, placeholder_text, isdisabled }) => {
   return (
-    <div className="flex flex-col sm:w-[30%] w-full">
+    <div className="flex flex-col sm:w-[30%]">
       <label htmlFor="" className="text-[#153D8A] px-2">
         {lable_text}
       </label>
