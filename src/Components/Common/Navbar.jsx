@@ -19,12 +19,12 @@ const Navbar = () => {
         >
           <FaUser />
         </Link>
-        <Link
+        {/* <Link
           to="/"
           className="w-11 h-11 bg-customBlue rounded-full flex items-center justify-center text-white hover:bg-blue-800"
         >
           <FaBell />
-        </Link>
+        </Link> */}
       </div>
       <div className="flex items-center">
         <button
