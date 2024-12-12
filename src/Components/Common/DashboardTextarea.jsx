@@ -1,9 +1,6 @@
 const DashboardTextarea = ({ label_text, placeholder_text }) => {
   return (
-    <div
-      className="flex flex-col sm:w-[30%]
-"
-    >
+    <div className="flex flex-col sm:w-[30%]">
       <label className="text-[#153D8A] px-2">{label_text}</label>
       <textarea
         name=""
