@@ -111,7 +111,7 @@ const Sidebar = () => {
           ]}
         />
 
-        <SidebarItem
+        {/* <SidebarItem
           to="/dashboard/pre-invoice/list"
           icon="/src/Assets/Icons/Sidbar/pre-invoice.svg"
           label="پیش فاکتور"
@@ -119,7 +119,7 @@ const Sidebar = () => {
             { label: "ثبت پیش فاکتور", to: "/dashboard/pre-invoice/entry" },
             { label: "لیست پیش فاکتور ها", to: "/dashboard/pre-invoice/list" },
           ]}
-        />
+        /> */}
 
         <SidebarItem
           to="/"
