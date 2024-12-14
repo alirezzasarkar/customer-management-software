@@ -4,9 +4,12 @@ import { useState } from "react";
 const AuthInput = ({
   label,
   placeholdertext,
-  input_type,
-  icon,
-  verification,
+  input_type = "text",
+  icon = null,
+  verification = "",
+  name,
+  value,
+  onChange,
 }) => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
 
@@ -15,7 +18,6 @@ const AuthInput = ({
   };
 
   const handleTextButtonClick = () => {
-    // Add functionality here for the text button
     alert("Text button clicked!");
   };
 
@@ -35,7 +37,10 @@ const AuthInput = ({
         type={
           passwordVisibility && input_type === "password" ? "password" : "text"
         }
-        className="peer border-none bg-transparent focus:border-transparent focus:outline-none focus:ring-0 placeholder:text-sm px-8 h-[46px]"
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="peer border-none bg-transparent focus:border-transparent focus:outline-none focus:ring-0 placeholder:text-sm px-8 h-[46px] w-full"
         placeholder={placeholdertext}
       />
 
@@ -61,7 +66,7 @@ const AuthInput = ({
         </button>
       )}
 
-      {verification === "verfication-button" && (
+      {verification === "verification-button" && (
         <button
           type="button"
           onClick={handleTextButtonClick}
@@ -77,9 +82,12 @@ const AuthInput = ({
 AuthInput.propTypes = {
   label: PropTypes.string.isRequired,
   placeholdertext: PropTypes.string.isRequired,
-  input_type: PropTypes.string.isRequired,
+  input_type: PropTypes.string,
   icon: PropTypes.string,
   verification: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default AuthInput;

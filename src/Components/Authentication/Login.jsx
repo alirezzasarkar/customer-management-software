@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Common/AuthButton";
 import AuthInput from "../Common/AuthInput";
 
@@ -34,10 +35,8 @@ const Login = () => {
         />
         <section className="text-center text-sm ">
           <span className="opacity-30 font-semibold"> حساب کاربری ندارید؟</span>
-          <span>
-            <a href="" className="text-[#153D8A] font-bold">
-              ثبت نام کنید
-            </a>
+          <span className="text-[#153D8A] font-bold">
+            <Link to="/register">ثبت نام کنید</Link>
           </span>
         </section>
       </form>

@@ -5,47 +5,43 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-// import { AuthProvider, useAuth } from "./Components/Authentication/AuthContext";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import DashboardRoutes from "./Routes/DashboardRoutes";
-import Layout from "./Components/Layout/Layout";
-import ResetPasswordPage from "./Pages/ResetPasswordPage";
+import { AuthProvider, useAuth } from "./Components/Authentication/AuthContext";
 
 const App = () => {
-  // const { user } = useAuth();
+  const { user } = useAuth();
 
   return (
-    // <AuthProvider>
-    //   <Router>
-    //     <Routes>
-    //       <Route
-    //         path="/"
-    //         element={
-    //           user ? (
-    //             <Navigate to="/dashboard" replace />
-    //           ) : (
-    //             <Navigate to="/login" replace />
-    //           )
-    //         }
-    //       />
-    //       <Route path="/login" element={<LoginPage />} />
-    //       <Route path="/forget-password" element={<ForgetPasswordPage />} />
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              user ? (
+                <Navigate to="/dashboard" replace />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
 
-    //       {/* Protected Route for Dashboard */}
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/forget-password" element={<ForgetPasswordPage />} />
 
-    //       <Route
-    //         path="/dashboard/*"
-    //         element={
-    //           user ? <DashboardRoutes /> : <Navigate to="/login" replace />
-    //         }
-    //       />
-    //     </Routes>
-    //   </Router>
-    // </AuthProvider>
-    <Router>
-      <DashboardRoutes />
-    </Router>
+          <Route
+            path="/dashboard/*"
+            element={
+              user ? <DashboardRoutes /> : <Navigate to="/login" replace />
+            }
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 

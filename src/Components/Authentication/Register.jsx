@@ -1,56 +1,69 @@
+import React from "react";
 import Button from "../Common/AuthButton";
 import AuthInput from "../Common/AuthInput";
 import AuthLayout from "../Layout/AuthLayout";
+import { Link } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ formData, onInputChange, onSubmit, loading }) => {
   return (
-    <>
-      <AuthLayout title="ثبت نام">
-        <AuthInput
-          label="نام و نام خانوادگی"
-          placeholdertext="نام خود را وارد کنید"
-          icon="/src/Assets/Icons/Vector.svg"
-        />
-        <AuthInput
-          label="شماره تماس"
-          placeholdertext="شماره تلفن خود را وارد کنید"
-          icon="/src/Assets/Icons/smart-phone.svg"
-        />
-        <AuthInput
-          label="ایمیل (اختیاری)"
-          input_type="email"
-          placeholdertext="ایمیل خود را وارد کنید"
-          icon="/src/Assets/Icons/email.svg"
-        />
-        <AuthInput
-          label="رمز عبور"
-          placeholdertext="رمز عبور خود را وارد کنید"
-          input_type="password"
-          icon="/src/Assets/Icons/lock-password.svg"
-        />
-        <AuthInput
-          label="تکرار رمز عبور"
-          placeholdertext="رمز عبور خود را وارد کنید"
-          input_type="password"
-          icon="/src/Assets/Icons/lock-password.svg"
-        />
-        <Button
-          width="w-full"
-          textColor="text-[#E1E1EA]"
-          height="h-10"
-          backgroundColor="bg-[#153D8A]"
-          text="درخواست ثبت نام"
-        />
-        <section className="text-center text-sm ">
-          <span className="opacity-30 font-semibold"> حساب کاربری دارید؟</span>
-          <span className="mx-1">
-            <a href="" className="text-[#153D8A] font-bold">
-              ورود{" "}
-            </a>
-          </span>
-        </section>
-      </AuthLayout>
-    </>
+    <AuthLayout title="ثبت نام" onSubmit={onSubmit}>
+      <AuthInput
+        label="نام و نام خانوادگی"
+        name="full_name"
+        placeholdertext="نام خود را وارد کنید"
+        icon="/src/Assets/Icons/Vector.svg"
+        value={formData.full_name}
+        onChange={onInputChange}
+      />
+      <AuthInput
+        label="شماره تماس"
+        name="phone_number"
+        placeholdertext="شماره تلفن خود را وارد کنید"
+        icon="/src/Assets/Icons/smart-phone.svg"
+        value={formData.phone_number}
+        onChange={onInputChange}
+      />
+      <AuthInput
+        label="ایمیل (اختیاری)"
+        name="email"
+        input_type="email"
+        placeholdertext="ایمیل خود را وارد کنید"
+        icon="/src/Assets/Icons/email.svg"
+        value={formData.email}
+        onChange={onInputChange}
+      />
+      <AuthInput
+        label="رمز عبور"
+        name="password"
+        placeholdertext="رمز عبور خود را وارد کنید"
+        input_type="password"
+        icon="/src/Assets/Icons/lock-password.svg"
+        value={formData.password}
+        onChange={onInputChange}
+      />
+      <AuthInput
+        label="تکرار رمز عبور"
+        name="confirmPassword"
+        placeholdertext="رمز عبور خود را وارد کنید"
+        input_type="password"
+        icon="/src/Assets/Icons/lock-password.svg"
+        value={formData.confirmPassword}
+        onChange={onInputChange}
+      />
+      <Button
+        width="w-full"
+        textColor="text-[#E1E1EA]"
+        height="h-10"
+        backgroundColor="bg-[#153D8A]"
+        text={loading ? "در حال ثبت‌نام..." : "درخواست ثبت نام"}
+      />
+      <section className="text-center text-sm mt-4">
+        <span className="opacity-30 font-semibold"> حساب کاربری دارید؟</span>
+        <span className="mx-1 text-[#153D8A] font-bold">
+          <Link to="/login">ورود</Link>
+        </span>
+      </section>
+    </AuthLayout>
   );
 };
 
