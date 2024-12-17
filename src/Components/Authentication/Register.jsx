@@ -55,7 +55,7 @@ const Register = ({ formData, onInputChange, onSubmit, loading }) => {
         textColor="text-[#E1E1EA]"
         height="h-10"
         backgroundColor="bg-[#153D8A]"
-        text={loading ? "در حال ثبت‌نام..." : "درخواست ثبت نام"}
+        text={loading ? "در حال ثبت‌نام..." : "ثبت نام"}
       />
       <section className="text-center text-sm mt-4">
         <span className="opacity-30 font-semibold"> حساب کاربری دارید؟</span>

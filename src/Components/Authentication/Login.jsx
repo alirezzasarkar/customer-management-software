@@ -1,59 +1,47 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../Common/AuthButton";
 import AuthInput from "../Common/AuthInput";
+import AuthLayout from "../Layout/AuthLayout";
 
-const Login = () => {
+const Login = ({ formData, onInputChange, onSubmit, loading }) => {
   return (
-    <main className="flex md:flex-row flex-col justify-evenly items-center h-screen bg-[#F1F1F9]">
-      <form className="space-y-7 md:w-[23%]">
-        <h1 className="text-center font-bold text-5xl mb-14 text-[#424242]">
-          ورود
-        </h1>
-        <AuthInput
-          label="شماره تماس"
-          placeholdertext="شماره تلفن خود را وارد کنید"
-          input_type="text"
-          icon="/src/Assets/Icons/smart-phone.svg"
-        />
-        <AuthInput
-          label="رمز عبور"
-          placeholdertext="رمز عبور خود را وارد کنید"
-          input_type="password"
-          icon="/src/Assets/Icons/lock-password.svg"
-        />
-        <a href="">
-          <p className="mt-3 text-[#616161] text-sm font-semibold">
-            رمز عبور را فراموش کرده اید؟
-          </p>
-        </a>
-        <Button
-          width="w-full"
-          textColor="text-[#E1E1EA]"
-          height="h-10"
-          backgroundColor="bg-[#153D8A]"
-          text="وارد شوید"
-        />
-        <section className="text-center text-sm ">
-          <span className="opacity-30 font-semibold"> حساب کاربری ندارید؟</span>
-          <span className="text-[#153D8A] font-bold">
-            <Link to="/register">ثبت نام کنید</Link>
-          </span>
-        </section>
-      </form>
-
-      <div
-        className="relative h-full w-[30%] bg-cover"
-        style={{
-          backgroundImage: "url('/src/Assets/Icons/Blue_Background.svg')",
-        }}
-      >
-        <img
-          src="/src/Assets/Icons/AdklayLogo.svg"
-          alt="AdklayLogo"
-          className="absolute inset-9 m-auto"
-        />
-      </div>
-    </main>
+    <AuthLayout title="ورود" onSubmit={onSubmit}>
+      <AuthInput
+        label="شماره تماس"
+        name="phone_number"
+        placeholdertext="شماره تلفن خود را وارد کنید"
+        input_type="text"
+        icon="/src/Assets/Icons/smart-phone.svg"
+        value={formData.phone_number}
+        onChange={onInputChange}
+      />
+      <AuthInput
+        label="رمز عبور"
+        name="password"
+        placeholdertext="رمز عبور خود را وارد کنید"
+        input_type="password"
+        icon="/src/Assets/Icons/lock-password.svg"
+        value={formData.password}
+        onChange={onInputChange}
+      />
+      <p className="mt-3 text-[#616161] text-sm font-semibold">
+        <Link to="/">رمز عبور را فراموش کرده اید؟</Link>
+      </p>
+      <Button
+        width="w-full"
+        textColor="text-[#E1E1EA]"
+        height="h-12"
+        backgroundColor="bg-[#153D8A]"
+        text={loading ? "در حال ورود..." : "وارد شوید"}
+      />
+      <section className="text-center text-sm mt-4">
+        <span className="opacity-30 font-semibold"> حساب کاربری ندارید؟</span>
+        <span className="text-[#153D8A] font-bold">
+          <Link to="/register">ثبت نام کنید</Link>
+        </span>
+      </section>
+    </AuthLayout>
   );
 };
 

@@ -13,7 +13,7 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     // Get JWT token from localStorage
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
 
     if (token) {
       // Add token to Authorization header

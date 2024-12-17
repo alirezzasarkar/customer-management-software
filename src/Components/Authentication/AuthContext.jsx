@@ -11,13 +11,13 @@ export const AuthProvider = ({ children }) => {
 
   // Load user data from token on initial load
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
     if (token) {
       try {
         setUser(decodeToken(token));
       } catch (e) {
         console.error("Error decoding token:", e);
-        localStorage.removeItem("authToken");
+        localStorage.removeItem("token");
       }
     }
     setLoading(false);
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await login(credentials);
       const token = response.access;
-      localStorage.setItem("authToken", token);
+      localStorage.setItem("token", token);
       setUser(decodeToken(token));
       return true;
     } catch (error) {
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
   // Logout function to clear user state and remove token
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("token");
   };
 
   // Check if user is authenticated based on user state

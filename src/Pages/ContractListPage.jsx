@@ -1,75 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContractList from "../Components/Contract/ContractList";
-
-const initialData = [
-  {
-    id: 1,
-    name: "علیرضا سرکار",
-    date: "۱۳۸۱/۰۵/۲۲",
-    amount: "۴۵۰۰۰۰۰۰",
-    status: "فعال",
-  },
-  {
-    id: 2,
-    name: "احمدرضا درزی",
-    date: "۱۳۸۲/۰۳/۱۹",
-    amount: "۵۰۰۰۰۰۰۰",
-    status: "غیرفعال",
-  },
-  {
-    id: 3,
-    name: "محمد رودباری",
-    date: "۱۳۸۳/۰۸/۰۲",
-    amount: "۶۲۰۰۰۰۰۰",
-    status: "فعال",
-  },
-  {
-    id: 4,
-    name: "سجاد باقریان",
-    date: "۱۳۸۴/۰۱/۰۹",
-    amount: "۷۰۰۰۰۰۰۰",
-    status: "غیرفعال",
-  },
-  {
-    id: 5,
-    name: "فرزاد کریمی",
-    date: "۱۳۸۲/۱۰/۰۷",
-    amount: "۳۲۰۰۰۰۰۰",
-    status: "فعال",
-  },
-  {
-    id: 6,
-    name: "حسین احمدی",
-    date: "۱۳۸۱/۱۲/۱۵",
-    amount: "۵۵۰۰۰۰۰۰",
-    status: "غیرفعال",
-  },
-  {
-    id: 7,
-    name: "مهدی علوی",
-    date: "۱۳۸۳/۰۶/۲۵",
-    amount: "۴۲۰۰۰۰۰۰",
-    status: "فعال",
-  },
-  {
-    id: 8,
-    name: "پرهام حسینی",
-    date: "۱۳۸۴/۰۲/۱۷",
-    amount: "۶۸۰۰۰۰۰۰",
-    status: "فعال",
-  },
-];
+import Loading from "../Components/Common/Loading";
+import { getFactors } from "../Services/APIs/Contract";
+import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [
-  { id: "name", label: "نام و نام خانوادگی" },
-  { id: "date", label: "تاریخ ثبت" },
+  { id: "name", label: "نام مشتری" },
+  { id: "date", label: "تاریخ قرارداد" },
   { id: "amount", label: "مبلغ فاکتور" },
-  { id: "status", label: "وضعیت فاکتور" },
+  { id: "description", label: "توضیحات" },
 ];
 
 const ContractListPage = () => {
-  const [data, setData] = useState(initialData);
-  return <ContractList data={data} columns={columns} />;
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchFactors = async () => {
+      setLoading(true);
+      try {
+        const factors = await getFactors();
+
+        const processedData = factors.map((item) => ({
+          id: item.id,
+          name: item.customer,
+          date: convertToShamsi(item.contract_date),
+          amount: item.price,
+          description: item.description,
+        }));
+
+        setData(processedData);
+      } catch (error) {
+        console.error("Failed to fetch factors:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFactors();
+  }, []);
+
+  return (
+    <div>
+      {loading ? <Loading /> : <ContractList data={data} columns={columns} />}
+    </div>
+  );
 };
 
 export default ContractListPage;

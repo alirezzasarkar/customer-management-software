@@ -1,14 +1,19 @@
 import axios from "axios";
 import API_URL from "../Config/ApiConfig";
+import apiClient from "./../Config/AxiosConfig";
 import { handleApiError } from "../Handlers/ErrorHandler";
 
 // Login function
 export const login = async (credentials) => {
   try {
-    const response = await axios.post(`${API_URL}/account/login/`, credentials);
+    const response = await axios.post(
+      `${API_URL}/accountemployee/employee-login/`,
+      credentials
+    );
+    console.log(response.data);
     return response.data;
   } catch (error) {
-    handleApiError(error);
+    console.error("Login error:", error.response);
     throw error;
   }
 };
@@ -16,8 +21,8 @@ export const login = async (credentials) => {
 // Register function
 export const register = async (data) => {
   try {
-    const response = await axios.post(
-      `${API_URL}/accountemployee/create-user/`,
+    const response = await apiClient.post(
+      "/accountemployee/create-user/",
       data
     );
     console.log(response.data);

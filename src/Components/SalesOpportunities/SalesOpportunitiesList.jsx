@@ -6,7 +6,6 @@ import Title from "../Common/Title";
 
 const SalesOpportunitiesList = ({ data, columns }) => {
   const [filteredData, setFilteredData] = useState(data);
-  console.log(filteredData);
 
   useEffect(() => {
     setFilteredData(data);
