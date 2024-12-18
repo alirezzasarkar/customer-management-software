@@ -1,53 +1,49 @@
+import React from "react";
 import Title from "../Common/Title";
-import DashboardButton from "./../Common/DashboardButton";
+import DashboardButton from "../Common/DashboardButton";
 
-const SalesOpportunitiesDetail = () => {
+const SalesOpportunitiesDetail = ({ data }) => {
   return (
-    <div className="">
+    <div>
       <Title title="جزئیات فرصت فروش" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mb-4">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              نام و نام خانوادگی
+              نام مشتری
             </span>
-            <p className="text-gray-700 mt-2">لیلا کردی</p>
+            <p className="text-gray-700 mt-2">{data.customer_name}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               تاریخ پیگیری
             </span>
-            <p className="text-gray-700 mt-2">۱۳۸۱/۰۴/۱۱</p>
+            <p className="text-gray-700 mt-2">{data.follow_up_date}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               اولویت فرصت
             </span>
-            <p className="text-gray-700 mt-2">متوسط</p>
+            <p className="text-gray-700 mt-2">{data.opportunity_priority}</p>
           </div>
         </div>
 
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mt-10 mb-4">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              محصول مورد نظر
+              نام محصول
             </span>
-            <p className="text-gray-700 mt-2">درب ضد سرقت</p>
+            <p className="text-gray-700 mt-2">{data.product_name}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               مبلغ تخمینی
             </span>
-            <p className="text-gray-700 mt-2">۳۰۰,۰۰۰,۰۰۰ تومان</p>
+            <p className="text-gray-700 mt-2">{data.estimated_amount} تومان</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">
-              افزودن یادداشت
-            </span>
-            <p className="text-gray-700 mt-2">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-              استفاده از طراحان گرافیک است.
-            </p>
+            <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
+            <p className="text-gray-700 mt-2">{data.description}</p>
           </div>
         </div>
 

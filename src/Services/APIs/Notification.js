@@ -11,3 +11,14 @@ export const getNotices = async () => {
     throw error;
   }
 };
+
+export const getNoticeDetail = async (id) => {
+  try {
+    const response = await apiClient.get(`/notice/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching notice detail:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

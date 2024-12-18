@@ -11,3 +11,14 @@ export const getMarketingCampaigns = async () => {
     throw error;
   }
 };
+
+export const getMarketingCampaignDetail = async (id) => {
+  try {
+    const response = await apiClient.get(`/marketing/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching marketing campaign detail:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

@@ -11,3 +11,14 @@ export const getEmployees = async () => {
     throw error;
   }
 };
+
+export const getEmployeeDetail = async (id) => {
+  try {
+    const response = await apiClient.get(`/accountemployee/profiles/${id}/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching employee detail:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

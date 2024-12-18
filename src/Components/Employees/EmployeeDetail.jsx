@@ -1,54 +1,71 @@
+import React from "react";
 import Title from "../Common/Title";
-import DashboardButton from "./../Common/DashboardButton";
+import DashboardButton from "../Common/DashboardButton";
 
-const EmployeeDetail = () => {
+const EmployeeDetail = ({ data }) => {
+  const {
+    picture,
+    full_name,
+    work_position,
+    department,
+    phone_number,
+    email,
+    date_of_assignment,
+    telegram_id,
+  } = data;
+
   return (
     <>
       <Title title="جزئیات پروفایل کارمند" />
       <div className="bg-gray-100 p-10 mx-6 rounded-md">
-        <div className="flex flex-col mb-10">
-          <div className="w-24 h-24 bg-gray-200 flex items-center justify-center rounded-full"></div>
+        <div className="flex flex-col items-center mb-10">
+          <img
+            src={picture || "https://via.placeholder.com/100"}
+            alt="Employee"
+            className="w-24 h-24 rounded-full bg-gray-200"
+          />
         </div>
+
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               نام و نام خانوادگی
             </span>
-            <p className="text-gray-700 mt-2">لیلا کردی</p>
+            <p className="text-gray-700 mt-2">{full_name}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               سمت شغلی
             </span>
-            <p className="text-gray-700 mt-2">مدیر پروژه</p>
+            <p className="text-gray-700 mt-2">{work_position}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               دپارتمان
             </span>
-            <p className="text-gray-700 mt-2">بازاریابی</p>
+            <p className="text-gray-700 mt-2">{department}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               شماره تماس
             </span>
-            <p className="text-gray-700 mt-2">0913973456</p>
+            <p className="text-gray-700 mt-2">{phone_number}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">ایمیل</span>
-            <p className="text-gray-700 mt-2">leylakordi@gmail.com</p>
+            <p className="text-gray-700 mt-2">{email}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               تاریخ استخدام
             </span>
-            <p className="text-gray-700 mt-2">۱۳۸۱/۰۴/۱۱</p>
+            <p className="text-gray-700 mt-2">{date_of_assignment}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               آیدی تلگرام
             </span>
-            <p className="text-gray-700 mt-2">۱۳۸۱/۰۴/۱۱</p>
+            <p className="text-gray-700 mt-2">{telegram_id}</p>
           </div>
         </div>
 

@@ -1,50 +1,71 @@
+import React from "react";
 import Title from "../Common/Title";
-import DashboardButton from './../Common/DashboardButton';
+import DashboardButton from "../Common/DashboardButton";
 
-const ProductDetail = () => {
+const ProductsDetail = ({ data }) => {
+  const {
+    product_name,
+    price,
+    size,
+    color,
+    status,
+    category,
+    product_image,
+    description,
+  } = data;
+
   return (
     <>
       <Title title="جزئیات محصول" />
       <div className="bg-gray-100 p-10 mx-6 rounded-md">
-        
+        <div className="flex justify-center mb-8">
+          <img
+            src={product_image || "https://via.placeholder.com/150"}
+            alt={product_name}
+            className="w-32 h-32 rounded-md shadow-md"
+          />
+        </div>
+
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">نام محصول</span>
-            <p className="text-gray-700 mt-2">درب ضد سرقت</p>
+            <span className="text-sm text-blue-800 font-semibold">
+              نام محصول
+            </span>
+            <p className="text-gray-700 mt-2">{product_name}</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">رنگ محصول</span>
-            <p className="text-gray-700 mt-2">قهوه ای تیره</p>
+            <span className="text-sm text-blue-800 font-semibold">
+              رنگ محصول
+            </span>
+            <p className="text-gray-700 mt-2">{color}</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">اندازه محصول</span>
-            <p className="text-gray-700 mt-2">110 × 215 × 20 سانتی متر</p>
+            <span className="text-sm text-blue-800 font-semibold">
+              اندازه محصول
+            </span>
+            <p className="text-gray-700 mt-2">{size}</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">قیمت محصول</span>
-            <p className="text-gray-700 mt-2">۳۰,۰۰۰,۰۰۰ تومان</p>
+            <span className="text-sm text-blue-800 font-semibold">
+              قیمت محصول
+            </span>
+            <p className="text-gray-700 mt-2">{price}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">وضعیت</span>
-            <p className="text-gray-700 mt-2">پیش فروش</p>
+            <p className="text-gray-700 mt-2">{status}</p>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-blue-800 font-semibold">دسته بندی محصول</span>
-            <p className="text-gray-700 mt-2">روکش چوبی درب</p>
+            <span className="text-sm text-blue-800 font-semibold">
+              دسته بندی
+            </span>
+            <p className="text-gray-700 mt-2">{category}</p>
           </div>
         </div>
 
         <div className="flex flex-col mt-8">
-          <span className="text-sm text-blue-800 font-semibold">مستندات تکمیلی</span>
-          <p className="text-gray-700 mt-2 leading-relaxed">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-4 gap-4 mt-10">
-          <div className="w-24 h-24 bg-gray-200 flex items-center justify-center rounded-md">
-            <span className="text-2xl text-gray-400">+</span>
-          </div>
+          <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
+          <p className="text-gray-700 mt-2 leading-relaxed">{description}</p>
         </div>
 
         <div className="flex justify-center gap-5 mt-10">
@@ -61,10 +82,9 @@ const ProductDetail = () => {
             hover_state="hover:bg-[#FF0000]"
           />
         </div>
-
       </div>
     </>
   );
 };
 
-export default ProductDetail;
+export default ProductsDetail;

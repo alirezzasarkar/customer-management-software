@@ -13,3 +13,17 @@ export const getSalesOpportunities = async () => {
     throw error;
   }
 };
+
+export const getSalesOpportunityDetail = async (id) => {
+  try {
+    const response = await apiClient.get(
+      `/salesopportunities/sales-opportunities/${id}`
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching sales opportunity detail:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

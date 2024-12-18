@@ -1,7 +1,8 @@
 import React from "react";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, pageName }) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden">
       {/* Desktop Table */}
@@ -39,9 +40,12 @@ const Table = ({ columns, data }) => {
                   </td>
                 ))}
                 <td className="px-6 py-4 text-center">
-                  <button className="text-lg md:text-xl text-green-600 hover:text-green-800">
+                  <Link
+                    to={`/dashboard/${pageName}/detail/${row.id}`}
+                    className="text-lg md:text-xl text-green-600 hover:text-green-800"
+                  >
                     <BiDotsHorizontalRounded />
-                  </button>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -70,9 +74,12 @@ const Table = ({ columns, data }) => {
               <span className="font-semibold text-xs md:text-sm text-gray-600">
                 جزئیات:
               </span>
-              <button className="text-lg md:text-xl text-green-600 hover:text-green-800">
+              <Link
+                to={`/dashboard/${pageName}/detail/${row.id}`}
+                className="text-lg md:text-xl text-green-600 hover:text-green-800"
+              >
                 <BiDotsHorizontalRounded />
-              </button>
+              </Link>
             </div>
           </div>
         ))}
