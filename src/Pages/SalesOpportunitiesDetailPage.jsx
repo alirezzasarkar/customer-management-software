@@ -9,7 +9,7 @@ import { getCustomers } from "./../Services/APIs/Customers";
 import { convertPriorityToPersian } from "../Utils/convertPriorityToPersian";
 
 const SalesOpportunitiesDetailPage = () => {
-  const { id } = useParams(); // گرفتن id از URL
+  const { id } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 

@@ -1,27 +1,25 @@
+import React from "react";
 import Table from "../Common/Table";
 import Title from "../Common/Title";
-import DashboardButton from "./../Common/DashboardButton";
-
-const initialData = [
-  { id: 1, date: "۱۳۸۱/۰۴/۱۱", amount: "۳۰۰,۰۰۰,۰۰۰", status: "فعال - مشخص" },
-  { id: 2, date: "۱۳۸۱/۰۴/۱۱", amount: "۳۰۰,۰۰۰,۰۰۰", status: "فعال - مشخص" },
-  { id: 3, date: "۱۳۸۱/۰۴/۱۱", amount: "۳۰۰,۰۰۰,۰۰۰", status: "فعال - مشخص" },
-  { id: 4, date: "۱۳۸۱/۰۴/۱۱", amount: "۳۰۰,۰۰۰,۰۰۰", status: "فعال - مشخص" },
-];
+import DashboardButton from "../Common/DashboardButton";
+import { convertToShamsi } from "../../Utils/convertToShamsi";
 
 const columns = [
-  { id: "status", label: "وضعیت فاکتور" },
-  { id: "amount", label: "مبلغ فاکتور" },
-  { id: "date", label: "تاریخ ثبت" },
+  { id: "contract_date", label: "تاریخ ثبت" },
+  { id: "price", label: "مبلغ فاکتور" },
+  { id: "description", label: "توضیحات" },
 ];
 
-const CustomerDetail = () => {
+const CustomerDetail = ({ customerData, factors }) => {
   return (
     <>
       <Title title="جزئیات پروفایل مشتری" />
       <div className="bg-gray-100 sm:p-10 p-5 sm:mx-6 rounded-md">
         <div className="flex mb-10">
-          <div className="w-24 h-24 bg-gray-200 flex items-center justify-center rounded-full border-4 border-yellow-400"></div>
+          <img
+            src={customerData?.customer_picture}
+            className="w-24 h-24 bg-gray-200 rounded-full border-4 border-yellow-400"
+          />
         </div>
 
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mb-8">
@@ -29,40 +27,41 @@ const CustomerDetail = () => {
             <span className="text-sm text-blue-800 font-semibold">
               نام و نام خانوادگی
             </span>
-            <p className="text-gray-700 mt-2">لیلا کردی</p>
+            <p className="text-gray-700 mt-2">{customerData?.full_name}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               تاریخ تولد
             </span>
-            <p className="text-gray-700 mt-2">۱۳۸۱/۰۴/۱۱</p>
+            <p className="text-gray-700 mt-2">
+              {convertToShamsi(customerData?.date_of_birth)}
+            </p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">کد ملی</span>
-            <p className="text-gray-700 mt-2">۴۹۸۱۶۲۳۷۸۹</p>
+            <p className="text-gray-700 mt-2">{customerData?.national_id}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               شماره تماس
             </span>
-            <p className="text-gray-700 mt-2">0913973456</p>
+            <p className="text-gray-700 mt-2">{customerData?.phone_number}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">ایمیل</span>
-            <p className="text-gray-700 mt-2">leylakordi@gmail.com</p>
+            <p className="text-gray-700 mt-2">{customerData?.email}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               آیدی تلگرام
             </span>
-            <p className="text-gray-700 mt-2">@leylakordi2002</p>
+            <p className="text-gray-700 mt-2">{customerData?.telegram_id}</p>
           </div>
-
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               آیدی اینستاگرام
             </span>
-            <p className="text-gray-700 mt-2">@leylakordi2002</p>
+            <p className="text-gray-700 mt-2">{customerData?.instagram_id}</p>
           </div>
         </div>
 
@@ -83,7 +82,7 @@ const CustomerDetail = () => {
       </div>
 
       <div className="bg-gray-100 sm:mx-6 rounded-md mt-7">
-        <Table columns={columns} data={initialData} />
+        <Table columns={columns} data={factors} pageName="customers" />
       </div>
     </>
   );

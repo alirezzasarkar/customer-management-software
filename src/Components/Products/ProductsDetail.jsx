@@ -18,14 +18,6 @@ const ProductsDetail = ({ data }) => {
     <>
       <Title title="جزئیات محصول" />
       <div className="bg-gray-100 p-10 mx-6 rounded-md">
-        <div className="flex justify-center mb-8">
-          <img
-            src={product_image || "https://via.placeholder.com/150"}
-            alt={product_name}
-            className="w-32 h-32 rounded-md shadow-md"
-          />
-        </div>
-
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
@@ -66,6 +58,14 @@ const ProductsDetail = ({ data }) => {
         <div className="flex flex-col mt-8">
           <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
           <p className="text-gray-700 mt-2 leading-relaxed">{description}</p>
+        </div>
+
+        <div className="flex justify-start mt-16 mb-10">
+          <img
+            src={product_image || "https://via.placeholder.com/150"}
+            alt={product_name}
+            className="w-32 h-32 rounded-md shadow-md"
+          />
         </div>
 
         <div className="flex justify-center gap-5 mt-10">

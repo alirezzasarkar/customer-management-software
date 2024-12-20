@@ -6,19 +6,19 @@ import { getProductDetail } from "../Services/APIs/Products";
 import { convertStatusToPersian } from "../Utils/convertStatusToPersian";
 
 const ProductsDetailPage = () => {
-  const { product_id } = useParams();
+  const { id } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProductDetail = async () => {
       try {
-        const product = await getProductDetail(product_id);
+        const product = await getProductDetail(id);
 
         const convertedData = {
           ...product,
           status: convertStatusToPersian(product.status),
-          price: new Intl.NumberFormat().format(product.price) + " تومان",
+          price: product.price + " تومان",
         };
 
         setData(convertedData);
@@ -30,7 +30,7 @@ const ProductsDetailPage = () => {
     };
 
     fetchProductDetail();
-  }, [product_id]);
+  }, [id]);
 
   return <>{loading ? <Loading /> : <ProductDetail data={data} />}</>;
 };
