@@ -39,7 +39,7 @@ const CustomerList = ({ data, columns }) => {
           </div>
           <Search onSearch={handleSearch} />
         </div>
-        <Table columns={columns} data={filteredData} />
+        <Table columns={columns} data={filteredData} pageName="customers" />
       </div>
     </>
   );

@@ -10,3 +10,7 @@
 body {
     font-family: 'Shabnam', sans-serif;
 }  
+
+td svg{
+    display: inline;
+}

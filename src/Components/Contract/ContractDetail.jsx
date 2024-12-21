@@ -1,33 +1,7 @@
+import React from "react";
 import Table from "../Common/Table";
 import Title from "../Common/Title";
 import DashboardButton from "./../Common/DashboardButton";
-
-const initialData = [
-  {
-    id: 1,
-    product_name: "گوشی موبایل",
-    price: "۷۵۰۰۰۰۰",
-    category: "الکترونیک",
-  },
-  {
-    id: 2,
-    product_name: "لپ‌تاپ",
-    price: "۲۵۰۰۰۰۰۰",
-    category: "کامپیوتر",
-  },
-  {
-    id: 3,
-    product_name: "تلویزیون",
-    price: "۱۸۰۰۰۰۰۰",
-    category: "الکترونیک",
-  },
-  {
-    id: 4,
-    product_name: "ماشین لباسشویی",
-    price: "۱۴۰۰۰۰۰۰",
-    category: "لوازم خانگی",
-  },
-];
 
 const columns = [
   { id: "product_name", label: "نام محصول" },
@@ -35,7 +9,7 @@ const columns = [
   { id: "category", label: "دسته بندی" },
 ];
 
-const ContractDetail = () => {
+const ContractDetail = ({ data, products }) => {
   return (
     <>
       <Title title="جزئیات فاکتور" />
@@ -45,33 +19,23 @@ const ContractDetail = () => {
             <span className="text-sm text-blue-800 font-semibold">
               نام و نام خانوادگی
             </span>
-            <p className="text-gray-700 mt-2">لیلا کردی</p>
+            <p className="text-gray-700 mt-2">{data.customer_name}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               مبلغ فاکتور
             </span>
-            <p className="text-gray-700 mt-2">۳۰,۰۰۰,۰۰۰ تومان</p>
+            <p className="text-gray-700 mt-2">{data.price}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               تاریخ ثبت فاکتور
             </span>
-            <p className="text-gray-700 mt-2">۱۳۸۱/۰۴/۱۱</p>
+            <p className="text-gray-700 mt-2">{data.contract_date}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
-            <p className="text-gray-700 mt-2">خدمات پس از فروش</p>
-          </div>
-          <div className="flex flex-col mt-2">
-            <a href="#" download className="text-blue-500 flex items-center">
-              <img
-                src="/src/Assets/Icons/download.svg"
-                alt="Download"
-                className="w-4 h-4 ml-2"
-              />
-              دانلود فایل آپلود شده
-            </a>
+            <p className="text-gray-700 mt-2">{data.description}</p>
           </div>
         </div>
 
@@ -92,7 +56,7 @@ const ContractDetail = () => {
       </div>
 
       <div className="bg-gray-100 mx-6 rounded-md mt-7">
-        <Table columns={columns} data={initialData} />
+        <Table columns={columns} data={products} pageName="invoice" />
       </div>
     </>
   );
