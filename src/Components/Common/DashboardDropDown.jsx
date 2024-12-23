@@ -1,8 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function DashboardDropDown({ label_text }) {
+export default function DashboardDropDown({
+  label_text,
+  items = [],
+  onSelect,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredItems = items.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -47,6 +56,8 @@ export default function DashboardDropDown({ label_text }) {
             <input
               type="search"
               placeholder="جستجو"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="placeholder:text-[#0E295B] placeholder:text-xs placeholder:font-bold w-full px-3 py-2 border-2 border-[#153D8A] rounded-lg focus:outline-none"
             />
             <img
@@ -55,9 +66,18 @@ export default function DashboardDropDown({ label_text }) {
               className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 "
             />
           </div>
-          <li className="border-b">متن تست</li>
-          <li className="border-b">متن تست</li>
-          <li>متن تست</li>
+          {filteredItems.map((item) => (
+            <li
+              key={item.id}
+              className="cursor-pointer border-b p-2"
+              onClick={() => {
+                onSelect(item);
+                setIsOpen(false);
+              }}
+            >
+              {item.name}
+            </li>
+          ))}
         </ul>
       )}
     </div>

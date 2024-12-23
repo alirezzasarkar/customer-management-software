@@ -5,6 +5,7 @@ import DashboardButton from "./../Common/DashboardButton";
 
 const columns = [
   { id: "product_name", label: "نام محصول" },
+  { id: "quantity", label: "تعداد" },
   { id: "price", label: "قیمت محصول" },
   { id: "category", label: "دسته بندی" },
 ];
@@ -56,7 +57,7 @@ const ContractDetail = ({ data, products }) => {
       </div>
 
       <div className="bg-gray-100 mx-6 rounded-md mt-7">
-        <Table columns={columns} data={products} pageName="invoice" />
+        <Table columns={columns} data={products} pageName="products" />
       </div>
     </>
   );

@@ -82,7 +82,7 @@ const CustomerDetail = ({ customerData, factors }) => {
       </div>
 
       <div className="bg-gray-100 sm:mx-6 rounded-md mt-7">
-        <Table columns={columns} data={factors} pageName="customers" />
+        <Table columns={columns} data={factors} pageName="invoice" />
       </div>
     </>
   );

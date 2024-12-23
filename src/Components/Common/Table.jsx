@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Table = ({ columns, data, pageName }) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden">
-      {/* Desktop Table */}
       <div className="hidden md:block overflow-x-auto">
         <table className="min-w-full text-center">
           <thead className="bg-gray-100 border-b">

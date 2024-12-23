@@ -1,6 +1,21 @@
 import apiClient from "../Config/AxiosConfig";
 import { handleApiError } from "../Handlers/ErrorHandler";
 
+export const addSalesOpportunity = async (data) => {
+  try {
+    const response = await apiClient.post(
+      "/salesopportunities/sales-opportunities/",
+      data
+    );
+    console.log("Sales Opportunity Added:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding sales opportunity:", error);
+    handleApiError(error);
+    throw error;
+  }
+};
+
 export const getSalesOpportunities = async () => {
   try {
     const response = await apiClient.get(
