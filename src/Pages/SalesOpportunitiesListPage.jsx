@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import SalesOpportunitiesList from "../Components/SalesOpportunities/SalesOpportunitiesList";
+import { useEffect, useState } from "react";
 import Loading from "../Components/Common/Loading";
-import { getSalesOpportunities } from "../Services/APIs/SalesOpportunities";
+import SalesOpportunitiesList from "../Components/SalesOpportunities/SalesOpportunitiesList";
 import { getCustomers } from "../Services/APIs/Customers";
-import { convertToShamsi } from "../Utils/convertToShamsi";
+import { getSalesOpportunities } from "../Services/APIs/SalesOpportunities";
 import { convertPriorityToPersian } from "../Utils/convertPriorityToPersian";
+import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [
   { id: "profile", label: "نام و نام خانوادگی" },
