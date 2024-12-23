@@ -31,9 +31,15 @@ const SalesOpportunitiesDetail = ({ data }) => {
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mt-10 mb-4">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              نام محصول
+              نام محصولات
             </span>
-            <p className="text-gray-700 mt-2">{data.product_name}</p>
+            <ul className="mt-2">
+              {data.products.map((product, index) => (
+                <li key={index} className="text-gray-700">
+                  {product}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">

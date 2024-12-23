@@ -33,14 +33,17 @@ const SalesOpportunitiesDetailPage = () => {
           return acc;
         }, {});
 
+        const productList = opportunity.selected_products.map(
+          (productId) => productMap[productId] || "نامشخص"
+        );
+
         const convertedData = {
           ...opportunity,
           follow_up_date: convertToShamsi(opportunity.follow_up_date),
           opportunity_priority: convertPriorityToPersian(
             opportunity.opportunity_priority
           ),
-          product_name:
-            productMap[opportunity.selected_products[0]] || "نامشخص",
+          products: productList,
           customer_name: customerMap[opportunity.profile] || "نامشخص",
         };
 

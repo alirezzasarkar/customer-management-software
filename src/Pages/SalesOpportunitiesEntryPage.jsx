@@ -9,7 +9,7 @@ const SalesOpportunitiesEntryPage = () => {
   const [products, setProducts] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedPriority, setSelectedPriority] = useState(null);
   const [formData, setFormData] = useState({
     followUpDate: "",
@@ -63,7 +63,13 @@ const SalesOpportunitiesEntryPage = () => {
   };
 
   const handleProductSelect = (product) => {
-    setSelectedProduct(product);
+    setSelectedProducts((prevSelected) => {
+      if (prevSelected.some((item) => item.id === product.id)) {
+        return prevSelected.filter((item) => item.id !== product.id);
+      } else {
+        return [...prevSelected, product];
+      }
+    });
   };
 
   const handlePrioritySelect = (priority) => {
@@ -81,7 +87,7 @@ const SalesOpportunitiesEntryPage = () => {
       follow_up_date: formattedDate,
       estimated_amount: parseFloat(formData.estimatedAmount),
       opportunity_priority: selectedPriority?.id || "",
-      selected_products: selectedProduct ? [selectedProduct.id] : [],
+      selected_products: selectedProducts.map((product) => product.id), // ارسال همه محصولات انتخاب‌شده
       description: formData.description,
       profile: selectedCustomer?.id || "",
     };
@@ -114,6 +120,7 @@ const SalesOpportunitiesEntryPage = () => {
       onInputChange={handleInputChange}
       onSubmit={handleSubmit}
       formData={formData}
+      selectedProducts={selectedProducts}
     />
   );
 };
