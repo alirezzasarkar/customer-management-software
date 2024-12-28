@@ -10,7 +10,7 @@ import { convertPriorityToPersian } from "../Utils/convertPriorityToPersian";
 
 const SalesOpportunitiesDetailPage = () => {
   const { id } = useParams();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

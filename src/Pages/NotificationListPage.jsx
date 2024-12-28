@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import NotificationList from "../Components/Notification/NotificationList";
 import Loading from "../Components/Common/Loading";
-import { getNotices } from "../Services/APIs/Notification";
+import NotificationList from "../Components/Notification/NotificationList";
 import { getCustomers } from "../Services/APIs/Customers";
+import { getNotices } from "../Services/APIs/Notification";
 import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [

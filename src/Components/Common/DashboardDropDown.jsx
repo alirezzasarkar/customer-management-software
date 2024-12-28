@@ -9,6 +9,7 @@ export default function DashboardDropDown({
   const dropdownRef = useRef(null);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null); // State to store selected item
   const filteredItems = items.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -21,6 +22,14 @@ export default function DashboardDropDown({
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }
+  };
+
+  const handleSelect = (item) => {
+    setSelectedItem(item); // Update the selected item
+    if (onSelect) {
+      onSelect(item);
+    }
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -41,6 +50,7 @@ export default function DashboardDropDown({
         className="mt-2 inline-flex w-full justify-end items-center gap-x-1.5 rounded-lg bg-white h-10 px-2 text-sm font-semibold text-gray-900"
         id="dropdown"
       >
+        {selectedItem ? selectedItem.name : ""}
         <img
           src="/src/Assets/Icons/arrow-down.svg"
           aria-hidden="true"
@@ -70,10 +80,7 @@ export default function DashboardDropDown({
             <li
               key={item.id}
               className="cursor-pointer border-b p-2"
-              onClick={() => {
-                onSelect(item);
-                setIsOpen(false);
-              }}
+              onClick={() => handleSelect(item)} // Use handleSelect here
             >
               {item.name}
             </li>

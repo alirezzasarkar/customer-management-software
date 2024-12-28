@@ -1,6 +1,5 @@
 import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDown from "../Common/DashBoardDropDown";
-import DashboardDropDownList from "../Common/DashboardDropDownList";
 import DashBoardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
@@ -45,7 +44,7 @@ const SalesOpportunitiesEntry = ({
               items={priorities}
               onSelect={onPrioritySelect}
             />
-            <DashboardDropDownList
+            <DashboardDropDown
               label_text="محصول مورد نظر"
               items={products}
               onSelect={onProductSelect}

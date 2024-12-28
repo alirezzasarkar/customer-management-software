@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import SalesOpportunitiesEntry from "./../Components/SalesOpportunities/SalesOpportunitiesEntry";
-import { getProducts } from "../Services/APIs/Products";
-import { getCustomers } from "../Services/APIs/Customers";
-import { addSalesOpportunity } from "./../Services/APIs/SalesOpportunities";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { getCustomers } from "../Services/APIs/Customers";
+import { getProducts } from "../Services/APIs/Products";
+import SalesOpportunitiesEntry from "./../Components/SalesOpportunities/SalesOpportunitiesEntry";
+import { addSalesOpportunity } from "./../Services/APIs/SalesOpportunities";
 
 const SalesOpportunitiesEntryPage = () => {
   const [products, setProducts] = useState([]);

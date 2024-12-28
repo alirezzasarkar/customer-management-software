@@ -1,6 +1,20 @@
 import apiClient from "../Config/AxiosConfig";
 import { handleApiError } from "../Handlers/ErrorHandler";
 
+export const addCustomers = async (payload) => {
+  try {
+    const response = await apiClient.post(
+      "/customerprofile/customers/",
+      payload
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching customers:", error);
+    handleApiError(error);
+    throw error;
+  }
+};
+
 export const getCustomers = async () => {
   try {
     const response = await apiClient.get("/customerprofile/customers/");

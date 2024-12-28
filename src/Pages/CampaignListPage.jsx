@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CampaignList from "../Components/Marketing/CampaignList";
 import Loading from "../Components/Common/Loading";
+import CampaignList from "../Components/Marketing/CampaignList";
 import { getMarketingCampaigns } from "../Services/APIs/Marketing";
 import { convertToShamsi } from "../Utils/convertToShamsi";
 

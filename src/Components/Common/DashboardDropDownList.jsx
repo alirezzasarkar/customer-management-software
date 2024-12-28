@@ -75,7 +75,7 @@ export default function DashboardDropDownList({
               key={item.id}
               className={`cursor-pointer border-b p-2 ${
                 selectedItems.some((selected) => selected.id === item.id)
-                  ? "bg-blue-100"
+                  ? "bg-blue-100 "
                   : ""
               }`}
               onClick={() => handleItemClick(item)}

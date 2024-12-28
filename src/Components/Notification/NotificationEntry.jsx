@@ -1,24 +1,47 @@
+import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDown from "../Common/DashBoardDropDown";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
+import PersianTimePicker from "../Common/TimePicker";
 import Title from "../Common/Title";
-import DashboardButton from "../Common/DashboardButton";
 
-const NotificationEntry = () => {
+const NotificationEntry = ({
+  onCustomerSelect,
+  onInputChange,
+  onSubmit,
+  customers,
+  formData,
+}) => {
   return (
     <div>
       <Title title="وارد کردن پیام " />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
-        <form className="flex flex-col gap-7">
+        <form className="flex flex-col gap-7" onSubmit={onSubmit}>
           <div className="flex justify-between">
-            <DashboardDropDown label_text="مخاطبین هدف" />
-            <PersianDatePicker label_text="تاریخ ارسال" />
-            <PersianDatePicker label_text="زمان ارسال" />
+            <DashboardDropDown
+              items={customers}
+              label_text="مخاطبین هدف"
+              onSelect={onCustomerSelect}
+            />
+            <PersianDatePicker
+              onChange={(date) => onInputChange("send_date", date)}
+              label_text="تاریخ ارسال"
+            />
+            {/* <PersianDatePicker
+              onChange={(date) => onInputChange("send_time", date)}
+              label_text="زمان ارسال"
+            /> */}
+            <PersianTimePicker
+              label_text="زمان ارسال"
+              onChange={(time) => onInputChange("send_time", time)}
+            />
           </div>
           <div className="flex justify-between">
             <DashboardTextarea
               label_text="متن پیام"
               placeholder_text="وارد کردن محتوای پیام"
+              value={formData.text}
+              onChange={(e) => onInputChange("text", e.target.value)}
             />
           </div>
           <div className="flex justify-center gap-3 mt-10">

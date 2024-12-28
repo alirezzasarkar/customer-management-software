@@ -1,35 +1,35 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import Layout from "./../Components/Layout/Layout";
-import CampaignListPage from "./../Pages/CampaignListPage";
-import ProductsListPage from "./../Pages/ProductsListPage";
-import CustomerListPage from "./../Pages/CustomerListPage";
-import EmployeeListPage from "./../Pages/EmployeeListPage";
-import ContractListPage from "./../Pages/ContractListPage";
-import NotificationListPage from "../Pages/NotificationListPage";
-import SalesOpportunitiesListPage from "./../Pages/SalesOpportunitiesListPage";
-import SalesOpportunitiesEntryPage from "./../Pages/SalesOpportunitiesEntryPage";
-import CustomersEntry from "../Components/Customers/CustomersEntry";
 import CampaignEntryPage from "../Pages/CampaignEntryPage";
-import ContractEntryPage from "./../Pages/ContractEntryPage";
+import CustomersEntryPage from "../Pages/CustomersEntryPage";
 import NotificationEntryPage from "../Pages/NotificationEntryPage";
-import EmployeeEntryPage from "./../Pages/EmployeeEntryPage";
+import NotificationListPage from "../Pages/NotificationListPage";
 import ProductsEntryPage from "../Pages/ProductsEntryPage";
-import SalesOpportunitiesDetailPage from "./../Pages/SalesOpportunitiesDetailPage";
+import Layout from "./../Components/Layout/Layout";
 import CampaignDetailPage from "./../Pages/CampaignDetailPage";
-import ContractDetailPage from "./../Pages/ContractDetailPage";
-import EmployeeDetailPage from "./../Pages/EmployeeDetailPage";
-import CustomerDetailPage from "./../Pages/CustomerDetailPage";
-import NotificationDetailPage from "./../Pages/NotificationDetailPage";
-import ProductsDetailPage from "./../Pages/ProductsDetailPage";
-import SalesOpportunitiesEditPage from "./../Pages/SalesOpportunitiesEditPage";
 import CampaignEditPage from "./../Pages/CampaignEditPage";
+import CampaignListPage from "./../Pages/CampaignListPage";
+import ContractDetailPage from "./../Pages/ContractDetailPage";
 import ContractEditPage from "./../Pages/ContractEditPage";
-import EmployeeEditPage from "./../Pages/EmployeeEditPage";
+import ContractEntryPage from "./../Pages/ContractEntryPage";
+import ContractListPage from "./../Pages/ContractListPage";
+import CustomerDetailPage from "./../Pages/CustomerDetailPage";
+import CustomerListPage from "./../Pages/CustomerListPage";
 import CustomersEditPage from "./../Pages/CustomersEditPage";
+import EmployeeDetailPage from "./../Pages/EmployeeDetailPage";
+import EmployeeEditPage from "./../Pages/EmployeeEditPage";
+import EmployeeEntryPage from "./../Pages/EmployeeEntryPage";
+import EmployeeListPage from "./../Pages/EmployeeListPage";
+import NotificationDetailPage from "./../Pages/NotificationDetailPage";
 import NotificationEditPage from "./../Pages/NotificationEditPage";
 import ProductListEditPage from "./../Pages/ProductListEditPage";
+import ProductsDetailPage from "./../Pages/ProductsDetailPage";
+import ProductsListPage from "./../Pages/ProductsListPage";
+import SalesOpportunitiesDetailPage from "./../Pages/SalesOpportunitiesDetailPage";
+import SalesOpportunitiesEditPage from "./../Pages/SalesOpportunitiesEditPage";
+import SalesOpportunitiesEntryPage from "./../Pages/SalesOpportunitiesEntryPage";
+import SalesOpportunitiesListPage from "./../Pages/SalesOpportunitiesListPage";
 
 const DashboardRoutes = () => {
   return (
@@ -81,7 +81,7 @@ const DashboardRoutes = () => {
 
         <Route path="/employees/edit/:id" element={<EmployeeEditPage />} />
 
-        <Route path="/customers/entry" element={<CustomersEntry />} />
+        <Route path="/customers/entry" element={<CustomersEntryPage />} />
 
         <Route path="/customers/list" element={<CustomerListPage />} />
 

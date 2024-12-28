@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import EmployeeList from "../Components/Employees/EmployeeList";
+import { useEffect, useState } from "react";
 import Loading from "../Components/Common/Loading";
+import EmployeeList from "../Components/Employees/EmployeeList";
 import { getEmployees } from "../Services/APIs/Employees";
 
 const columns = [

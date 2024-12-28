@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import ProductsList from "../Components/Products/ProductsList";
+import { useEffect, useState } from "react";
 import Loading from "../Components/Common/Loading";
+import ProductsList from "../Components/Products/ProductsList";
 import { getProducts } from "../Services/APIs/Products";
 import { convertStatusToPersian } from "../Utils/convertStatusToPersian";
 
