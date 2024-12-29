@@ -1,8 +1,8 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import CampaignEntryPage from "../Pages/CampaignEntryPage";
 import CustomersEntryPage from "../Pages/CustomersEntryPage";
+import DashboardPage from "../Pages/DashboardPage";
 import NotificationEntryPage from "../Pages/NotificationEntryPage";
 import NotificationListPage from "../Pages/NotificationListPage";
 import ProductsEntryPage from "../Pages/ProductsEntryPage";
@@ -35,8 +35,7 @@ const DashboardRoutes = () => {
   return (
     <Layout>
       <Routes>
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-
+        <Route path="/" element={<DashboardPage />} />
         <Route
           path="/sales-opportunities/entry"
           element={<SalesOpportunitiesEntryPage />}
