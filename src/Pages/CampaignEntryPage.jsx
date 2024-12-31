@@ -11,8 +11,8 @@ const CampaignEntryPage = () => {
     followUpDate: "",
     endDate: "",
     message: "",
+    customers: [],
   });
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -38,27 +38,31 @@ const CampaignEntryPage = () => {
     }));
   };
 
-  const handleCustomerSelect = (customer) => {
-    setSelectedCustomer(customer);
+  const handleCustomerSelect = (selectedItems) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      customers: Array.isArray(selectedItems)
+        ? selectedItems.map((item) => item.id)
+        : [],
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if dates are valid before attempting to use them
-    const formattedDate = formData.followUpDate
+    const formattedStartDate = formData.followUpDate
       ? new Date(formData.followUpDate).toISOString()
-      : ""; // Ensure the date is valid
+      : "";
     const formattedEndDate = formData.endDate
       ? new Date(formData.endDate).toISOString()
-      : ""; // Ensure the date is valid
+      : "";
 
     const payload = {
       campaign_name: formData.campaignName,
-      start_date: formattedDate,
+      start_date: formattedStartDate,
       end_date: formattedEndDate,
       message: formData.message,
-      customer_id: selectedCustomer?.id || "",
+      customers: formData.customers,
     };
 
     try {
@@ -67,6 +71,13 @@ const CampaignEntryPage = () => {
         icon: "success",
         title: "ثبت موفق!",
         text: "کمپین با موفقیت ثبت شد.",
+      });
+      setFormData({
+        campaignName: "",
+        followUpDate: "",
+        endDate: "",
+        message: "",
+        customers: [],
       });
     } catch (error) {
       console.error("Error submitting campaign:", error);
@@ -80,7 +91,7 @@ const CampaignEntryPage = () => {
 
   return (
     <CampaignEntry
-      customers={customers || []}
+      customers={customers}
       formData={formData}
       onInputChange={handleInputChange}
       onCustomerSelect={handleCustomerSelect}

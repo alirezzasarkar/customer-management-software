@@ -14,10 +14,11 @@ const CampaignEntry = ({
 }) => {
   return (
     <div>
-      <Title title="وارد کردن کمپین " />
+      <Title title="وارد کردن کمپین" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex justify-between">
+          {/* نام کمپین و تاریخ‌ها */}
+          <div className="flex justify-between gap-5">
             <DashboardInputs
               lable_text="نام کمپین"
               placeholder_text="نام کمپین خود را وارد کنید"
@@ -27,28 +28,37 @@ const CampaignEntry = ({
             <PersianDatePicker
               onChange={(date) => onInputChange("followUpDate", date)}
               label_text="شروع کمپین"
+              value={formData.followUpDate}
             />
             <PersianDatePicker
-              onChange={(end_date) => onInputChange("endDate", end_date)}
+              onChange={(date) => onInputChange("endDate", date)}
               label_text="پایان کمپین"
+              value={formData.endDate}
             />
           </div>
-          <div className="flex gap-16">
+
+          {/* لیست مشتریان و پیام کمپین */}
+          <div className="flex gap-20">
             <DashboardDropDownList
               label_text="مخاطبین هدف"
-              onSelect={onCustomerSelect}
               items={customers}
+              onSelect={onCustomerSelect}
+              selectedItems={customers.filter((customer) =>
+                formData.customers.includes(customer.id)
+              )}
             />
             <DashboardTextarea
               label_text="متن پیام"
               placeholder_text="وارد کردن محتوای پیام"
               onChange={(e) => onInputChange("message", e.target.value)}
-              value={formData.messageField}
+              value={formData.message}
             />
           </div>
+
+          {/* دکمه ثبت */}
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
-              inner_text="ثبت کمپین "
+              inner_text="ثبت کمپین"
               icon="/src/Assets/Icons/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"

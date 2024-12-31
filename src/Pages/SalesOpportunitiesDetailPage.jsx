@@ -65,10 +65,11 @@ const SalesOpportunitiesDetailPage = () => {
           return acc;
         }, {});
 
-        const productList = opportunity.selected_products
-          ? opportunity.selected_products.map(
-              (productId) => productMap[productId] || "نامشخص"
-            )
+        const productList = opportunity.items
+          ? opportunity.items.map((item) => ({
+              name: productMap[item.product] || "نامشخص",
+              quantity: item.quantity,
+            }))
           : [];
 
         const convertedData = {

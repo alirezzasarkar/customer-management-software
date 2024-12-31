@@ -35,7 +35,7 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
             <ul className="mt-2">
               {data.products.map((product, index) => (
                 <li key={index} className="text-gray-700">
-                  {product}
+                  {product.name} - تعداد: {product.quantity}
                 </li>
               ))}
             </ul>
