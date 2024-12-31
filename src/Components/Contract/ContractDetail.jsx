@@ -10,7 +10,7 @@ const columns = [
   { id: "category", label: "دسته بندی" },
 ];
 
-const ContractDetail = ({ data, products }) => {
+const ContractDetail = ({ data, products, onDelete }) => {
   return (
     <>
       <Title title="جزئیات فاکتور" />
@@ -34,7 +34,7 @@ const ContractDetail = ({ data, products }) => {
             </span>
             <p className="text-gray-700 mt-2">{data.contract_date}</p>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col col-span-3">
             <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
             <p className="text-gray-700 mt-2">{data.description}</p>
           </div>
@@ -46,12 +46,14 @@ const ContractDetail = ({ data, products }) => {
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
             hover_state="hover:bg-[#FF6500]"
+            onClick={() => (window.location.href = `/factors/edit/${data.id}`)}
           />
           <DashboardButton
             inner_text="حذف اطلاعات"
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
+            onClick={onDelete}
           />
         </div>
       </div>

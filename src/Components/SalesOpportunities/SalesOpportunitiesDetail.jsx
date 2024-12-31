@@ -1,8 +1,7 @@
-import React from "react";
-import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
+import Title from "../Common/Title";
 
-const SalesOpportunitiesDetail = ({ data }) => {
+const SalesOpportunitiesDetail = ({ data, onDelete }) => {
   return (
     <div>
       <Title title="جزئیات فرصت فروش" />
@@ -65,6 +64,7 @@ const SalesOpportunitiesDetail = ({ data }) => {
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
+            onClick={onDelete}
           />
         </div>
       </div>

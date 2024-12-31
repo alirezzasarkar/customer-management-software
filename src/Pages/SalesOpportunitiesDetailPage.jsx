@@ -1,17 +1,49 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  deleteSalesOpportunity,
+  getSalesOpportunityDetail,
+} from "../Services/APIs/SalesOpportunities";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import Loading from "./../Components/Common/Loading";
 import SalesOpportunitiesDetail from "../Components/SalesOpportunities/SalesOpportunitiesDetail";
-import Loading from "../Components/Common/Loading";
-import { getSalesOpportunityDetail } from "../Services/APIs/SalesOpportunities";
-import { convertToShamsi } from "../Utils/convertToShamsi";
-import { getProducts } from "./../Services/APIs/Products";
-import { getCustomers } from "./../Services/APIs/Customers";
-import { convertPriorityToPersian } from "../Utils/convertPriorityToPersian";
+import { getProducts } from "../Services/APIs/Products";
+import { getCustomers } from "../Services/APIs/Customers";
+import { convertToShamsi } from "./../Utils/convertToShamsi";
+import { convertPriorityToPersian } from "./../Utils/convertPriorityToPersian";
 
 const SalesOpportunitiesDetailPage = () => {
   const { id } = useParams();
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
+
+  const handleDelete = async () => {
+    const result = await Swal.fire({
+      title: "آیا مطمئن هستید؟",
+      text: "این عملیات قابل بازگشت نخواهد بود!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "بله، حذف کن!",
+      cancelButtonText: "لغو",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await deleteSalesOpportunity(id);
+        Swal.fire("حذف شد!", "فرصت فروش با موفقیت حذف شد.", "success");
+        window.location.replace("/dashboard/sales-opportunities/list");
+      } catch (error) {
+        console.error("Error deleting sales opportunity:", error);
+        Swal.fire(
+          "خطا",
+          "مشکلی در حذف فرصت فروش وجود داشت. دوباره تلاش کنید.",
+          "error"
+        );
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,9 +65,11 @@ const SalesOpportunitiesDetailPage = () => {
           return acc;
         }, {});
 
-        const productList = opportunity.selected_products.map(
-          (productId) => productMap[productId] || "نامشخص"
-        );
+        const productList = opportunity.selected_products
+          ? opportunity.selected_products.map(
+              (productId) => productMap[productId] || "نامشخص"
+            )
+          : [];
 
         const convertedData = {
           ...opportunity,
@@ -59,7 +93,13 @@ const SalesOpportunitiesDetailPage = () => {
   }, [id]);
 
   return (
-    <>{loading ? <Loading /> : <SalesOpportunitiesDetail data={data} />}</>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <SalesOpportunitiesDetail data={data} onDelete={handleDelete} />
+      )}
+    </>
   );
 };
 

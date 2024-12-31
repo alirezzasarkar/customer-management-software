@@ -4,6 +4,7 @@ import DashBoardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
+import DashboardDropDownList from "./../Common/DashboardDropDownList";
 
 const SalesOpportunitiesEntry = ({
   customers,
@@ -15,6 +16,7 @@ const SalesOpportunitiesEntry = ({
   onInputChange,
   onSubmit,
   formData,
+  selectedProducts,
 }) => {
   return (
     <div className="w-full">
@@ -44,10 +46,11 @@ const SalesOpportunitiesEntry = ({
               items={priorities}
               onSelect={onPrioritySelect}
             />
-            <DashboardDropDown
+            <DashboardDropDownList
               label_text="محصول مورد نظر"
               items={products}
               onSelect={onProductSelect}
+              selectedItems={selectedProducts}
             />
             <DashboardTextarea
               label_text="افزودن یادداشت"

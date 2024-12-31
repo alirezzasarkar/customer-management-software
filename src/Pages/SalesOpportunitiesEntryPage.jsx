@@ -62,12 +62,17 @@ const SalesOpportunitiesEntryPage = () => {
     setSelectedCustomer(customer);
   };
 
-  const handleProductSelect = (product) => {
+  const handleProductSelect = (product, quantity) => {
     setSelectedProducts((prevSelected) => {
-      if (prevSelected.some((item) => item.id === product.id)) {
-        return prevSelected.filter((item) => item.id !== product.id);
+      const existingProduct = prevSelected.find(
+        (item) => item.id === product.id
+      );
+      if (existingProduct) {
+        return prevSelected.map((item) =>
+          item.id === product.id ? { ...item, quantity } : item
+        );
       } else {
-        return [...prevSelected, product];
+        return [...prevSelected, { ...product, quantity }];
       }
     });
   };
@@ -79,17 +84,20 @@ const SalesOpportunitiesEntryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formattedDate = new Date(formData.followUpDate)
-      .toISOString()
-      .split("T")[0];
+    const formattedDate = formData.followUpDate
+      ? new Date(formData.followUpDate).toISOString().split("T")[0]
+      : "";
 
     const payload = {
       follow_up_date: formattedDate,
-      estimated_amount: parseFloat(formData.estimatedAmount),
+      estimated_amount: parseFloat(formData.estimatedAmount) || 0,
       opportunity_priority: selectedPriority?.id || "",
-      selected_products: selectedProducts.map((product) => product.id), // ارسال همه محصولات انتخاب‌شده
-      description: formData.description,
+      description: formData.description || "",
       profile: selectedCustomer?.id || "",
+      new_items: selectedProducts.map((product) => ({
+        product: product.id,
+        quantity: product.quantity || 1,
+      })),
     };
 
     try {

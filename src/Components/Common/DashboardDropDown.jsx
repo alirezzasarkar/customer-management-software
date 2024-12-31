@@ -1,15 +1,16 @@
+// DashboardDropDown.js
 import { useEffect, useRef, useState } from "react";
 
 export default function DashboardDropDown({
   label_text,
   items = [],
   onSelect,
+  selectedItem, // دریافت انتخاب شده از والد
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedItem, setSelectedItem] = useState(null); // State to store selected item
   const filteredItems = items.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -25,7 +26,6 @@ export default function DashboardDropDown({
   };
 
   const handleSelect = (item) => {
-    setSelectedItem(item); // Update the selected item
     if (onSelect) {
       onSelect(item);
     }
@@ -47,10 +47,10 @@ export default function DashboardDropDown({
       <button
         type="button"
         onClick={toggleDropdown}
-        className="mt-2 inline-flex w-full justify-end items-center gap-x-1.5 rounded-lg bg-white h-10 px-2 text-sm font-semibold text-gray-900"
+        className="mt-2 inline-flex w-full justify-between items-center gap-x-1.5 rounded-lg bg-white h-10 px-2 text-sm  text-gray-400"
         id="dropdown"
       >
-        {selectedItem ? selectedItem.name : ""}
+        {selectedItem ? selectedItem.name : "انتخاب کنید"}
         <img
           src="/src/Assets/Icons/arrow-down.svg"
           aria-hidden="true"
@@ -61,7 +61,7 @@ export default function DashboardDropDown({
       </button>
 
       {isOpen && (
-        <ul className="absolute top-1/2 left-0 z-10 mt-3 w-56 origin-top-right rounded-lg bg-white ring-opacity-5 transition focus:outline-none p-2 text-center text-sm space-y-3 text-[#0E295B]">
+        <ul className="absolute top-1/2 left-0 z-10 mt-3 w-64 origin-top-right rounded-lg bg-white ring-opacity-5 transition focus:outline-none p-2 text-center text-sm space-y-3 text-[#0E295B]">
           <div className="relative mb-2">
             <input
               type="search"
@@ -79,8 +79,12 @@ export default function DashboardDropDown({
           {filteredItems.map((item) => (
             <li
               key={item.id}
-              className="cursor-pointer border-b p-2"
-              onClick={() => handleSelect(item)} // Use handleSelect here
+              className={`cursor-pointer p-2 ${
+                selectedItem && selectedItem.id === item.id
+                  ? "bg-gray-200"
+                  : "hover:bg-gray-100"
+              }`}
+              onClick={() => handleSelect(item)}
             >
               {item.name}
             </li>

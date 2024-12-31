@@ -2,8 +2,7 @@ import { useNavigate } from "react-router-dom";
 import DashboardButton from "../Common/DashboardButton";
 import Title from "../Common/Title";
 
-const ProductsDetail = ({ data }) => {
-  console.log("Product data:", data); // Log the whole data object
+const ProductsDetail = ({ data, onDelete }) => {
   const {
     product_name,
     price,
@@ -13,17 +12,12 @@ const ProductsDetail = ({ data }) => {
     category,
     product_image,
     description,
-    product_id, // Destructure product_id from data
+    product_id,
   } = data;
 
   const navigate = useNavigate();
 
   const handleEditClick = (id) => {
-    // if (!id) {
-    //   console.error("Invalid product ID:", id);
-    //   return;
-    // }
-    console.log("Navigating to edit page with product ID:", id);
     navigate(`/products/edit/${id}`);
   };
 
@@ -87,13 +81,14 @@ const ProductsDetail = ({ data }) => {
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
             hover_state="hover:bg-[#FF6500]"
-            onClick={() => handleEditClick(product_id)} // Pass product_id explicitly
+            onClick={() => handleEditClick(product_id)}
           />
           <DashboardButton
             inner_text="حذف محصول"
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
+            onClick={onDelete}
           />
         </div>
       </div>

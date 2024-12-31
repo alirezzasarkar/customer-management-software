@@ -42,3 +42,17 @@ export const getSalesOpportunityDetail = async (id) => {
     throw error;
   }
 };
+
+export const deleteSalesOpportunity = async (id) => {
+  try {
+    const response = await apiClient.delete(
+      `/salesopportunities/sales-opportunities/${id}/`
+    );
+    console.log("Sales Opportunity Deleted:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting sales opportunity:", error);
+    handleApiError(error);
+    throw error;
+  }
+};
