@@ -51,9 +51,9 @@ const CustomersEntryPage = () => {
       national_id: formData.national_id,
       email: formData.email,
       phone_number: formData.phone,
-      birth_date: formattedDate,
-      instagram: formData.instagram,
-      telegram: formData.telegram,
+      date_of_birth: formattedDate,
+      instagram_id: formData.instagram,
+      telegram_id: formData.telegram,
     };
 
     try {

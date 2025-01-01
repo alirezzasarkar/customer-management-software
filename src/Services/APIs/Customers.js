@@ -48,3 +48,16 @@ export const getFactorsByCustomer = async (id) => {
     throw error;
   }
 };
+
+export const deleteCustomer = async (id) => {
+  try {
+    const response = await apiClient.delete(
+      `/customerprofile/customers/${id}/`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting customer:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

@@ -10,7 +10,7 @@ const columns = [
   { id: "description", label: "توضیحات" },
 ];
 
-const CustomerDetail = ({ customerData, factors }) => {
+const CustomerDetail = ({ customerData, factors, onDelete }) => {
   return (
     <>
       <Title title="جزئیات پروفایل مشتری" />
@@ -77,6 +77,8 @@ const CustomerDetail = ({ customerData, factors }) => {
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
+            // فراخوانی تابع حذف دریافتی از props
+            onClick={onDelete}
           />
         </div>
       </div>
