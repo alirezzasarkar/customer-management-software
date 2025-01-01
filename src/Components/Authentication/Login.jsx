@@ -35,12 +35,6 @@ const Login = ({ formData, onInputChange, onSubmit, loading }) => {
         backgroundColor="bg-[#153D8A]"
         text={loading ? "در حال ورود..." : "وارد شوید"}
       />
-      <section className="text-center text-sm mt-4">
-        <span className="opacity-30 font-semibold"> حساب کاربری ندارید؟</span>
-        <span className="text-[#153D8A] font-bold">
-          <Link to="/register">ثبت نام کنید</Link>
-        </span>
-      </section>
     </AuthLayout>
   );
 };
