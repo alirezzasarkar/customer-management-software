@@ -24,6 +24,7 @@ const CustomerListPage = () => {
         const processedData = customers.map((customer) => ({
           id: customer.id,
           full_name: customer.full_name,
+          national_id: customer.national_id,
           phone_number: customer.phone_number,
           email: customer.email,
           date_of_birth: convertToShamsi(customer.date_of_birth),

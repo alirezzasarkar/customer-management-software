@@ -62,7 +62,7 @@ const CampaignEntryPage = () => {
       start_date: formattedStartDate,
       end_date: formattedEndDate,
       message: formData.message,
-      customers: formData.customers,
+      target_audiences: formData.customers,
     };
 
     try {

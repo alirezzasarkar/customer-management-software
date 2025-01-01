@@ -7,17 +7,17 @@ import { addNotices } from "../Services/APIs/Notification";
 const NotificationEntryPage = () => {
   const [customers, setCustomers] = useState([]);
   const [formData, setFormData] = useState({
+    title: "",
     send_date: "",
     send_time: "",
     text: "",
+    audiences: [],
   });
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
 
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
         const customersData = await getCustomers();
-        // Ensure customers are formatted properly with `id` and `full_name`
         const formattedCustomers = customersData.map((customer) => ({
           id: customer.id,
           name: customer.full_name,
@@ -38,29 +38,27 @@ const NotificationEntryPage = () => {
     }));
   };
 
-  const handleCustomerSelect = (customer) => {
-    setSelectedCustomer(customer);
+  const handleCustomerSelect = (selectedItems) => {
+    const audienceIds = selectedItems.map((item) => item.id);
+    setFormData((prevState) => ({
+      ...prevState,
+      audiences: audienceIds,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formattedDate = new Date(formData.send_date)
-      .toISOString()
-      .split("T")[0]; // Extract only the date part
-
-    // Ensure send_time is formatted as HH:mm:ss
-    const time = new Date(formData.send_time); // Convert to a Date object if it's a timestamp
-    const formattedTime = time
-      .toISOString()
-      .split("T")[1] // Extract time from the full ISO string
-      .split(".")[0];
+    const formattedDate = formData.send_date
+      ? new Date(formData.send_date).toISOString().split("T")[0]
+      : "";
 
     const payload = {
-      title: selectedCustomer?.id || "",
+      title: formData.title,
       send_date: formattedDate,
-      send_time: formattedTime,
+      send_time: formData.send_time, // Ensure correct `send_time` is included
       text: formData.text,
+      audiences: formData.audiences,
     };
 
     try {
@@ -68,7 +66,15 @@ const NotificationEntryPage = () => {
       Swal.fire({
         icon: "success",
         title: "پیام با موفقیت ارسال شد!",
-        text: "پیام شما به مخاطب مورد نظر ارسال گردید.",
+        text: "پیام شما به مخاطبین مورد نظر ارسال گردید.",
+      });
+
+      setFormData({
+        title: "",
+        send_date: "",
+        send_time: "",
+        text: "",
+        audiences: [],
       });
     } catch (error) {
       console.error("Error sending notification:", error);
@@ -83,7 +89,7 @@ const NotificationEntryPage = () => {
   return (
     <div>
       <NotificationEntry
-        customers={customers} // Ensure `customers` is in the correct format
+        customers={customers}
         onCustomerSelect={handleCustomerSelect}
         onInputChange={handleInputChange}
         onSubmit={handleSubmit}
