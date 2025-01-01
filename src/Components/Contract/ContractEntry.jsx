@@ -16,6 +16,7 @@ const ContractEntry = ({
   onCustomerSelect,
   selectedCustomer,
   selectedProducts,
+  onFileChange,
   onSubmit,
 }) => {
   return (
@@ -23,7 +24,7 @@ const ContractEntry = ({
       <Title title="وارد کردن فاکتور" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-5">
             <DashboardDropDown
               label_text="نام و نام خانوادگی"
               items={customers}
@@ -33,8 +34,13 @@ const ContractEntry = ({
             <DashboardDropDownList
               label_text="محصولات"
               items={products}
-              onSelect={onProductSelect}
-              selectedItems={selectedProducts}
+              onSelect={(product, quantity) =>
+                onProductSelect(product, quantity)
+              }
+              selectedItems={selectedProducts.map((item) => ({
+                id: item.id,
+                name: `${item.name} (${item.quantity || 1})`,
+              }))}
             />
             <DashBoardInputs
               lable_text="مبلغ فاکتور"
@@ -43,7 +49,7 @@ const ContractEntry = ({
               onChange={(e) => onInputChange("price", e.target.value)}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-5">
             <PersianDatePicker
               label_text="تاریخ ثبت فاکتور"
               value={formData.invoiceDate}
@@ -55,7 +61,7 @@ const ContractEntry = ({
               value={formData.description}
               onChange={(e) => onInputChange("description", e.target.value)}
             />
-            <ContractFile />
+            <ContractFile onFileChange={onFileChange} />
           </div>
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton

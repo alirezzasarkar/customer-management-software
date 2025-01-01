@@ -4,7 +4,9 @@ import DashBoardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
-import DashboardDropDownList from "./../Common/DashboardDropDownList";
+
+// ✅ این ایمپورت را اصلاح کردیم تا با نام کامپوننت یکسان باشد.
+import DashboardDropDownCount from "../Common/DashboardDropDownCount";
 
 const SalesOpportunitiesEntry = ({
   customers,
@@ -30,7 +32,7 @@ const SalesOpportunitiesEntry = ({
               onSelect={onCustomerSelect}
             />
             <PersianDatePicker
-              label_text={"تاریخ پیگیری"}
+              label_text="تاریخ پیگیری"
               onChange={(date) => onInputChange("followUpDate", date)}
             />
             <DashBoardInputs
@@ -40,13 +42,15 @@ const SalesOpportunitiesEntry = ({
               onChange={(e) => onInputChange("estimatedAmount", e.target.value)}
             />
           </div>
+
           <div className="sm:flex sm:justify-between sm:flex-row flex flex-col gap-5">
             <DashboardDropDown
               label_text="اولویت فرصت"
               items={priorities}
               onSelect={onPrioritySelect}
             />
-            <DashboardDropDownList
+
+            <DashboardDropDownCount
               label_text="محصول مورد نظر"
               items={products}
               onSelect={onProductSelect}
@@ -59,6 +63,7 @@ const SalesOpportunitiesEntry = ({
               onChange={(e) => onInputChange("description", e.target.value)}
             />
           </div>
+
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
               inner_text="ثبت اطلاعات"

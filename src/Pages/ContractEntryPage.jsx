@@ -1,4 +1,3 @@
-// ContractEntryPage.jsx
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ContractEntry from "../Components/Contract/ContractEntry";
@@ -16,6 +15,7 @@ const ContractEntryPage = () => {
   const [customers, setCustomers] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [files, setFiles] = useState([]); // مدیریت فایل‌ها
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,34 +52,30 @@ const ContractEntryPage = () => {
     }));
   };
 
-  const handleProductSelect = (product) => {
-    if (product.quantity > 0) {
-      setSelectedProducts((prevSelected) => {
-        const exists = prevSelected.find((item) => item.id === product.id);
-        if (exists) {
-          return prevSelected.map((item) =>
-            item.id === product.id
-              ? { ...item, quantity: product.quantity }
-              : item
-          );
-        } else {
-          return [...prevSelected, product];
-        }
-      });
-    } else {
-      setSelectedProducts((prevSelected) =>
-        prevSelected.filter((item) => item.id !== product.id)
-      );
-    }
+  const handleProductSelect = (product, quantity = 1) => {
+    setSelectedProducts((prevSelected) => {
+      const exists = prevSelected.find((item) => item.id === product.id);
+      if (exists) {
+        return prevSelected.map((item) =>
+          item.id === product.id ? { ...item, quantity } : item
+        );
+      } else {
+        return [...prevSelected, { ...product, quantity }];
+      }
+    });
   };
 
   const handleCustomerSelect = (customer) => {
     setSelectedCustomer(customer);
-    console.log("Selected Customer:", customer);
+  };
+
+  const handleFileChange = (fileUrls) => {
+    setFiles(fileUrls); // تنظیم فایل‌ها
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!selectedCustomer) {
       Swal.fire({
         icon: "warning",
@@ -89,16 +85,9 @@ const ContractEntryPage = () => {
       return;
     }
 
-    let formattedDate = formData.invoiceDate;
-    if (formData.invoiceDate) {
-      try {
-        formattedDate = new Date(formData.invoiceDate)
-          .toISOString()
-          .split("T")[0];
-      } catch (error) {
-        console.error("Error formatting date:", error);
-      }
-    }
+    const formattedDate = formData.invoiceDate
+      ? new Date(formData.invoiceDate).toISOString().split("T")[0]
+      : "";
 
     const payload = {
       costumer: selectedCustomer?.id || 0,
@@ -109,18 +98,22 @@ const ContractEntryPage = () => {
         product_id: product.id,
         quantity: product.quantity || 1,
       })),
+      files, // ارسال فایل‌ها
     };
-
-    console.log("Payload to send:", payload);
 
     try {
       const response = await addFactors(payload);
-      console.log("Factors Added:", response);
       Swal.fire({
         icon: "success",
         title: "ثبت موفق!",
         text: "فاکتور با موفقیت ثبت شد.",
       });
+
+      // بازنشانی فرم
+      setFormData({ price: "", invoiceDate: "", description: "" });
+      setSelectedProducts([]);
+      setSelectedCustomer(null);
+      setFiles([]);
     } catch (error) {
       console.error("Error submitting factors:", error);
       Swal.fire({
@@ -130,10 +123,6 @@ const ContractEntryPage = () => {
       });
     }
   };
-
-  useEffect(() => {
-    console.log("Selected Products:", selectedProducts);
-  }, [selectedProducts]);
 
   return (
     <ContractEntry
@@ -145,6 +134,7 @@ const ContractEntryPage = () => {
       onCustomerSelect={handleCustomerSelect}
       selectedCustomer={selectedCustomer}
       selectedProducts={selectedProducts}
+      onFileChange={handleFileChange} // مدیریت فایل‌ها
       onSubmit={handleSubmit}
     />
   );
