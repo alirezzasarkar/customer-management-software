@@ -62,12 +62,26 @@ const SalesOpportunitiesEntryPage = () => {
     setSelectedCustomer(customer);
   };
 
-  const handleProductSelect = (product) => {
+  // تابع مدیریت انتخاب محصول و تعداد آن
+  const handleProductSelect = (product, quantity) => {
     setSelectedProducts((prevSelected) => {
-      if (prevSelected.some((item) => item.id === product.id)) {
-        return prevSelected.filter((item) => item.id !== product.id);
+      const existingProduct = prevSelected.find(
+        (item) => item.id === product.id
+      );
+      if (existingProduct) {
+        // اگر از قبل انتخاب شده بود
+        if (quantity === 0) {
+          // حذف
+          return prevSelected.filter((item) => item.id !== product.id);
+        } else {
+          // به‌روزرسانی تعداد
+          return prevSelected.map((item) =>
+            item.id === product.id ? { ...item, quantity } : item
+          );
+        }
       } else {
-        return [...prevSelected, product];
+        // افزودن محصول جدید
+        return [...prevSelected, { ...product, quantity }];
       }
     });
   };
@@ -79,17 +93,20 @@ const SalesOpportunitiesEntryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formattedDate = new Date(formData.followUpDate)
-      .toISOString()
-      .split("T")[0];
+    const formattedDate = formData.followUpDate
+      ? new Date(formData.followUpDate).toISOString().split("T")[0]
+      : "";
 
     const payload = {
       follow_up_date: formattedDate,
-      estimated_amount: parseFloat(formData.estimatedAmount),
+      estimated_amount: parseFloat(formData.estimatedAmount) || 0,
       opportunity_priority: selectedPriority?.id || "",
-      selected_products: selectedProducts.map((product) => product.id), // ارسال همه محصولات انتخاب‌شده
-      description: formData.description,
+      description: formData.description || "",
       profile: selectedCustomer?.id || "",
+      new_items: selectedProducts.map((product) => ({
+        product: product.id,
+        quantity: product.quantity || 1,
+      })),
     };
 
     try {
@@ -121,6 +138,9 @@ const SalesOpportunitiesEntryPage = () => {
       onSubmit={handleSubmit}
       formData={formData}
       selectedProducts={selectedProducts}
+      /* برای نمایش مقدار انتخاب‌شده در دراپ‌دان */
+      selectedCustomer={selectedCustomer}
+      selectedPriority={selectedPriority}
     />
   );
 };

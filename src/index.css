@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: Shabnam;
-    src: url(./Assets/Fonts/Shabnam.woff);
+  font-family: Shabnam;
+  src: url(./Assets/Fonts/Shabnam.woff);
 }
 
 body {
-    font-family: 'Shabnam', sans-serif;
-}  
+  font-family: "Shabnam", sans-serif;
+}
 
-td svg{
-    display: inline;
+td svg {
+  display: inline;
+}
+
+.rmdp-container {
+  display: block !important;
 }

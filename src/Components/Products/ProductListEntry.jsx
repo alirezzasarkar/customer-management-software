@@ -1,22 +1,27 @@
+// ProductListEntry.jsx
 import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDown from "../Common/DashBoardDropDown";
+import DashboardDropDownCategory from "../Common/DashboardDropDownCategory";
 import DashboardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import ProductImage from "../Common/ProductImage";
 import Title from "../Common/Title";
 
 const ProductListEntry = ({
-  categories,
+  categories, // دسته‌بندی‌ها
   statuses,
   onStatusSelect,
   onInputChange,
   onImageUpload,
   onSubmit,
   formData,
+  selectedStatus,
+  onCategorySelect, // هندلر دسته‌بندی
+  loadingCategories, // وضعیت بارگذاری دسته‌بندی‌ها
 }) => {
   return (
     <>
-      <Title title=" وارد کردن محصول" />
+      <Title title="وارد کردن محصول" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
           <div className="flex justify-between">
@@ -34,23 +39,36 @@ const ProductListEntry = ({
             />
             <DashboardInputs
               lable_text="اندازه محصول"
-              placeholder_text="۱۱۰ × ۲۱۵ × ۲۰ سانتی متر "
+              placeholder_text="۱۱۰ × ۲۱۵ × ۲۰ سانتی متر"
               value={formData.productSize}
               onChange={(e) => onInputChange("productSize", e.target.value)}
             />
           </div>
           <div className="flex justify-between">
-            <DashboardDropDown label_text="دسته بندی محصول" />
+            <DashboardDropDownCategory
+              label_text="دسته بندی محصول"
+              items={categories}
+              onSelect={onCategorySelect}
+              selectedItems={formData.category.map((catId) => ({
+                id: catId,
+                category_name:
+                  categories.find((cat) => cat.id === catId)?.category_name ||
+                  "",
+              }))}
+              multiple={true}
+            />
             <DashboardInputs
               lable_text="قیمت محصول"
               value={formData.productPrice}
               placeholder_text="قیمت محصول خود را وارد کنید"
               onChange={(e) => onInputChange("productPrice", e.target.value)}
             />
-            <DashboardInputs
-              lable_text="وضعیت"
-              placeholder_text="فعال , غیر فعال , پیش فرض"
+            <DashboardDropDown
+              label_text="وضعیت"
+              items={statuses}
               onSelect={onStatusSelect}
+              selectedItem={selectedStatus}
+              multiple={false} // تک انتخابی
             />
           </div>
           <DashboardTextarea
@@ -62,11 +80,14 @@ const ProductListEntry = ({
             }
           />
           <div className="">
-            <ProductImage upload_text="تصاویر خود را اپلود کنید" />
+            <ProductImage
+              upload_text="تصاویر خود را آپلود کنید"
+              onUpload={onImageUpload}
+            />
           </div>
           <div className="flex justify-center mt-8 mb-2">
             <DashboardButton
-              inner_text="ثبت محصول "
+              inner_text="ثبت محصول"
               icon="/src/Assets/Icons/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"

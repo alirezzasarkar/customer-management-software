@@ -1,9 +1,10 @@
 import DashboardButton from "../Common/DashboardButton";
-import DashboardDropDown from "../Common/DashBoardDropDown";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import PersianTimePicker from "../Common/TimePicker";
 import Title from "../Common/Title";
+import DashboardDropDownList from "../Common/DashboardDropDownList";
+import DashboardInputs from "./../Common/DashboardInputs";
 
 const NotificationEntry = ({
   onCustomerSelect,
@@ -14,29 +15,36 @@ const NotificationEntry = ({
 }) => {
   return (
     <div>
-      <Title title="وارد کردن پیام " />
+      <Title title="ارسال پیام زمان‌دار" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex justify-between">
-            <DashboardDropDown
+          <div className="flex justify-between gap-5">
+            <DashboardDropDownList
               items={customers}
               label_text="مخاطبین هدف"
               onSelect={onCustomerSelect}
+              selectedItems={customers.filter((customer) =>
+                formData.audiences.includes(customer.id)
+              )}
             />
             <PersianDatePicker
               onChange={(date) => onInputChange("send_date", date)}
               label_text="تاریخ ارسال"
+              value={formData.send_date}
             />
-            {/* <PersianDatePicker
-              onChange={(date) => onInputChange("send_time", date)}
-              label_text="زمان ارسال"
-            /> */}
             <PersianTimePicker
-              label_text="زمان ارسال"
               onChange={(time) => onInputChange("send_time", time)}
+              label_text="زمان ارسال"
+              value={formData.send_time}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="flex gap-20">
+            <DashboardInputs
+              lable_text="عنوان پیام"
+              placeholder_text="عنوان پیام را وارد کنید"
+              value={formData.title}
+              onChange={(e) => onInputChange("title", e.target.value)}
+            />
             <DashboardTextarea
               label_text="متن پیام"
               placeholder_text="وارد کردن محتوای پیام"
@@ -46,16 +54,10 @@ const NotificationEntry = ({
           </div>
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
-              inner_text="ارسال زماندار پیام"
+              inner_text="ارسال پیام"
               icon="/src/Assets/Icons/Send_Message.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"
-            />
-            <DashboardButton
-              inner_text="ارسال پیام"
-              icon="/src/Assets/Icons/second_sned_icon.svg"
-              bg_color="bg-gray-100"
-              border_color="border border-[#13A538] border-2 text-[#13A538!important]"
             />
           </div>
         </form>

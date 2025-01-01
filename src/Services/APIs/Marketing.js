@@ -16,6 +16,7 @@ export const addMarketingCampaigns = async (payload) => {
 export const getMarketingCampaigns = async () => {
   try {
     const response = await apiClient.get("/marketing/");
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching marketing campaigns:", error);
@@ -27,9 +28,22 @@ export const getMarketingCampaigns = async () => {
 export const getMarketingCampaignDetail = async (id) => {
   try {
     const response = await apiClient.get(`/marketing/${id}`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching marketing campaign detail:", error);
+    handleApiError(error);
+    throw error;
+  }
+};
+
+export const deleteMarketingCampaign = async (id) => {
+  try {
+    const response = await apiClient.delete(`/marketing/${id}`);
+    console.log(`Campaign with id ${id} deleted successfully.`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting marketing campaign:", error);
     handleApiError(error);
     throw error;
   }

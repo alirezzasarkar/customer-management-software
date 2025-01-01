@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import NotificationDetail from "../Components/Notification/NotificationDetail";
 import Loading from "../Components/Common/Loading";
-import { getNoticeDetail } from "../Services/APIs/Notification";
+import { getNoticeDetail, deleteNotice } from "../Services/APIs/Notification";
 import { getCustomers } from "./../Services/APIs/Customers";
 import { convertToShamsi } from "../Utils/convertToShamsi";
+import Swal from "sweetalert2";
 
 const NotificationDetailPage = () => {
   const { id } = useParams(); // گرفتن ID از URL
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -43,7 +45,40 @@ const NotificationDetailPage = () => {
     fetchData();
   }, [id]);
 
-  return <>{loading ? <Loading /> : <NotificationDetail data={data} />}</>;
+  const handleDelete = () => {
+    Swal.fire({
+      title: "آیا مطمئن هستید؟",
+      text: "این عملیات قابل بازگشت نیست!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "بله، حذف شود!",
+      cancelButtonText: "لغو",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteNotice(id)
+          .then(() => {
+            Swal.fire("حذف شد!", "پیام با موفقیت حذف شد.", "success");
+            navigate("/dashboard/notification/list"); // انتقال به صفحه لیست
+          })
+          .catch((error) => {
+            console.error("Error deleting notice:", error);
+            Swal.fire("خطا!", "مشکلی در حذف پیام وجود داشت.", "error");
+          });
+      }
+    });
+  };
+
+  return (
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <NotificationDetail data={data} onDelete={handleDelete} />
+      )}
+    </>
+  );
 };
 
 export default NotificationDetailPage;

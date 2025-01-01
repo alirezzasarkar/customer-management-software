@@ -11,7 +11,6 @@ const columns = [
   { id: "follow_up_date", label: "تاریخ پیگیری" },
   { id: "opportunity_priority", label: "اولویت فرصت" },
   { id: "estimated_amount", label: "مبلغ تخمینی" },
-  { id: "description", label: "توضیحات" },
 ];
 
 const SalesOpportunitiesListPage = () => {

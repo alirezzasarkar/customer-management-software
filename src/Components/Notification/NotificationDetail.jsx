@@ -2,7 +2,7 @@ import React from "react";
 import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
 
-const NotificationDetail = ({ data }) => {
+const NotificationDetail = ({ data, onDelete }) => {
   const { title, text, send_date, send_time, audiences } = data;
 
   return (
@@ -57,6 +57,7 @@ const NotificationDetail = ({ data }) => {
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
+            onClick={onDelete} // اضافه کردن تابع حذف
           />
         </div>
       </div>

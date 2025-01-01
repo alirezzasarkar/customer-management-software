@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // اضافه کردن useNavigate
 import SidebarItem from "./SidebarItem";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Sidebar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const navigate = useNavigate(); // استفاده از useNavigate
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // حذف توکن از localStorage
+    navigate("/login"); // هدایت به صفحه لاگین
+  };
 
   return (
     <>
@@ -111,21 +118,18 @@ const Sidebar = () => {
           ]}
         />
 
-        {/* <SidebarItem
-          to="/dashboard/pre-invoice/list"
-          icon="/src/Assets/Icons/Sidbar/pre-invoice.svg"
-          label="پیش فاکتور"
-          subItems={[
-            { label: "ثبت پیش فاکتور", to: "/dashboard/pre-invoice/entry" },
-            { label: "لیست پیش فاکتور ها", to: "/dashboard/pre-invoice/list" },
-          ]}
-        /> */}
-
-        <SidebarItem
-          to="/"
-          icon="/src/Assets/Icons/Sidbar/log-out.svg"
-          label="خروج"
-        />
+        {/* دکمه خروج */}
+        <div
+          className="cursor-pointer flex flex-col items-center"
+          onClick={handleLogout} // اجرای تابع logout
+        >
+          <img
+            src="/src/Assets/Icons/Sidbar/log-out.svg"
+            alt="Logout Icon"
+            className="mb-1"
+          />
+          <span className="text-white text-sm">خروج</span>
+        </div>
       </div>
       {isMobileOpen && (
         <div

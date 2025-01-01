@@ -30,6 +30,18 @@ export const getProducts = async () => {
   }
 };
 
+export const getCategory = async () => {
+  try {
+    const response = await apiClient.get("/products/category");
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    handleApiError(error);
+    throw error;
+  }
+};
+
 export const getProductDetail = async (id) => {
   try {
     const response = await apiClient.get(`/products/${id}`);
@@ -60,10 +72,7 @@ export const updateProduct = async (product_id, payload) => {
 
 export const DeleteProduct = async (product_id, payload) => {
   try {
-    const response = await apiClient.delete(
-      `/products/${product_id}/`,
-      payload
-    );
+    const response = await apiClient.delete(`/products/${product_id}`, payload);
     console.log(response.data);
     return response.data;
   } catch (error) {

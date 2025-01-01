@@ -33,3 +33,14 @@ export const getNoticeDetail = async (id) => {
     throw error;
   }
 };
+
+export const deleteNotice = async (id) => {
+  try {
+    const response = await apiClient.delete(`/notice/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting notice:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

@@ -29,7 +29,6 @@ const App = () => {
             }
           />
 
-          <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/forget-password" element={<ForgetPasswordPage />} />
 

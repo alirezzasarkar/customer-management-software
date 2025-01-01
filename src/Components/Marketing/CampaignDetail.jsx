@@ -2,7 +2,7 @@ import React from "react";
 import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
 
-const CampaignDetail = ({ data }) => {
+const CampaignDetail = ({ data, onDelete }) => {
   return (
     <>
       <Title title="جزئیات کمپین" />
@@ -33,7 +33,18 @@ const CampaignDetail = ({ data }) => {
             <span className="text-sm text-blue-800 font-semibold">
               مخاطبین هدف
             </span>
-            <p className="text-gray-700 mt-2">{data.target_audiences}</p>
+            <ul className="mt-2 list-disc list-inside">
+              {Array.isArray(data.target_audiences) &&
+              data.target_audiences.length > 0 ? (
+                data.target_audiences.map((audience, index) => (
+                  <li key={index} className="text-gray-700">
+                    {audience}
+                  </li>
+                ))
+              ) : (
+                <p className="text-gray-700">هیچ مخاطبی یافت نشد</p>
+              )}
+            </ul>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
@@ -55,6 +66,7 @@ const CampaignDetail = ({ data }) => {
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
+            onClick={onDelete} // افزودن عملکرد حذف
           />
         </div>
       </div>

@@ -4,10 +4,10 @@ import { handleApiError } from "../Handlers/ErrorHandler";
 export const addFactors = async (payload) => {
   try {
     const response = await apiClient.post("/factors/", payload);
-    console.log(response.data);
+    console.log("Factors Added:", response.data);
     return response.data;
   } catch (error) {
-    console.error("Error fetching factors:", error);
+    console.error("Error adding factors:", error);
     handleApiError(error);
     throw error;
   }
@@ -32,6 +32,18 @@ export const getFactorById = async (id) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching factor details:", error);
+    handleApiError(error);
+    throw error;
+  }
+};
+
+export const deleteFactor = async (id) => {
+  try {
+    const response = await apiClient.delete(`/factors/${id}`);
+    console.log("Factor Deleted:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting factor:", error);
     handleApiError(error);
     throw error;
   }

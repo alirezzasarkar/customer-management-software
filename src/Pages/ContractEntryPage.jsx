@@ -3,32 +3,46 @@ import Swal from "sweetalert2";
 import ContractEntry from "../Components/Contract/ContractEntry";
 import { addFactors } from "../Services/APIs/Contract";
 import { getProducts } from "../Services/APIs/Products";
+import { getCustomers } from "../Services/APIs/Customers";
 
 const ContractEntryPage = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
     price: "",
     invoiceDate: "",
     description: "",
   });
   const [products, setProducts] = useState([]);
+  const [customers, setCustomers] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [files, setFiles] = useState([]); // مدیریت فایل‌ها
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       try {
-        const productsData = await getProducts();
+        const [productsData, customersData] = await Promise.all([
+          getProducts(),
+          getCustomers(),
+        ]);
+
         const formattedProducts = productsData.map((product) => ({
           id: product.id,
           name: product.product_name,
         }));
+
+        const formattedCustomers = customersData.map((customer) => ({
+          id: customer.id,
+          name: customer.full_name,
+        }));
+
         setProducts(formattedProducts);
+        setCustomers(formattedCustomers);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchProducts();
+    fetchData();
   }, []);
 
   const handleInputChange = (field, value) => {
@@ -38,52 +52,74 @@ const ContractEntryPage = () => {
     }));
   };
 
-  const handleProductSelect = (product) => {
+  const handleProductSelect = (product, quantity = 1) => {
     setSelectedProducts((prevSelected) => {
-      if (prevSelected.some((item) => item.id === product.id)) {
-        return prevSelected.filter((item) => item.id !== product.id);
+      const exists = prevSelected.find((item) => item.id === product.id);
+      if (exists) {
+        return prevSelected.map((item) =>
+          item.id === product.id ? { ...item, quantity } : item
+        );
       } else {
-        return [...prevSelected, product];
+        return [...prevSelected, { ...product, quantity }];
       }
     });
   };
 
+  const handleCustomerSelect = (customer) => {
+    setSelectedCustomer(customer);
+  };
+
+  const handleFileChange = (fileUrls) => {
+    setFiles(fileUrls); // تنظیم فایل‌ها
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let formattedDate = formData.invoiceDate; // Default to the entered date
-    if (formData.invoiceDate) {
-      try {
-        // Convert Persian date to Gregorian if necessary (optional)
-        formattedDate = new Date(formData.invoiceDate)
-          .toISOString()
-          .split("T")[0];
-      } catch (error) {
-        console.error("Error formatting date:", error);
-      }
+
+    if (!selectedCustomer) {
+      Swal.fire({
+        icon: "warning",
+        title: "مشتری انتخاب نشده",
+        text: "لطفاً یک مشتری را انتخاب کنید.",
+      });
+      return;
     }
+
+    const formattedDate = formData.invoiceDate
+      ? new Date(formData.invoiceDate).toISOString().split("T")[0]
+      : "";
+
     const payload = {
-      full_name: formData.fullName,
-      price: parseFloat(formData.price),
+      costumer: selectedCustomer?.id || 0,
+      price: parseFloat(formData.price) || 0,
       invoice_date: formattedDate,
       description: formData.description,
       products: selectedProducts.map((product) => ({
-        id: product.id, // Convert each product to a dictionary with an `id` key
+        product_id: product.id,
+        quantity: product.quantity || 1,
       })),
+      files, // ارسال فایل‌ها
     };
 
     try {
-      await addFactors(payload);
+      const response = await addFactors(payload);
       Swal.fire({
         icon: "success",
         title: "ثبت موفق!",
-        text: "قرارداد با موفقیت ثبت شد.",
+        text: "فاکتور با موفقیت ثبت شد.",
       });
+
+      // بازنشانی فرم
+      setFormData({ price: "", invoiceDate: "", description: "" });
+      setSelectedProducts([]);
+      setSelectedCustomer(null);
+      setFiles([]);
     } catch (error) {
-      console.error("Error submitting contract data:", error);
+      console.error("Error submitting factors:", error);
       Swal.fire({
         icon: "error",
         title: "خطا",
-        text: "مشکلی در ثبت قرارداد وجود داشت.",
+        text: "مشکلی در ثبت فاکتور وجود داشت.",
       });
     }
   };
@@ -92,8 +128,13 @@ const ContractEntryPage = () => {
     <ContractEntry
       formData={formData}
       products={products}
+      customers={customers}
       onInputChange={handleInputChange}
       onProductSelect={handleProductSelect}
+      onCustomerSelect={handleCustomerSelect}
+      selectedCustomer={selectedCustomer}
+      selectedProducts={selectedProducts}
+      onFileChange={handleFileChange} // مدیریت فایل‌ها
       onSubmit={handleSubmit}
     />
   );

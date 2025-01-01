@@ -1,3 +1,4 @@
+// ProductsList.jsx
 import React, { useState, useEffect } from "react";
 import Table from "../Common/Table";
 import Search from "../Common/Search";
@@ -12,19 +13,25 @@ const ProductsList = ({ data, columns }) => {
   }, [data]);
 
   const handleSearch = (searchTerm) => {
+    const lowercasedTerm = searchTerm.toLowerCase();
     const result = data.filter(
       (item) =>
-        item.product_name.includes(searchTerm) ||
-        item.price.includes(searchTerm) ||
-        item.category.includes(searchTerm)
+        item.product_name.toLowerCase().includes(lowercasedTerm) ||
+        item.price.toString().includes(lowercasedTerm) ||
+        item.category.toLowerCase().includes(lowercasedTerm)
     );
     setFilteredData(result);
   };
 
   const handleSort = (column) => {
-    const sortedData = [...filteredData].sort((a, b) =>
-      a[column].localeCompare(b[column])
-    );
+    let sortedData = [];
+    if (column === "price") {
+      sortedData = [...filteredData].sort((a, b) => a.price - b.price);
+    } else {
+      sortedData = [...filteredData].sort((a, b) =>
+        a[column].localeCompare(b[column])
+      );
+    }
     setFilteredData(sortedData);
   };
 
