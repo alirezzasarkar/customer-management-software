@@ -138,6 +138,9 @@ const SalesOpportunitiesEntryPage = () => {
       onSubmit={handleSubmit}
       formData={formData}
       selectedProducts={selectedProducts}
+      /* برای نمایش مقدار انتخاب‌شده در دراپ‌دان */
+      selectedCustomer={selectedCustomer}
+      selectedPriority={selectedPriority}
     />
   );
 };
