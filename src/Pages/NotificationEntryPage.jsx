@@ -53,10 +53,14 @@ const NotificationEntryPage = () => {
       ? new Date(formData.send_date).toISOString().split("T")[0]
       : "";
 
+    const formattedDateTime =
+      formData.send_date && formData.send_time
+        ? `${formattedDate}T${formData.send_time}`
+        : "";
+
     const payload = {
       title: formData.title,
-      send_date: formattedDate,
-      send_time: formData.send_time, // Ensure correct `send_time` is included
+      send_datetime: formattedDateTime, // ترکیب تاریخ و زمان
       text: formData.text,
       audiences: formData.audiences,
     };

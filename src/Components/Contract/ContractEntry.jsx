@@ -1,6 +1,7 @@
 import ContractFile from "../Common/ContractFile";
 import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDown from "../Common/DashBoardDropDown";
+import DashboardDropDownCount from "../Common/DashboardDropDownCount";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
 import DashBoardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
@@ -31,16 +32,11 @@ const ContractEntry = ({
               onSelect={onCustomerSelect}
               selectedItem={selectedCustomer}
             />
-            <DashboardDropDownList
-              label_text="محصولات"
+            <DashboardDropDownCount
+              label_text="محصول مورد نظر"
               items={products}
-              onSelect={(product, quantity) =>
-                onProductSelect(product, quantity)
-              }
-              selectedItems={selectedProducts.map((item) => ({
-                id: item.id,
-                name: `${item.name} (${item.quantity || 1})`,
-              }))}
+              onSelect={onProductSelect}
+              selectedItems={selectedProducts}
             />
             <DashBoardInputs
               lable_text="مبلغ فاکتور"
