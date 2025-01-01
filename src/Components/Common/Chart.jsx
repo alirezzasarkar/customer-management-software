@@ -51,13 +51,25 @@ const DashboardCharts = ({
         ? {}
         : {
             x: { title: { display: true } },
+            categoryPercentage: 0.8,
+            barPercentage: 0.9,
           },
   };
+
+  const updatedDatasets =
+    chartType === "bar"
+      ? datasets.map((dataset) => ({
+          ...dataset,
+          barThickness: 40,
+        }))
+      : datasets;
+
+  const dataWithBarThickness = { labels, datasets: updatedDatasets };
 
   const renderChart = () => {
     switch (chartType) {
       case "bar":
-        return <Bar data={data} options={options} />;
+        return <Bar data={dataWithBarThickness} options={options} />;
       case "doughnut":
         return <Doughnut data={data} options={options} />;
       case "line":

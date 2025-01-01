@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "../Common/Search";
 import Sorting from "../Common/Sorting";
 import Table from "../Common/Table";

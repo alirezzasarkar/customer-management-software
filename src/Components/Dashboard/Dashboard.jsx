@@ -3,7 +3,14 @@ import DashboardBox from "../Common/DashboardBox";
 import SecondDashboardBox from "../Common/SecondDashboardBox";
 import Title from "../Common/Title";
 
-const Dashboard = () => {
+const Dashboard = ({
+  marketing_status,
+  sales_data,
+  customer_data,
+  sales_opportunity,
+  customer_chart,
+  sales_chart,
+}) => {
   return (
     <>
       <Title title="داشبورد" />
@@ -12,35 +19,35 @@ const Dashboard = () => {
           <DashboardBox
             title="کل درآمد"
             summary="مبلغ کل فروش های انجام شده"
-            summary_detail="۱۶۰,۰۰۰,۰۰۰ تومان"
+            summary_detail={`${sales_data.total_sales} تومان`}
           />
           <DashboardBox
             title="تعداد مشتریان"
             summary="مشتریان ما"
-            summary_detail="۱۰۰ نفر"
+            summary_detail={`${customer_data.total_customers} نفر`}
           />
           <DashboardBox
             title="نزدیک ترین فرصت های فروش"
             summary="فرصت های فروش"
-            summary_detail="۱۰ عدد"
+            summary_detail={`${sales_opportunity.closest_count} عدد`}
           />
         </div>
         <div className=" mt-7 md:flex md:flex-row flex-col gap-4">
           <SecondDashboardBox
             title="میزان فروش"
             summary="تعداد کل محصولات فروخته شده"
-            summary_detail="۱۰۰ محصول"
+            summary_detail={`${sales_data.total_products_sold} محصول`}
             second_summary="قرار داد های نهایی"
-            second_summary_detail="۲۵ فاکتور"
+            second_summary_detail={`${sales_data.total_factors} فاکتور`}
           />
           <DashboardCharts
             title="جذب مشتریان"
             chartInfo="جذب مشتریان در هر ماه"
             chartType="bar"
-            labels={["مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]}
+            labels={customer_chart.labels}
             datasets={[
               {
-                data: [1, 2, 3, 4, 5, 6, 7],
+                data: customer_chart.data,
                 backgroundColor: "#13A538",
                 borderColor: "#13A538",
                 borderWidth: 1,
@@ -57,7 +64,7 @@ const Dashboard = () => {
             labels={["شروع نشده", "در حال انجام", "به پایان رسیده"]}
             datasets={[
               {
-                data: [1, 2, 3],
+                data: [marketing_status.undone],
                 backgroundColor: ["#E9001C", "#153D8A", "#13A538"],
                 borderColor: "#FFFFFF",
                 borderWidth: 1,
@@ -69,18 +76,18 @@ const Dashboard = () => {
             title="تغییرات فروش"
             chartInfo="لورم ایپسوم متن ساختگی"
             chartType="line"
-            labels={["مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]}
+            labels={sales_chart.labels}
             datasets={[
               {
-                label: "Sales ($)",
-                data: [1000, 1500, 1200, 2000, 2500, 2300],
+                // label: "Sales ($)",
+                data: sales_chart.data,
                 borderColor: "#36A2EB",
                 backgroundColor: "#153D8A",
                 pointBackgroundColor: "#36A2EB",
                 pointBorderColor: "#fff",
               },
             ]}
-            chart_height="h-[15rem]"
+            chart_height="h-full"
           />
         </div>
       </div>
