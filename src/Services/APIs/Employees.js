@@ -7,7 +7,7 @@ export const addEmployees = async (payload) => {
       "/accountemployee/create-user/",
       payload
     );
-    console.log("Employee Response:", response); // Log the whole response
+    console.log("Employee Response:", response);
     return response.data;
   } catch (error) {
     console.error("Error fetching employee list:", error);
