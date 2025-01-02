@@ -1,15 +1,15 @@
 import React from "react";
 import {
+  Navigate,
+  Route,
   BrowserRouter as Router,
   Routes,
-  Route,
-  Navigate,
 } from "react-router-dom";
+import { AuthProvider, useAuth } from "./Components/Authentication/AuthContext";
+import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
-import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import DashboardRoutes from "./Routes/DashboardRoutes";
-import { AuthProvider, useAuth } from "./Components/Authentication/AuthContext";
 
 const App = () => {
   const { user } = useAuth();
