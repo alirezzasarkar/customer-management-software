@@ -50,9 +50,30 @@ const DashboardCharts = ({
       chartType === "doughnut"
         ? {}
         : {
-            x: { title: { display: true } },
-            categoryPercentage: 0.8,
-            barPercentage: 0.9,
+            x: {
+              title: {
+                display: true,
+                text: "زمان",
+                color: "#153D8A",
+                font: {
+                  size: 12,
+                  weight: "bold",
+                  family: "Shabnam",
+                },
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: chartType === "bar" ? "تعداد" : "تغییرات",
+                color: "#153D8A",
+                font: {
+                  size: 12,
+                  weight: "bold",
+                  family: "Shabnam",
+                },
+              },
+            },
           },
   };
 
@@ -81,14 +102,14 @@ const DashboardCharts = ({
 
   return (
     <div
-      className={`bg-[#F1F1F9] rounded-xl p-4 flex flex-col md:flex-row justify-between md:items-center ${chart_width} md:mt-0 mt-5`}
+      className={`bg-[#F1F1F9] rounded-xl p-4 flex flex-col md:flex-row justify-between md:items-center ${chart_width} md:mt-0 mt-5 `}
     >
-      <div className="flex flex-col justify-between mr-4 h-52">
+      <div className="flex flex-col md:justify-between md:gap-0 gap-5 mr-4 h-52">
         <h1 className="text-xl font-bold mb-2 text-[#153D8A]">{title}</h1>
         {chartType === "doughnut" ? (
-          <ul className="flex flex-col gap-3 text-sm">
+          <ul className="flex flex-col gap-3 text-sm mb-8">
             {labels.map((label, index) => (
-              <li key={index} className="flex items-center gap-2">
+              <li key={index} className="flex items-center gap-2 ">
                 <span
                   style={{
                     backgroundColor: datasets[0]?.backgroundColor[index],
@@ -103,7 +124,7 @@ const DashboardCharts = ({
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-black">
+          <p className="text-sm text-black mb-0 md:mb-6">
             <span
               className="inline-block w-2 h-2 rounded-full ml-1"
               style={{
@@ -114,7 +135,7 @@ const DashboardCharts = ({
           </p>
         )}
       </div>
-      <div className={`${chart_height} w-full md:w-[60.5%]`}>
+      <div className={`${chart_height} w-full md:w-[60.5%] md:pt-5`}>
         {renderChart()}
       </div>
     </div>
