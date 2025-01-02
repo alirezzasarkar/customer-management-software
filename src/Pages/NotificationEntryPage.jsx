@@ -12,6 +12,7 @@ const NotificationEntryPage = () => {
     send_time: "",
     text: "",
     audiences: [],
+    task_id: "", // اضافه کردن task_id
   });
 
   useEffect(() => {
@@ -49,21 +50,24 @@ const NotificationEntryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // اطمینان از اینکه send_date به فرمت YYYY-MM-DD باشد
     const formattedDate = formData.send_date
       ? new Date(formData.send_date).toISOString().split("T")[0]
       : "";
 
-    const formattedDateTime =
-      formData.send_date && formData.send_time
-        ? `${formattedDate}T${formData.send_time}`
-        : "";
+    // اطمینان از اینکه send_time به فرمت HH:mm:ssZ باشد
+    const formattedTime = formData.send_time ? `${formData.send_time}Z` : "";
 
     const payload = {
       title: formData.title,
-      send_datetime: formattedDateTime, // ترکیب تاریخ و زمان
       text: formData.text,
-      audiences: formData.audiences,
+      send_time: formattedTime,
+      send_date: formattedDate,
+      task_id: formData.task_id || "default-task-id", // مقدار پیش‌فرض برای task_id
+      audiences: formData.audiences.length ? formData.audiences : [0], // مقدار پیش‌فرض مخاطبان
     };
+
+    console.log("Payload:", payload); // لاگ گرفتن payload برای بررسی
 
     try {
       await addNotices(payload);
@@ -79,6 +83,7 @@ const NotificationEntryPage = () => {
         send_time: "",
         text: "",
         audiences: [],
+        task_id: "",
       });
     } catch (error) {
       console.error("Error sending notification:", error);

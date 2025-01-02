@@ -2,6 +2,7 @@ import React from "react";
 import Table from "../Common/Table";
 import Title from "../Common/Title";
 import DashboardButton from "./../Common/DashboardButton";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   { id: "product_name", label: "نام محصول" },
@@ -11,6 +12,12 @@ const columns = [
 ];
 
 const ContractDetail = ({ data, products, onDelete }) => {
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/dashboard/invoice/edit/${data.id}`);
+  };
+
   return (
     <>
       <Title title="جزئیات فاکتور" />
@@ -45,8 +52,8 @@ const ContractDetail = ({ data, products, onDelete }) => {
             inner_text="ویرایش اطلاعات"
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
-            hover_state="hover:bg-[#FF6500]"
-            onClick={() => (window.location.href = `/factors/edit/${data.id}`)}
+            hover_state="hover:bg-[#FF6500] opacity-80"
+            onClick={handleEditClick}
           />
           <DashboardButton
             inner_text="حذف اطلاعات"

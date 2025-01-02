@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import DashboardButton from "../Common/DashboardButton";
 import Title from "../Common/Title";
 
 const SalesOpportunitiesDetail = ({ data, onDelete }) => {
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/dashboard/sales-opportunities/edit/${data.id}`);
+  };
+
   return (
     <div>
       <Title title="جزئیات فرصت فروش" />
@@ -57,7 +64,8 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
             inner_text="ویرایش اطلاعات"
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
-            hover_state="hover:bg-[#FF6500]"
+            hover_state="hover:bg-[#FF6500] opacity-80"
+            onClick={handleEditClick}
           />
           <DashboardButton
             inner_text="حذف اطلاعات"

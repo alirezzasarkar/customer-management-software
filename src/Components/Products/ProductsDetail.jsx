@@ -17,8 +17,8 @@ const ProductsDetail = ({ data, onDelete }) => {
 
   const navigate = useNavigate();
 
-  const handleEditClick = (id) => {
-    navigate(`/products/edit/${id}`);
+  const handleEditClick = () => {
+    navigate(`/dashboard/products/edit/${data.id}`);
   };
 
   return (
@@ -77,11 +77,11 @@ const ProductsDetail = ({ data, onDelete }) => {
 
         <div className="flex justify-center gap-5 mt-10">
           <DashboardButton
-            inner_text="ویرایش محصول"
+            inner_text="ویرایش اطلاعات"
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
-            hover_state="hover:bg-[#FF6500]"
-            onClick={() => handleEditClick(product_id)}
+            hover_state="hover:bg-[#FF6500] opacity-80"
+            onClick={handleEditClick}
           />
           <DashboardButton
             inner_text="حذف محصول"

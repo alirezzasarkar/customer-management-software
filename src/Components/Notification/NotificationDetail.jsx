@@ -1,9 +1,16 @@
 import React from "react";
 import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
+import { useNavigate } from "react-router-dom";
 
 const NotificationDetail = ({ data, onDelete }) => {
   const { title, text, send_date, send_time, audiences } = data;
+
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/dashboard/notification/edit/${data.id}`);
+  };
 
   return (
     <>
@@ -50,7 +57,8 @@ const NotificationDetail = ({ data, onDelete }) => {
             inner_text="ویرایش اطلاعات"
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
-            hover_state="hover:bg-[#FF6500]"
+            hover_state="hover:bg-[#FF6500] opacity-80"
+            onClick={handleEditClick}
           />
           <DashboardButton
             inner_text="حذف اطلاعات"

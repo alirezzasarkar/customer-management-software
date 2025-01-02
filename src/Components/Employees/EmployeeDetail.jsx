@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeDetail = ({ data }) => {
   const {
@@ -13,6 +14,12 @@ const EmployeeDetail = ({ data }) => {
     date_of_assignment,
     telegram_id,
   } = data;
+
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/dashboard/employees/edit/${data.id}`);
+  };
 
   return (
     <>
@@ -74,7 +81,8 @@ const EmployeeDetail = ({ data }) => {
             inner_text="ویرایش اطلاعات"
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
-            hover_state="hover:bg-[#FF6500]"
+            hover_state="hover:bg-[#FF6500] opacity-80"
+            onClick={handleEditClick}
           />
           <DashboardButton
             inner_text="حذف اطلاعات"

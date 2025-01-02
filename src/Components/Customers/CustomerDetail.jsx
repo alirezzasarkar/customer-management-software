@@ -3,6 +3,7 @@ import Table from "../Common/Table";
 import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
 import { convertToShamsi } from "../../Utils/convertToShamsi";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   { id: "contract_date", label: "تاریخ ثبت" },
@@ -11,6 +12,12 @@ const columns = [
 ];
 
 const CustomerDetail = ({ customerData, factors, onDelete }) => {
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/dashboard/customers/edit/${customerData.id}`);
+  };
+
   return (
     <>
       <Title title="جزئیات پروفایل مشتری" />
@@ -70,7 +77,8 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
             inner_text="ویرایش اطلاعات"
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
-            hover_state="hover:bg-[#FF6500]"
+            hover_state="hover:bg-[#FF6500] opacity-80"
+            onClick={handleEditClick}
           />
           <DashboardButton
             inner_text="حذف اطلاعات"

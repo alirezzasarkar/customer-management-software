@@ -1,7 +1,7 @@
 import DashboardButton from "../Common/DashboardButton";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
-import PersianTimePicker from "../Common/TimePicker";
+import PersianTimePicker from "../Common/TimePicker"; // کامپوننت جدید
 import Title from "../Common/Title";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
 import DashboardInputs from "./../Common/DashboardInputs";
@@ -33,7 +33,7 @@ const NotificationEntry = ({
               value={formData.send_date}
             />
             <PersianTimePicker
-              onChange={(time) => onInputChange("send_time", time)}
+              onChange={(time) => onInputChange("send_time", time)} // استفاده از پراپ صحیح
               label_text="زمان ارسال"
               value={formData.send_time}
             />

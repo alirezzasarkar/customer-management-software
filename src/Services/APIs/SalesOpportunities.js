@@ -56,3 +56,18 @@ export const deleteSalesOpportunity = async (id) => {
     throw error;
   }
 };
+
+export const updateSalesOpportunity = async (id, data) => {
+  try {
+    const response = await apiClient.put(
+      `/salesopportunities/sales-opportunities/${id}/`,
+      data
+    );
+    console.log("Sales Opportunity Updated:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating sales opportunity:", error);
+    handleApiError(error);
+    throw error;
+  }
+};
