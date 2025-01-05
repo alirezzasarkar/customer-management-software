@@ -1,51 +1,32 @@
-import { useState, useEffect } from "react";
-import { FaClock } from "react-icons/fa";
-import TimePicker from "react-time-picker";
-import "react-time-picker/dist/TimePicker.css";
-import "react-clock/dist/Clock.css";
+// src/Common/DashboardInputs.jsx
+import React from "react";
 
-const PersianTimePicker = ({ onChange, label_text, value }) => {
-  const [tempTime, setTempTime] = useState(value || "");
-
-  useEffect(() => {
-    if (value) {
-      setTempTime(value);
-    }
-  }, [value]);
-
-  const handleTimeChange = (time) => {
-    console.log("Selected Time:", time); // لاگ گرفتن زمان انتخاب شده
-    setTempTime(time);
-    if (onChange) {
-      onChange(time);
-    }
-  };
-
+const TimePicker = ({
+  lable_text,
+  placeholder_text,
+  value,
+  onChange,
+  type = "text",
+  min,
+  max,
+}) => {
   return (
     <div className="w-full sm:w-[30%]">
-      <label
-        htmlFor="time-picker"
-        className="block mb-2 text-sm font-medium text-gray-700"
-      >
-        {label_text}
+      <label htmlFor={lable_text} className="text-[#153D8A]">
+        {lable_text}
       </label>
-      <div className="relative">
-        <TimePicker
-          id="time-picker"
-          onChange={handleTimeChange}
-          value={tempTime}
-          disableClock={true}
-          clearIcon={null}
-          format="HH:mm:ss"
-          className="w-full px-4 py-2 pr-10 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-          hourPlaceholder="HH"
-          minutePlaceholder="MM"
-          secondPlaceholder="SS"
-        />
-        <FaClock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
-      </div>
+      <input
+        type={type}
+        id={lable_text}
+        placeholder={placeholder_text}
+        value={value}
+        onChange={onChange}
+        min={min}
+        max={max}
+        className="rounded-lg h-10 placeholder:text-xs px-3 placeholder:opacity-70 mt-2"
+      />
     </div>
   );
 };
 
-export default PersianTimePicker;
+export default TimePicker;

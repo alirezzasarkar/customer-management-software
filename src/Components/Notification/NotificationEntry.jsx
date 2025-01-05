@@ -1,10 +1,11 @@
+// src/Components/Notification/NotificationEntry.jsx
 import DashboardButton from "../Common/DashboardButton";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
-import PersianTimePicker from "../Common/TimePicker"; // کامپوننت جدید
 import Title from "../Common/Title";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
-import DashboardInputs from "./../Common/DashboardInputs";
+import DashboardInputs from "../Common/DashboardInputs"; // اصلاح مسیر اگر لازم است
+import TimePicker from "../Common/TimePicker";
 
 const NotificationEntry = ({
   onCustomerSelect,
@@ -32,13 +33,28 @@ const NotificationEntry = ({
               label_text="تاریخ ارسال"
               value={formData.send_date}
             />
-            <PersianTimePicker
-              onChange={(time) => onInputChange("send_time", time)} // استفاده از پراپ صحیح
-              label_text="زمان ارسال"
-              value={formData.send_time}
-            />
+            <div className="flex gap-2">
+              <TimePicker
+                lable_text="ساعت ارسال"
+                placeholder_text="HH"
+                type="number"
+                min="00"
+                max="23"
+                value={formData.send_hour}
+                onChange={(e) => onInputChange("send_hour", e.target.value)}
+              />
+              <TimePicker
+                lable_text="دقیقه ارسال"
+                placeholder_text="MM"
+                type="number"
+                min="00"
+                max="59"
+                value={formData.send_minute}
+                onChange={(e) => onInputChange("send_minute", e.target.value)}
+              />
+            </div>
           </div>
-          <div className="flex gap-20">
+          <div className="flex gap-44">
             <DashboardInputs
               lable_text="عنوان پیام"
               placeholder_text="عنوان پیام را وارد کنید"

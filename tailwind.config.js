@@ -6,6 +6,9 @@ export default {
       colors: {
         customBlue: "#153D8A",
         dashboard: "#E1E1EA",
+        bronze: "#CD7F32",
+        silver: "#C0C0C0",
+        gold: "#FFD700",
       },
     },
   },

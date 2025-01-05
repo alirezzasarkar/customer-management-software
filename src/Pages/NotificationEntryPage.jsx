@@ -1,3 +1,4 @@
+// src/Pages/NotificationEntryPage.jsx
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import NotificationEntry from "../Components/Notification/NotificationEntry";
@@ -9,7 +10,8 @@ const NotificationEntryPage = () => {
   const [formData, setFormData] = useState({
     title: "",
     send_date: "",
-    send_time: "",
+    send_hour: "",
+    send_minute: "",
     text: "",
     audiences: [],
     task_id: "", // اضافه کردن task_id
@@ -50,21 +52,55 @@ const NotificationEntryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // اطمینان از اینکه send_date به فرمت YYYY-MM-DD باشد
-    const formattedDate = formData.send_date
-      ? new Date(formData.send_date).toISOString().split("T")[0]
-      : "";
+    const { send_hour, send_minute, title, send_date, text, audiences } =
+      formData;
 
-    // اطمینان از اینکه send_time به فرمت HH:mm:ssZ باشد
-    const formattedTime = formData.send_time ? `${formData.send_time}Z` : "";
+    // بررسی پر بودن فیلدها
+    if (
+      !title ||
+      !send_date ||
+      !send_hour ||
+      !send_minute ||
+      !text ||
+      audiences.length === 0
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "خطا",
+        text: "لطفاً تمامی فیلدهای لازم را پر کنید.",
+      });
+      return;
+    }
+
+    // اعتبارسنجی فیلدهای ساعت و دقیقه
+    const hourValid = /^([0-1]\d|2[0-3])$/.test(send_hour);
+    const minuteValid = /^[0-5]\d$/.test(send_minute);
+
+    if (!hourValid || !minuteValid) {
+      Swal.fire({
+        icon: "error",
+        title: "خطا",
+        text: "لطفاً زمان ارسال را به درستی وارد کنید (ساعت: 00-23، دقیقه: 00-59).",
+      });
+      return;
+    }
+
+    // اطمینان از اینکه send_date به فرمت YYYY-MM-DD باشد
+    const formattedDate = new Date(send_date).toISOString().split("T")[0];
+
+    // ترکیب ساعت و دقیقه به فرمت "HH:mm:00Z"
+    const formattedTime = `${send_hour.padStart(2, "0")}:${send_minute.padStart(
+      2,
+      "0"
+    )}:00Z`;
 
     const payload = {
-      title: formData.title,
-      text: formData.text,
-      send_time: formattedTime,
+      title,
+      text,
+      send_time: formattedTime, // ارسال با فرمت "HH:mm:00Z"
       send_date: formattedDate,
       task_id: formData.task_id || "default-task-id", // مقدار پیش‌فرض برای task_id
-      audiences: formData.audiences.length ? formData.audiences : [0], // مقدار پیش‌فرض مخاطبان
+      audiences: audiences.length ? audiences : [0], // مقدار پیش‌فرض مخاطبان
     };
 
     console.log("Payload:", payload); // لاگ گرفتن payload برای بررسی
@@ -80,7 +116,8 @@ const NotificationEntryPage = () => {
       setFormData({
         title: "",
         send_date: "",
-        send_time: "",
+        send_hour: "",
+        send_minute: "",
         text: "",
         audiences: [],
         task_id: "",
