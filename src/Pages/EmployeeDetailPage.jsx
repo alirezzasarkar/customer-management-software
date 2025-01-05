@@ -4,6 +4,7 @@ import EmployeeDetail from "../Components/Employees/EmployeeDetail";
 import Loading from "../Components/Common/Loading";
 import { getEmployeeDetail } from "../Services/APIs/Employees";
 import { convertToShamsi } from "../Utils/convertToShamsi";
+import { convertJobtitleToPersian } from "../Utils/convertJobtitleToPersian"; // وارد کردن تابع کمکی
 
 const EmployeeDetailPage = () => {
   const { id } = useParams(); // گرفتن id از URL
@@ -17,6 +18,7 @@ const EmployeeDetailPage = () => {
 
         const convertedData = {
           ...employee,
+          work_position: convertJobtitleToPersian(employee.work_position), // تبدیل عنوان شغلی به فارسی
           date_of_assignment: convertToShamsi(employee.date_of_assignment),
           created_at: convertToShamsi(employee.created_at),
         };

@@ -39,3 +39,17 @@ export const getEmployeeDetail = async (id) => {
     throw error;
   }
 };
+
+export const deleteEmployee = async (id) => {
+  try {
+    const response = await apiClient.delete(
+      `/customerprofile/customers/${id}/`
+    );
+    console.log("Delete Response:", response);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting employee:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

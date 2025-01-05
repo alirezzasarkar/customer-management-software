@@ -12,7 +12,18 @@ const EmployeeEntryPage = () => {
     phoneNumber: "",
     hireDate: "",
     telegramId: "",
+    profilePicture: null,
+    password: "",
+    confirmPassword: "",
   });
+
+  // تغییر کلید 'label' به 'name' برای سازگاری با DashboardDropDown
+  const jobTitles = [
+    { value: "admin", name: "مدیر مجموعه" },
+    { value: "system_manager", name: "مدیر سامانه" },
+    { value: "accountant", name: "حسابدار" },
+    { value: "regular", name: "کاربر عادی" },
+  ];
 
   const handleInputChange = (field, value) => {
     setFormData((prevState) => ({
@@ -21,21 +32,52 @@ const EmployeeEntryPage = () => {
     }));
   };
 
+  const handleJobTitleChange = (job) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      jobTitle: job.value,
+    }));
+  };
+
+  const handleProfilePictureUpload = (file) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      profilePicture: file,
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // بررسی تطابق رمز عبور و تکرار آن
+    if (formData.password !== formData.confirmPassword) {
+      Swal.fire({
+        icon: "error",
+        title: "خطا",
+        text: "رمز عبور و تکرار آن مطابقت ندارند.",
+      });
+      return;
+    }
+
     const formattedDate = formData.hireDate
-      ? new Date(formData.hireDate).toISOString().split("T")[0] // Correct field used here
+      ? new Date(formData.hireDate).toISOString().split("T")[0]
       : "";
 
     const payload = {
-      full_name: formData.fullName,
-      job_title: formData.jobTitle,
-      department: formData.department,
-      email: formData.email,
       phone_number: formData.phoneNumber,
-      hire_date: formattedDate,
-      telegram_id: formData.telegramId,
+      full_name: formData.fullName,
+      email: formData.email,
+      password: formData.password,
+      profile: {
+        picture: formData.profilePicture ? formData.profilePicture.name : "",
+        full_name: formData.fullName,
+        email: formData.email,
+        phone_number: formData.phoneNumber,
+        work_position: formData.jobTitle,
+        department: formData.department,
+        telegram_id: formData.telegramId,
+        date_of_assignment: formattedDate,
+      },
     };
 
     try {
@@ -44,6 +86,20 @@ const EmployeeEntryPage = () => {
         icon: "success",
         title: "ثبت موفق!",
         text: "پروفایل کارمند با موفقیت ثبت شد.",
+      });
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        jobTitle: "",
+        department: "",
+        email: "",
+        phoneNumber: "",
+        hireDate: "",
+        telegramId: "",
+        profilePicture: null,
+        password: "",
+        confirmPassword: "",
       });
     } catch (error) {
       console.error("Error submitting employee profile:", error);
@@ -59,7 +115,10 @@ const EmployeeEntryPage = () => {
     <div>
       <EmployeeEntry
         formData={formData}
+        jobTitles={jobTitles}
         onInputChange={handleInputChange}
+        onJobTitleChange={handleJobTitleChange}
+        onProfilePictureUpload={handleProfilePictureUpload}
         onSubmit={handleSubmit}
       />
     </div>
