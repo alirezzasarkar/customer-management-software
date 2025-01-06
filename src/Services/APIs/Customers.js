@@ -61,3 +61,18 @@ export const deleteCustomer = async (id) => {
     throw error;
   }
 };
+
+export const updateCustomer = async (id, payload) => {
+  try {
+    const response = await apiClient.put(
+      `/customerprofile/customers/${id}/`,
+      payload
+    );
+    console.log("Customer Updated:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating customer:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

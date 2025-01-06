@@ -48,3 +48,15 @@ export const deleteFactor = async (id) => {
     throw error;
   }
 };
+
+export const updateFactor = async (id, payload) => {
+  try {
+    const response = await apiClient.put(`/factors/${id}`, payload);
+    console.log("Factor Updated:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating factor:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

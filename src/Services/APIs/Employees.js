@@ -53,3 +53,18 @@ export const deleteEmployee = async (id) => {
     throw error;
   }
 };
+
+export const updateEmployee = async (id, payload) => {
+  try {
+    const response = await apiClient.put(
+      `/accountemployee/profiles/${id}/`,
+      payload
+    );
+    console.log("Employee Updated:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating employee:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

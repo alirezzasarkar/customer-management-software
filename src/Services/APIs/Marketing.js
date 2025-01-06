@@ -48,3 +48,15 @@ export const deleteMarketingCampaign = async (id) => {
     throw error;
   }
 };
+
+export const updateMarketingCampaign = async (id, payload) => {
+  try {
+    const response = await apiClient.put(`/marketing/${id}`, payload);
+    console.log("Campaign Updated:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating marketing campaign:", error);
+    handleApiError(error);
+    throw error;
+  }
+};

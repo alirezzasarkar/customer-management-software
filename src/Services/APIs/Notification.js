@@ -44,3 +44,18 @@ export const deleteNotice = async (id) => {
     throw error;
   }
 };
+
+export const updateNotice = async (id, payload) => {
+  try {
+    const response = await apiClient.put(`/notice/${id}/`, payload, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating notice:", error);
+    handleApiError(error);
+    throw error;
+  }
+};
