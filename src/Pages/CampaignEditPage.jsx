@@ -1,5 +1,3 @@
-// src/Pages/CampaignEditPage.jsx
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -12,8 +10,8 @@ import CampaignEdit from "../Components/Marketing/CampaignEdit";
 import Loading from "./../Components/Common/Loading";
 
 const CampaignEditPage = () => {
-  const { id } = useParams(); // دریافت شناسه کمپین از URL
-  const navigate = useNavigate(); // برای هدایت بعد از موفقیت‌آمیز بودن به‌روزرسانی
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
   const [formData, setFormData] = useState({
     campaignName: "",
@@ -22,7 +20,7 @@ const CampaignEditPage = () => {
     message: "",
     customers: [],
   });
-  const [loading, setLoading] = useState(true); // برای مدیریت وضعیت بارگذاری
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +37,6 @@ const CampaignEditPage = () => {
 
         setCustomers(formattedCustomers);
 
-        // تنظیم داده‌های فرم با داده‌های واکشی شده
         if (campaignData) {
           setFormData({
             campaignName: campaignData.campaign_name || "",
@@ -110,7 +107,7 @@ const CampaignEditPage = () => {
         title: "ویرایش موفق!",
         text: "کمپین با موفقیت به‌روزرسانی شد.",
       }).then(() => {
-        navigate("/dashboard/marketing-campaigns/list"); // هدایت به صفحه لیست کمپین‌ها پس از موفقیت
+        navigate("/dashboard/marketing/list");
       });
     } catch (error) {
       console.error("Error updating campaign:", error);

@@ -17,8 +17,6 @@ const SalesOpportunitiesEdit = ({
   onSubmit,
   formData,
   selectedProducts,
-
-  // اضافه شدن دو پراپ جدید
   selectedCustomer,
   selectedPriority,
 }) => {
@@ -28,24 +26,20 @@ const SalesOpportunitiesEdit = ({
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form onSubmit={onSubmit} className="flex flex-col gap-7">
           <div className="sm:flex sm:justify-between sm:flex-row flex flex-col gap-5">
-            {/* نام و نام خانوادگی */}
             <DashboardDropDown
-              label_text="نام و نام خانوادگی"
+              label_text="نام و نام خانوادگی مشتری"
               items={customers}
               onSelect={onCustomerSelect}
-              // پراپ مهم برای نمایش مقدار انتخابی
               selectedItem={selectedCustomer}
             />
 
-            {/* تاریخ پیگیری */}
             <PersianDatePicker
               label_text="تاریخ پیگیری"
               onChange={(date) => onInputChange("followUpDate", date)}
             />
 
-            {/* مبلغ کل */}
             <DashBoardInputs
-              lable_text="مبلغ کل"
+              lable_text="مبلغ تخمینی (ریال)"
               placeholder_text="مبلغ خود را وارد کنید"
               value={formData.estimatedAmount}
               onChange={(e) => onInputChange("estimatedAmount", e.target.value)}
@@ -53,24 +47,20 @@ const SalesOpportunitiesEdit = ({
           </div>
 
           <div className="sm:flex sm:justify-between sm:flex-row flex flex-col gap-5">
-            {/* اولویت فرصت */}
             <DashboardDropDown
               label_text="اولویت فرصت"
               items={priorities}
               onSelect={onPrioritySelect}
-              // پراپ مهم برای نمایش مقدار انتخابی
               selectedItem={selectedPriority}
             />
 
-            {/* محصول مورد نظر */}
             <DashboardDropDownCount
-              label_text="محصول مورد نظر"
+              label_text="محصولات مورد نظر"
               items={products}
               onSelect={onProductSelect}
               selectedItems={selectedProducts}
             />
 
-            {/* یادداشت */}
             <DashboardTextarea
               label_text="افزودن یادداشت"
               placeholder_text="افزودن یادداشت‌هایی از جلسات یا تماس‌های انجام‌شده"

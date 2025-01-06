@@ -7,28 +7,28 @@ import Title from "../Common/Title";
 const CustomersEntry = ({ formData, onSubmit, onInputChange }) => {
   return (
     <div>
-      <Title title=" وارد کردن پروفایل مشتریان" />
+      <Title title="ثبت مشتری جدید" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md ">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
           <div className="p-4">
-            <ProfileImage upload_text="عکس خود را اپلود کنید" />
+            <ProfileImage upload_text="عکس را اپلود کنید" />
           </div>
           <div className="flex flex-col sm:flex-row justify-between gap-7">
             <DashboardInputs
-              lable_text="نام و نام خانوادگی"
-              placeholder_text="نام و نام خانوادگی خود را وارد کنید"
+              lable_text="نام و نام خانوادگی مشتری"
+              placeholder_text="نام و نام خانوادگی را وارد کنید"
               value={formData.full_name}
               onChange={(e) => onInputChange("full_name", e.target.value)}
             />
             <DashboardInputs
               lable_text="کد ملی"
-              placeholder_text="کد ملی خود را وارد کنید"
+              placeholder_text="کد ملی را وارد کنید"
               value={formData.national_id}
               onChange={(e) => onInputChange("national_id", e.target.value)}
             />
             <DashboardInputs
               lable_text="ایمیل (اختیاری)"
-              placeholder_text="ایمیل خود را وارد کنید"
+              placeholder_text="ایمیل را وارد کنید"
               value={formData.email}
               onChange={(e) => onInputChange("email", e.target.value)}
             />
@@ -36,7 +36,7 @@ const CustomersEntry = ({ formData, onSubmit, onInputChange }) => {
           <div className="flex flex-col sm:flex-row justify-between gap-7">
             <DashboardInputs
               lable_text="شماره تماس"
-              placeholder_text="شماره تماس خود را وارد کنید"
+              placeholder_text="شماره تماس را وارد کنید"
               value={formData.phone}
               onChange={(e) => onInputChange("phone", e.target.value)}
             />
@@ -46,14 +46,14 @@ const CustomersEntry = ({ formData, onSubmit, onInputChange }) => {
             />
             <DashboardInputs
               lable_text="آیدی اینستاگرام"
-              placeholder_text="آیدی خود را وارد کنید"
+              placeholder_text="آیدی را وارد کنید"
               value={formData.instagram}
               onChange={(e) => onInputChange("instagram", e.target.value)}
             />
           </div>
           <DashboardInputs
             lable_text="آیدی تلگرام"
-            placeholder_text="آیدی خود را وارد کنید"
+            placeholder_text="آیدی را وارد کنید"
             value={formData.telegram}
             onChange={(e) => onInputChange("telegram", e.target.value)}
           />

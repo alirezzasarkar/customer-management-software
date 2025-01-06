@@ -16,7 +16,7 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mb-4">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              نام مشتری
+              نام و نام خانوادگی مشتری
             </span>
             <p className="text-gray-700 mt-2">{data.customer_name}</p>
           </div>
@@ -37,12 +37,12 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mt-10 mb-4">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              نام محصولات
+              محصولات مورد نظر
             </span>
             <ul className="mt-2">
               {data.products.map((product, index) => (
                 <li key={index} className="text-gray-700">
-                  {product.name} - تعداد: {product.quantity}
+                  {product.name} (تعداد: {product.quantity})
                 </li>
               ))}
             </ul>
@@ -51,7 +51,7 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
             <span className="text-sm text-blue-800 font-semibold">
               مبلغ تخمینی
             </span>
-            <p className="text-gray-700 mt-2">{data.estimated_amount} تومان</p>
+            <p className="text-gray-700 mt-2">{data.estimated_amount} ریال</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">توضیحات</span>

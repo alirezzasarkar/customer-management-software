@@ -42,9 +42,7 @@ export const getEmployeeDetail = async (id) => {
 
 export const deleteEmployee = async (id) => {
   try {
-    const response = await apiClient.delete(
-      `/customerprofile/customers/${id}/`
-    );
+    const response = await apiClient.delete(`/accountemployee/profiles/${id}/`);
     console.log("Delete Response:", response);
     return response.data;
   } catch (error) {

@@ -7,7 +7,7 @@ import { convertPriorityToPersian } from "../Utils/convertPriorityToPersian";
 import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [
-  { id: "profile", label: "نام و نام خانوادگی" },
+  { id: "profile", label: "نام و نام خانوادگی مشتری" },
   { id: "follow_up_date", label: "تاریخ پیگیری" },
   { id: "opportunity_priority", label: "اولویت فرصت" },
   { id: "estimated_amount", label: "مبلغ تخمینی" },

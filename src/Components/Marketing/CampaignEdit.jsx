@@ -1,5 +1,3 @@
-// src/Components/Marketing/CampaignEdit.jsx
-
 import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
 import DashboardInputs from "../Common/DashBoardInputs";
@@ -19,7 +17,6 @@ const CampaignEdit = ({
       <Title title="ویرایش کمپین" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          {/* نام کمپین و تاریخ‌ها */}
           <div className="flex justify-between gap-5">
             <DashboardInputs
               lable_text="نام کمپین"
@@ -39,7 +36,6 @@ const CampaignEdit = ({
             />
           </div>
 
-          {/* لیست مشتریان و پیام کمپین */}
           <div className="flex gap-20">
             <DashboardDropDownList
               label_text="مخاطبین هدف"
@@ -57,10 +53,9 @@ const CampaignEdit = ({
             />
           </div>
 
-          {/* دکمه ثبت */}
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
-              inner_text="به‌روزرسانی "
+              inner_text="ثبت تغییرات"
               icon="/src/Assets/Icons/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"

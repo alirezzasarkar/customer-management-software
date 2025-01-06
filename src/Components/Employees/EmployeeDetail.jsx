@@ -1,14 +1,10 @@
-// src/Components/Employees/EmployeeDetail.jsx
-import React, { useState } from "react";
+import React from "react";
 import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
-import { useNavigate } from "react-router-dom";
-import { deleteEmployee } from "../../Services/APIs/Employees"; // وارد کردن تابع حذف
-import Swal from "sweetalert2"; // اطمینان از نصب کتابخانه
 
-const EmployeeDetail = ({ data }) => {
+const EmployeeDetail = ({ data, onDelete }) => {
   const {
-    id, // اضافه کردن id
+    id,
     picture,
     full_name,
     work_position,
@@ -19,44 +15,8 @@ const EmployeeDetail = ({ data }) => {
     telegram_id,
   } = data;
 
-  const navigate = useNavigate();
-  const [isDeleting, setIsDeleting] = useState(false); // حالت در حال حذف
-
   const handleEditClick = () => {
     navigate(`/dashboard/employees/edit/${id}`);
-  };
-
-  const handleDeleteClick = () => {
-    Swal.fire({
-      title: "آیا مطمئن هستید؟",
-      text: "این عملیات غیرقابل بازگشت است!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "بله، حذف کن!",
-      cancelButtonText: "لغو",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        performDelete();
-      }
-    });
-  };
-
-  const performDelete = async () => {
-    setIsDeleting(true);
-    try {
-      await deleteEmployee(id);
-      Swal.fire("حذف شد!", "پروفایل کارمند با موفقیت حذف شد.", "success").then(
-        () => {
-          navigate("/dashboard/employees/list"); // هدایت به لیست کارمندان
-        }
-      );
-    } catch (error) {
-      Swal.fire("خطا!", "مشکلی در حذف پروفایل کارمند وجود داشت.", "error");
-    } finally {
-      setIsDeleting(false);
-    }
   };
 
   return (
@@ -127,8 +87,7 @@ const EmployeeDetail = ({ data }) => {
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
-            onClick={handleDeleteClick} // اضافه کردن هندلر حذف
-            disabled={isDeleting} // غیرفعال کردن دکمه در حال حذف
+            onClick={onDelete}
           />
         </div>
       </div>
