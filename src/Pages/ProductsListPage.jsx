@@ -37,7 +37,7 @@ const ProductsListPage = () => {
         const convertedData = productsData.map((item) => ({
           id: item.id,
           product_name: item.product_name,
-          price: item.price,
+          price: item.price + " ریال",
           // اگر دسته‌بندی‌ها به صورت آرایه‌ای از شناسه‌ها باشند
           category: Array.isArray(item.category)
             ? item.category

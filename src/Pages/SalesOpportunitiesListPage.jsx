@@ -38,6 +38,7 @@ const SalesOpportunitiesListPage = () => {
           opportunity_priority: convertPriorityToPersian(
             item.opportunity_priority
           ),
+          estimated_amount: item.estimated_amount + " ریال",
         }));
 
         setData(convertedData);

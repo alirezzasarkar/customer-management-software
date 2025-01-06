@@ -6,7 +6,7 @@ import { getCustomers } from "../Services/APIs/Customers";
 import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [
-  { id: "name", label: "نام مشتری" },
+  { id: "name", label: "نام و نام خانوادگی مشتری" },
   { id: "date", label: "تاریخ قرارداد" },
   { id: "amount", label: "مبلغ فاکتور" },
   { id: "description", label: "توضیحات" },
@@ -34,7 +34,7 @@ const ContractListPage = () => {
           id: item.id,
           name: customerMap[item.costumer] || "نامشخص",
           date: convertToShamsi(item.contract_date),
-          amount: item.price + " تومان",
+          amount: item.price + " ریال",
           description: item.description,
         }));
 

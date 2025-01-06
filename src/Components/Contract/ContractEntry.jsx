@@ -27,19 +27,19 @@ const ContractEntry = ({
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
           <div className="flex justify-between gap-5">
             <DashboardDropDown
-              label_text="نام و نام خانوادگی"
+              label_text="نام و نام خانوادگی مشتری"
               items={customers}
               onSelect={onCustomerSelect}
               selectedItem={selectedCustomer}
             />
             <DashboardDropDownCount
-              label_text="محصول مورد نظر"
+              label_text="محصولات مورد نظر"
               items={products}
               onSelect={onProductSelect}
               selectedItems={selectedProducts}
             />
             <DashBoardInputs
-              lable_text="مبلغ فاکتور"
+              lable_text="مبلغ فاکتور (ریال)"
               placeholder_text="مبلغ را وارد کنید"
               value={formData.price}
               onChange={(e) => onInputChange("price", e.target.value)}

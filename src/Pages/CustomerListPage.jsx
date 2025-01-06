@@ -5,7 +5,7 @@ import { getCustomers } from "../Services/APIs/Customers";
 import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [
-  { id: "full_name", label: "نام و نام خانوادگی" },
+  { id: "full_name", label: "نام و نام خانوادگی مشتری" },
   { id: "national_id", label: "کدملی" },
   { id: "phone_number", label: "شماره تماس" },
   { id: "email", label: "ایمیل" },

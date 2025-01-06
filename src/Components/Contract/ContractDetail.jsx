@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const columns = [
   { id: "product_name", label: "نام محصول" },
   { id: "quantity", label: "تعداد" },
-  { id: "price", label: "قیمت محصول" },
+  { id: "price", label: "قیمت محصول (ریال)" },
   { id: "category", label: "دسته بندی" },
 ];
 
@@ -25,13 +25,13 @@ const ContractDetail = ({ data, products, onDelete }) => {
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              نام و نام خانوادگی
+              نام و نام خانوادگی مشتری
             </span>
             <p className="text-gray-700 mt-2">{data.customer_name}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              مبلغ فاکتور
+              مبلغ فاکتور (ریال)
             </span>
             <p className="text-gray-700 mt-2">{data.price}</p>
           </div>

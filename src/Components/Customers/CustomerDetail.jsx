@@ -1,5 +1,3 @@
-// src/Components/Customer/CustomerDetail.jsx
-
 import React from "react";
 import Table from "../Common/Table";
 import Title from "../Common/Title";
@@ -10,7 +8,7 @@ import { FaUserCircle } from "react-icons/fa"; // وارد کردن آیکون �
 
 const columns = [
   { id: "contract_date", label: "تاریخ ثبت" },
-  { id: "price", label: "مبلغ فاکتور" },
+  { id: "price", label: "مبلغ فاکتور (ریال)" },
   { id: "description", label: "توضیحات" },
 ];
 
@@ -34,34 +32,39 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
     }
   };
 
+  const getBuyerRankInPersian = (rank) => {
+    switch (rank) {
+      case "BR":
+        return "برنزی";
+      case "SI":
+        return "نقره‌ای";
+      case "GO":
+        return "طلایی";
+      default:
+        return "ناشناخته"; // در صورت عدم تطابق
+    }
+  };
+
   return (
     <>
       <Title title="جزئیات پروفایل مشتری" />
       <div className="bg-gray-100 sm:p-10 p-5 sm:mx-6 rounded-md">
         <div className="flex mb-10 justify-center">
-          {customerData?.customer_picture ? (
-            <img
-              src={customerData.customer_picture}
-              alt="Customer Profile"
-              className={`w-24 h-24 bg-gray-200 rounded-full border-4 ${getBorderColorClass(
-                customerData.buyer_rank
-              )}`}
-            />
-          ) : (
-            <div
-              className={`w-24 h-24 bg-gray-200 rounded-full border-4 ${getBorderColorClass(
-                customerData.buyer_rank
-              )} flex items-center justify-center`}
-            >
-              <FaUserCircle className="w-16 h-16 text-gray-400" />
-            </div>
-          )}
+          <img
+            src={
+              customerData.customer_picture || "https://via.placeholder.com/100"
+            }
+            alt="Customer Profile"
+            className={`w-24 h-24 bg-gray-200 rounded-full border-4 ${getBorderColorClass(
+              customerData.buyer_rank
+            )}`}
+          />
         </div>
 
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              نام و نام خانوادگی
+              نام و نام خانوادگی مشتری
             </span>
             <p className="text-gray-700 mt-2">{customerData?.full_name}</p>
           </div>
@@ -69,7 +72,9 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
             <span className="text-sm text-blue-800 font-semibold">
               نوع کاربر
             </span>
-            <p className="text-gray-700 mt-2">{customerData?.buyer_rank}</p>
+            <p className="text-gray-700 mt-2">
+              {getBuyerRankInPersian(customerData?.buyer_rank)}
+            </p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
