@@ -7,7 +7,7 @@ import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [
   { id: "name", label: "نام و نام خانوادگی مشتری" },
-  { id: "date", label: "تاریخ قرارداد" },
+  { id: "date", label: "تاریخ ثبت فاکتور" },
   { id: "amount", label: "مبلغ فاکتور" },
   { id: "description", label: "توضیحات" },
 ];

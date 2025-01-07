@@ -43,7 +43,7 @@ const EmployeeEdit = ({
               )}
             />
             <DashboardInputs
-              lable_text="ایمیل (اختیاری)"
+              lable_text="ایمیل "
               placeholder_text="ایمیل خود را وارد کنید"
               value={formData.email}
               onChange={(e) => onInputChange("email", e.target.value)}

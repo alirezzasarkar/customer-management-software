@@ -16,7 +16,7 @@ const NotificationDetail = ({ data, onDelete }) => {
     <>
       <Title title="جزئیات پیام" />
       <div className="bg-gray-100 p-10 mx-6 rounded-md">
-        <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-3 gap-10 mb-4">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               عنوان پیام
@@ -41,9 +41,6 @@ const NotificationDetail = ({ data, onDelete }) => {
             </span>
             <p className="text-gray-700 mt-2">{audiences}</p>
           </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 mt-10 mb-4">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               متن پیام ارسال شده

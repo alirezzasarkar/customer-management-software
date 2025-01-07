@@ -48,7 +48,7 @@ const EmployeeEntry = ({
           </div>
           <div className="flex justify-between">
             <DashboardInputs
-              lable_text="ایمیل (اختیاری)"
+              lable_text="ایمیل "
               placeholder_text="ایمیل را وارد کنید"
               value={formData.email}
               onChange={(e) => onInputChange("email", e.target.value)}

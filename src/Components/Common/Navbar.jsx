@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom"; // useNavigate را وارد کنید
-import { FaBell, FaUser } from "react-icons/fa";
+import { FaTachometerAlt } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 
 const Navbar = () => {
@@ -17,7 +17,7 @@ const Navbar = () => {
           to="/"
           className="w-11 h-11 bg-customBlue rounded-full flex items-center justify-center text-white hover:bg-blue-800 ml-3"
         >
-          <FaUser />
+          <FaTachometerAlt />
         </Link>
         {/* <Link
           to="/"

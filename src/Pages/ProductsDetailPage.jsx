@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Loading from "../Components/Common/Loading";
 import ProductDetail from "../Components/Products/ProductsDetail";
-import { getProductDetail, DeleteProduct } from "../Services/APIs/Products";
+import {
+  getProductDetail,
+  DeleteProduct,
+  getCategory,
+} from "../Services/APIs/Products";
 import { convertStatusToPersian } from "../Utils/convertStatusToPersian";
 import Swal from "sweetalert2";
 
@@ -15,12 +19,35 @@ const ProductsDetailPage = () => {
   useEffect(() => {
     const fetchProductDetail = async () => {
       try {
+        // واکشی اطلاعات محصول
         const product = await getProductDetail(id);
 
+        // واکشی لیست دسته‌بندی‌ها
+        const categories = await getCategory();
+
+        // اگر آرایه‌ی category در محصول وجود داشته باشد
+        let categoryNames = [];
+        if (Array.isArray(product.category) && product.category.length > 0) {
+          // تبدیل شناسه‌ی دسته به نام دسته
+          categoryNames = product.category.map((catId) => {
+            const foundCat = categories.find((c) => c.id === catId);
+            return foundCat ? foundCat.category_name : "بدون دسته‌بندی";
+          });
+        }
+
+        // ساخت یک رشته از نام دسته‌بندی‌ها یا تعیین مقدار پیش‌فرض
+        const categoryString =
+          categoryNames.length > 0
+            ? categoryNames.join(", ")
+            : "بدون دسته‌بندی";
+
+        // ساخت آبجکت محصول تبدیل‌شده
         const convertedData = {
           ...product,
           status: convertStatusToPersian(product.status),
-          price: product.price + " تومان",
+          price: product.price + " ریال",
+          // اضافه کردن رشته‌ی دسته‌بندی
+          category: categoryString,
         };
 
         setData(convertedData);
@@ -54,7 +81,7 @@ const ProductsDetailPage = () => {
         try {
           await DeleteProduct(id);
           Swal.fire("حذف شد!", "محصول با موفقیت حذف شد.", "success");
-          navigate("/dashboard/products/list"); // بازگشت به صفحه لیست محصولات
+          navigate("/dashboard/products/list");
         } catch (error) {
           console.error("Error deleting product:", error);
           Swal.fire({

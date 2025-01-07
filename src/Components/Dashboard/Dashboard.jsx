@@ -78,7 +78,7 @@ const Dashboard = ({
           />
           <DashboardCharts
             title="تغییرات فروش"
-            chartInfo="لورم ایپسوم متن ساختگی"
+            chartInfo="نمودار تغییرات فروش بر اساس تاریخ"
             chartType="line"
             labels={sales_chart.labels}
             datasets={[

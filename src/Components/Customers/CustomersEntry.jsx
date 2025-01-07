@@ -27,7 +27,7 @@ const CustomersEntry = ({ formData, onSubmit, onInputChange }) => {
               onChange={(e) => onInputChange("national_id", e.target.value)}
             />
             <DashboardInputs
-              lable_text="ایمیل (اختیاری)"
+              lable_text="ایمیل "
               placeholder_text="ایمیل را وارد کنید"
               value={formData.email}
               onChange={(e) => onInputChange("email", e.target.value)}

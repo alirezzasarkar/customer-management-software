@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ContractDetail from "../Components/Contract/ContractDetail";
 import Loading from "../Components/Common/Loading";
-import { getFactorById, deleteFactor } from "../Services/APIs/Contract"; // اضافه کردن deleteFactor
+import { getFactorById, deleteFactor } from "../Services/APIs/Contract";
 import { getProducts } from "../Services/APIs/Products";
 import { getCustomerDetail } from "../Services/APIs/Customers";
+import { getCategory } from "../Services/APIs/Products";
 import { convertToShamsi } from "../Utils/convertToShamsi";
 import Swal from "sweetalert2";
 
@@ -16,22 +17,37 @@ const ContractDetailPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchFactorProductsAndCustomer = async () => {
+    const fetchAllData = async () => {
       try {
         const factor = await getFactorById(id);
 
-        const [products, customer] = await Promise.all([
+        const [products, customer, categories] = await Promise.all([
           getProducts(),
           getCustomerDetail(factor.costumer),
+          getCategory(),
         ]);
 
         const relatedProducts = factor.products.map((productItem) => {
           const productDetail = products.find(
-            (product) => product.id === productItem.product_id
+            (prod) => prod.id === productItem.product_id
           );
+
+          const categoryNames = productDetail.category.map((catId) => {
+            const foundCategory = categories.find((cat) => cat.id === catId);
+            return foundCategory
+              ? foundCategory.category_name
+              : "بدون دسته‌بندی";
+          });
+
+          const categoryString =
+            categoryNames.length > 0
+              ? categoryNames.join(", ")
+              : "بدون دسته‌بندی";
+
           return {
             ...productDetail,
             quantity: productItem.quantity,
+            category: categoryString,
           };
         });
 
@@ -39,7 +55,7 @@ const ContractDetailPage = () => {
           ...factor,
           customer_name: customer.full_name,
           contract_date: convertToShamsi(factor.contract_date),
-          price: factor.price + " تومان",
+          price: factor.price + " ریال",
         };
 
         setData(convertedFactor);
@@ -56,7 +72,7 @@ const ContractDetailPage = () => {
       }
     };
 
-    fetchFactorProductsAndCustomer();
+    fetchAllData();
   }, [id]);
 
   const handleDeleteFactor = () => {
@@ -70,7 +86,6 @@ const ContractDetailPage = () => {
       confirmButtonText: "بله، حذف شود!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(`Deleting factor with id: ${id}`);
         deleteFactor(id)
           .then(() => {
             Swal.fire("حذف شد!", "فاکتور با موفقیت حذف شد.", "success");

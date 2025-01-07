@@ -53,7 +53,7 @@ const DashboardCharts = ({
             x: {
               title: {
                 display: true,
-                text: "زمان",
+                text: "تاریخ",
                 color: "#153D8A",
                 font: {
                   size: 12,

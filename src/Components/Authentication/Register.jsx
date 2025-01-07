@@ -24,7 +24,7 @@ const Register = ({ formData, onInputChange, onSubmit, loading }) => {
         onChange={onInputChange}
       />
       <AuthInput
-        label="ایمیل (اختیاری)"
+        label="ایمیل "
         name="email"
         input_type="email"
         placeholdertext="ایمیل خود را وارد کنید"
