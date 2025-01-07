@@ -1,15 +1,29 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // اضافه کردن useNavigate
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import SidebarItem from "./SidebarItem";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Sidebar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const navigate = useNavigate(); // استفاده از useNavigate
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // حذف توکن از localStorage
-    navigate("/login"); // هدایت به صفحه لاگین
+    Swal.fire({
+      title: "آیا مطمئن هستید؟",
+      text: "پس از خروج، برای دسترسی مجدد نیاز به ورود دوباره دارید.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "بله، خارج شو",
+      cancelButtonText: "لغو",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    });
   };
 
   return (
@@ -118,24 +132,23 @@ const Sidebar = () => {
           ]}
         />
 
-        {/* دکمه خروج */}
         <div
-          className="cursor-pointer flex flex-col items-center"
-          onClick={handleLogout} // اجرای تابع logout
+          className="cursor-pointer flex flex-col items-center "
+          onClick={handleLogout}
         >
           <img
             src="/src/Assets/Icons/Sidbar/log-out.svg"
             alt="Logout Icon"
-            className="mb-1"
+            className="mb-1 h-6 w-6"
           />
-          <span className="text-white text-sm">خروج</span>
+          <span className="text-white text-xs">خروج</span>
         </div>
       </div>
       {isMobileOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-30"
           onClick={() => setIsMobileOpen(false)}
-        ></div>
+        />
       )}
     </>
   );

@@ -73,7 +73,7 @@ const ProductListEntry = ({
           </div>
           <DashboardTextarea
             label_text="مستندات تکمیلی"
-            placeholder_text="لورم ایپسوم با متن ساختگی ..."
+            placeholder_text="توضیحات تکمیلی را وارد کنید"
             value={formData.productDescription}
             onChange={(e) =>
               onInputChange("productDescription", e.target.value)

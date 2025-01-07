@@ -3,7 +3,7 @@ import DashboardInputs from "../Common/DashBoardInputs";
 import PersianDatePicker from "../Common/DatePicker";
 import ProfileImage from "../Common/ProfileImage";
 import Title from "../Common/Title";
-import DashboardDropDown from "../Common/DashboardDropDown";
+import DashboardDropDown from "./../Common/DashboardDropDown";
 
 const EmployeeEntry = ({
   formData,
@@ -41,7 +41,7 @@ const EmployeeEntry = ({
             />
             <DashboardInputs
               lable_text="دپارتمان"
-              placeholder_text="فروش پشتیبانی , بازاریابی , غیره"
+              placeholder_text=" پشتیبانی , بازاریابی , غیره"
               value={formData.department}
               onChange={(e) => onInputChange("department", e.target.value)}
             />

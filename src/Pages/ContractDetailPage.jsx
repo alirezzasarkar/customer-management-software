@@ -85,6 +85,7 @@ const ContractDetailPage = () => {
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
       confirmButtonText: "بله، حذف شود!",
+      cancelButtonText: "انصراف",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteFactor(id)

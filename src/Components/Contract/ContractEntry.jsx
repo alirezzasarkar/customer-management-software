@@ -53,7 +53,7 @@ const ContractEntry = ({
             />
             <DashboardTextarea
               label_text="شرایط فاکتور"
-              placeholder_text="دوره گارانتی، خدمات پس از فروش"
+              placeholder_text="دوره گارانتی، خدمات پس از فروش و ..."
               value={formData.description}
               onChange={(e) => onInputChange("description", e.target.value)}
             />
