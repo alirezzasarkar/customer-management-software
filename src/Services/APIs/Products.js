@@ -3,21 +3,18 @@ import { handleApiError } from "../Handlers/ErrorHandler";
 
 export const addProducts = async (payload) => {
   try {
-    const response = await apiClient.post("/products/", payload);
+    const response = await apiClient.post("/products/", payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     console.log(response.data);
     return response.data;
   } catch (error) {
-    if (error.response) {
-      console.error("API Response Error:", error.response.data);
-    } else if (error.request) {
-      console.error("No response received:", error.request);
-    } else {
-      console.error("Error setting up request:", error.message);
-    }
+    handleApiError(error);
     throw error;
   }
 };
-
 export const getProducts = async () => {
   try {
     const response = await apiClient.get("/products/");
@@ -45,6 +42,7 @@ export const getCategory = async () => {
 export const getProductDetail = async (id) => {
   try {
     const response = await apiClient.get(`/products/${id}`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching product detail:", error);

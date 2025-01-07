@@ -1,3 +1,4 @@
+// EmployeeEntry.jsx
 import DashboardButton from "../Common/DashboardButton";
 import DashboardInputs from "../Common/DashBoardInputs";
 import PersianDatePicker from "../Common/DatePicker";
@@ -18,12 +19,12 @@ const EmployeeEntry = ({
       <Title title="ثبت کارمند جدید" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="p-4">
+          {/* <div className="p-4">
             <ProfileImage
-              upload_text="عکس  را اپلود کنید"
+              upload_text="عکس را آپلود کنید"
               onUpload={onProfilePictureUpload}
             />
-          </div>
+          </div> */}
           <div className="flex justify-between">
             <DashboardInputs
               lable_text="نام و نام خانوادگی"
@@ -41,14 +42,14 @@ const EmployeeEntry = ({
             />
             <DashboardInputs
               lable_text="دپارتمان"
-              placeholder_text=" پشتیبانی , بازاریابی , غیره"
+              placeholder_text="پشتیبانی، بازاریابی و غیره"
               value={formData.department}
               onChange={(e) => onInputChange("department", e.target.value)}
             />
           </div>
           <div className="flex justify-between">
             <DashboardInputs
-              lable_text="ایمیل "
+              lable_text="ایمیل"
               placeholder_text="ایمیل را وارد کنید"
               value={formData.email}
               onChange={(e) => onInputChange("email", e.target.value)}
@@ -87,7 +88,6 @@ const EmployeeEntry = ({
               onChange={(e) => onInputChange("confirmPassword", e.target.value)}
             />
           </div>
-
           <div className="flex justify-center mt-8 mb-2">
             <DashboardButton
               inner_text="ثبت اطلاعات"

@@ -1,9 +1,10 @@
-// src/Common/ProfileImage.jsx
-
+// ProfileImage.jsx
 import React, { useState, useEffect } from "react";
 
 const ProfileImage = ({ upload_text, onUpload, imageUrl }) => {
   const [preview, setPreview] = useState(imageUrl || "");
+  const [uploadMessage, setUploadMessage] = useState("");
+  const [isUploadSuccess, setIsUploadSuccess] = useState(false);
 
   useEffect(() => {
     setPreview(imageUrl || "");
@@ -12,27 +13,22 @@ const ProfileImage = ({ upload_text, onUpload, imageUrl }) => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // ایجاد پیش‌نمایش تصویر
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPreview(reader.result); // نمایش پیش‌نمایش تصویر
+        setPreview(reader.result);
       };
       reader.readAsDataURL(file);
-
-      // ارسال فایل به والد
       onUpload(file);
+      setUploadMessage("تصویر با موفقیت انتخاب شد");
+      setIsUploadSuccess(true);
+    } else {
+      setUploadMessage("آپلود تصویر ناموفق بود");
+      setIsUploadSuccess(false);
     }
   };
 
   return (
     <div className="relative inline-flex flex-col items-center text-xs gap-2 font-medium">
-      {preview && (
-        <img
-          src={preview}
-          alt="Profile Preview"
-          className="w-[70px] h-[70px] rounded-full object-cover mb-2"
-        />
-      )}
       <div className="relative inline-flex items-center text-xs gap-2 font-medium">
         <input
           type="file"
@@ -48,6 +44,15 @@ const ProfileImage = ({ upload_text, onUpload, imageUrl }) => {
         </label>
         <p className="text-[#13A538]">{upload_text}</p>
       </div>
+      {uploadMessage && (
+        <p
+          className={`text-sm mt-1 ${
+            isUploadSuccess ? "text-green-600" : "text-red-500"
+          }`}
+        >
+          {uploadMessage}
+        </p>
+      )}
     </div>
   );
 };

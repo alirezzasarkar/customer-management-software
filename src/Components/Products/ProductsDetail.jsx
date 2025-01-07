@@ -25,7 +25,7 @@ const ProductsDetail = ({ data, onDelete }) => {
     <>
       <Title title="جزئیات محصول" />
       <div className="bg-gray-100 p-10 mx-6 rounded-md">
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-3 gap-10 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               نام محصول
@@ -71,7 +71,7 @@ const ProductsDetail = ({ data, onDelete }) => {
           <img
             src={product_image || "https://via.placeholder.com/150"}
             alt={product_name}
-            className="w-32 h-32 rounded-md shadow-md"
+            className="w-40 h-auto rounded-md shadow-md"
           />
         </div>
 

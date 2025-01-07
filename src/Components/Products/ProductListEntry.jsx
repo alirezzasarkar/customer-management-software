@@ -1,14 +1,15 @@
 // ProductListEntry.jsx
+import React from "react";
 import DashboardButton from "../Common/DashboardButton";
-import DashboardDropDown from "../Common/DashBoardDropDown";
+import DashboardDropDown from "../Common/DashboardDropDown";
 import DashboardDropDownCategory from "../Common/DashboardDropDownCategory";
-import DashboardInputs from "../Common/DashBoardInputs";
+import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import ProductImage from "../Common/ProductImage";
 import Title from "../Common/Title";
 
 const ProductListEntry = ({
-  categories, // دسته‌بندی‌ها
+  categories,
   statuses,
   onStatusSelect,
   onInputChange,
@@ -16,8 +17,8 @@ const ProductListEntry = ({
   onSubmit,
   formData,
   selectedStatus,
-  onCategorySelect, // هندلر دسته‌بندی
-  loadingCategories, // وضعیت بارگذاری دسته‌بندی‌ها
+  onCategorySelect,
+  loadingCategories,
 }) => {
   return (
     <>
@@ -39,7 +40,7 @@ const ProductListEntry = ({
             />
             <DashboardInputs
               lable_text="اندازه محصول"
-              placeholder_text="۱۱۰ × ۲۱۵ × ۲۰ سانتی متر"
+              placeholder_text="۱۰۰ × ۵۰ × ۳۰"
               value={formData.productSize}
               onChange={(e) => onInputChange("productSize", e.target.value)}
             />
@@ -58,9 +59,9 @@ const ProductListEntry = ({
               multiple={true}
             />
             <DashboardInputs
-              lable_text="قیمت محصول"
+              lable_text="قیمت محصول (ریال)"
               value={formData.productPrice}
-              placeholder_text="قیمت محصول خود را وارد کنید"
+              placeholder_text="قیمت محصول را وارد کنید"
               onChange={(e) => onInputChange("productPrice", e.target.value)}
             />
             <DashboardDropDown
@@ -68,7 +69,7 @@ const ProductListEntry = ({
               items={statuses}
               onSelect={onStatusSelect}
               selectedItem={selectedStatus}
-              multiple={false} // تک انتخابی
+              multiple={false}
             />
           </div>
           <DashboardTextarea
@@ -79,9 +80,9 @@ const ProductListEntry = ({
               onInputChange("productDescription", e.target.value)
             }
           />
-          <div className="">
+          <div>
             <ProductImage
-              upload_text="تصاویر خود را آپلود کنید"
+              upload_text="تصویر محصول را آپلود کنید"
               onUpload={onImageUpload}
             />
           </div>

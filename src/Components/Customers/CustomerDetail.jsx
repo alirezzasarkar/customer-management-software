@@ -4,7 +4,7 @@ import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
 import { convertToShamsi } from "../../Utils/convertToShamsi";
 import { useNavigate } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa"; // وارد کردن آیکون پیش‌فرض
+import { FaUser } from "react-icons/fa";
 
 const columns = [
   { id: "contract_date", label: "تاریخ ثبت" },
@@ -45,23 +45,36 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
     }
   };
 
+  function getColorClasses(rank) {
+    switch (rank) {
+      case "BR":
+        // فرضاً برنز
+        return "border-bronze text-bronze";
+      case "SI":
+        // فرضاً نقره‌ای
+        return "border-silver text-silver";
+      case "GO":
+        // فرضاً طلایی
+        return "border-gold text-gold";
+      default:
+        // رنگ پیش‌فرض
+        return "border-gray-300 text-gray-400";
+    }
+  }
+
   return (
     <>
       <Title title="جزئیات پروفایل مشتری" />
       <div className="bg-gray-100 sm:p-10 p-5 sm:mx-6 rounded-md">
         <div className="flex mb-10 justify-center">
-          <img
-            src={
-              customerData.customer_picture || "https://via.placeholder.com/100"
-            }
-            alt="Customer Profile"
-            className={`w-24 h-24 bg-gray-200 rounded-full border-4 ${getBorderColorClass(
+          <FaUser
+            className={`w-24 h-24 bg-gray-200 rounded-full border-4 p-3 ${getColorClasses(
               customerData.buyer_rank
             )}`}
           />
         </div>
 
-        <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mb-8">
+        <div className="grid sm:grid-cols-3 grid-cols-1 gap-10 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               نام و نام خانوادگی مشتری

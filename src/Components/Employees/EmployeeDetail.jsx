@@ -23,15 +23,15 @@ const EmployeeDetail = ({ data, onDelete }) => {
     <>
       <Title title="جزئیات پروفایل کارمند" />
       <div className="bg-gray-100 p-10 mx-6 rounded-md">
-        <div className="flex flex-col items-center mb-10">
+        {/* <div className="flex flex-col items-center mb-10">
           <img
             src={picture || "https://via.placeholder.com/100"}
             alt="Employee"
             className="w-24 h-24 rounded-full bg-gray-200"
           />
-        </div>
+        </div> */}
 
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-3 gap-10 mb-8">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               نام و نام خانوادگی

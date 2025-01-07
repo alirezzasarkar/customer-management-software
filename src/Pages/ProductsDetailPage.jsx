@@ -12,41 +12,41 @@ import Swal from "sweetalert2";
 
 const ProductsDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProductDetail = async () => {
       try {
-        // واکشی اطلاعات محصول
         const product = await getProductDetail(id);
-
-        // واکشی لیست دسته‌بندی‌ها
         const categories = await getCategory();
 
-        // اگر آرایه‌ی category در محصول وجود داشته باشد
+        // در صورتی که مسیر تصویر به صورت نسبی برگردد، باید دامنه را به ابتدای آن اضافه کنیم
+        // اگر سرور مقدار product_image را به شکل /media/... برمی‌گرداند
+        const baseUrl = "https://jalilvand-crm.liara.run";
+        let fullImageUrl = product.product_image || "";
+        if (fullImageUrl && fullImageUrl.startsWith("/")) {
+          fullImageUrl = baseUrl + fullImageUrl;
+        }
+
         let categoryNames = [];
         if (Array.isArray(product.category) && product.category.length > 0) {
-          // تبدیل شناسه‌ی دسته به نام دسته
           categoryNames = product.category.map((catId) => {
             const foundCat = categories.find((c) => c.id === catId);
             return foundCat ? foundCat.category_name : "بدون دسته‌بندی";
           });
         }
 
-        // ساخت یک رشته از نام دسته‌بندی‌ها یا تعیین مقدار پیش‌فرض
-        const categoryString =
-          categoryNames.length > 0
-            ? categoryNames.join(", ")
-            : "بدون دسته‌بندی";
+        const categoryString = categoryNames.length
+          ? categoryNames.join(", ")
+          : "بدون دسته‌بندی";
 
-        // ساخت آبجکت محصول تبدیل‌شده
         const convertedData = {
           ...product,
+          product_image: fullImageUrl,
           status: convertStatusToPersian(product.status),
           price: product.price + " ریال",
-          // اضافه کردن رشته‌ی دسته‌بندی
           category: categoryString,
         };
 
