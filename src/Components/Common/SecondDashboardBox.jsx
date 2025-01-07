@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+
 const SecondDashboardBox = ({
   summary,
   summary_detail,
   second_summary,
   second_summary_detail,
   title,
+  DeatilPage,
 }) => {
   return (
     <>
@@ -19,7 +22,7 @@ const SecondDashboardBox = ({
         </section>
         <div className="flex justify-end">
           <button className="bg-[#13A538] hover:bg-[#59bb71]  text-white mt-3 rounded-xl h-9 text-sm px-4">
-            اطلاعات بیشتر
+            <Link to={DeatilPage}> اطلاعات بیشتر</Link>
           </button>
         </div>
       </div>

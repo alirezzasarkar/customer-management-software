@@ -20,16 +20,19 @@ const Dashboard = ({
             title="کل درآمد"
             summary="مبلغ کل فروش های انجام شده"
             summary_detail={`${sales_data.total_sales} تومان`}
+            DeatilPage="/dashboard/invoice/list"
           />
           <DashboardBox
             title="تعداد مشتریان"
             summary="مشتریان ما"
             summary_detail={`${customer_data.total_customers} نفر`}
+            DeatilPage="/dashboard/customers/list"
           />
           <DashboardBox
             title="نزدیک ترین فرصت های فروش"
             summary="فرصت های فروش"
             summary_detail={`${sales_opportunity.closest_count} عدد`}
+            DeatilPage="/dashboard/sales-opportunities/list"
           />
         </div>
         <div className=" mt-7 md:flex md:flex-row flex-col gap-4">
@@ -39,6 +42,7 @@ const Dashboard = ({
             summary_detail={`${sales_data.total_products_sold} محصول`}
             second_summary="قرار داد های نهایی"
             second_summary_detail={`${sales_data.total_factors} فاکتور`}
+            DeatilPage="/dashboard/invoice/list"
           />
           <DashboardCharts
             title="جذب مشتریان"
@@ -79,7 +83,6 @@ const Dashboard = ({
             labels={sales_chart.labels}
             datasets={[
               {
-                // label: "Sales ($)",
                 data: sales_chart.data,
                 borderColor: "#36A2EB",
                 backgroundColor: "#153D8A",
@@ -87,7 +90,7 @@ const Dashboard = ({
                 pointBorderColor: "#fff",
               },
             ]}
-            chart_height="h-full"
+            chart_height="h-52 md:h-60"
           />
         </div>
       </div>

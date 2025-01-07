@@ -1,4 +1,6 @@
-const DashboardBox = ({ title, summary, summary_detail }) => {
+import { Link } from "react-router-dom";
+
+const DashboardBox = ({ title, summary, summary_detail, DeatilPage }) => {
   return (
     <>
       <div className="bg-[#F1F1F9] p-7 rounded-xl flex flex-col gap-4">
@@ -9,7 +11,7 @@ const DashboardBox = ({ title, summary, summary_detail }) => {
         </section>
         <div className="flex justify-end">
           <button className="bg-[#13A538] hover:bg-[#59bb71]  text-white mt-2 rounded-xl h-9 text-sm px-4">
-            اطلاعات بیشتر
+            <Link to={DeatilPage}> اطلاعات بیشتر</Link>
           </button>
         </div>
       </div>
