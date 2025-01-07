@@ -16,6 +16,7 @@ const ContractDetailPage = () => {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  console.log("test", data);
   useEffect(() => {
     const fetchAllData = async () => {
       try {
