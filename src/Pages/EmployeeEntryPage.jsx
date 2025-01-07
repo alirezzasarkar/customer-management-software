@@ -17,7 +17,6 @@ const EmployeeEntryPage = () => {
     confirmPassword: "",
   });
 
-  // تغییر کلید 'label' به 'name' برای سازگاری با DashboardDropDown
   const jobTitles = [
     { value: "admin", name: "مدیر مجموعه" },
     { value: "system_manager", name: "مدیر سامانه" },
@@ -49,7 +48,6 @@ const EmployeeEntryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // بررسی تطابق رمز عبور و تکرار آن
     if (formData.password !== formData.confirmPassword) {
       Swal.fire({
         icon: "error",
@@ -88,7 +86,6 @@ const EmployeeEntryPage = () => {
         text: "پروفایل کارمند با موفقیت ثبت شد.",
       });
 
-      // Reset form
       setFormData({
         fullName: "",
         jobTitle: "",

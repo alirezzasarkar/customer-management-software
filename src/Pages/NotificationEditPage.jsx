@@ -1,5 +1,3 @@
-// src/Pages/NotificationUpdatePage.jsx
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -9,8 +7,8 @@ import Loading from "./../Components/Common/Loading";
 import { getCustomers } from "../Services/APIs/Customers";
 
 const NotificationEditPage = () => {
-  const { id } = useParams(); // دریافت شناسه اطلاع‌رسانی از URL
-  const navigate = useNavigate(); // برای هدایت پس از موفقیت‌آمیز بودن به‌روزرسانی
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -21,15 +19,13 @@ const NotificationEditPage = () => {
     audiences: [],
     task_id: "",
   });
-  const [loading, setLoading] = useState(true); // برای مدیریت وضعیت بارگذاری
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // واکشی اطلاعات اطلاع‌رسانی
         const noticeData = await getNoticeDetail(id);
 
-        // واکشی لیست مشتریان (مخاطبین)
         const customersData = await getCustomers();
         const formattedCustomers = customersData.map((customer) => ({
           id: customer.id,
@@ -37,7 +33,6 @@ const NotificationEditPage = () => {
         }));
         setCustomers(formattedCustomers);
 
-        // تنظیم داده‌های فرم
         const [hour, minute, second] = noticeData.send_time.split(":");
         setFormData({
           title: noticeData.title || "",
@@ -92,7 +87,6 @@ const NotificationEditPage = () => {
       task_id,
     } = formData;
 
-    // بررسی پر بودن فیلدها
     if (
       !title ||
       !send_date ||
@@ -109,7 +103,6 @@ const NotificationEditPage = () => {
       return;
     }
 
-    // اعتبارسنجی فیلدهای ساعت و دقیقه
     const hourValid = /^([0-1]\d|2[0-3])$/.test(send_hour);
     const minuteValid = /^[0-5]\d$/.test(send_minute);
 
@@ -122,10 +115,8 @@ const NotificationEditPage = () => {
       return;
     }
 
-    // اطمینان از اینکه send_date به فرمت YYYY-MM-DD باشد
     const formattedDate = new Date(send_date).toISOString().split("T")[0];
 
-    // ترکیب ساعت و دقیقه به فرمت "HH:mm:ssZ"
     const formattedTime = `${send_hour.padStart(2, "0")}:${send_minute.padStart(
       2,
       "0"
@@ -134,13 +125,13 @@ const NotificationEditPage = () => {
     const payload = {
       title,
       text,
-      send_time: formattedTime, // ارسال با فرمت "HH:mm:ssZ"
+      send_time: formattedTime,
       send_date: formattedDate,
-      task_id: task_id || "default-task-id", // مقدار پیش‌فرض برای task_id در صورت نیاز
-      audiences: audiences.length ? audiences : [0], // مقدار پیش‌فرض مخاطبان در صورت نیاز
+      task_id: task_id || "default-task-id",
+      audiences: audiences.length ? audiences : [0],
     };
 
-    console.log("Payload:", payload); // لاگ گرفتن payload برای بررسی
+    console.log("Payload:", payload);
 
     try {
       await updateNotice(id, payload);
@@ -149,7 +140,7 @@ const NotificationEditPage = () => {
         title: "ویرایش موفق!",
         text: "اطلاع‌رسانی با موفقیت به‌روزرسانی شد.",
       }).then(() => {
-        navigate("/dashboard/notices"); // هدایت به صفحه لیست اطلاع‌رسانی‌ها پس از موفقیت
+        navigate("/dashboard/notices");
       });
     } catch (error) {
       console.error("Error updating notice:", error);

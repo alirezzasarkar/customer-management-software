@@ -1,5 +1,3 @@
-// src/Pages/EmployeeEditPage.jsx
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -8,8 +6,8 @@ import EmployeeEdit from "../Components/Employees/EmployeeEdit";
 import Loading from "./../Components/Common/Loading";
 
 const EmployeeEditPage = () => {
-  const { id } = useParams(); // دریافت شناسه کارمند از URL
-  const navigate = useNavigate(); // برای هدایت بعد از موفقیت‌آمیز بودن به‌روزرسانی
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     jobTitle: "",
@@ -18,8 +16,8 @@ const EmployeeEditPage = () => {
     phoneNumber: "",
     hireDate: "",
     telegramId: "",
-    profilePicture: null, // فایل جدید
-    profilePictureUrl: "", // URL تصویر فعلی
+    profilePicture: null,
+    profilePictureUrl: "",
     password: "",
     confirmPassword: "",
   });
@@ -29,7 +27,7 @@ const EmployeeEditPage = () => {
     { value: "accountant", name: "حسابدار" },
     { value: "regular", name: "کاربر عادی" },
   ]);
-  const [loading, setLoading] = useState(true); // برای مدیریت وضعیت بارگذاری
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchEmployee = async () => {
@@ -49,8 +47,8 @@ const EmployeeEditPage = () => {
                 .split("T")[0]
             : "",
           telegramId: employeeData.telegram_id || "",
-          profilePicture: null, // فایل جدید هنوز آپلود نشده
-          profilePictureUrl: employeeData.picture || "", // URL تصویر فعلی
+          profilePicture: null,
+          profilePictureUrl: employeeData.picture || "",
           password: "",
           confirmPassword: "",
         });
@@ -94,7 +92,6 @@ const EmployeeEditPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // بررسی تطابق رمز عبور و تکرار آن (اگر رمز عبور خالی نیست)
     if (formData.password || formData.confirmPassword) {
       if (formData.password !== formData.confirmPassword) {
         Swal.fire({
@@ -106,10 +103,9 @@ const EmployeeEditPage = () => {
       }
     }
 
-    // ایجاد FormData
     const formPayload = new FormData();
     if (formData.profilePicture) {
-      formPayload.append("picture", formData.profilePicture); // ارسال فایل
+      formPayload.append("picture", formData.profilePicture);
     }
     formPayload.append("user", formData.user);
     formPayload.append("full_name", formData.fullName);
@@ -128,13 +124,13 @@ const EmployeeEditPage = () => {
     }
 
     try {
-      await updateEmployee(id, formPayload); // ارسال FormData به API
+      await updateEmployee(id, formPayload);
       Swal.fire({
         icon: "success",
         title: "ویرایش موفق!",
         text: "پروفایل کارمند با موفقیت به‌روزرسانی شد.",
       }).then(() => {
-        navigate("/dashboard/employees/list"); // هدایت به صفحه لیست کارمندان پس از موفقیت
+        navigate("/dashboard/employees/list");
       });
     } catch (error) {
       console.error("Error updating employee profile:", error);

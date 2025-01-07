@@ -19,8 +19,8 @@ const ProductListEdit = ({ productData }) => {
     product_image: "",
   });
 
-  const [loading, setLoading] = useState(false); // To manage loading state
-  const [error, setError] = useState(null); // To manage errors after the API call
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (productData) {
@@ -47,16 +47,16 @@ const ProductListEdit = ({ productData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(null); // Clear previous errors
+    setError(null);
 
     try {
-      const updatedProduct = await updateProduct(productData.id, formData); // Pass product ID and form data
+      const updatedProduct = await updateProduct(productData.id, formData);
       console.log("Product updated successfully:", updatedProduct);
     } catch (error) {
       setError("There was an error updating the product. Please try again.");
       console.error(error);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
 
@@ -115,18 +115,17 @@ const ProductListEdit = ({ productData }) => {
           <div className="">
             <ProductImage
               upload_text="تصاویر خود را اپلود کنید"
-              image={formData.product_image} // Display image if available
+              image={formData.product_image}
             />
           </div>
           {error && <div className="text-red-600 text-center">{error}</div>}{" "}
-          {/* Display error message */}
           <div className="flex justify-center mt-8 mb-2">
             <DashboardButton
               inner_text={loading ? "در حال ارسال..." : "تغییرات"}
               icon="/src/Assets/Icons/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"
-              disabled={loading} // Disable button while loading
+              disabled={loading}
             />
           </div>
         </form>

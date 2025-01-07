@@ -1,11 +1,9 @@
-// src/Components/Employees/EmployeeEdit.jsx
-
 import DashboardButton from "../Common/DashboardButton";
+import DashboardDropDown from "../Common/DashBoardDropDown";
 import DashboardInputs from "../Common/DashBoardInputs";
 import PersianDatePicker from "../Common/DatePicker";
 import ProfileImage from "../Common/ProfileImage";
 import Title from "../Common/Title";
-import DashboardDropDown from "../Common/DashboardDropDown";
 
 const EmployeeEdit = ({
   formData,
@@ -24,7 +22,7 @@ const EmployeeEdit = ({
             <ProfileImage
               upload_text="عکس خود را آپلود کنید"
               onUpload={onProfilePictureUpload}
-              imageUrl={formData.profilePictureUrl} // نمایش تصویر فعلی
+              imageUrl={formData.profilePictureUrl}
             />
           </div>
           <div className="flex justify-between">

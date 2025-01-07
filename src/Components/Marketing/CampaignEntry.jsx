@@ -17,7 +17,6 @@ const CampaignEntry = ({
       <Title title="وارد کردن کمپین" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          {/* نام کمپین و تاریخ‌ها */}
           <div className="flex justify-between gap-5">
             <DashboardInputs
               lable_text="نام کمپین"
@@ -37,7 +36,6 @@ const CampaignEntry = ({
             />
           </div>
 
-          {/* لیست مشتریان و پیام کمپین */}
           <div className="flex gap-20">
             <DashboardDropDownList
               label_text="مخاطبین هدف"
@@ -55,7 +53,6 @@ const CampaignEntry = ({
             />
           </div>
 
-          {/* دکمه ثبت */}
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
               inner_text="ثبت کمپین"

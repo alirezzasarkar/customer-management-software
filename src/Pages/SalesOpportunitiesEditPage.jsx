@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // افزودن useParams و useNavigate
+import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { getCustomers } from "../Services/APIs/Customers";
 import { getProducts } from "../Services/APIs/Products";
@@ -11,8 +11,8 @@ import SalesOpportunitiesEdit from "../Components/SalesOpportunities/SalesOpport
 import Loading from "./../Components/Common/Loading";
 
 const SalesOpportunitiesEditPage = () => {
-  const { id } = useParams(); // دریافت شناسه از URL
-  const navigate = useNavigate(); // برای هدایت بعد از موفقیت‌آمیز بودن به‌روزرسانی
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
@@ -23,7 +23,7 @@ const SalesOpportunitiesEditPage = () => {
     estimatedAmount: "",
     description: "",
   });
-  const [loading, setLoading] = useState(true); // برای مدیریت وضعیت بارگذاری
+  const [loading, setLoading] = useState(true);
 
   const priorityOptions = [
     { id: "low_priority", name: "کم" },
@@ -38,10 +38,10 @@ const SalesOpportunitiesEditPage = () => {
           await Promise.all([
             getProducts(),
             getCustomers(),
-            getSalesOpportunityDetail(id), // واکشی جزئیات فرصت فروش
+            getSalesOpportunityDetail(id),
           ]);
 
-        console.log("Fetched Opportunity Data:", opportunityData); // لاگ داده‌ها
+        console.log("Fetched Opportunity Data:", opportunityData);
 
         const formattedProducts = productsData.map((product) => ({
           id: product.id,
@@ -56,7 +56,6 @@ const SalesOpportunitiesEditPage = () => {
         setProducts(formattedProducts);
         setCustomers(formattedCustomers);
 
-        // تنظیم داده‌های فرم با داده‌های واکشی شده
         if (opportunityData) {
           setFormData({
             followUpDate: opportunityData.follow_up_date
@@ -78,7 +77,6 @@ const SalesOpportunitiesEditPage = () => {
           );
           setSelectedPriority(priority || null);
 
-          // بررسی وجود new_items قبل از دسترسی به آن
           const productsSelected =
             opportunityData.new_items
               ?.map((item) => {
@@ -118,25 +116,20 @@ const SalesOpportunitiesEditPage = () => {
     setSelectedCustomer(customer);
   };
 
-  // تابع مدیریت انتخاب محصول و تعداد آن
   const handleProductSelect = (product, quantity) => {
     setSelectedProducts((prevSelected) => {
       const existingProduct = prevSelected.find(
         (item) => item.id === product.id
       );
       if (existingProduct) {
-        // اگر از قبل انتخاب شده بود
         if (quantity === 0) {
-          // حذف
           return prevSelected.filter((item) => item.id !== product.id);
         } else {
-          // به‌روزرسانی تعداد
           return prevSelected.map((item) =>
             item.id === product.id ? { ...item, quantity } : item
           );
         }
       } else {
-        // افزودن محصول جدید
         return [...prevSelected, { ...product, quantity }];
       }
     });
@@ -166,13 +159,13 @@ const SalesOpportunitiesEditPage = () => {
     };
 
     try {
-      await updateSalesOpportunity(id, payload); // ارسال شناسه و payload
+      await updateSalesOpportunity(id, payload);
       Swal.fire({
         icon: "success",
         title: "ویرایش موفق!",
         text: "فرصت فروش با موفقیت به‌روزرسانی شد.",
       }).then(() => {
-        navigate("/dashboard/sales-opportunities/list"); // هدایت به صفحه لیست پس از موفقیت
+        navigate("/dashboard/sales-opportunities/list");
       });
     } catch (error) {
       console.error("Error submitting sales opportunity:", error);

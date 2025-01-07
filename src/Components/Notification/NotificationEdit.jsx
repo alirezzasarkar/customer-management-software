@@ -1,12 +1,10 @@
-// src/Components/Notification/NotificationEdit.jsx
-
 import DashboardButton from "../Common/DashboardButton";
 import PersianDatePicker from "../Common/DatePicker";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import Title from "../Common/Title";
 import TimePicker from "../Common/TimePicker";
-import DashboardInputs from "../Common/DashboardInputs";
+import DashboardInputs from "../Common/DashBoardInputs";
 
 const NotificationEdit = ({
   onCustomerSelect,

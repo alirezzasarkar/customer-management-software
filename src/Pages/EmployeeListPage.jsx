@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Loading from "../Components/Common/Loading";
 import EmployeeList from "../Components/Employees/EmployeeList";
 import { getEmployees } from "../Services/APIs/Employees";
-import { convertJobtitleToPersian } from "../Utils/convertJobtitleToPersian"; // وارد کردن تابع کمکی
+import { convertJobtitleToPersian } from "../Utils/convertJobtitleToPersian";
 
 const columns = [
   { id: "fullName", label: "نام و نام خانوادگی" },
@@ -24,7 +24,7 @@ const EmployeeListPage = () => {
           id: employee.id,
           fullName: employee.full_name,
           phoneNumber: employee.phone_number,
-          jobTitle: convertJobtitleToPersian(employee.work_position), // تبدیل به فارسی
+          jobTitle: convertJobtitleToPersian(employee.work_position),
         }));
 
         setData(processedData);

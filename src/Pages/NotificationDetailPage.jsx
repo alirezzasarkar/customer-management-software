@@ -8,7 +8,7 @@ import { convertToShamsi } from "../Utils/convertToShamsi";
 import Swal from "sweetalert2";
 
 const NotificationDetailPage = () => {
-  const { id } = useParams(); // گرفتن ID از URL
+  const { id } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);

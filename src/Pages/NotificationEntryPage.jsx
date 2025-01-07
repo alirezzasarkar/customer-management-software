@@ -1,4 +1,3 @@
-// src/Pages/NotificationEntryPage.jsx
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import NotificationEntry from "../Components/Notification/NotificationEntry";
@@ -14,7 +13,7 @@ const NotificationEntryPage = () => {
     send_minute: "",
     text: "",
     audiences: [],
-    task_id: "", // اضافه کردن task_id
+    task_id: "",
   });
 
   useEffect(() => {
@@ -55,7 +54,6 @@ const NotificationEntryPage = () => {
     const { send_hour, send_minute, title, send_date, text, audiences } =
       formData;
 
-    // بررسی پر بودن فیلدها
     if (
       !title ||
       !send_date ||
@@ -72,7 +70,6 @@ const NotificationEntryPage = () => {
       return;
     }
 
-    // اعتبارسنجی فیلدهای ساعت و دقیقه
     const hourValid = /^([0-1]\d|2[0-3])$/.test(send_hour);
     const minuteValid = /^[0-5]\d$/.test(send_minute);
 
@@ -85,10 +82,8 @@ const NotificationEntryPage = () => {
       return;
     }
 
-    // اطمینان از اینکه send_date به فرمت YYYY-MM-DD باشد
     const formattedDate = new Date(send_date).toISOString().split("T")[0];
 
-    // ترکیب ساعت و دقیقه به فرمت "HH:mm:00Z"
     const formattedTime = `${send_hour.padStart(2, "0")}:${send_minute.padStart(
       2,
       "0"
@@ -97,13 +92,13 @@ const NotificationEntryPage = () => {
     const payload = {
       title,
       text,
-      send_time: formattedTime, // ارسال با فرمت "HH:mm:00Z"
+      send_time: formattedTime,
       send_date: formattedDate,
-      task_id: formData.task_id || "default-task-id", // مقدار پیش‌فرض برای task_id
-      audiences: audiences.length ? audiences : [0], // مقدار پیش‌فرض مخاطبان
+      task_id: formData.task_id || "default-task-id",
+      audiences: audiences.length ? audiences : [0],
     };
 
-    console.log("Payload:", payload); // لاگ گرفتن payload برای بررسی
+    console.log("Payload:", payload);
 
     try {
       await addNotices(payload);

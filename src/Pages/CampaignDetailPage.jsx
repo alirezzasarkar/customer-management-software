@@ -11,8 +11,8 @@ import { convertToShamsi } from "../Utils/convertToShamsi";
 import Swal from "sweetalert2";
 
 const CampaignDetailPage = () => {
-  const { id } = useParams(); // دریافت id از URL
-  const navigate = useNavigate(); // برای هدایت پس از حذف
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -71,7 +71,7 @@ const CampaignDetailPage = () => {
       try {
         await deleteMarketingCampaign(id);
         Swal.fire("حذف شد!", "کمپین با موفقیت حذف شد.", "success");
-        navigate("/dashboard/marketing/list"); // هدایت به صفحه لیست کمپین‌ها
+        navigate("/dashboard/marketing/list");
       } catch (error) {
         console.error("Error deleting campaign:", error);
         Swal.fire("خطا!", "در حذف کمپین مشکلی پیش آمد.", "error");

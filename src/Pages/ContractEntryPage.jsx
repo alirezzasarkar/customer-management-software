@@ -15,7 +15,7 @@ const ContractEntryPage = () => {
   const [customers, setCustomers] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [files, setFiles] = useState([]); // مدیریت فایل‌ها
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,7 +70,7 @@ const ContractEntryPage = () => {
   };
 
   const handleFileChange = (fileUrls) => {
-    setFiles(fileUrls); // تنظیم فایل‌ها
+    setFiles(fileUrls);
   };
 
   const handleSubmit = async (e) => {
@@ -98,7 +98,7 @@ const ContractEntryPage = () => {
         product_id: product.id,
         quantity: product.quantity || 1,
       })),
-      files, // ارسال فایل‌ها
+      files,
     };
 
     try {
@@ -109,7 +109,6 @@ const ContractEntryPage = () => {
         text: "فاکتور با موفقیت ثبت شد.",
       });
 
-      // بازنشانی فرم
       setFormData({ price: "", invoiceDate: "", description: "" });
       setSelectedProducts([]);
       setSelectedCustomer(null);
@@ -134,7 +133,7 @@ const ContractEntryPage = () => {
       onCustomerSelect={handleCustomerSelect}
       selectedCustomer={selectedCustomer}
       selectedProducts={selectedProducts}
-      onFileChange={handleFileChange} // مدیریت فایل‌ها
+      onFileChange={handleFileChange}
       onSubmit={handleSubmit}
     />
   );

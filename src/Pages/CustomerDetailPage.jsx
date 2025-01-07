@@ -1,7 +1,6 @@
-// CustomerDetailPage.js
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // برای ریدایرکت
-import Swal from "sweetalert2"; // برای نمایش پیام تأیید یا خطا
+import { useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import CustomerDetail from "../Components/Customers/CustomerDetail";
 import Loading from "../Components/Common/Loading";
@@ -11,7 +10,7 @@ import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const CustomerDetailPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // برای هدایت بعد از حذف
+  const navigate = useNavigate();
   const [customerData, setCustomerData] = useState(null);
   const [factors, setFactors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,7 +45,6 @@ const CustomerDetailPage = () => {
     fetchData();
   }, [id]);
 
-  // تابع حذف مشتری
   const handleDeleteCustomer = () => {
     Swal.fire({
       title: "آیا مطمئن هستید؟",
@@ -59,11 +57,9 @@ const CustomerDetailPage = () => {
       cancelButtonText: "انصراف",
     }).then((result) => {
       if (result.isConfirmed) {
-        // اگر کاربر تأیید کرد
         deleteCustomer(id)
           .then(() => {
             Swal.fire("حذف شد!", "مشتری با موفقیت حذف شد.", "success");
-            // هدایت به صفحه لیست مشتریان یا هر صفحه دلخواه
             navigate("/dashboard/customers/list");
           })
           .catch((error) => {
@@ -82,7 +78,7 @@ const CustomerDetailPage = () => {
         <CustomerDetail
           customerData={customerData}
           factors={factors}
-          onDelete={handleDeleteCustomer} // مهم: ارسال تابع حذف به فرزند
+          onDelete={handleDeleteCustomer}
         />
       )}
     </>

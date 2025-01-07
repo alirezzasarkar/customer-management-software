@@ -22,13 +22,13 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
   const getBorderColorClass = (rank) => {
     switch (rank) {
       case "BR":
-        return "border-bronze"; // برنز
+        return "border-bronze";
       case "SI":
-        return "border-silver"; // نقره‌ای
+        return "border-silver";
       case "GO":
-        return "border-gold"; // طلایی
+        return "border-gold";
       default:
-        return "border-bronze"; // رنگ پیش‌فرض
+        return "border-bronze";
     }
   };
 
@@ -41,23 +41,19 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
       case "GO":
         return "طلایی";
       default:
-        return "ناشناخته"; // در صورت عدم تطابق
+        return "ناشناخته";
     }
   };
 
   function getColorClasses(rank) {
     switch (rank) {
       case "BR":
-        // فرضاً برنز
         return "border-bronze text-bronze";
       case "SI":
-        // فرضاً نقره‌ای
         return "border-silver text-silver";
       case "GO":
-        // فرضاً طلایی
         return "border-gold text-gold";
       default:
-        // رنگ پیش‌فرض
         return "border-gray-300 text-gray-400";
     }
   }

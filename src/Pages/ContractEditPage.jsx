@@ -1,4 +1,3 @@
-// src/Pages/ContractEditPage.jsx
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { getFactorById, updateFactor } from "../Services/APIs/Contract";
@@ -8,7 +7,6 @@ import { getCustomers } from "../Services/APIs/Customers";
 import { useParams } from "react-router-dom";
 
 const ContractEditPage = ({ match }) => {
-  // فرض بر این است که آیدی فاکتور از URL دریافت می‌شود
   const [formData, setFormData] = useState({
     price: "",
     invoiceDate: "",
@@ -19,7 +17,7 @@ const ContractEditPage = ({ match }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [files, setFiles] = useState([]);
-  const { id } = useParams(); // دریافت شناسه اطلاع‌رسانی از URL
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,7 +40,6 @@ const ContractEditPage = ({ match }) => {
         setProducts(formattedProducts);
         setCustomers(formattedCustomers);
 
-        // بارگذاری فاکتور موجود برای ویرایش
         const factorData = await getFactorById(id);
         setFormData({
           price: factorData.price,
@@ -79,7 +76,6 @@ const ContractEditPage = ({ match }) => {
       }
     });
 
-    // چاپ مقادیر selectedProducts برای بررسی
     console.log(selectedProducts);
   };
 
@@ -120,14 +116,13 @@ const ContractEditPage = ({ match }) => {
     };
 
     try {
-      await updateFactor(id, payload); // بروزرسانی فاکتور با استفاده از ID و payload
+      await updateFactor(id, payload);
       Swal.fire({
         icon: "success",
         title: "بروزرسانی موفق!",
         text: "فاکتور با موفقیت بروزرسانی شد.",
       });
 
-      // بازنشانی فرم
       setFormData({ price: "", invoiceDate: "", description: "" });
       setSelectedProducts([]);
       setSelectedCustomer(null);

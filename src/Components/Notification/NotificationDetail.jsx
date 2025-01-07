@@ -62,7 +62,7 @@ const NotificationDetail = ({ data, onDelete }) => {
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
-            onClick={onDelete} // اضافه کردن تابع حذف
+            onClick={onDelete}
           />
         </div>
       </div>

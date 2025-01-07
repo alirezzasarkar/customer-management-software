@@ -1,5 +1,3 @@
-// src/Components/Customers/CustomersEdit.jsx
-
 import DashboardButton from "../Common/DashboardButton";
 import DashboardInputs from "../Common/DashBoardInputs";
 import PersianDatePicker from "../Common/DatePicker";
@@ -17,13 +15,6 @@ const CustomersEdit = ({
       <Title title="ویرایش پروفایل مشتریان" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md ">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="p-4">
-            <ProfileImage
-              upload_text="عکس خود را آپلود کنید"
-              onUpload={onProfilePictureUpload}
-              imageUrl={formData.customer_picture_url} // نمایش تصویر فعلی
-            />
-          </div>
           <div className="flex flex-col sm:flex-row justify-between gap-7">
             <DashboardInputs
               lable_text="نام و نام خانوادگی"

@@ -62,25 +62,20 @@ const SalesOpportunitiesEntryPage = () => {
     setSelectedCustomer(customer);
   };
 
-  // تابع مدیریت انتخاب محصول و تعداد آن
   const handleProductSelect = (product, quantity) => {
     setSelectedProducts((prevSelected) => {
       const existingProduct = prevSelected.find(
         (item) => item.id === product.id
       );
       if (existingProduct) {
-        // اگر از قبل انتخاب شده بود
         if (quantity === 0) {
-          // حذف
           return prevSelected.filter((item) => item.id !== product.id);
         } else {
-          // به‌روزرسانی تعداد
           return prevSelected.map((item) =>
             item.id === product.id ? { ...item, quantity } : item
           );
         }
       } else {
-        // افزودن محصول جدید
         return [...prevSelected, { ...product, quantity }];
       }
     });
@@ -138,7 +133,6 @@ const SalesOpportunitiesEntryPage = () => {
       onSubmit={handleSubmit}
       formData={formData}
       selectedProducts={selectedProducts}
-      /* برای نمایش مقدار انتخاب‌شده در دراپ‌دان */
       selectedCustomer={selectedCustomer}
       selectedPriority={selectedPriority}
     />

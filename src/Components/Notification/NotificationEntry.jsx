@@ -1,11 +1,10 @@
-// src/Components/Notification/NotificationEntry.jsx
 import DashboardButton from "../Common/DashboardButton";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
-import DashboardInputs from "../Common/DashboardInputs"; // اصلاح مسیر اگر لازم است
 import TimePicker from "../Common/TimePicker";
+import DashboardInputs from "../Common/DashBoardInputs";
 
 const NotificationEntry = ({
   onCustomerSelect,

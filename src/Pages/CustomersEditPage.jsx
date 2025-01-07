@@ -1,5 +1,3 @@
-// src/Pages/CustomersEditPage.jsx
-
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { getCustomerDetail, updateCustomer } from "../Services/APIs/Customers";
@@ -8,8 +6,8 @@ import Loading from "./../Components/Common/Loading";
 import { useNavigate, useParams } from "react-router-dom";
 
 const CustomersEditPage = () => {
-  const { id } = useParams(); // دریافت شناسه مشتری از URL
-  const navigate = useNavigate(); // برای هدایت بعد از موفقیت‌آمیز بودن به‌روزرسانی
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     full_name: "",
     national_id: "",
@@ -18,11 +16,11 @@ const CustomersEditPage = () => {
     birth_date: "",
     instagram: "",
     telegram: "",
-    customer_picture: null, // فایل جدید
-    customer_picture_url: "", // URL تصویر فعلی
-    buyer_rank: "", // فرض بر این است که این فیلد نیاز است
+    customer_picture: null,
+    customer_picture_url: "",
+    buyer_rank: "",
   });
-  const [loading, setLoading] = useState(true); // برای مدیریت وضعیت بارگذاری
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCustomer = async () => {
@@ -39,9 +37,9 @@ const CustomersEditPage = () => {
             : "",
           instagram: customerData.instagram_id || "",
           telegram: customerData.telegram_id || "",
-          customer_picture: null, // فایل جدید هنوز آپلود نشده
-          customer_picture_url: customerData.customer_picture || "", // URL تصویر فعلی
-          buyer_rank: customerData.buyer_rank || "", // مقداردهی اولیه buyer_rank
+          customer_picture: null,
+          customer_picture_url: customerData.customer_picture || "",
+          buyer_rank: customerData.buyer_rank || "",
         });
 
         setLoading(false);
@@ -76,10 +74,9 @@ const CustomersEditPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ایجاد FormData
     const formPayload = new FormData();
     if (formData.customer_picture) {
-      formPayload.append("customer_picture", formData.customer_picture); // ارسال فایل
+      formPayload.append("customer_picture", formData.customer_picture);
     }
     formPayload.append("full_name", formData.full_name);
     formPayload.append("national_id", formData.national_id);
@@ -96,13 +93,13 @@ const CustomersEditPage = () => {
     formPayload.append("buyer_rank", formData.buyer_rank);
 
     try {
-      await updateCustomer(id, formPayload); // ارسال FormData به API
+      await updateCustomer(id, formPayload);
       Swal.fire({
         icon: "success",
         title: "ویرایش موفق!",
         text: "پروفایل مشتری با موفقیت به‌روزرسانی شد.",
       }).then(() => {
-        navigate("/dashboard/customers/list"); // هدایت به صفحه لیست مشتریان پس از موفقیت
+        navigate("/dashboard/customers/list");
       });
     } catch (error) {
       console.error("Error updating customer profile:", error);

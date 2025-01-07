@@ -1,10 +1,9 @@
-// EmployeeEntry.jsx
 import DashboardButton from "../Common/DashboardButton";
+import DashboardDropDown from "../Common/DashBoardDropDown";
 import DashboardInputs from "../Common/DashBoardInputs";
 import PersianDatePicker from "../Common/DatePicker";
 import ProfileImage from "../Common/ProfileImage";
 import Title from "../Common/Title";
-import DashboardDropDown from "./../Common/DashboardDropDown";
 
 const EmployeeEntry = ({
   formData,
@@ -19,12 +18,6 @@ const EmployeeEntry = ({
       <Title title="ثبت کارمند جدید" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          {/* <div className="p-4">
-            <ProfileImage
-              upload_text="عکس را آپلود کنید"
-              onUpload={onProfilePictureUpload}
-            />
-          </div> */}
           <div className="flex justify-between">
             <DashboardInputs
               lable_text="نام و نام خانوادگی"

@@ -22,8 +22,6 @@ const ProductsDetailPage = () => {
         const product = await getProductDetail(id);
         const categories = await getCategory();
 
-        // در صورتی که مسیر تصویر به صورت نسبی برگردد، باید دامنه را به ابتدای آن اضافه کنیم
-        // اگر سرور مقدار product_image را به شکل /media/... برمی‌گرداند
         const baseUrl = "https://jalilvand-crm.liara.run";
         let fullImageUrl = product.product_image || "";
         if (fullImageUrl && fullImageUrl.startsWith("/")) {

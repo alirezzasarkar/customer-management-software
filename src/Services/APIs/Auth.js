@@ -3,7 +3,6 @@ import API_URL from "../Config/ApiConfig";
 import apiClient from "./../Config/AxiosConfig";
 import { handleApiError } from "../Handlers/ErrorHandler";
 
-// Login function
 export const login = async (credentials) => {
   try {
     const response = await axios.post(
@@ -18,7 +17,6 @@ export const login = async (credentials) => {
   }
 };
 
-// Register function
 export const register = async (data) => {
   try {
     const response = await apiClient.post(

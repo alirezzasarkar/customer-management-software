@@ -1,8 +1,7 @@
-// ProductsListPage.jsx
 import { useEffect, useState } from "react";
 import Loading from "../Components/Common/Loading";
 import ProductsList from "../Components/Products/ProductsList";
-import { getProducts, getCategory } from "../Services/APIs/Products"; // اطمینان از وارد کردن getCategory
+import { getProducts, getCategory } from "../Services/APIs/Products";
 import { convertStatusToPersian } from "../Utils/convertStatusToPersian";
 
 const columns = [
@@ -15,30 +14,26 @@ const columns = [
 const ProductsListPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState([]); // وضعیت برای دسته‌بندی‌ها
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchCategoriesAndProducts = async () => {
       setLoading(true);
       try {
-        // دریافت دسته‌بندی‌ها و محصولات به صورت همزمان
         const [categoriesData, productsData] = await Promise.all([
           getCategory(),
           getProducts(),
         ]);
 
-        // ایجاد نقشه‌ای از شناسه دسته‌بندی به نام آن
         const categoryMap = categoriesData.reduce((acc, category) => {
           acc[category.id] = category.category_name;
           return acc;
         }, {});
 
-        // تبدیل شناسه‌های دسته‌بندی به نام‌ها
         const convertedData = productsData.map((item) => ({
           id: item.id,
           product_name: item.product_name,
           price: item.price + " ریال",
-          // اگر دسته‌بندی‌ها به صورت آرایه‌ای از شناسه‌ها باشند
           category: Array.isArray(item.category)
             ? item.category
                 .map((catId) => categoryMap[catId] || "نامشخص")

@@ -10,9 +10,6 @@ const CustomersEntry = ({ formData, onSubmit, onInputChange }) => {
       <Title title="ثبت مشتری جدید" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md ">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          {/* <div className="p-4">
-            <ProfileImage upload_text="عکس را اپلود کنید" />
-          </div> */}
           <div className="flex flex-col sm:flex-row justify-between gap-7">
             <DashboardInputs
               lable_text="نام و نام خانوادگی مشتری"
