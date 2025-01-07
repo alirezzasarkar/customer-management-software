@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 export default function DashboardDropDownCount({
   label_text,
   items = [],
-  onSelect, // انتظار داریم onSelect(product, quantity) صدا زده شود
+  onSelect,
   selectedItems = [],
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,17 +32,14 @@ export default function DashboardDropDownCount({
     };
   }, []);
 
-  // وقتی آیتمی کلیک می‌شود:
   const handleItemClick = async (item) => {
     const isSelected = selectedItems.some(
       (selected) => selected.id === item.id
     );
 
     if (isSelected) {
-      // اگر محصول از قبل انتخاب شده بود، آن را حذف می‌کنیم (تعداد = 0)
       onSelect(item, 0);
     } else {
-      // اگر محصول جدید است، SweetAlert برای گرفتن تعداد
       const { value: quantity, isConfirmed } = await Swal.fire({
         title: `تعداد «${item.name}» را وارد کنید`,
         input: "number",
@@ -87,7 +84,6 @@ export default function DashboardDropDownCount({
 
       {isOpen && (
         <ul className="absolute top-1/2 left-0 z-10 mt-3 w-64 origin-top-right rounded-lg bg-white ring-opacity-5 transition focus:outline-none p-2 text-center text-sm space-y-3 text-[#0E295B]">
-          {/* جستجو */}
           <div className="relative">
             <input
               type="search"
@@ -98,7 +94,6 @@ export default function DashboardDropDownCount({
             />
           </div>
 
-          {/* لیست آیتم‌های فیلترشده */}
           {filteredItems.map((item) => {
             const isSelected = selectedItems.some(
               (selected) => selected.id === item.id
@@ -115,7 +110,6 @@ export default function DashboardDropDownCount({
             );
           })}
 
-          {/* اگر هیچ آیتمی یافت نشد */}
           {filteredItems.length === 0 && (
             <li className="text-gray-500">موردی یافت نشد.</li>
           )}
