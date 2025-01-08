@@ -7,6 +7,7 @@ import { convertStatusToPersian } from "../Utils/convertStatusToPersian";
 const columns = [
   { id: "product_name", label: "نام محصول" },
   { id: "price", label: "قیمت محصول" },
+  { id: "brand", label: "برند" },
   { id: "category", label: "دسته بندی" },
   { id: "status", label: "وضعیت" },
 ];
@@ -33,6 +34,7 @@ const ProductsListPage = () => {
         const convertedData = productsData.map((item) => ({
           id: item.id,
           product_name: item.product_name,
+          brand: item.brand,
           price: item.price + " ریال",
           category: Array.isArray(item.category)
             ? item.category

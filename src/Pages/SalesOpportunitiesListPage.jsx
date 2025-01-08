@@ -10,12 +10,24 @@ const columns = [
   { id: "profile", label: "نام و نام خانوادگی مشتری" },
   { id: "follow_up_date", label: "تاریخ پیگیری" },
   { id: "opportunity_priority", label: "اولویت فرصت" },
+  { id: "buyer_type", label: "نوع خرید مشتری" },
   { id: "estimated_amount", label: "مبلغ تخمینی" },
 ];
 
 const SalesOpportunitiesListPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const getBuyerTypeInPersian = (rank) => {
+    switch (rank) {
+      case "OM":
+        return "عمده";
+      case "KH":
+        return "خرده";
+      default:
+        return "مشخص نشده";
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +46,7 @@ const SalesOpportunitiesListPage = () => {
         const convertedData = salesOpportunities.map((item) => ({
           ...item,
           profile: customerMap[item.profile] || "نامشخص",
+          buyer_type: getBuyerTypeInPersian(item.buyer_type),
           follow_up_date: convertToShamsi(item.follow_up_date),
           opportunity_priority: convertPriorityToPersian(
             item.opportunity_priority

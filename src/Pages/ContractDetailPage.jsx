@@ -1,82 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import ContractDetail from "../Components/Contract/ContractDetail";
+import CampaignDetail from "../Components/Marketing/CampaignDetail";
 import Loading from "../Components/Common/Loading";
-import { getFactorById, deleteFactor } from "../Services/APIs/Contract";
-import { getProducts } from "../Services/APIs/Products";
-import { getCustomerDetail } from "../Services/APIs/Customers";
-import { getCategory } from "../Services/APIs/Products";
-import { convertToShamsi } from "../Utils/convertToShamsi";
+import {
+  getMarketingCampaignDetail,
+  deleteMarketingCampaign,
+} from "../Services/APIs/Marketing";
 import Swal from "sweetalert2";
+import { convertToShamsi } from "../Utils/convertToShamsi";
 
-const ContractDetailPage = () => {
+const targetRankMapping = {
+  BR: "برنزی",
+  SI: "نقره‌ای",
+  GO: "طلایی",
+};
+
+const CampaignDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState(null);
-  const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log("test", data);
   useEffect(() => {
-    const fetchAllData = async () => {
+    const fetchCampaign = async () => {
       try {
-        const factor = await getFactorById(id);
+        const campaign = await getMarketingCampaignDetail(id);
 
-        const [products, customer, categories] = await Promise.all([
-          getProducts(),
-          getCustomerDetail(factor.costumer),
-          getCategory(),
-        ]);
+        const displayTargetRanks = Array.isArray(campaign.target_rank)
+          ? campaign.target_rank
+              .map((rank) => targetRankMapping[rank] || rank)
+              .join(", ")
+          : targetRankMapping[campaign.target_rank] || campaign.target_rank;
 
-        const relatedProducts = factor.products.map((productItem) => {
-          const productDetail = products.find(
-            (prod) => prod.id === productItem.product_id
-          );
-
-          const categoryNames = productDetail.category.map((catId) => {
-            const foundCategory = categories.find((cat) => cat.id === catId);
-            return foundCategory
-              ? foundCategory.category_name
-              : "بدون دسته‌بندی";
-          });
-
-          const categoryString =
-            categoryNames.length > 0
-              ? categoryNames.join(", ")
-              : "بدون دسته‌بندی";
-
-          return {
-            ...productDetail,
-            quantity: productItem.quantity,
-            category: categoryString,
-          };
-        });
-
-        const convertedFactor = {
-          ...factor,
-          customer_name: customer.full_name,
-          contract_date: convertToShamsi(factor.contract_date),
-          price: factor.price + " ریال",
+        const convertedCampaign = {
+          ...campaign,
+          target_rank: displayTargetRanks,
+          start_date: convertToShamsi(campaign.start_date),
+          end_date: convertToShamsi(campaign.end_date),
         };
 
-        setData(convertedFactor);
-        setProductList(relatedProducts);
+        setData(convertedCampaign);
       } catch (error) {
-        console.error("Error fetching factor, products, and customer:", error);
+        console.error("Error fetching campaign details:", error);
         Swal.fire({
           icon: "error",
           title: "خطا",
-          text: "در بارگذاری جزئیات فاکتور مشکلی رخ داد.",
+          text: "در بارگذاری جزئیات کمپین مشکلی رخ داد.",
         });
       } finally {
         setLoading(false);
       }
     };
 
-    fetchAllData();
+    fetchCampaign();
   }, [id]);
 
-  const handleDeleteFactor = () => {
+  const handleDeleteCampaign = () => {
     Swal.fire({
       title: "آیا مطمئن هستید؟",
       text: "شما نمی‌توانید این عملیات را بازگردانی کنید!",
@@ -88,14 +67,14 @@ const ContractDetailPage = () => {
       cancelButtonText: "انصراف",
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteFactor(id)
+        deleteMarketingCampaign(id)
           .then(() => {
-            Swal.fire("حذف شد!", "فاکتور با موفقیت حذف شد.", "success");
-            window.location.replace("/dashboard/invoice/list");
+            Swal.fire("حذف شد!", "کمپین با موفقیت حذف شد.", "success");
+            navigate("/dashboard/marketing/list");
           })
           .catch((error) => {
-            console.error("Error deleting factor:", error);
-            Swal.fire("خطا!", "در حذف فاکتور مشکلی پیش آمد.", "error");
+            console.error("Error deleting campaign:", error);
+            Swal.fire("خطا!", "در حذف کمپین مشکلی پیش آمد.", "error");
           });
       }
     });
@@ -106,14 +85,10 @@ const ContractDetailPage = () => {
       {loading ? (
         <Loading />
       ) : (
-        <ContractDetail
-          data={data}
-          products={productList}
-          onDelete={handleDeleteFactor}
-        />
+        <CampaignDetail data={data} onDelete={handleDeleteCampaign} />
       )}
     </>
   );
 };
 
-export default ContractDetailPage;
+export default CampaignDetailPage;

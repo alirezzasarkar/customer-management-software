@@ -15,6 +15,7 @@ const ProductEntryPage = () => {
     productSize: "",
     productPrice: "",
     productDescription: "",
+    brand: "",
     category: [],
   });
   const [productImage, setProductImage] = useState(null);
@@ -75,6 +76,7 @@ const ProductEntryPage = () => {
     }
     const formPayload = new FormData();
     formPayload.append("product_name", formData.productName);
+    formPayload.append("brand", formData.brand);
     formPayload.append("price", parseFloat(formData.productPrice) || 0);
     formPayload.append("status", selectedStatus.id);
     formPayload.append("size", formData.productSize);
@@ -95,6 +97,7 @@ const ProductEntryPage = () => {
       });
       setFormData({
         productName: "",
+        brand: "",
         productColor: "",
         productSize: "",
         productPrice: "",

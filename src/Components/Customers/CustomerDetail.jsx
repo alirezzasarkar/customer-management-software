@@ -119,6 +119,14 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
             </span>
             <p className="text-gray-700 mt-2">{customerData?.instagram_id}</p>
           </div>
+          <div className="flex flex-col">
+            <span className="text-sm text-blue-800 font-semibold">آدرس</span>
+            <p className="text-gray-700 mt-2">{customerData?.address}</p>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
+            <p className="text-gray-700 mt-2">{customerData?.description}</p>
+          </div>
         </div>
 
         <div className="flex justify-center gap-5 mt-8">

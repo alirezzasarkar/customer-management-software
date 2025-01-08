@@ -9,6 +9,17 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
     navigate(`/dashboard/sales-opportunities/edit/${data.id}`);
   };
 
+  const getBuyerTypeInPersian = (rank) => {
+    switch (rank) {
+      case "OM":
+        return "عمده";
+      case "KH":
+        return "خرده";
+      default:
+        return "مشخص نشده";
+    }
+  };
+
   return (
     <div>
       <Title title="جزئیات فرصت فروش" />
@@ -53,6 +64,16 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
             </span>
             <p className="text-gray-700 mt-2">{data.estimated_amount} ریال</p>
           </div>
+          <div className="flex flex-col">
+            <span className="text-sm text-blue-800 font-semibold">
+              نوع خرید مشتری
+            </span>
+            <p className="text-gray-700 mt-2">
+              {getBuyerTypeInPersian(data?.buyer_type)}
+            </p>
+          </div>
+        </div>
+        <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mt-10 mb-4">
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
             <p className="text-gray-700 mt-2">{data.description}</p>

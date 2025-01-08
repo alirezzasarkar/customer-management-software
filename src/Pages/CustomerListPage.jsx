@@ -6,14 +6,27 @@ import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [
   { id: "full_name", label: "نام و نام خانوادگی مشتری" },
-  { id: "national_id", label: "کدملی" },
+  { id: "address", label: "آدرس" },
   { id: "phone_number", label: "شماره تماس" },
-  { id: "email", label: "ایمیل" },
+  { id: "buyer_rank", label: "نوع مشتری" },
 ];
 
 const CustomerListPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const getBuyerRankInPersian = (rank) => {
+    switch (rank) {
+      case "BR":
+        return "برنزی";
+      case "SI":
+        return "نقره‌ای";
+      case "GO":
+        return "طلایی";
+      default:
+        return "مشخص نشده";
+    }
+  };
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -24,9 +37,9 @@ const CustomerListPage = () => {
         const processedData = customers.map((customer) => ({
           id: customer.id,
           full_name: customer.full_name,
-          national_id: customer.national_id,
+          address: customer.address,
           phone_number: customer.phone_number,
-          email: customer.email,
+          buyer_rank: getBuyerRankInPersian(customer.buyer_rank),
           date_of_birth: convertToShamsi(customer.date_of_birth),
         }));
 

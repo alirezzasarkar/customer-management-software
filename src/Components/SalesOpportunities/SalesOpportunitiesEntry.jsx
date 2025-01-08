@@ -1,10 +1,10 @@
 import DashboardButton from "../Common/DashboardButton";
-import DashBoardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
 import DashboardDropDownCount from "../Common/DashboardDropDownCount";
 import DashboardDropDown from "../Common/DashboardDropDown";
+import DashboardInputs from "../Common/DashboardInputs";
 
 const SalesOpportunitiesEntry = ({
   customers,
@@ -19,6 +19,9 @@ const SalesOpportunitiesEntry = ({
   selectedProducts,
   selectedCustomer,
   selectedPriority,
+  buyer_type,
+  onbuyer_typeSelect,
+  selectedbuyer_type,
 }) => {
   return (
     <div className="w-full">
@@ -33,16 +36,16 @@ const SalesOpportunitiesEntry = ({
               selectedItem={selectedCustomer}
             />
 
+            <DashboardDropDown
+              label_text="نوع خرید مشتری"
+              items={buyer_type}
+              onSelect={onbuyer_typeSelect}
+              selectedItem={selectedbuyer_type}
+            />
+
             <PersianDatePicker
               label_text="تاریخ پیگیری"
               onChange={(date) => onInputChange("followUpDate", date)}
-            />
-
-            <DashBoardInputs
-              lable_text="مبلغ تخمینی (ریال)"
-              placeholder_text="مبلغ خود را وارد کنید"
-              value={formData.estimatedAmount}
-              onChange={(e) => onInputChange("estimatedAmount", e.target.value)}
             />
           </div>
 
@@ -61,13 +64,19 @@ const SalesOpportunitiesEntry = ({
               selectedItems={selectedProducts}
             />
 
-            <DashboardTextarea
-              label_text="افزودن یادداشت"
-              placeholder_text="افزودن یادداشت‌هایی از جلسات یا تماس‌های انجام‌شده"
-              value={formData.description}
-              onChange={(e) => onInputChange("description", e.target.value)}
+            <DashboardInputs
+              lable_text="مبلغ تخمینی (ریال)"
+              placeholder_text="مبلغ خود را وارد کنید"
+              value={formData.estimatedAmount}
+              onChange={(e) => onInputChange("estimatedAmount", e.target.value)}
             />
           </div>
+          <DashboardTextarea
+            label_text="افزودن یادداشت"
+            placeholder_text="افزودن یادداشت‌هایی از جلسات یا تماس‌های انجام‌شده"
+            value={formData.description}
+            onChange={(e) => onInputChange("description", e.target.value)}
+          />
 
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton

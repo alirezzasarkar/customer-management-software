@@ -7,6 +7,7 @@ const ProductsDetail = ({ data, onDelete }) => {
     product_name,
     price,
     size,
+    brand,
     color,
     status,
     category,
@@ -39,6 +40,10 @@ const ProductsDetail = ({ data, onDelete }) => {
             <p className="text-gray-700 mt-2">{color}</p>
           </div>
           <div className="flex flex-col">
+            <span className="text-sm text-blue-800 font-semibold">برند</span>
+            <p className="text-gray-700 mt-2">{brand}</p>
+          </div>
+          <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
               اندازه محصول
             </span>
@@ -60,11 +65,10 @@ const ProductsDetail = ({ data, onDelete }) => {
             </span>
             <p className="text-gray-700 mt-2">{category}</p>
           </div>
-        </div>
-
-        <div className="flex flex-col mt-8">
-          <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
-          <p className="text-gray-700 mt-2 leading-relaxed">{description}</p>
+          <div className="flex flex-col">
+            <span className="text-sm text-blue-800 font-semibold">توضیحات</span>
+            <p className="text-gray-700 mt-2 leading-relaxed">{description}</p>
+          </div>
         </div>
 
         <div className="flex justify-start mt-16 mb-10">

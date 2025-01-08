@@ -39,10 +39,10 @@ const ProductListEntry = ({
               onChange={(e) => onInputChange("productColor", e.target.value)}
             />
             <DashboardInputs
-              lable_text="اندازه محصول"
-              placeholder_text="۱۰۰ × ۵۰ × ۳۰"
-              value={formData.productSize}
-              onChange={(e) => onInputChange("productSize", e.target.value)}
+              lable_text="برند محصول"
+              placeholder_text="برند محصول خود را وارد کنید"
+              value={formData.brand}
+              onChange={(e) => onInputChange("brand", e.target.value)}
             />
           </div>
           <div className="flex justify-between">
@@ -59,11 +59,12 @@ const ProductListEntry = ({
               multiple={true}
             />
             <DashboardInputs
-              lable_text="قیمت محصول (ریال)"
-              value={formData.productPrice}
-              placeholder_text="قیمت محصول را وارد کنید"
-              onChange={(e) => onInputChange("productPrice", e.target.value)}
+              lable_text="اندازه محصول"
+              placeholder_text="۱۰۰ × ۵۰ × ۳۰"
+              value={formData.productSize}
+              onChange={(e) => onInputChange("productSize", e.target.value)}
             />
+
             <DashboardDropDown
               label_text="وضعیت"
               items={statuses}
@@ -72,14 +73,22 @@ const ProductListEntry = ({
               multiple={false}
             />
           </div>
-          <DashboardTextarea
-            label_text="مستندات تکمیلی"
-            placeholder_text="توضیحات تکمیلی را وارد کنید"
-            value={formData.productDescription}
-            onChange={(e) =>
-              onInputChange("productDescription", e.target.value)
-            }
-          />
+          <div className="flex gap-20">
+            <DashboardInputs
+              lable_text="قیمت محصول (ریال)"
+              value={formData.productPrice}
+              placeholder_text="قیمت محصول را وارد کنید"
+              onChange={(e) => onInputChange("productPrice", e.target.value)}
+            />
+            <DashboardTextarea
+              label_text="مستندات تکمیلی"
+              placeholder_text="توضیحات تکمیلی را وارد کنید"
+              value={formData.productDescription}
+              onChange={(e) =>
+                onInputChange("productDescription", e.target.value)
+              }
+            />
+          </div>
           <div>
             <ProductImage
               upload_text="تصویر محصول را آپلود کنید"

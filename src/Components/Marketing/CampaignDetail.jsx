@@ -3,12 +3,22 @@ import Title from "../Common/Title";
 import DashboardButton from "../Common/DashboardButton";
 import { useNavigate } from "react-router-dom";
 
+const targetRankMapping = {
+  BR: "برنزی",
+  SI: "نقره‌ای",
+  GO: "طلایی",
+};
+
 const CampaignDetail = ({ data, onDelete }) => {
   const navigate = useNavigate();
 
   const handleEditClick = () => {
     navigate(`/dashboard/marketing/edit/${data.id}`);
   };
+
+  const displayTargetRanks = Array.isArray(data.target_rank)
+    ? data.target_rank.map((rank) => targetRankMapping[rank] || rank).join(", ")
+    : targetRankMapping[data.target_rank] || data.target_rank;
 
   return (
     <>
@@ -40,18 +50,7 @@ const CampaignDetail = ({ data, onDelete }) => {
             <span className="text-sm text-blue-800 font-semibold">
               مخاطبین هدف
             </span>
-            <ul className="mt-2 list-disc list-inside">
-              {Array.isArray(data.target_audiences) &&
-              data.target_audiences.length > 0 ? (
-                data.target_audiences.map((audience, index) => (
-                  <li key={index} className="text-gray-700">
-                    {audience}
-                  </li>
-                ))
-              ) : (
-                <p className="text-gray-700">هیچ مخاطبی یافت نشد</p>
-              )}
-            </ul>
+            <p className="text-gray-700 mt-2">{displayTargetRanks}</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
@@ -74,7 +73,7 @@ const CampaignDetail = ({ data, onDelete }) => {
             icon="/src/Assets/Icons/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
-            onClick={onDelete} // افزودن عملکرد حذف
+            onClick={onDelete}
           />
         </div>
       </div>

@@ -1,35 +1,24 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import CampaignEntry from "../Components/Marketing/CampaignEntry";
-import { getCustomers } from "../Services/APIs/Customers";
 import { addMarketingCampaigns } from "../Services/APIs/Marketing";
 
 const CampaignEntryPage = () => {
-  const [customers, setCustomers] = useState([]);
+  const [targetRanks] = useState([
+    { id: "BR", name: "برنزی" },
+    { id: "SI", name: "نقره‌ای" },
+    { id: "GO", name: "طلایی" },
+  ]);
+
+  const [selectedTargetRanks, setSelectedTargetRanks] = useState([]);
+
   const [formData, setFormData] = useState({
     campaignName: "",
     followUpDate: "",
     endDate: "",
     message: "",
-    customers: [],
+    target_rank: [],
   });
-
-  useEffect(() => {
-    const fetchCustomers = async () => {
-      try {
-        const customersData = await getCustomers();
-        const formattedCustomers = customersData.map((customer) => ({
-          id: customer.id,
-          name: customer.full_name,
-        }));
-        setCustomers(formattedCustomers);
-      } catch (error) {
-        console.error("Error fetching customers:", error);
-      }
-    };
-
-    fetchCustomers();
-  }, []);
 
   const handleInputChange = (field, value) => {
     setFormData((prevState) => ({
@@ -38,13 +27,10 @@ const CampaignEntryPage = () => {
     }));
   };
 
-  const handleCustomerSelect = (selectedItems) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      customers: Array.isArray(selectedItems)
-        ? selectedItems.map((item) => item.id)
-        : [],
-    }));
+  const handleTargetRankSelect = (ranks) => {
+    setSelectedTargetRanks(ranks);
+    const ranksIds = ranks.map((rank) => rank.id);
+    handleInputChange("target_rank", ranksIds);
   };
 
   const handleSubmit = async (e) => {
@@ -62,7 +48,7 @@ const CampaignEntryPage = () => {
       start_date: formattedStartDate,
       end_date: formattedEndDate,
       message: formData.message,
-      target_audiences: formData.customers,
+      target_rank: formData.target_rank,
     };
 
     try {
@@ -77,8 +63,9 @@ const CampaignEntryPage = () => {
         followUpDate: "",
         endDate: "",
         message: "",
-        customers: [],
+        target_rank: [],
       });
+      setSelectedTargetRanks([]);
     } catch (error) {
       console.error("Error submitting campaign:", error);
       Swal.fire({
@@ -91,11 +78,12 @@ const CampaignEntryPage = () => {
 
   return (
     <CampaignEntry
-      customers={customers}
       formData={formData}
       onInputChange={handleInputChange}
-      onCustomerSelect={handleCustomerSelect}
       onSubmit={handleSubmit}
+      targetRanks={targetRanks}
+      onTargetRankSelect={handleTargetRankSelect}
+      selectedTargetRanks={selectedTargetRanks}
     />
   );
 };

@@ -1,5 +1,7 @@
+// src/Components/Marketing/CampaignEntry.js
+
 import DashboardButton from "../Common/DashboardButton";
-import DashboardDropDownList from "../Common/DashboardDropDownList";
+import DashboardDropDownList from "../Common/DashboardDropDownList"; // برای target_rank
 import DashboardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
@@ -9,8 +11,10 @@ const CampaignEntry = ({
   onSubmit,
   formData,
   onInputChange,
-  onCustomerSelect,
-  customers,
+  // Props مربوط به target_rank
+  targetRanks,
+  onTargetRankSelect,
+  selectedTargetRanks,
 }) => {
   return (
     <div>
@@ -37,13 +41,13 @@ const CampaignEntry = ({
           </div>
 
           <div className="flex gap-20">
+            {/* Dropdown برای انتخاب چندین target_rank */}
             <DashboardDropDownList
-              label_text="مخاطبین هدف"
-              items={customers}
-              onSelect={onCustomerSelect}
-              selectedItems={customers.filter((customer) =>
-                formData.customers.includes(customer.id)
-              )}
+              label_text="رتبه هدف"
+              items={targetRanks}
+              onSelect={onTargetRankSelect}
+              selectedItems={selectedTargetRanks}
+              isMulti={true} // فعال‌سازی چندگانه
             />
             <DashboardTextarea
               label_text="متن پیام"

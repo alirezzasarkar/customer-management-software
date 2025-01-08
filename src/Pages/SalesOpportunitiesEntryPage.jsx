@@ -6,6 +6,10 @@ import SalesOpportunitiesEntry from "./../Components/SalesOpportunities/SalesOpp
 import { addSalesOpportunity } from "./../Services/APIs/SalesOpportunities";
 
 const SalesOpportunitiesEntryPage = () => {
+  const [buyer_type] = useState([
+    { id: "KH", name: "خرده" },
+    { id: "OM", name: "عمده" },
+  ]);
   const [products, setProducts] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
@@ -16,6 +20,7 @@ const SalesOpportunitiesEntryPage = () => {
     estimatedAmount: "",
     description: "",
   });
+  const [selectedbuyer_type, setSelectedbuyer_type] = useState(null);
 
   const priorityOptions = [
     { id: "low_priority", name: "کم" },
@@ -85,6 +90,11 @@ const SalesOpportunitiesEntryPage = () => {
     setSelectedPriority(priority);
   };
 
+  const handlebuyer_typeSelect = (buyer_type) => {
+    setSelectedbuyer_type(buyer_type);
+    handleInputChange("buyer_type", buyer_type.id);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -93,6 +103,7 @@ const SalesOpportunitiesEntryPage = () => {
       : "";
 
     const payload = {
+      buyer_type: formData.buyer_type,
       follow_up_date: formattedDate,
       estimated_amount: parseFloat(formData.estimatedAmount) || 0,
       opportunity_priority: selectedPriority?.id || "",
@@ -135,6 +146,9 @@ const SalesOpportunitiesEntryPage = () => {
       selectedProducts={selectedProducts}
       selectedCustomer={selectedCustomer}
       selectedPriority={selectedPriority}
+      buyer_type={buyer_type}
+      onbuyer_typeSelect={handlebuyer_typeSelect}
+      selectedbuyer_type={selectedbuyer_type}
     />
   );
 };

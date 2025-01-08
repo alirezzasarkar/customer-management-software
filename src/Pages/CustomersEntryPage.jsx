@@ -5,6 +5,15 @@ import { addCustomers, getCustomers } from "../Services/APIs/Customers";
 
 const CustomersEntryPage = () => {
   const [customers, setCustomers] = useState([]);
+
+  const [buyer_rank] = useState([
+    { id: "BR", name: "برنزی" },
+    { id: "SI", name: "نقره ای" },
+    { id: "GO", name: "طلایی" },
+  ]);
+
+  const [selectedbuyer_rank, setSelectedbuyer_rank] = useState(null);
+
   const [formData, setFormData] = useState({
     full_name: "",
     national_id: "",
@@ -13,6 +22,9 @@ const CustomersEntryPage = () => {
     birth_date: "",
     instagram: "",
     telegram: "",
+    address: "",
+    description: "",
+    buyer_rank: "",
   });
 
   useEffect(() => {
@@ -39,6 +51,11 @@ const CustomersEntryPage = () => {
     }));
   };
 
+  const handlebuyer_rankSelect = (buyer_rank) => {
+    setSelectedbuyer_rank(buyer_rank);
+    handleInputChange("buyer_rank", buyer_rank.id);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -54,6 +71,9 @@ const CustomersEntryPage = () => {
       date_of_birth: formattedDate,
       instagram_id: formData.instagram,
       telegram_id: formData.telegram,
+      address: formData.address,
+      description: formData.description,
+      buyer_rank: formData.buyer_rank,
     };
 
     try {
@@ -79,6 +99,9 @@ const CustomersEntryPage = () => {
       formData={formData}
       onInputChange={handleInputChange}
       onSubmit={handleSubmit}
+      buyer_rank={buyer_rank}
+      onbuyer_rankSelect={handlebuyer_rankSelect}
+      selectedbuyer_rank={selectedbuyer_rank}
     />
   );
 };

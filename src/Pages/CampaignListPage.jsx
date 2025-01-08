@@ -6,9 +6,16 @@ import { convertToShamsi } from "../Utils/convertToShamsi";
 
 const columns = [
   { id: "campaign_name", label: "نام کمپین" },
+  { id: "target_rank", label: "مخاطبین هدف" },
   { id: "start_date", label: "تاریخ شروع" },
   { id: "end_date", label: "تاریخ پایان" },
 ];
+
+const targetRankMapping = {
+  BR: "برنزی",
+  SI: "نقره‌ای",
+  GO: "طلایی",
+};
 
 const CampaignListPage = () => {
   const [data, setData] = useState([]);
@@ -22,6 +29,11 @@ const CampaignListPage = () => {
 
         const convertedData = campaigns.map((item) => ({
           ...item,
+          target_rank: Array.isArray(item.target_rank)
+            ? item.target_rank
+                .map((rank) => targetRankMapping[rank] || rank)
+                .join(", ")
+            : targetRankMapping[item.target_rank] || item.target_rank,
           start_date: convertToShamsi(item.start_date),
           end_date: convertToShamsi(item.end_date),
         }));
