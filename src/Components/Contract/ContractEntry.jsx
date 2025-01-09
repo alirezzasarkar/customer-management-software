@@ -1,8 +1,10 @@
+// src/Components/Contract/ContractEntry.js
+
+import React from "react";
 import ContractFile from "../Common/ContractFile";
 import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDown from "../Common/DashBoardDropDown";
 import DashboardDropDownCount from "../Common/DashboardDropDownCount";
-import DashboardDropDownList from "../Common/DashboardDropDownList";
 import DashBoardInputs from "../Common/DashBoardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
@@ -19,6 +21,7 @@ const ContractEntry = ({
   selectedProducts,
   onFileChange,
   onSubmit,
+  files,
 }) => {
   return (
     <div>
@@ -57,7 +60,7 @@ const ContractEntry = ({
               value={formData.description}
               onChange={(e) => onInputChange("description", e.target.value)}
             />
-            <ContractFile onFileChange={onFileChange} />
+            <ContractFile files={files} onFileChange={onFileChange} />
           </div>
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton

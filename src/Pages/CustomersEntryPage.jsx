@@ -65,10 +65,10 @@ const CustomersEntryPage = () => {
 
     const payload = {
       full_name: formData.full_name,
-      national_id: formData.national_id,
+      national_id: formData.national_id || "",
       email: formData.email,
       phone_number: formData.phone,
-      date_of_birth: formattedDate,
+      date_of_birth: formattedDate || "",
       instagram_id: formData.instagram,
       telegram_id: formData.telegram,
       address: formData.address,

@@ -1,3 +1,5 @@
+// src/Pages/ContractEntryPage.js
+
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ContractEntry from "../Components/Contract/ContractEntry";
@@ -15,7 +17,7 @@ const ContractEntryPage = () => {
   const [customers, setCustomers] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState([]); // فایل‌ها به صورت آرایه از فایل‌ها
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,6 +41,11 @@ const ContractEntryPage = () => {
         setCustomers(formattedCustomers);
       } catch (error) {
         console.error("Error fetching data:", error);
+        Swal.fire({
+          icon: "error",
+          title: "خطا",
+          text: "مشکلی در واکشی داده‌ها وجود داشت.",
+        });
       }
     };
 
@@ -69,8 +76,25 @@ const ContractEntryPage = () => {
     setSelectedCustomer(customer);
   };
 
-  const handleFileChange = (fileUrls) => {
-    setFiles(fileUrls);
+  const handleFileChange = (selectedFiles) => {
+    // فیلتر فایل‌ها برای پذیرش فقط PDF و Word
+    const filteredFiles = Array.from(selectedFiles).filter((file) =>
+      [
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ].includes(file.type)
+    );
+
+    if (filteredFiles.length !== selectedFiles.length) {
+      Swal.fire({
+        icon: "warning",
+        title: "فرمت نامعتبر",
+        text: "لطفاً فقط فایل‌های PDF و Word را آپلود کنید.",
+      });
+    }
+
+    setFiles(filteredFiles);
   };
 
   const handleSubmit = async (e) => {
@@ -89,20 +113,30 @@ const ContractEntryPage = () => {
       ? new Date(formData.invoiceDate).toISOString().split("T")[0]
       : "";
 
-    const payload = {
-      costumer: selectedCustomer?.id || 0,
-      price: parseFloat(formData.price) || 0,
-      invoice_date: formattedDate,
-      description: formData.description,
-      products: selectedProducts.map((product) => ({
-        product_id: product.id,
-        quantity: product.quantity || 1,
-      })),
-      files,
-    };
+    // ایجاد FormData
+    const payload = new FormData();
+    payload.append("costumer", selectedCustomer.id || 0);
+    payload.append("price", parseFloat(formData.price) || 0);
+    payload.append("invoice_date", formattedDate);
+    payload.append("description", formData.description || "");
+
+    // اضافه کردن محصولات
+    selectedProducts.forEach((product, index) => {
+      payload.append(`products[${index}][product_id]`, product.id);
+      payload.append(`products[${index}][quantity]`, product.quantity || 1);
+    });
+
+    // اضافه کردن فایل‌ها
+    files.forEach((file, index) => {
+      payload.append(`files`, file);
+    });
 
     try {
-      const response = await addFactors(payload);
+      const response = await addFactors(payload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       Swal.fire({
         icon: "success",
         title: "ثبت موفق!",
@@ -135,6 +169,7 @@ const ContractEntryPage = () => {
       selectedProducts={selectedProducts}
       onFileChange={handleFileChange}
       onSubmit={handleSubmit}
+      files={files} // ارسال فایل‌ها به کامپوننت فرزند
     />
   );
 };

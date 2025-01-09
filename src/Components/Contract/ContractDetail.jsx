@@ -48,13 +48,13 @@ const ContractDetail = ({ data, products, onDelete }) => {
         </div>
 
         <div className="flex justify-center gap-5 mt-10">
-          <DashboardButton
+          {/* <DashboardButton
             inner_text="ویرایش اطلاعات"
             icon="/src/Assets/Icons/edit.svg"
             bg_color="bg-[#FF6500]"
             hover_state="hover:bg-[#FF6500] opacity-80"
             onClick={handleEditClick}
-          />
+          /> */}
           <DashboardButton
             inner_text="حذف اطلاعات"
             icon="/src/Assets/Icons/delete.svg"

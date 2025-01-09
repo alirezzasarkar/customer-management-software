@@ -10,6 +10,7 @@ import Title from "../Common/Title";
 const ProductListEdit = ({ productData }) => {
   const [formData, setFormData] = useState({
     product_name: "",
+    brand: "",
     price: "",
     size: "",
     color: "",
@@ -26,6 +27,7 @@ const ProductListEdit = ({ productData }) => {
     if (productData) {
       setFormData({
         product_name: productData.product_name || "",
+        brand: productData.brand || "",
         price: productData.price || "",
         size: productData.size || "",
         color: productData.color || "",
@@ -67,7 +69,7 @@ const ProductListEdit = ({ productData }) => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-7">
           <div className="flex justify-between">
             <DashboardInputs
-              label_text="نام محصول"
+              lable_text="نام محصول"
               value={formData.product_name}
               onChange={(e) =>
                 handleInputChange("product_name", e.target.value)
@@ -75,16 +77,16 @@ const ProductListEdit = ({ productData }) => {
               placeholder_text="نام محصول خود را وارد کنید"
             />
             <DashboardInputs
-              label_text="رنگ محصول"
+              lable_text="رنگ محصول"
               value={formData.color}
               onChange={(e) => handleInputChange("color", e.target.value)}
               placeholder_text="رنگ محصول خود را وارد کنید"
             />
             <DashboardInputs
-              label_text="اندازه محصول"
-              value={formData.size}
-              onChange={(e) => handleInputChange("size", e.target.value)}
-              placeholder_text="۱۱۰ × ۲۱۵ × ۲۰ سانتی متر"
+              lable_text="برند"
+              value={formData.brand}
+              onChange={(e) => handleInputChange("brand", e.target.value)}
+              placeholder_text="برند محصول خود را وارد کنید"
             />
           </div>
           <div className="flex justify-between">
@@ -94,24 +96,33 @@ const ProductListEdit = ({ productData }) => {
               onChange={(e) => handleInputChange("category", e.target.value)}
             />
             <DashboardInputs
-              label_text="قیمت محصول"
-              value={formData.price}
-              onChange={(e) => handleInputChange("price", e.target.value)}
-              placeholder_text="قیمت محصول خود را وارد کنید"
+              lable_text="اندازه محصول"
+              value={formData.size}
+              onChange={(e) => handleInputChange("size", e.target.value)}
+              placeholder_text="۱۱۰ × ۲۱۵ × ۲۰ سانتی متر"
             />
+
             <DashboardInputs
-              label_text="وضعیت"
+              lable_text="وضعیت"
               value={formData.status}
               onChange={(e) => handleInputChange("status", e.target.value)}
               placeholder_text="فعال , غیر فعال , پیش فرض"
             />
           </div>
-          <DashboardTextarea
-            label_text="مستندات تکمیلی"
-            value={formData.description}
-            onChange={(e) => handleInputChange("description", e.target.value)}
-            placeholder_text="لورم ایپسوم با متن ساختگی ..."
-          />
+          <div className="flex gap-20">
+            <DashboardInputs
+              lable_text="قیمت محصول"
+              value={formData.price}
+              onChange={(e) => handleInputChange("price", e.target.value)}
+              placeholder_text="قیمت محصول خود را وارد کنید"
+            />
+            <DashboardTextarea
+              label_text="مستندات تکمیلی"
+              value={formData.description}
+              onChange={(e) => handleInputChange("description", e.target.value)}
+              placeholder_text="لورم ایپسوم با متن ساختگی ..."
+            />
+          </div>
           <div className="">
             <ProductImage
               upload_text="تصاویر خود را اپلود کنید"
