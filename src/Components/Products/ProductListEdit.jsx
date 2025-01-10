@@ -53,7 +53,7 @@ const ProductListEdit = ({ productData }) => {
 
     try {
       const updatedProduct = await updateProduct(productData.id, formData);
-      console.log("Product updated successfully:", updatedProduct);
+      "Product updated successfully:", updatedProduct;
     } catch (error) {
       setError("There was an error updating the product. Please try again.");
       console.error(error);

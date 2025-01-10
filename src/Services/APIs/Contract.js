@@ -3,8 +3,12 @@ import { handleApiError } from "../Handlers/ErrorHandler";
 
 export const addFactors = async (payload) => {
   try {
-    const response = await apiClient.post("/factors/", payload);
-    console.log("Factors Added:", response.data);
+    const response = await apiClient.post("/factors/", payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    "Factors Added:", response.data;
     return response.data;
   } catch (error) {
     console.error("Error adding factors:", error);
@@ -16,7 +20,7 @@ export const addFactors = async (payload) => {
 export const getFactors = async () => {
   try {
     const response = await apiClient.get("/factors/");
-    console.log(response.data);
+    response.data;
     return response.data;
   } catch (error) {
     console.error("Error fetching factors:", error);
@@ -28,7 +32,7 @@ export const getFactors = async () => {
 export const getFactorById = async (id) => {
   try {
     const response = await apiClient.get(`/factors/${id}`);
-    console.log(response.data);
+    response.data;
     return response.data;
   } catch (error) {
     console.error("Error fetching factor details:", error);
@@ -40,7 +44,7 @@ export const getFactorById = async (id) => {
 export const deleteFactor = async (id) => {
   try {
     const response = await apiClient.delete(`/factors/${id}`);
-    console.log("Factor Deleted:", response.data);
+    "Factor Deleted:", response.data;
     return response.data;
   } catch (error) {
     console.error("Error deleting factor:", error);
@@ -52,7 +56,7 @@ export const deleteFactor = async (id) => {
 export const updateFactor = async (id, payload) => {
   try {
     const response = await apiClient.put(`/factors/${id}`, payload);
-    console.log("Factor Updated:", response.data);
+    "Factor Updated:", response.data;
     return response.data;
   } catch (error) {
     console.error("Error updating factor:", error);

@@ -7,7 +7,7 @@ export const addEmployees = async (payload) => {
       "/accountemployee/create-user/",
       payload
     );
-    console.log("Employee Response:", response);
+    "Employee Response:", response;
     return response.data;
   } catch (error) {
     console.error("Error fetching employee list:", error);
@@ -19,7 +19,7 @@ export const addEmployees = async (payload) => {
 export const getEmployees = async () => {
   try {
     const response = await apiClient.get("/accountemployee/profiles/");
-    console.log(response.data);
+    response.data;
 
     return response.data;
   } catch (error) {
@@ -43,7 +43,7 @@ export const getEmployeeDetail = async (id) => {
 export const deleteEmployee = async (id) => {
   try {
     const response = await apiClient.delete(`/accountemployee/profiles/${id}/`);
-    console.log("Delete Response:", response);
+    "Delete Response:", response;
     return response.data;
   } catch (error) {
     console.error("Error deleting employee:", error);
@@ -58,7 +58,7 @@ export const updateEmployee = async (id, payload) => {
       `/accountemployee/profiles/${id}/`,
       payload
     );
-    console.log("Employee Updated:", response.data);
+    "Employee Updated:", response.data;
     return response.data;
   } catch (error) {
     console.error("Error updating employee:", error);

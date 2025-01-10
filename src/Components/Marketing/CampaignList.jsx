@@ -6,7 +6,7 @@ import Title from "../Common/Title";
 
 const CampaignList = ({ data, columns }) => {
   const [filteredData, setFilteredData] = useState(data);
-  console.log(filteredData);
+  filteredData;
 
   useEffect(() => {
     setFilteredData(data);

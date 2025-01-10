@@ -1,5 +1,3 @@
-// src/Components/Contract/ContractEntry.js
-
 import React from "react";
 import ContractFile from "../Common/ContractFile";
 import DashboardButton from "../Common/DashboardButton";
@@ -27,7 +25,11 @@ const ContractEntry = ({
     <div>
       <Title title="وارد کردن فاکتور" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
-        <form className="flex flex-col gap-7" onSubmit={onSubmit}>
+        <form
+          className="flex flex-col gap-7"
+          onSubmit={onSubmit}
+          encType="multipart/form-data"
+        >
           <div className="flex justify-between gap-5">
             <DashboardDropDown
               label_text="نام و نام خانوادگی مشتری"

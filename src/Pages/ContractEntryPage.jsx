@@ -1,5 +1,3 @@
-// src/Pages/ContractEntryPage.js
-
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ContractEntry from "../Components/Contract/ContractEntry";
@@ -17,7 +15,8 @@ const ContractEntryPage = () => {
   const [customers, setCustomers] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [files, setFiles] = useState([]); // فایل‌ها به صورت آرایه از فایل‌ها
+  const [files, setFiles] = useState([]);
+  const [uploadMessage, setUploadMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +76,6 @@ const ContractEntryPage = () => {
   };
 
   const handleFileChange = (selectedFiles) => {
-    // فیلتر فایل‌ها برای پذیرش فقط PDF و Word
     const filteredFiles = Array.from(selectedFiles).filter((file) =>
       [
         "application/pdf",
@@ -95,6 +93,7 @@ const ContractEntryPage = () => {
     }
 
     setFiles(filteredFiles);
+    setUploadMessage("فایل با موفقیت آپلود شد.");
   };
 
   const handleSubmit = async (e) => {
@@ -113,30 +112,27 @@ const ContractEntryPage = () => {
       ? new Date(formData.invoiceDate).toISOString().split("T")[0]
       : "";
 
-    // ایجاد FormData
     const payload = new FormData();
     payload.append("costumer", selectedCustomer.id || 0);
     payload.append("price", parseFloat(formData.price) || 0);
     payload.append("invoice_date", formattedDate);
     payload.append("description", formData.description || "");
 
-    // اضافه کردن محصولات
     selectedProducts.forEach((product, index) => {
       payload.append(`products[${index}][product_id]`, product.id);
       payload.append(`products[${index}][quantity]`, product.quantity || 1);
     });
 
-    // اضافه کردن فایل‌ها
-    files.forEach((file, index) => {
-      payload.append(`files`, file);
+    files.forEach((file) => {
+      if (file instanceof File) {
+        payload.append("files[]", file);
+      } else {
+        console.error("Uploaded file is not of type File:", file);
+      }
     });
 
     try {
-      const response = await addFactors(payload, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await addFactors(payload);
       Swal.fire({
         icon: "success",
         title: "ثبت موفق!",
@@ -147,6 +143,7 @@ const ContractEntryPage = () => {
       setSelectedProducts([]);
       setSelectedCustomer(null);
       setFiles([]);
+      setUploadMessage("");
     } catch (error) {
       console.error("Error submitting factors:", error);
       Swal.fire({
@@ -169,7 +166,8 @@ const ContractEntryPage = () => {
       selectedProducts={selectedProducts}
       onFileChange={handleFileChange}
       onSubmit={handleSubmit}
-      files={files} // ارسال فایل‌ها به کامپوننت فرزند
+      files={files}
+      uploadMessage={uploadMessage}
     />
   );
 };

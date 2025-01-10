@@ -131,7 +131,7 @@ const NotificationEditPage = () => {
       audiences: audiences.length ? audiences : [0],
     };
 
-    console.log("Payload:", payload);
+    "Payload:", payload;
 
     try {
       await updateNotice(id, payload);

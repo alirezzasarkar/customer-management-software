@@ -74,7 +74,7 @@ const EmployeeEntryPage = () => {
         work_position: formData.jobTitle,
         department: formData.department,
         telegram_id: formData.telegramId,
-        date_of_assignment: formattedDate,
+        date_of_assignment: formattedDate || null,
       },
     };
 

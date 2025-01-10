@@ -19,7 +19,7 @@ const Dashboard = ({
           <DashboardBox
             title="کل درآمد"
             summary="مبلغ کل فروش های انجام شده"
-            summary_detail={`${sales_data.total_sales} تومان`}
+            summary_detail={`${sales_data.total_sales} ریال`}
             DeatilPage="/dashboard/invoice/list"
           />
           <DashboardBox

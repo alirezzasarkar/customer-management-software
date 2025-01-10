@@ -9,7 +9,7 @@ export const login = async (credentials) => {
       `${API_URL}/accountemployee/employee-login/`,
       credentials
     );
-    console.log(response.data);
+    response.data;
     return response.data;
   } catch (error) {
     console.error("Login error:", error.response);
@@ -23,7 +23,7 @@ export const register = async (data) => {
       "/accountemployee/create-user/",
       data
     );
-    console.log(response.data);
+    response.data;
     return response.data;
   } catch (error) {
     handleApiError(error);

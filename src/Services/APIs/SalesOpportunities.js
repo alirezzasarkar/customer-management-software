@@ -7,7 +7,7 @@ export const addSalesOpportunity = async (data) => {
       "/salesopportunities/sales-opportunities/",
       data
     );
-    console.log("Sales Opportunity Added:", response.data);
+    "Sales Opportunity Added:", response.data;
     return response.data;
   } catch (error) {
     console.error("Error adding sales opportunity:", error);
@@ -34,7 +34,7 @@ export const getSalesOpportunityDetail = async (id) => {
     const response = await apiClient.get(
       `/salesopportunities/sales-opportunities/${id}`
     );
-    console.log(response.data);
+    response.data;
     return response.data;
   } catch (error) {
     console.error("Error fetching sales opportunity detail:", error);
@@ -48,7 +48,7 @@ export const deleteSalesOpportunity = async (id) => {
     const response = await apiClient.delete(
       `/salesopportunities/sales-opportunities/${id}/`
     );
-    console.log("Sales Opportunity Deleted:", response.data);
+    "Sales Opportunity Deleted:", response.data;
     return response.data;
   } catch (error) {
     console.error("Error deleting sales opportunity:", error);
@@ -63,7 +63,7 @@ export const updateSalesOpportunity = async (id, data) => {
       `/salesopportunities/sales-opportunities/${id}/`,
       data
     );
-    console.log("Sales Opportunity Updated:", response.data);
+    "Sales Opportunity Updated:", response.data;
     return response.data;
   } catch (error) {
     console.error("Error updating sales opportunity:", error);

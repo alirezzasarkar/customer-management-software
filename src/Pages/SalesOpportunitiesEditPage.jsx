@@ -41,7 +41,7 @@ const SalesOpportunitiesEditPage = () => {
             getSalesOpportunityDetail(id),
           ]);
 
-        console.log("Fetched Opportunity Data:", opportunityData);
+        "Fetched Opportunity Data:", opportunityData;
 
         const formattedProducts = productsData.map((product) => ({
           id: product.id,

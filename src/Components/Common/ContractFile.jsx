@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContractFile = ({ onFileChange }) => {
+const ContractFile = ({ onFileChange, uploadMessage }) => {
   const handleFileSelect = (e) => {
     const filesArray = Array.from(e.target.files);
     onFileChange(filesArray);
@@ -14,7 +14,7 @@ const ContractFile = ({ onFileChange }) => {
           className="text-[#4161A0] cursor-pointer font-medium text-sm flex items-center justify-between w-full"
         >
           <span className="flex flex-row-reverse items-center gap-2">
-            فایل فاکتور را اپلود کنید
+            فایل فاکتور را آپلود کنید
             <span>
               <img
                 src="/src/Assets/Icons/upload_folder.svg"
@@ -24,7 +24,7 @@ const ContractFile = ({ onFileChange }) => {
             </span>
           </span>
           <span className="mr-2 text-sm bg-white py-1 px-2 rounded-md">
-            اپلود فایل
+            آپلود فایل
           </span>
         </label>
         <input
@@ -35,6 +35,10 @@ const ContractFile = ({ onFileChange }) => {
           onChange={handleFileSelect}
         />
       </div>
+
+      {uploadMessage && (
+        <div className="mt-2 text-green-500 text-sm">{uploadMessage}</div>
+      )}
     </div>
   );
 };

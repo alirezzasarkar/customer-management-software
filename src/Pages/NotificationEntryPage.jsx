@@ -98,7 +98,7 @@ const NotificationEntryPage = () => {
       audiences: audiences.length ? audiences : [0],
     };
 
-    console.log("Payload:", payload);
+    "Payload:", payload;
 
     try {
       await addNotices(payload);

@@ -76,7 +76,7 @@ const ContractEditPage = ({ match }) => {
       }
     });
 
-    console.log(selectedProducts);
+    selectedProducts;
   };
 
   const handleCustomerSelect = (customer) => {

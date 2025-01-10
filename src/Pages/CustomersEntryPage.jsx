@@ -65,10 +65,10 @@ const CustomersEntryPage = () => {
 
     const payload = {
       full_name: formData.full_name,
-      national_id: formData.national_id || "",
+      national_id: formData.national_id || null,
       email: formData.email,
       phone_number: formData.phone,
-      date_of_birth: formattedDate || "",
+      date_of_birth: formattedDate || null,
       instagram_id: formData.instagram,
       telegram_id: formData.telegram,
       address: formData.address,
@@ -78,7 +78,7 @@ const CustomersEntryPage = () => {
 
     try {
       await addCustomers(payload);
-      console.log("Submitting customer data:", payload);
+      "Submitting customer data:", payload;
       Swal.fire({
         icon: "success",
         title: "ثبت موفق!",
