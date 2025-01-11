@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import Loading from "../Common/Loading";
+import { login as loginAPI } from "./../../Services/APIs/Auth";
 
 const AuthContext = createContext(undefined);
 
@@ -35,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   // Login function to authenticate user and store token in local storage
   const login = async (credentials) => {
     try {
-      const response = await login(credentials);
+      const response = await loginAPI(credentials);
       const token = response.access;
       localStorage.setItem("token", token);
       setUser(decodeToken(token));
