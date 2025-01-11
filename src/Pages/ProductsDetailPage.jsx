@@ -44,7 +44,7 @@ const ProductsDetailPage = () => {
           ...product,
           product_image: fullImageUrl,
           status: convertStatusToPersian(product.status),
-          price: product.price + " ریال",
+          price: product.price.toLocaleString("fa-IR") + " ریال",
           category: categoryString,
         };
 

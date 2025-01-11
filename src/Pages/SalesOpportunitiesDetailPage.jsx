@@ -80,6 +80,8 @@ const SalesOpportunitiesDetailPage = () => {
           ),
           products: productList,
           customer_name: customerMap[opportunity.profile] || "نامشخص",
+          estimated_amount:
+            opportunity.estimated_amount.toLocaleString("fa-IR"),
         };
 
         setData(convertedData);

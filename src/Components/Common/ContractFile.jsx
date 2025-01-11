@@ -1,8 +1,6 @@
-// src/Components/Common/ContractFile.jsx
-
 import React from "react";
 
-const ContractFile = ({ onFileChange, uploadMessage, files }) => {
+const ContractFile = ({ onFileChange, uploadMessage = "", files = [] }) => {
   const handleFileSelect = (e) => {
     const filesArray = Array.from(e.target.files);
     onFileChange(filesArray);
@@ -34,6 +32,7 @@ const ContractFile = ({ onFileChange, uploadMessage, files }) => {
           id="fileUpload"
           className="hidden"
           multiple
+          accept=".pdf,.doc,.docx"
           onChange={handleFileSelect}
         />
       </div>
@@ -42,14 +41,18 @@ const ContractFile = ({ onFileChange, uploadMessage, files }) => {
         <div className="mt-2 text-green-500 text-sm">{uploadMessage}</div>
       )}
 
-      {files && files.length > 0 && (
-        <div className="mt-2 text-gray-700 text-sm">
-          <strong>فایل‌های انتخاب شده:</strong>
+      {files.length > 0 ? (
+        <div className="mt-4 text-gray-700 text-sm">
+          <strong>فایل‌ انتخاب شده:</strong>
           <ul className="list-disc list-inside">
             {files.map((file, index) => (
               <li key={index}>{file.name}</li>
             ))}
           </ul>
+        </div>
+      ) : (
+        <div className="mt-4 text-gray-500 text-sm">
+          هیچ فایلی انتخاب نشده است.
         </div>
       )}
     </div>

@@ -65,12 +65,17 @@ const DashboardCharts = ({
             y: {
               title: {
                 display: true,
-                text: chartType === "bar" ? "تعداد" : "تغییرات",
+                text: chartType === "bar" ? "تعداد" : "تغییرات بر اساس قیمت",
                 color: "#153D8A",
                 font: {
                   size: 12,
                   weight: "bold",
                   family: "Shabnam",
+                },
+              },
+              ticks: {
+                callback: function (value) {
+                  return Number.isInteger(value) ? value : null;
                 },
               },
             },

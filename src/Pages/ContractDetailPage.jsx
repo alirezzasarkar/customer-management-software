@@ -45,9 +45,7 @@ const ContractDetailPage = () => {
           customer_name: customer.full_name,
           contract_date: convertToShamsi(factor.contract_date),
           price: factor.price.toLocaleString("fa-IR") + " ریال",
-          file_url: factor.files
-            ? `https://jalilvand-crm.liara.run/${factor.files}`
-            : null,
+          file_url: factor.files ? `${factor.files}` : null,
         };
 
         setData(convertedFactor);

@@ -3,13 +3,32 @@ import { handleApiError } from "../Handlers/ErrorHandler";
 
 export const addFactors = async (payload) => {
   try {
-    const response = await apiClient.post("/factors/", payload);
-    "Factors Added:", response.data;
-    console.log(response.data);
+    const formData = new FormData();
+
+    formData.append("costumer", payload.costumer);
+    formData.append("price", payload.price);
+    formData.append("description", payload.description);
+
+    if (payload.products && payload.products.length > 0) {
+      formData.append("products", JSON.stringify(payload.products));
+    }
+
+    if (payload.files && payload.files.length > 0) {
+      payload.files.forEach((file) => {
+        formData.append("files", file);
+      });
+    }
+
+    const response = await apiClient.post("/factors/", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    console.log("Factors Added:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error adding factors:", error);
-    handleApiError(error);
     throw error;
   }
 };

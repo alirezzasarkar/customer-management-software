@@ -117,23 +117,22 @@ const ContractEntryPage = () => {
       ? new Date(formData.invoiceDate).toISOString().split("T")[0]
       : "";
 
-    try {
-      const uploadedFileURLs = await Promise.all(
-        files.map((file) => dummyUploadFile(file))
-      );
+    const formattedPrice = formData.price.replace(/,/g, ""); // حذف کاما از مقدار قیمت
 
+    try {
       const payload = {
         costumer: selectedCustomer.id || 0,
-        price: parseFloat(formData.price.replace(/,/g, "")) || 0,
+        price: parseFloat(formattedPrice) || 0,
         description: formData.description || "",
         products: selectedProducts.map((product) => ({
-          product_id: product.id,
+          product: product.id,
           quantity: product.quantity || 1,
         })),
-        files: uploadedFileURLs,
+        files: files || "",
       };
 
       const response = await addFactors(payload);
+
       Swal.fire({
         icon: "success",
         title: "ثبت موفق!",

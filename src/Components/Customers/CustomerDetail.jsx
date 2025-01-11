@@ -41,7 +41,7 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
       case "GO":
         return "طلایی";
       default:
-        return "ناشناخته";
+        return "مشخص نشده";
     }
   };
 
