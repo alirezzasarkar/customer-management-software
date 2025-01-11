@@ -22,6 +22,8 @@ const ContractEntry = ({
   files,
   uploadMessage,
 }) => {
+  console.log(products);
+
   return (
     <div>
       <Title title="وارد کردن فاکتور" />

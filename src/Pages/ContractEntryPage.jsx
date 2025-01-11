@@ -58,15 +58,21 @@ const ContractEntryPage = () => {
     }));
   };
 
-  const handleProductSelect = (product, quantity = 1) => {
+  const handleProductSelect = (product, quantity) => {
     setSelectedProducts((prevSelected) => {
-      const exists = prevSelected.find((item) => item.id === product.id);
-      if (exists) {
-        return prevSelected.map((item) =>
-          item.id === product.id ? { ...item, quantity } : item
-        );
+      const existingProduct = prevSelected.find(
+        (item) => item.id === product.id
+      );
+      if (existingProduct) {
+        if (quantity === 0) {
+          return prevSelected.filter((item) => item.id !== product.id);
+        } else {
+          return prevSelected.map((item) =>
+            item.id === product.id ? { ...item, quantity } : item
+          );
+        }
       } else {
-        return [...prevSelected, { id: product.id, quantity }];
+        return [...prevSelected, { ...product, quantity }];
       }
     });
   };
@@ -108,10 +114,9 @@ const ContractEntryPage = () => {
       return;
     }
 
-    const formattedPrice = formData.price.replace(/,/g, ""); // حذف کاما از مقدار قیمت
+    const formattedPrice = formData.price.replace(/,/g, "");
 
     try {
-      // تبدیل محصولات به فرمت مورد انتظار
       const formattedProducts = selectedProducts
         .map((product) => `${product.id}:${product.quantity}`)
         .join(",");
@@ -120,7 +125,7 @@ const ContractEntryPage = () => {
         costumer: selectedCustomer.id || 0,
         price: parseFloat(formattedPrice) || 0,
         description: formData.description || "",
-        products: formattedProducts, // ارسال به فرمت صحیح
+        products: formattedProducts,
         files,
       };
 
@@ -132,7 +137,6 @@ const ContractEntryPage = () => {
         text: "فاکتور با موفقیت ثبت شد.",
       });
 
-      // بازنشانی مقادیر فرم
       setFormData({ price: "", invoiceDate: "", description: "" });
       setSelectedProducts([]);
       setSelectedCustomer(null);

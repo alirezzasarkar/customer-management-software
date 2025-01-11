@@ -8,7 +8,6 @@ const columns = [
   { id: "product_name", label: "نام محصول" },
   { id: "quantity", label: "تعداد" },
   { id: "price", label: "قیمت محصول (ریال)" },
-  { id: "category", label: "دسته بندی" },
 ];
 
 const ContractDetail = ({ data, products, onDelete }) => {
