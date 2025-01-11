@@ -5,14 +5,15 @@ export const addFactors = async (payload) => {
   try {
     const formData = new FormData();
 
+    // افزودن فیلدهای مورد نیاز به FormData
     formData.append("costumer", payload.costumer);
     formData.append("price", payload.price);
     formData.append("description", payload.description);
 
-    if (payload.products && payload.products.length > 0) {
-      formData.append("products", JSON.stringify(payload.products));
-    }
+    // افزودن محصولات به عنوان یک رشته
+    formData.append("products", payload.products);
 
+    // افزودن فایل‌ها
     if (payload.files && payload.files.length > 0) {
       payload.files.forEach((file) => {
         formData.append("files", file);
@@ -29,6 +30,7 @@ export const addFactors = async (payload) => {
     return response.data;
   } catch (error) {
     console.error("Error adding factors:", error);
+    handleApiError(error);
     throw error;
   }
 };

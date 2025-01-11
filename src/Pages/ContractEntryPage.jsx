@@ -1,14 +1,9 @@
-// src/Containers/ContractEntryPage.jsx
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ContractEntry from "../Components/Contract/ContractEntry";
 import { addFactors } from "../Services/APIs/Contract";
 import { getProducts } from "../Services/APIs/Products";
 import { getCustomers } from "../Services/APIs/Customers";
-
-const dummyUploadFile = async (file) => {
-  return `/media/factor_files/${file.name}`;
-};
 
 const ContractEntryPage = () => {
   const [formData, setFormData] = useState({
@@ -71,7 +66,7 @@ const ContractEntryPage = () => {
           item.id === product.id ? { ...item, quantity } : item
         );
       } else {
-        return [...prevSelected, { ...product, quantity }];
+        return [...prevSelected, { id: product.id, quantity }];
       }
     });
   };
@@ -113,22 +108,20 @@ const ContractEntryPage = () => {
       return;
     }
 
-    const formattedDate = formData.invoiceDate
-      ? new Date(formData.invoiceDate).toISOString().split("T")[0]
-      : "";
-
     const formattedPrice = formData.price.replace(/,/g, ""); // حذف کاما از مقدار قیمت
 
     try {
+      // تبدیل محصولات به فرمت مورد انتظار
+      const formattedProducts = selectedProducts
+        .map((product) => `${product.id}:${product.quantity}`)
+        .join(",");
+
       const payload = {
         costumer: selectedCustomer.id || 0,
         price: parseFloat(formattedPrice) || 0,
         description: formData.description || "",
-        products: selectedProducts.map((product) => ({
-          product: product.id,
-          quantity: product.quantity || 1,
-        })),
-        files: files || "",
+        products: formattedProducts, // ارسال به فرمت صحیح
+        files,
       };
 
       const response = await addFactors(payload);
@@ -139,6 +132,7 @@ const ContractEntryPage = () => {
         text: "فاکتور با موفقیت ثبت شد.",
       });
 
+      // بازنشانی مقادیر فرم
       setFormData({ price: "", invoiceDate: "", description: "" });
       setSelectedProducts([]);
       setSelectedCustomer(null);

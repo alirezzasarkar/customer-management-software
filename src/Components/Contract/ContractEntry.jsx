@@ -1,5 +1,3 @@
-// src/Components/Contract/ContractEntry.js
-
 import React from "react";
 import ContractFile from "../Common/ContractFile";
 import DashboardButton from "../Common/DashboardButton";
