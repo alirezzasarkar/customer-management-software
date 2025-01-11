@@ -43,7 +43,7 @@ export default function DashboardDropDownList({
           ? selectedItems.map((item) => item.name).join(", ")
           : "انتخاب کنید"}
         <img
-          src="/src/Assets/Icons/arrow-down.svg"
+          src="/images/arrow-down.svg"
           aria-hidden="true"
           className={`h-5 w-5 transform transition-transform ${
             isOpen ? "rotate-180" : "rotate-0"

@@ -12,11 +12,11 @@ const AuthLayout = ({ children, title, onSubmit }) => {
       <div
         className="relative h-full w-[30%] bg-cover"
         style={{
-          backgroundImage: "url('/src/Assets/Icons/Blue_Background.svg')",
+          backgroundImage: "url('/images/Blue_Background.svg')",
         }}
       >
         <img
-          src="/src/Assets/Icons/AdklayLogo.svg"
+          src="/images/AdklayLogo.svg"
           alt="AdklayLogo"
           className="absolute inset-9 m-auto"
         />

@@ -70,7 +70,7 @@ const NotificationEntry = ({
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
               inner_text="ارسال پیام"
-              icon="/src/Assets/Icons/Send_Message.svg"
+              icon="/images/Send_Message.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"
             />

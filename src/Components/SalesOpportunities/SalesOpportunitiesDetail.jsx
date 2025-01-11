@@ -83,14 +83,14 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
         <div className="flex justify-center gap-5 mt-20">
           {/* <DashboardButton
             inner_text="ویرایش اطلاعات"
-            icon="/src/Assets/Icons/edit.svg"
+            icon="/images/edit.svg"
             bg_color="bg-[#FF6500]"
             hover_state="hover:bg-[#FF6500] opacity-80"
             onClick={handleEditClick}
           /> */}
           <DashboardButton
             inner_text="حذف اطلاعات"
-            icon="/src/Assets/Icons/delete.svg"
+            icon="/images/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
             onClick={onDelete}

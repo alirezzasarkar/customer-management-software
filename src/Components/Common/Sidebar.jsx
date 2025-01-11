@@ -44,21 +44,17 @@ const Sidebar = () => {
           isMobileOpen ? "translate-x-0 absolute" : "translate-x-full"
         } md:translate-x-0 md:relative absolute transition-transform duration-300 flex flex-col space-y-10 items-center py-4`}
       >
-        <img
-          src="/src/Assets/Icons/AdklayLogo.svg"
-          alt="Logo"
-          className="mb-4"
-        />
+        <img src="/images/AdklayLogo.svg" alt="Logo" className="mb-4" />
 
         <SidebarItem
           to="/dashboard"
-          icon="/src/Assets/Icons/Sidbar/dashboard.svg"
+          icon="/images/Sidbar/dashboard.svg"
           label="داشبورد"
         />
 
         <SidebarItem
           to="/dashboard/sales-opportunities/list"
-          icon="/src/Assets/Icons/Sidbar/sales-opportunities.svg"
+          icon="/images/Sidbar/sales-opportunities.svg"
           label="فرصت فروش"
           subItems={[
             {
@@ -74,7 +70,7 @@ const Sidebar = () => {
 
         <SidebarItem
           to="/dashboard/marketing/list"
-          icon="/src/Assets/Icons/Sidbar/marketing.svg"
+          icon="/images/Sidbar/marketing.svg"
           label="مارکتینگ"
           subItems={[
             { label: "ثبت کمپین", to: "/dashboard/marketing/entry" },
@@ -84,7 +80,7 @@ const Sidebar = () => {
 
         <SidebarItem
           to="/dashboard/employees/list"
-          icon="/src/Assets/Icons/Sidbar/employees.svg"
+          icon="/images/Sidbar/employees.svg"
           label="کارمندان"
           subItems={[
             { label: "ثبت کارمند", to: "/dashboard/employees/entry" },
@@ -94,7 +90,7 @@ const Sidebar = () => {
 
         <SidebarItem
           to="/dashboard/customers/list"
-          icon="/src/Assets/Icons/Sidbar/customer.svg"
+          icon="/images/Sidbar/customer.svg"
           label="مشتریان"
           subItems={[
             { label: "ثبت مشتری", to: "/dashboard/customers/entry" },
@@ -104,7 +100,7 @@ const Sidebar = () => {
 
         <SidebarItem
           to="/dashboard/notification/list"
-          icon="/src/Assets/Icons/Sidbar/notification.svg"
+          icon="/images/Sidbar/notification.svg"
           label="اطلاع رسانی"
           subItems={[
             { label: "ارسال پیام", to: "/dashboard/notification/entry" },
@@ -114,7 +110,7 @@ const Sidebar = () => {
 
         <SidebarItem
           to="/dashboard/products/list"
-          icon="/src/Assets/Icons/Sidbar/product.svg"
+          icon="/images/Sidbar/product.svg"
           label="محصولات"
           subItems={[
             { label: "ثبت محصول", to: "/dashboard/products/entry" },
@@ -124,7 +120,7 @@ const Sidebar = () => {
 
         <SidebarItem
           to="/dashboard/invoice/list"
-          icon="/src/Assets/Icons/Sidbar/invoice.svg"
+          icon="/images/Sidbar/invoice.svg"
           label="فاکتور"
           subItems={[
             { label: "ثبت فاکتور", to: "/dashboard/invoice/entry" },
@@ -137,7 +133,7 @@ const Sidebar = () => {
           onClick={handleLogout}
         >
           <img
-            src="/src/Assets/Icons/Sidbar/log-out.svg"
+            src="/images/Sidbar/log-out.svg"
             alt="Logout Icon"
             className="mb-1 h-6 w-6"
           />

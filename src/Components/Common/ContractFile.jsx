@@ -17,7 +17,7 @@ const ContractFile = ({ onFileChange, uploadMessage = "", files = [] }) => {
             فایل فاکتور را آپلود کنید
             <span>
               <img
-                src="/src/Assets/Icons/upload_folder.svg"
+                src="/images/upload_folder.svg"
                 alt="Upload Folder"
                 className="w-5 h-5"
               />

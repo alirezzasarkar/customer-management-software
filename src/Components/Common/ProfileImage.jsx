@@ -40,7 +40,7 @@ const ProfileImage = ({ upload_text, onUpload, imageUrl }) => {
           htmlFor="file-upload"
           className="flex items-center justify-center w-[70px] h-[70px] rounded-full bg-gray-200 text-lg cursor-pointer"
         >
-          <img src="/src/Assets/Icons/upload_cloud.svg" alt="Upload Icon" />
+          <img src="/images/upload_cloud.svg" alt="Upload Icon" />
         </label>
         <p className="text-[#13A538]">{upload_text}</p>
       </div>

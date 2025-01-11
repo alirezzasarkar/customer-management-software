@@ -10,14 +10,14 @@ const ForgotPassword = () => {
         label="شماره تماس"
         placeholdertext="شماره تلفن خود را وارد کنید"
         input_type="text"
-        icon="/src/Assets/Icons/smart-phone.svg"
+        icon="/images/smart-phone.svg"
         verification="verfication-button"
       />
       <AuthInput
         label="کد تایید"
         placeholdertext="کد تایید خود را وارد کنید"
         input_type="password"
-        icon="/src/Assets/Icons/shield.svg"
+        icon="/images/shield.svg"
       />
       <Button
         width="w-full"

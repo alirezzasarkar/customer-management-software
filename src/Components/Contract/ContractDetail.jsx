@@ -64,7 +64,7 @@ const ContractDetail = ({ data, products, onDelete }) => {
         <div className="flex justify-center gap-5 mt-10">
           <DashboardButton
             inner_text="حذف اطلاعات"
-            icon="/src/Assets/Icons/delete.svg"
+            icon="/images/delete.svg"
             bg_color="bg-[#FF0000]"
             hover_state="hover:bg-[#FF0000]"
             onClick={onDelete}

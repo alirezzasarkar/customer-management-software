@@ -28,7 +28,7 @@ const ProductImage = ({ upload_text, onUpload }) => {
         htmlFor="file-upload"
         className="flex items-center justify-center w-32 h-32 rounded-md bg-white cursor-pointer"
       >
-        <img src="/src/Assets/Icons/upload_cloud.svg" alt="" />
+        <img src="/images/upload_cloud.svg" alt="" />
       </label>
       <p className="text-[#184375]">{upload_text}</p>
       {uploadMessage && (

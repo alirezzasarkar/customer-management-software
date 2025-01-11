@@ -71,7 +71,7 @@ export default function DashboardDropDownCategory({
       >
         {renderSelected()}
         <img
-          src="/src/Assets/Icons/arrow-down.svg"
+          src="/images/arrow-down.svg"
           aria-hidden="true"
           className={`h-5 w-5 transform transition-transform ${
             isOpen ? "rotate-180" : "rotate-0"
@@ -90,7 +90,7 @@ export default function DashboardDropDownCategory({
               className="placeholder:text-[#0E295B] placeholder:text-xs placeholder:font-bold w-full px-3 py-2 border-2 border-[#153D8A] rounded-lg focus:outline-none"
             />
             <img
-              src="/src/Assets/Icons/Search-icon.svg"
+              src="/images/Search-icon.svg"
               alt="Search Icon"
               className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 "
             />

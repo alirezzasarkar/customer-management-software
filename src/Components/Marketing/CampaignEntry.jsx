@@ -56,7 +56,7 @@ const CampaignEntry = ({
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
               inner_text="ثبت کمپین"
-              icon="/src/Assets/Icons/Tick.svg"
+              icon="/images/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"
             />

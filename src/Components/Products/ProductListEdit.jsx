@@ -133,7 +133,7 @@ const ProductListEdit = ({ productData }) => {
           <div className="flex justify-center mt-8 mb-2">
             <DashboardButton
               inner_text={loading ? "در حال ارسال..." : "تغییرات"}
-              icon="/src/Assets/Icons/Tick.svg"
+              icon="/images/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"
               disabled={loading}

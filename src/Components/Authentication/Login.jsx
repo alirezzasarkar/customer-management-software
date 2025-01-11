@@ -12,7 +12,7 @@ const Login = ({ formData, onInputChange, onSubmit, loading }) => {
         name="phone_number"
         placeholdertext="شماره تلفن خود را وارد کنید"
         input_type="text"
-        icon="/src/Assets/Icons/smart-phone.svg"
+        icon="/images/smart-phone.svg"
         value={formData.phone_number}
         onChange={onInputChange}
       />
@@ -21,7 +21,7 @@ const Login = ({ formData, onInputChange, onSubmit, loading }) => {
         name="password"
         placeholdertext="رمز عبور خود را وارد کنید"
         input_type="password"
-        icon="/src/Assets/Icons/lock-password.svg"
+        icon="/images/lock-password.svg"
         value={formData.password}
         onChange={onInputChange}
       />

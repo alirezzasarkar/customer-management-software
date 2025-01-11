@@ -57,8 +57,8 @@ const AuthInput = ({
           <img
             src={
               passwordVisibility
-                ? "/src/Assets/Icons/eye-closed.svg"
-                : "/src/Assets/Icons/eye-open.svg"
+                ? "/images/eye-closed.svg"
+                : "/images/eye-open.svg"
             }
             alt="Toggle Password Visibility"
             className="w-5 h-5 text-gray-400"

@@ -11,7 +11,7 @@ const Register = ({ formData, onInputChange, onSubmit, loading }) => {
         label="نام و نام خانوادگی"
         name="full_name"
         placeholdertext="نام خود را وارد کنید"
-        icon="/src/Assets/Icons/Vector.svg"
+        icon="/images/Vector.svg"
         value={formData.full_name}
         onChange={onInputChange}
       />
@@ -19,7 +19,7 @@ const Register = ({ formData, onInputChange, onSubmit, loading }) => {
         label="شماره تماس"
         name="phone_number"
         placeholdertext="شماره تلفن خود را وارد کنید"
-        icon="/src/Assets/Icons/smart-phone.svg"
+        icon="/images/smart-phone.svg"
         value={formData.phone_number}
         onChange={onInputChange}
       />
@@ -28,7 +28,7 @@ const Register = ({ formData, onInputChange, onSubmit, loading }) => {
         name="email"
         input_type="email"
         placeholdertext="ایمیل خود را وارد کنید"
-        icon="/src/Assets/Icons/email.svg"
+        icon="/images/email.svg"
         value={formData.email}
         onChange={onInputChange}
       />
@@ -37,7 +37,7 @@ const Register = ({ formData, onInputChange, onSubmit, loading }) => {
         name="password"
         placeholdertext="رمز عبور خود را وارد کنید"
         input_type="password"
-        icon="/src/Assets/Icons/lock-password.svg"
+        icon="/images/lock-password.svg"
         value={formData.password}
         onChange={onInputChange}
       />
@@ -46,7 +46,7 @@ const Register = ({ formData, onInputChange, onSubmit, loading }) => {
         name="confirmPassword"
         placeholdertext="رمز عبور خود را وارد کنید"
         input_type="password"
-        icon="/src/Assets/Icons/lock-password.svg"
+        icon="/images/lock-password.svg"
         value={formData.confirmPassword}
         onChange={onInputChange}
       />

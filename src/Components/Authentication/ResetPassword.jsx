@@ -10,13 +10,13 @@ const ResetPassword = () => {
         label="رمز عبور جدید"
         placeholdertext="رمز عبور خود را وارد کنید"
         input_type="password"
-        icon="/src/Assets/Icons/lock-password.svg"
+        icon="/images/lock-password.svg"
       />
       <AuthInput
         label="تکرار رمز عبور جدید"
         placeholdertext="تکرار رمز عبور"
         input_type="password"
-        icon="/src/Assets/Icons/lock-password.svg"
+        icon="/images/lock-password.svg"
       />
       <Button
         width="w-full"
