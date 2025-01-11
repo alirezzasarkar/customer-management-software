@@ -1,8 +1,6 @@
-// src/Components/Marketing/CampaignEntry.js
-
 import DashboardButton from "../Common/DashboardButton";
-import DashboardDropDownList from "../Common/DashboardDropDownList"; // برای target_rank
-import DashboardInputs from "../Common/DashBoardInputs";
+import DashboardDropDownList from "../Common/DashboardDropDownList";
+import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
@@ -11,7 +9,6 @@ const CampaignEntry = ({
   onSubmit,
   formData,
   onInputChange,
-  // Props مربوط به target_rank
   targetRanks,
   onTargetRankSelect,
   selectedTargetRanks,
@@ -41,9 +38,8 @@ const CampaignEntry = ({
           </div>
 
           <div className="flex gap-20">
-            {/* Dropdown برای انتخاب چندین target_rank */}
             <DashboardDropDownList
-              label_text="رتبه هدف"
+              label_text="مخاطبین هدف"
               items={targetRanks}
               onSelect={onTargetRankSelect}
               selectedItems={selectedTargetRanks}

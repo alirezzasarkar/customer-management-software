@@ -3,12 +3,9 @@ import { handleApiError } from "../Handlers/ErrorHandler";
 
 export const addFactors = async (payload) => {
   try {
-    const response = await apiClient.post("/factors/", payload, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const response = await apiClient.post("/factors/", payload);
     "Factors Added:", response.data;
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error adding factors:", error);
@@ -21,6 +18,7 @@ export const getFactors = async () => {
   try {
     const response = await apiClient.get("/factors/");
     response.data;
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching factors:", error);
@@ -33,6 +31,7 @@ export const getFactorById = async (id) => {
   try {
     const response = await apiClient.get(`/factors/${id}`);
     response.data;
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching factor details:", error);

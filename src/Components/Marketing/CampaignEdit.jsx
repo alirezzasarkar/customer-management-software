@@ -1,6 +1,6 @@
 import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
-import DashboardInputs from "../Common/DashBoardInputs";
+import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";

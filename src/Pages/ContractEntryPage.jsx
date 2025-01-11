@@ -1,9 +1,14 @@
+// src/Containers/ContractEntryPage.jsx
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ContractEntry from "../Components/Contract/ContractEntry";
 import { addFactors } from "../Services/APIs/Contract";
 import { getProducts } from "../Services/APIs/Products";
 import { getCustomers } from "../Services/APIs/Customers";
+
+const dummyUploadFile = async (file) => {
+  return `/media/factor_files/${file.name}`;
+};
 
 const ContractEntryPage = () => {
   const [formData, setFormData] = useState({
@@ -93,7 +98,7 @@ const ContractEntryPage = () => {
     }
 
     setFiles(filteredFiles);
-    setUploadMessage("فایل با موفقیت آپلود شد.");
+    setUploadMessage("فایل با موفقیت انتخاب شد.");
   };
 
   const handleSubmit = async (e) => {
@@ -112,26 +117,22 @@ const ContractEntryPage = () => {
       ? new Date(formData.invoiceDate).toISOString().split("T")[0]
       : "";
 
-    const payload = new FormData();
-    payload.append("costumer", selectedCustomer.id || 0);
-    payload.append("price", parseFloat(formData.price) || 0);
-    payload.append("invoice_date", formattedDate);
-    payload.append("description", formData.description || "");
-
-    selectedProducts.forEach((product, index) => {
-      payload.append(`products[${index}][product_id]`, product.id);
-      payload.append(`products[${index}][quantity]`, product.quantity || 1);
-    });
-
-    files.forEach((file) => {
-      if (file instanceof File) {
-        payload.append("files[]", file);
-      } else {
-        console.error("Uploaded file is not of type File:", file);
-      }
-    });
-
     try {
+      const uploadedFileURLs = await Promise.all(
+        files.map((file) => dummyUploadFile(file))
+      );
+
+      const payload = {
+        costumer: selectedCustomer.id || 0,
+        price: parseFloat(formData.price.replace(/,/g, "")) || 0,
+        description: formData.description || "",
+        products: selectedProducts.map((product) => ({
+          product_id: product.id,
+          quantity: product.quantity || 1,
+        })),
+        files: uploadedFileURLs,
+      };
+
       const response = await addFactors(payload);
       Swal.fire({
         icon: "success",

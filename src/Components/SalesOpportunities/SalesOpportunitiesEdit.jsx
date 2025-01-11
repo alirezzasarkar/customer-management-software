@@ -1,5 +1,5 @@
 import DashboardButton from "../Common/DashboardButton";
-import DashBoardInputs from "../Common/DashBoardInputs";
+import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
@@ -38,7 +38,7 @@ const SalesOpportunitiesEdit = ({
               onChange={(date) => onInputChange("followUpDate", date)}
             />
 
-            <DashBoardInputs
+            <DashboardInputs
               lable_text="مبلغ تخمینی (ریال)"
               placeholder_text="مبلغ خود را وارد کنید"
               value={formData.estimatedAmount}

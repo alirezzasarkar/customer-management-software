@@ -1,5 +1,5 @@
 import DashboardButton from "../Common/DashboardButton";
-import DashboardInputs from "../Common/DashBoardInputs";
+import DashboardInputs from "../Common/DashboardInputs";
 import PersianDatePicker from "../Common/DatePicker";
 import ProfileImage from "../Common/ProfileImage";
 import Title from "../Common/Title";

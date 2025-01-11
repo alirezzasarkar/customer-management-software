@@ -4,7 +4,7 @@ import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
 import TimePicker from "../Common/TimePicker";
-import DashboardInputs from "../Common/DashBoardInputs";
+import DashboardInputs from "../Common/DashboardInputs";
 
 const NotificationEntry = ({
   onCustomerSelect,

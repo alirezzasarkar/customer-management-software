@@ -4,7 +4,7 @@ import DashboardDropDownList from "../Common/DashboardDropDownList";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import Title from "../Common/Title";
 import TimePicker from "../Common/TimePicker";
-import DashboardInputs from "../Common/DashBoardInputs";
+import DashboardInputs from "../Common/DashboardInputs";
 
 const NotificationEdit = ({
   onCustomerSelect,

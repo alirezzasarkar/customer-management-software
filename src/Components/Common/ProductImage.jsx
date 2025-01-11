@@ -1,4 +1,3 @@
-// ProductImage.jsx
 import React, { useState } from "react";
 
 const ProductImage = ({ upload_text, onUpload }) => {

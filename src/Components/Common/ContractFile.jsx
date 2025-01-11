@@ -1,6 +1,8 @@
+// src/Components/Common/ContractFile.jsx
+
 import React from "react";
 
-const ContractFile = ({ onFileChange, uploadMessage }) => {
+const ContractFile = ({ onFileChange, uploadMessage, files }) => {
   const handleFileSelect = (e) => {
     const filesArray = Array.from(e.target.files);
     onFileChange(filesArray);
@@ -18,7 +20,7 @@ const ContractFile = ({ onFileChange, uploadMessage }) => {
             <span>
               <img
                 src="/src/Assets/Icons/upload_folder.svg"
-                alt=""
+                alt="Upload Folder"
                 className="w-5 h-5"
               />
             </span>
@@ -38,6 +40,17 @@ const ContractFile = ({ onFileChange, uploadMessage }) => {
 
       {uploadMessage && (
         <div className="mt-2 text-green-500 text-sm">{uploadMessage}</div>
+      )}
+
+      {files && files.length > 0 && (
+        <div className="mt-2 text-gray-700 text-sm">
+          <strong>فایل‌های انتخاب شده:</strong>
+          <ul className="list-disc list-inside">
+            {files.map((file, index) => (
+              <li key={index}>{file.name}</li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

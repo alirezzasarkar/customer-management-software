@@ -6,10 +6,8 @@ import {
   Routes,
 } from "react-router-dom";
 import { AuthProvider, useAuth } from "./Components/Authentication/AuthContext";
-import ForgetPasswordPage from "./pages/ForgetPasswordPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./Pages/RegisterPage";
 import DashboardRoutes from "./Routes/DashboardRoutes";
+import LoginPage from "./Pages/LoginPage";
 
 const App = () => {
   const { user } = useAuth();
@@ -30,7 +28,7 @@ const App = () => {
           />
 
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/forget-password" element={<ForgetPasswordPage />} />
+          {/* <Route path="/forget-password" element={<ForgetPasswordPage />} /> */}
 
           <Route
             path="/dashboard/*"

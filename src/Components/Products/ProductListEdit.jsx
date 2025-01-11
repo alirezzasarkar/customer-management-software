@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { updateProduct } from "../../Services/APIs/Products"; // Import the updateProduct API function
 import DashboardButton from "../Common/DashboardButton";
-import DashboardDropDown from "../Common/DashBoardDropDown";
-import DashboardInputs from "../Common/DashBoardInputs";
+import DashboardDropDown from "../Common/DashboardDropDown";
+import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import ProductImage from "../Common/ProductImage";
 import Title from "../Common/Title";

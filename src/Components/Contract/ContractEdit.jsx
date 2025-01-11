@@ -1,8 +1,8 @@
 import ContractFile from "../Common/ContractFile";
 import DashboardButton from "../Common/DashboardButton";
-import DashboardDropDown from "../Common/DashBoardDropDown";
+import DashboardDropDown from "../Common/DashboardDropDown";
 import DashboardDropDownCount from "../Common/DashboardDropDownCount";
-import DashBoardInputs from "../Common/DashBoardInputs";
+import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
@@ -37,7 +37,7 @@ const ContractEdit = ({
               onSelect={onProductSelect}
               selectedItems={selectedProducts}
             />
-            <DashBoardInputs
+            <DashboardInputs
               lable_text="مبلغ فاکتور"
               placeholder_text="مبلغ را وارد کنید"
               value={formData.price}

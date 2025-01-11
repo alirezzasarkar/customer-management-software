@@ -1,9 +1,11 @@
+// src/Components/Contract/ContractEntry.js
+
 import React from "react";
 import ContractFile from "../Common/ContractFile";
 import DashboardButton from "../Common/DashboardButton";
-import DashboardDropDown from "../Common/DashBoardDropDown";
+import DashboardDropDown from "../Common/DashboardDropDown";
 import DashboardDropDownCount from "../Common/DashboardDropDownCount";
-import DashBoardInputs from "../Common/DashBoardInputs";
+import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
@@ -20,6 +22,7 @@ const ContractEntry = ({
   onFileChange,
   onSubmit,
   files,
+  uploadMessage,
 }) => {
   return (
     <div>
@@ -43,26 +46,26 @@ const ContractEntry = ({
               onSelect={onProductSelect}
               selectedItems={selectedProducts}
             />
-            <DashBoardInputs
+            <DashboardInputs
               lable_text="مبلغ فاکتور (ریال)"
               placeholder_text="مبلغ را وارد کنید"
               value={formData.price}
               onChange={(e) => onInputChange("price", e.target.value)}
+              showInWords={true}
             />
           </div>
-          <div className="flex justify-between gap-5">
-            <PersianDatePicker
-              label_text="تاریخ ثبت فاکتور"
-              value={formData.invoiceDate}
-              onChange={(date) => onInputChange("invoiceDate", date)}
-            />
+          <div className="flex gap-20">
             <DashboardTextarea
               label_text="شرایط فاکتور"
               placeholder_text="دوره گارانتی، خدمات پس از فروش و ..."
               value={formData.description}
               onChange={(e) => onInputChange("description", e.target.value)}
             />
-            <ContractFile files={files} onFileChange={onFileChange} />
+            <ContractFile
+              files={files}
+              onFileChange={onFileChange}
+              uploadMessage={uploadMessage}
+            />
           </div>
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
