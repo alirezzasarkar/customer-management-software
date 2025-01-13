@@ -4,9 +4,10 @@ const DashboardInputs = ({
   isdisabled,
   value,
   onChange,
+  width,
 }) => {
   return (
-    <div className="flex flex-col sm:w-[30%]">
+    <div className={`flex flex-col ${width}`}>
       <label htmlFor="" className="text-[#153D8A] px-2">
         {lable_text}
       </label>

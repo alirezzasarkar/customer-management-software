@@ -15,9 +15,9 @@ const CampaignEdit = ({
   return (
     <div>
       <Title title="ویرایش کمپین" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex justify-between gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="نام کمپین"
               placeholder_text="نام کمپین خود را وارد کنید"
@@ -36,7 +36,7 @@ const CampaignEdit = ({
             />
           </div>
 
-          <div className="flex gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDownList
               label_text="مخاطبین هدف"
               items={customers}
@@ -44,12 +44,14 @@ const CampaignEdit = ({
               selectedItems={customers.filter((customer) =>
                 formData.customers.includes(customer.id)
               )}
+              // width="sm:w-full lg:w-[30%]"
             />
             <DashboardTextarea
               label_text="متن پیام"
               placeholder_text="وارد کردن محتوای پیام"
               onChange={(e) => onInputChange("message", e.target.value)}
               value={formData.message}
+              // width="lg:w-[31%] w-full"
             />
           </div>
 

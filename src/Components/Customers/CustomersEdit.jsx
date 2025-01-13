@@ -1,7 +1,6 @@
 import DashboardButton from "../Common/DashboardButton";
 import DashboardInputs from "../Common/DashboardInputs";
 import PersianDatePicker from "../Common/DatePicker";
-import ProfileImage from "../Common/ProfileImage";
 import Title from "../Common/Title";
 
 const CustomersEdit = ({
@@ -15,7 +14,7 @@ const CustomersEdit = ({
       <Title title="ویرایش پروفایل مشتریان" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md ">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex flex-col sm:flex-row justify-between gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="نام و نام خانوادگی"
               placeholder_text="نام و نام خانوادگی خود را وارد کنید"
@@ -35,7 +34,7 @@ const CustomersEdit = ({
               onChange={(e) => onInputChange("email", e.target.value)}
             />
           </div>
-          <div className="flex flex-col sm:flex-row justify-between gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="شماره تماس"
               placeholder_text="شماره تماس خود را وارد کنید"
@@ -54,12 +53,14 @@ const CustomersEdit = ({
               onChange={(e) => onInputChange("instagram", e.target.value)}
             />
           </div>
-          <DashboardInputs
-            lable_text="آیدی تلگرام"
-            placeholder_text="آیدی خود را وارد کنید"
-            value={formData.telegram}
-            onChange={(e) => onInputChange("telegram", e.target.value)}
-          />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
+            <DashboardInputs
+              lable_text="آیدی تلگرام"
+              placeholder_text="آیدی خود را وارد کنید"
+              value={formData.telegram}
+              onChange={(e) => onInputChange("telegram", e.target.value)}
+            />
+          </div>
 
           <div className="flex justify-center mt-8 mb-2">
             <DashboardButton

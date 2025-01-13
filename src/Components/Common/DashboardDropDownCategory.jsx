@@ -59,7 +59,7 @@ export default function DashboardDropDownCategory({
   };
 
   return (
-    <div ref={dropdownRef} className="relative flex flex-col sm:w-[30%]">
+    <div ref={dropdownRef} className="relative flex flex-col">
       <label className="text-[#153D8A] px-2" htmlFor="dropdown">
         {label_text}
       </label>

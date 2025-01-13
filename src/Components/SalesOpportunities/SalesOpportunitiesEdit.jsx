@@ -1,10 +1,10 @@
 import DashboardButton from "../Common/DashboardButton";
+import DashboardDropDown from "../Common/DashboardDropDown";
+import DashboardDropDownCount from "../Common/DashboardDropDownCount";
 import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
-import DashboardDropDownCount from "../Common/DashboardDropDownCount";
-import DashboardDropDown from "../Common/DashboardDropDown";
 
 const SalesOpportunitiesEdit = ({
   customers,
@@ -25,7 +25,7 @@ const SalesOpportunitiesEdit = ({
       <Title title="ویرایش فرصت فروش" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form onSubmit={onSubmit} className="flex flex-col gap-7">
-          <div className="sm:flex sm:justify-between sm:flex-row flex flex-col gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDown
               label_text="نام و نام خانوادگی مشتری"
               items={customers}
@@ -46,7 +46,7 @@ const SalesOpportunitiesEdit = ({
             />
           </div>
 
-          <div className="sm:flex sm:justify-between sm:flex-row flex flex-col gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDown
               label_text="اولویت فرصت"
               items={priorities}

@@ -67,7 +67,7 @@ const ProductListEdit = ({ productData }) => {
       <Title title="ویرایش محصول" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <form onSubmit={handleSubmit} className="flex flex-col gap-7">
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="نام محصول"
               value={formData.product_name}
@@ -89,7 +89,7 @@ const ProductListEdit = ({ productData }) => {
               placeholder_text="برند محصول خود را وارد کنید"
             />
           </div>
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDown
               label_text="دسته بندی محصول"
               value={formData.category}
@@ -109,7 +109,7 @@ const ProductListEdit = ({ productData }) => {
               placeholder_text="فعال , غیر فعال , پیش فرض"
             />
           </div>
-          <div className="flex gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="قیمت محصول"
               value={formData.price}

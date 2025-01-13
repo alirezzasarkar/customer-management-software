@@ -5,6 +5,7 @@ export default function DashboardDropDownList({
   items = [],
   onSelect,
   selectedItems = [],
+  width,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,7 +33,7 @@ export default function DashboardDropDownList({
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative flex flex-col sm:w-[30%]">
+    <div ref={dropdownRef} className={`relative flex flex-col ${width}`}>
       <label className="text-[#153D8A] px-2">{label_text}</label>
       <button
         type="button"

@@ -21,10 +21,10 @@ const ContractEdit = ({
 }) => {
   return (
     <div>
-      <Title title="وارد کردن فاکتور" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <Title title="ویرایش فاکتور" />
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex justify-between gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDown
               label_text="نام و نام خانوادگی"
               items={customers}
@@ -44,12 +44,12 @@ const ContractEdit = ({
               onChange={(e) => onInputChange("price", e.target.value)}
             />
           </div>
-          <div className="flex justify-between gap-5">
-            <PersianDatePicker
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
+            {/* <PersianDatePicker
               label_text="تاریخ ثبت فاکتور"
               value={formData.invoiceDate}
               onChange={(date) => onInputChange("invoiceDate", date)}
-            />
+            /> */}
             <DashboardTextarea
               label_text="شرایط فاکتور"
               placeholder_text="دوره گارانتی، خدمات پس از فروش"

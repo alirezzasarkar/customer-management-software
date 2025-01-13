@@ -5,7 +5,6 @@ import DashboardDropDown from "../Common/DashboardDropDown";
 import DashboardDropDownCount from "../Common/DashboardDropDownCount";
 import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
-import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
 
 const ContractEntry = ({
@@ -27,13 +26,13 @@ const ContractEntry = ({
   return (
     <div>
       <Title title="وارد کردن فاکتور" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form
           className="flex flex-col gap-7"
           onSubmit={onSubmit}
           encType="multipart/form-data"
         >
-          <div className="flex justify-between gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDown
               label_text="نام و نام خانوادگی مشتری"
               items={customers}
@@ -54,7 +53,7 @@ const ContractEntry = ({
               showInWords={true}
             />
           </div>
-          <div className="flex gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardTextarea
               label_text="شرایط فاکتور"
               placeholder_text="دوره گارانتی، خدمات پس از فروش و ..."

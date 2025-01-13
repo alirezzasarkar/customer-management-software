@@ -2,7 +2,6 @@ import DashboardButton from "../Common/DashboardButton";
 import DashboardDropDown from "../Common/DashboardDropDown";
 import DashboardInputs from "../Common/DashboardInputs";
 import PersianDatePicker from "../Common/DatePicker";
-import ProfileImage from "../Common/ProfileImage";
 import Title from "../Common/Title";
 
 const EmployeeEntry = ({
@@ -16,9 +15,9 @@ const EmployeeEntry = ({
   return (
     <>
       <Title title="ثبت کارمند جدید" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="نام و نام خانوادگی"
               placeholder_text="نام و نام خانوادگی را وارد کنید"
@@ -40,7 +39,7 @@ const EmployeeEntry = ({
               onChange={(e) => onInputChange("department", e.target.value)}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="ایمیل"
               placeholder_text="ایمیل را وارد کنید"
@@ -59,7 +58,7 @@ const EmployeeEntry = ({
               value={formData.hireDate}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="آیدی تلگرام"
               placeholder_text="آیدی تلگرام را وارد کنید"
