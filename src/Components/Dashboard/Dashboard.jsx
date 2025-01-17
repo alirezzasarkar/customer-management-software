@@ -14,8 +14,8 @@ const Dashboard = ({
   return (
     <>
       <Title title="داشبورد" />
-      <div className="md:px-6">
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
+      <div className="sm:mx-6">
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-3">
           <DashboardBox
             title="کل درآمد"
             summary="مبلغ کل فروش های انجام شده"
@@ -37,7 +37,7 @@ const Dashboard = ({
             DeatilPage="/dashboard/sales-opportunities/list"
           />
         </div>
-        <div className=" mt-7 md:flex md:flex-row flex-col gap-4">
+        <div className=" mt-7 md:flex lg:flex-row flex-col gap-4">
           <SecondDashboardBox
             title="میزان فروش"
             summary="تعداد کل محصولات فروخته شده"
@@ -60,10 +60,10 @@ const Dashboard = ({
               },
             ]}
             chart_height="h-[16.8rem]"
-            chart_width="md:w-3/4"
+            chart_width="w-[99.9%] md:w-full lg:w-3/4 "
           />
         </div>
-        <div className="mt-7 grid md:grid-cols-2 grid-cols-1 gap-3">
+        <div className="mt-7 grid lg:grid-cols-2 grid-cols-1 gap-3">
           <DashboardCharts
             title="وضعیت کمپین ها"
             chartType="doughnut"

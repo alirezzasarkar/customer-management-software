@@ -3,9 +3,10 @@ const DashboardTextarea = ({
   placeholder_text,
   value,
   onChange,
+  width
 }) => {
   return (
-    <div className="flex flex-col sm:w-[30%]">
+    <div className={`flex flex-col ${width}`}>
       <label className="text-[#153D8A] px-2">{label_text}</label>
       <textarea
         name=""

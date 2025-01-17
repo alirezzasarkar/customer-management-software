@@ -23,9 +23,9 @@ const ProductListEntry = ({
   return (
     <>
       <Title title="وارد کردن محصول" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="نام محصول"
               placeholder_text="نام محصول خود را وارد کنید"
@@ -45,7 +45,7 @@ const ProductListEntry = ({
               onChange={(e) => onInputChange("brand", e.target.value)}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDownCategory
               label_text="دسته بندی محصول"
               items={categories}
@@ -73,7 +73,7 @@ const ProductListEntry = ({
               multiple={false}
             />
           </div>
-          <div className="flex gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="قیمت محصول (ریال)"
               value={formData.productPrice}

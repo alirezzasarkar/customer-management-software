@@ -23,7 +23,7 @@ const TimePicker = ({
         onChange={onChange}
         min={min}
         max={max}
-        className="rounded-lg h-10 placeholder:text-xs px-3 placeholder:opacity-70 mt-2"
+        className="rounded-lg h-10 placeholder:text-xs px-3 placeholder:opacity-70 mt-2 mx-1"
       />
     </div>
   );

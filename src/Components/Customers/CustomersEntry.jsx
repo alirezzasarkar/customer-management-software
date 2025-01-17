@@ -1,9 +1,9 @@
 import DashboardButton from "../Common/DashboardButton";
+import DashboardDropDown from "../Common/DashboardDropDown";
 import DashboardInputs from "../Common/DashboardInputs";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
 import DashboardTextarea from "./../Common/DashboardTextarea";
-import DashboardDropDown from "../Common/DashboardDropDown";
 
 const CustomersEntry = ({
   formData,
@@ -18,7 +18,7 @@ const CustomersEntry = ({
       <Title title="ثبت مشتری جدید" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md ">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex flex-col sm:flex-row justify-between gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="نام و نام خانوادگی مشتری"
               placeholder_text="نام و نام خانوادگی را وارد کنید"
@@ -39,7 +39,7 @@ const CustomersEntry = ({
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="شماره تماس"
               placeholder_text="شماره تماس را وارد کنید"
@@ -60,7 +60,7 @@ const CustomersEntry = ({
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="آیدی تلگرام"
               placeholder_text="آیدی را وارد کنید"
@@ -81,12 +81,13 @@ const CustomersEntry = ({
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardTextarea
               label_text="توضیحات"
               placeholder_text="افزون توضیحات راجب مشتری"
               value={formData.description}
               onChange={(e) => onInputChange("description", e.target.value)}
+              // width="lg:w-[31%] xl:w-[31.5%]"
             />
           </div>
 

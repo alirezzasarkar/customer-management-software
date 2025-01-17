@@ -13,7 +13,7 @@ const PersianDatePicker = ({ onChange, label_text }) => {
   };
 
   return (
-    <div className="sm:w-[30%]">
+    <div>
       <label htmlFor="" className="px-2 text-[#153D8A]">
         {label_text}
       </label>

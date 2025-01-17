@@ -1,10 +1,10 @@
 import DashboardButton from "../Common/DashboardButton";
-import PersianDatePicker from "../Common/DatePicker";
 import DashboardDropDownList from "../Common/DashboardDropDownList";
-import DashboardTextarea from "../Common/DashboardTextarea";
-import Title from "../Common/Title";
-import TimePicker from "../Common/TimePicker";
 import DashboardInputs from "../Common/DashboardInputs";
+import DashboardTextarea from "../Common/DashboardTextarea";
+import PersianDatePicker from "../Common/DatePicker";
+import TimePicker from "../Common/TimePicker";
+import Title from "../Common/Title";
 
 const NotificationEdit = ({
   onCustomerSelect,
@@ -16,9 +16,9 @@ const NotificationEdit = ({
   return (
     <div>
       <Title title="ویرایش اطلاع‌رسانی" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="flex justify-between gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDownList
               items={customers}
               label_text="مخاطبین هدف"
@@ -53,7 +53,7 @@ const NotificationEdit = ({
               />
             </div>
           </div>
-          <div className="flex gap-44">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="عنوان پیام"
               placeholder_text="عنوان پیام را وارد کنید"

@@ -7,13 +7,13 @@ const ContractFile = ({ onFileChange, uploadMessage = "", files = [] }) => {
   };
 
   return (
-    <div className="w-[30%] mt-8">
+    <div className=" mt-8">
       <div className="border-2 border-dashed border-[#153D8A] rounded-lg p-4 flex items-center bg-gray-100 h-12">
         <label
           htmlFor="fileUpload"
           className="text-[#4161A0] cursor-pointer font-medium text-sm flex items-center justify-between w-full"
         >
-          <span className="flex flex-row-reverse items-center gap-2">
+          <span className="flex flex-row-reverse items-center gap-2 text-nowrap">
             فایل فاکتور را آپلود کنید
             <span>
               <img
@@ -23,7 +23,7 @@ const ContractFile = ({ onFileChange, uploadMessage = "", files = [] }) => {
               />
             </span>
           </span>
-          <span className="mr-2 text-sm bg-white py-1 px-2 rounded-md">
+          <span className="mr-2 text-sm bg-white py-1 px-2 rounded-md text-nowrap">
             آپلود فایل
           </span>
         </label>

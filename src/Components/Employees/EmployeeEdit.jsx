@@ -16,16 +16,16 @@ const EmployeeEdit = ({
   return (
     <>
       <Title title="ویرایش پروفایل کارمند" />
-      <div className="bg-gray-100 p-5 mx-6 rounded-md">
+      <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form className="flex flex-col gap-7" onSubmit={onSubmit}>
-          <div className="p-4 flex justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <ProfileImage
               upload_text="عکس خود را آپلود کنید"
               onUpload={onProfilePictureUpload}
               imageUrl={formData.profilePictureUrl}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="نام و نام خانوادگی"
               placeholder_text="نام و نام خانوادگی خود را وارد کنید"
@@ -47,7 +47,7 @@ const EmployeeEdit = ({
               onChange={(e) => onInputChange("email", e.target.value)}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
               lable_text="شماره تماس"
               placeholder_text="شماره تماس خود را وارد کنید"

@@ -1,10 +1,10 @@
 import DashboardButton from "../Common/DashboardButton";
+import DashboardDropDown from "../Common/DashboardDropDown";
+import DashboardDropDownCount from "../Common/DashboardDropDownCount";
+import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
 import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
-import DashboardDropDownCount from "../Common/DashboardDropDownCount";
-import DashboardDropDown from "../Common/DashboardDropDown";
-import DashboardInputs from "../Common/DashboardInputs";
 
 const SalesOpportunitiesEntry = ({
   customers,
@@ -28,7 +28,7 @@ const SalesOpportunitiesEntry = ({
       <Title title="ثبت فرصت فروش" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form onSubmit={onSubmit} className="flex flex-col gap-7">
-          <div className="sm:flex sm:justify-between sm:flex-row flex flex-col gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDown
               label_text="نام و نام خانوادگی مشتری"
               items={customers}
@@ -49,7 +49,7 @@ const SalesOpportunitiesEntry = ({
             />
           </div>
 
-          <div className="sm:flex sm:justify-between sm:flex-row flex flex-col gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <DashboardDropDown
               label_text="اولویت فرصت"
               items={priorities}
@@ -76,6 +76,7 @@ const SalesOpportunitiesEntry = ({
             placeholder_text="افزودن یادداشت‌هایی از جلسات یا تماس‌های انجام‌شده"
             value={formData.description}
             onChange={(e) => onInputChange("description", e.target.value)}
+            width="lg:w-[31%] w-full"
           />
 
           <div className="flex justify-center gap-3 mt-10">
