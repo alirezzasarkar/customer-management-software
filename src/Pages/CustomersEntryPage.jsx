@@ -7,9 +7,10 @@ const CustomersEntryPage = () => {
   const [customers, setCustomers] = useState([]);
 
   const [buyer_rank] = useState([
-    { id: "BR", name: "برنزی" },
-    { id: "SI", name: "نقره ای" },
+    { id: "RE", name: "قرمز" },
+    { id: "GR", name: "طوسی" },
     { id: "GO", name: "طلایی" },
+    { id: "SS", name: "سوپر ویژه" },
   ]);
 
   const [selectedbuyer_rank, setSelectedbuyer_rank] = useState(null);

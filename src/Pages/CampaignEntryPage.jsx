@@ -5,9 +5,10 @@ import { addMarketingCampaigns } from "../Services/APIs/Marketing";
 
 const CampaignEntryPage = () => {
   const [targetRanks] = useState([
-    { id: "BR", name: "برنزی" },
-    { id: "SI", name: "نقره‌ای" },
+    { id: "RE", name: "قرمز" },
+    { id: "GR", name: "طوسی" },
     { id: "GO", name: "طلایی" },
+    { id: "SS", name: "سوپر ویژه" },
   ]);
 
   const [selectedTargetRanks, setSelectedTargetRanks] = useState([]);

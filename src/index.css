@@ -18,3 +18,8 @@ td svg {
 .rmdp-container {
   display: block !important;
 }
+
+.dropdown-scroll {
+  max-height: 250px; 
+  overflow-y: auto; 
+}

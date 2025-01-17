@@ -17,12 +17,14 @@ const CustomerListPage = () => {
 
   const getBuyerRankInPersian = (rank) => {
     switch (rank) {
-      case "BR":
-        return "برنزی";
-      case "SI":
-        return "نقره‌ای";
+      case "RE":
+        return "قرمز";
+      case "GR":
+        return "طوسی";
       case "GO":
         return "طلایی";
+      case "SS":
+        return "سوپر ویژه";
       default:
         return "مشخص نشده";
     }

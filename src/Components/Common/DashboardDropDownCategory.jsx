@@ -80,7 +80,7 @@ export default function DashboardDropDownCategory({
       </button>
 
       {isOpen && (
-        <ul className="absolute top-full left-0 z-10 mt-1 w-64 origin-top-right rounded-lg bg-white ring-opacity-5 transition focus:outline-none p-2 text-center text-sm space-y-3 text-[#0E295B]">
+        <ul className="dropdown-scroll absolute top-full left-0 z-10 mt-1 w-64 origin-top-right rounded-lg bg-white ring-opacity-5 transition focus:outline-none p-2 text-center text-sm space-y-3 text-[#0E295B]">
           <div className="relative mb-2">
             <input
               type="search"

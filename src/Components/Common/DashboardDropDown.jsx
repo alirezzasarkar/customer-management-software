@@ -63,7 +63,7 @@ export default function DashboardDropDown({
       </button>
 
       {isOpen && (
-        <ul className="absolute top-full left-0 z-10 mt-1 w-64 rounded-lg bg-white shadow-lg p-2 text-center text-sm space-y-3 text-[#0E295B]">
+        <ul className="absolute top-full left-0 z-10 mt-1 w-64 rounded-lg bg-white shadow-lg p-2 text-center text-sm space-y-3 text-[#0E295B] dropdown-scroll">
           {/* بخش جستجو */}
           <div className="relative mb-2">
             <input

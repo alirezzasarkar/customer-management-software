@@ -4,9 +4,10 @@ import DashboardButton from "../Common/DashboardButton";
 import { useNavigate } from "react-router-dom";
 
 const targetRankMapping = {
-  BR: "برنزی",
-  SI: "نقره‌ای",
+  RE: "قرمز",
+  GR: "طوسی",
   GO: "طلایی",
+  SS: "سوپر ویژه",
 };
 
 const CampaignDetail = ({ data, onDelete }) => {

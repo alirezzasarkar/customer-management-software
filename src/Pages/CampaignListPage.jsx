@@ -12,9 +12,10 @@ const columns = [
 ];
 
 const targetRankMapping = {
-  BR: "برنزی",
-  SI: "نقره‌ای",
+  RE: "قرمز",
+  GR: "طوسی",
   GO: "طلایی",
+  SS: "سوپر ویژه",
 };
 
 const CampaignListPage = () => {

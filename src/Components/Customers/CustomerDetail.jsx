@@ -34,12 +34,14 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
 
   const getBuyerRankInPersian = (rank) => {
     switch (rank) {
-      case "BR":
-        return "برنزی";
-      case "SI":
-        return "نقره‌ای";
+      case "RE":
+        return "قرمز";
+      case "GR":
+        return "طوسی";
       case "GO":
         return "طلایی";
+      case "SS":
+        return "سوپر ویژه";
       default:
         return "مشخص نشده";
     }
@@ -47,12 +49,14 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
 
   function getColorClasses(rank) {
     switch (rank) {
-      case "BR":
-        return "border-bronze text-bronze";
-      case "SI":
-        return "border-silver text-silver";
+      case "RE":
+        return "border-red1 text-red1";
+      case "GR":
+        return "border-gray1 text-gray1";
       case "GO":
         return "border-gold text-gold";
+      case "SS":
+        return "border-blue1 text-blue1";
       default:
         return "border-gray-300 text-gray-400";
     }
