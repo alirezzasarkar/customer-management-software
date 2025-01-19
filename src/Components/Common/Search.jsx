@@ -7,7 +7,7 @@ const Search = ({ onSearch }) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
-    onSearch(value);
+    onSearch(value); // هر بار که کاربر چیزی تایپ می‌کند، جستجو انجام می‌شود
   };
 
   return (

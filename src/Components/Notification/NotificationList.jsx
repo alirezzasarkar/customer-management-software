@@ -6,32 +6,40 @@ import Title from "../Common/Title";
 
 const NotificationList = ({ data, columns }) => {
   const [filteredData, setFilteredData] = useState(data);
-  filteredData;
 
   useEffect(() => {
     setFilteredData(data);
   }, [data]);
 
   const handleSearch = (searchTerm) => {
+    if (!searchTerm.trim()) {
+      setFilteredData(data); // اگر جستجو خالی باشد، داده‌ها را دوباره بارگذاری کنیم
+      return;
+    }
+
     const result = data.filter(
       (item) =>
-        item.recipients.includes(searchTerm) ||
-        item.sendDate.includes(searchTerm) ||
-        item.sendTime.includes(searchTerm)
+        String(item.recipients)
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        String(item.sendDate)
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        String(item.sendTime).includes(searchTerm) // تبدیل به رشته و حساس به حروف نباشد
     );
     setFilteredData(result);
   };
 
   const handleSort = (column) => {
-    const sortedData = [...filteredData].sort((a, b) =>
-      a[column].localeCompare(b[column])
+    const sortedData = [...filteredData].sort(
+      (a, b) => String(a[column]).localeCompare(String(b[column])) // اطمینان از مقایسه صحیح رشته‌ها
     );
     setFilteredData(sortedData);
   };
 
   return (
     <>
-      <Title title="لیست پیام ها" />
+      <Title title="لیست پیام‌ها" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <div className="flex justify-between px-2 py-3">
           <div className="hidden md:block">

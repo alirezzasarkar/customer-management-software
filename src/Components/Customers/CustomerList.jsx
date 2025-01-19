@@ -6,25 +6,32 @@ import Title from "../Common/Title";
 
 const CustomerList = ({ data, columns }) => {
   const [filteredData, setFilteredData] = useState(data);
-  filteredData;
 
   useEffect(() => {
     setFilteredData(data);
   }, [data]);
 
   const handleSearch = (searchTerm) => {
+    if (!searchTerm.trim()) {
+      setFilteredData(data); // اگر جستجو خالی باشد، داده‌ها را دوباره بارگذاری کنیم
+      return;
+    }
+
+    // استفاده از String برای تبدیل داده‌ها به رشته
     const result = data.filter(
       (item) =>
-        item.full_name.includes(searchTerm) ||
-        item.email.includes(searchTerm) ||
-        item.phone_number.includes(searchTerm)
+        String(item.full_name)
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        String(item.email).toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(item.phone_number).includes(searchTerm)
     );
     setFilteredData(result);
   };
 
   const handleSort = (column) => {
-    const sortedData = [...filteredData].sort((a, b) =>
-      a[column].localeCompare(b[column])
+    const sortedData = [...filteredData].sort(
+      (a, b) => String(a[column]).localeCompare(String(b[column])) // اطمینان از مقایسه صحیح رشته‌ها
     );
     setFilteredData(sortedData);
   };

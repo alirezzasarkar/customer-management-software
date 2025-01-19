@@ -19,8 +19,18 @@ const CustomersEditPage = () => {
     customer_picture: null,
     customer_picture_url: "",
     buyer_rank: "",
+    address: "",
+    description: "",
   });
   const [loading, setLoading] = useState(true);
+
+  const [buyer_rank] = useState([
+    { id: "RE", name: "قرمز" },
+    { id: "GR", name: "طوسی" },
+    { id: "GO", name: "طلایی" },
+    { id: "SS", name: "سوپر ویژه" },
+  ]);
+  const [selectedbuyer_rank, setSelectedbuyer_rank] = useState(null);
 
   useEffect(() => {
     const fetchCustomer = async () => {
@@ -40,8 +50,13 @@ const CustomersEditPage = () => {
           customer_picture: null,
           customer_picture_url: customerData.customer_picture || "",
           buyer_rank: customerData.buyer_rank || "",
+          address: customerData.address || "",
+          description: customerData.description || "",
         });
 
+        setSelectedbuyer_rank(
+          buyer_rank.find((rank) => rank.id === customerData.buyer_rank)
+        );
         setLoading(false);
       } catch (error) {
         console.error("Error fetching customer data:", error);
@@ -55,7 +70,7 @@ const CustomersEditPage = () => {
     };
 
     fetchCustomer();
-  }, [id]);
+  }, [id, buyer_rank]);
 
   const handleInputChange = (field, value) => {
     setFormData((prevState) => ({
@@ -71,29 +86,33 @@ const CustomersEditPage = () => {
     }));
   };
 
+  const handlebuyer_rankSelect = (buyer_rank) => {
+    setSelectedbuyer_rank(buyer_rank);
+    handleInputChange("buyer_rank", buyer_rank.id);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formPayload = new FormData();
-    if (formData.customer_picture) {
-      formPayload.append("customer_picture", formData.customer_picture);
-    }
-    formPayload.append("full_name", formData.full_name);
-    formPayload.append("national_id", formData.national_id);
-    formPayload.append("email", formData.email);
-    formPayload.append("phone_number", formData.phone);
-    formPayload.append(
-      "date_of_birth",
-      formData.birth_date
-        ? new Date(formData.birth_date).toISOString().split("T")[0]
-        : ""
-    );
-    formPayload.append("instagram_id", formData.instagram);
-    formPayload.append("telegram_id", formData.telegram);
-    formPayload.append("buyer_rank", formData.buyer_rank);
+    const formattedDate = formData.birth_date
+      ? new Date(formData.birth_date).toISOString().split("T")[0]
+      : "";
+
+    const payload = {
+      full_name: formData.full_name,
+      national_id: formData.national_id || null,
+      email: formData.email,
+      phone_number: formData.phone,
+      date_of_birth: formattedDate || null,
+      instagram_id: formData.instagram,
+      telegram_id: formData.telegram,
+      address: formData.address,
+      description: formData.description,
+      buyer_rank: formData.buyer_rank,
+    };
 
     try {
-      await updateCustomer(id, formPayload);
+      await updateCustomer(id, payload);
       Swal.fire({
         icon: "success",
         title: "ویرایش موفق!",
@@ -131,6 +150,9 @@ const CustomersEditPage = () => {
       onInputChange={handleInputChange}
       onSubmit={handleSubmit}
       onProfilePictureUpload={handleProfilePictureUpload}
+      buyer_rank={buyer_rank}
+      selectedbuyer_rank={selectedbuyer_rank}
+      onbuyer_rankSelect={handlebuyer_rankSelect}
     />
   );
 };

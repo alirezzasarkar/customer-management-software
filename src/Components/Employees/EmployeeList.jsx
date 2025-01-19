@@ -6,25 +6,33 @@ import Title from "../Common/Title";
 
 const EmployeeList = ({ data, columns }) => {
   const [filteredData, setFilteredData] = useState(data);
-  filteredData;
 
   useEffect(() => {
     setFilteredData(data);
   }, [data]);
 
   const handleSearch = (searchTerm) => {
+    if (!searchTerm.trim()) {
+      setFilteredData(data); // اگر جستجو خالی باشد، داده‌ها را دوباره بارگذاری کنیم
+      return;
+    }
+
     const result = data.filter(
       (item) =>
-        item.fullName.includes(searchTerm) ||
-        item.jobTitle.includes(searchTerm) ||
-        item.phoneNumber.includes(searchTerm)
+        String(item.fullName)
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        String(item.jobTitle)
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        String(item.phoneNumber).includes(searchTerm) // استفاده از String برای تبدیل به رشته
     );
     setFilteredData(result);
   };
 
   const handleSort = (column) => {
-    const sortedData = [...filteredData].sort((a, b) =>
-      a[column].localeCompare(b[column])
+    const sortedData = [...filteredData].sort(
+      (a, b) => String(a[column]).localeCompare(String(b[column])) // اطمینان از مقایسه صحیح رشته‌ها
     );
     setFilteredData(sortedData);
   };

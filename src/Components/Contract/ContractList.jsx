@@ -12,25 +12,30 @@ const ContractList = ({ data, columns }) => {
   }, [data]);
 
   const handleSearch = (searchTerm) => {
+    if (!searchTerm.trim()) {
+      setFilteredData(data); // اگر جستجو خالی باشد، داده‌ها را دوباره بارگذاری کنیم
+      return;
+    }
+
     const result = data.filter(
       (item) =>
-        item.name.includes(searchTerm) ||
-        item.date.includes(searchTerm) ||
-        item.amount.includes(searchTerm)
+        String(item.name).toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(item.date).toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(item.amount).includes(searchTerm) // استفاده از String برای تبدیل به رشته
     );
     setFilteredData(result);
   };
 
   const handleSort = (column) => {
-    const sortedData = [...filteredData].sort((a, b) =>
-      a[column].localeCompare(b[column])
+    const sortedData = [...filteredData].sort(
+      (a, b) => String(a[column]).localeCompare(String(b[column])) // اطمینان از مقایسه صحیح رشته‌ها
     );
     setFilteredData(sortedData);
   };
 
   return (
     <>
-      <Title title="لیست فاکتور ها" />
+      <Title title="لیست فاکتورها" />
       <div className="bg-gray-100 p-5 mx-6 rounded-md">
         <div className="flex justify-between px-2 py-3">
           <div className="hidden md:block">

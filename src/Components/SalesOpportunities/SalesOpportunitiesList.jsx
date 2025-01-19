@@ -12,25 +12,35 @@ const SalesOpportunitiesList = ({ data, columns }) => {
   }, [data]);
 
   const handleSearch = (searchTerm) => {
+    const lowercasedTerm = searchTerm.toLowerCase();
     const result = data.filter(
       (item) =>
-        item.fullName.includes(searchTerm) ||
-        item.opportunityPriority.includes(searchTerm) ||
-        item.totalAmount.includes(searchTerm)
+        String(item.fullName).toLowerCase().includes(lowercasedTerm) ||
+        String(item.opportunityPriority)
+          .toLowerCase()
+          .includes(lowercasedTerm) ||
+        String(item.totalAmount).includes(lowercasedTerm)
     );
     setFilteredData(result);
   };
 
   const handleSort = (column) => {
-    const sortedData = [...filteredData].sort((a, b) =>
-      a[column].localeCompare(b[column])
-    );
+    let sortedData = [];
+    if (column === "totalAmount") {
+      sortedData = [...filteredData].sort(
+        (a, b) => parseFloat(a[column]) - parseFloat(b[column])
+      ); // مقایسه به درستی با عدد
+    } else {
+      sortedData = [...filteredData].sort(
+        (a, b) => String(a[column]).localeCompare(String(b[column])) // اطمینان از مقایسه صحیح رشته‌ها
+      );
+    }
     setFilteredData(sortedData);
   };
 
   return (
-    <div className="">
-      <Title title="لیست فرصت های فروش" />
+    <div>
+      <Title title="لیست فرصت‌های فروش" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <div className="flex justify-between px-2 py-3">
           <div className="hidden md:block">

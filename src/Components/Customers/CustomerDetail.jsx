@@ -134,13 +134,13 @@ const CustomerDetail = ({ customerData, factors, onDelete }) => {
         </div>
 
         <div className="flex justify-center gap-5 mt-8">
-          {/* <DashboardButton
+          <DashboardButton
             inner_text="ویرایش اطلاعات"
             icon="/images/edit.svg"
             bg_color="bg-[#FF6500]"
             hover_state="hover:bg-[#FF6500] opacity-80"
             onClick={handleEditClick}
-          /> */}
+          />
           <DashboardButton
             inner_text="حذف اطلاعات"
             icon="/images/delete.svg"

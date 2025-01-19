@@ -1,13 +1,18 @@
 import DashboardButton from "../Common/DashboardButton";
 import DashboardInputs from "../Common/DashboardInputs";
 import PersianDatePicker from "../Common/DatePicker";
+import DashboardDropDown from "../Common/DashboardDropDown"; // برای فیلد buyer_rank
 import Title from "../Common/Title";
+import DashboardTextarea from "../Common/DashboardTextarea"; // برای فیلد description
 
 const CustomersEdit = ({
   formData,
   onSubmit,
   onInputChange,
   onProfilePictureUpload,
+  buyer_rank, // برای فیلد buyer_rank
+  selectedbuyer_rank, // برای فیلد buyer_rank
+  onbuyer_rankSelect, // برای فیلد buyer_rank
 }) => {
   return (
     <div>
@@ -59,6 +64,26 @@ const CustomersEdit = ({
               placeholder_text="آیدی خود را وارد کنید"
               value={formData.telegram}
               onChange={(e) => onInputChange("telegram", e.target.value)}
+            />
+            <DashboardDropDown
+              label_text="نوع مشتری"
+              items={buyer_rank}
+              onSelect={onbuyer_rankSelect}
+              selectedItem={selectedbuyer_rank}
+            />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
+            <DashboardInputs
+              lable_text="آدرس"
+              placeholder_text="آدرس خود را وارد کنید"
+              value={formData.address}
+              onChange={(e) => onInputChange("address", e.target.value)}
+            />
+            <DashboardTextarea
+              label_text="توضیحات"
+              placeholder_text="افزون توضیحات راجب مشتری"
+              value={formData.description}
+              onChange={(e) => onInputChange("description", e.target.value)}
             />
           </div>
 

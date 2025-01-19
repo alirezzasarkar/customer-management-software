@@ -7,6 +7,7 @@ export const addCustomers = async (payload) => {
       "/customerprofile/customers/",
       payload
     );
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching customers:", error);
@@ -68,7 +69,7 @@ export const updateCustomer = async (id, payload) => {
       `/customerprofile/customers/${id}/`,
       payload
     );
-    "Customer Updated:", response.data;
+    console.log("Customer Updated:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error updating customer:", error);
