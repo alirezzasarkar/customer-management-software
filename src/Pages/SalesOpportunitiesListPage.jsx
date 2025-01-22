@@ -52,7 +52,7 @@ const SalesOpportunitiesListPage = () => {
             item.opportunity_priority
           ),
           estimated_amount:
-            item.estimated_amount.toLocaleString("fa-IR") + " ریال",
+            item.estimated_amount.toLocaleString("fa-IR") + " تومان",
         }));
 
         setData(convertedData);

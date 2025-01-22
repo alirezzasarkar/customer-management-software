@@ -19,21 +19,31 @@ const Dashboard = ({
           <DashboardBox
             title="کل درآمد"
             summary="مبلغ کل فروش های انجام شده"
-            summary_detail={`${sales_data.total_sales.toLocaleString(
-              "fa-IR"
-            )} ریال`}
+            summary_detail={`${
+              sales_data.total_sales == null
+                ? 0
+                : sales_data.total_sales.toLocaleString("fa-IR")
+            } تومان`}
             DeatilPage="/dashboard/invoice/list"
           />
           <DashboardBox
             title="تعداد مشتریان"
             summary="مشتریان ما"
-            summary_detail={`${customer_data.total_customers} نفر`}
+            summary_detail={`${
+              customer_data.total_customers == null
+                ? 0
+                : customer_data.total_customers
+            } نفر`}
             DeatilPage="/dashboard/customers/list"
           />
           <DashboardBox
             title="نزدیک ترین فرصت های فروش"
             summary="فرصت های فروش"
-            summary_detail={`${sales_opportunity.closest_count} عدد`}
+            summary_detail={`${
+              sales_opportunity.closest_count == null
+                ? 0
+                : sales_opportunity.closest_count
+            } عدد`}
             DeatilPage="/dashboard/sales-opportunities/list"
           />
         </div>
@@ -41,9 +51,15 @@ const Dashboard = ({
           <SecondDashboardBox
             title="میزان فروش"
             summary="تعداد کل محصولات فروخته شده"
-            summary_detail={`${sales_data.total_products_sold} محصول`}
+            summary_detail={`${
+              sales_data.total_products_sold == null
+                ? 0
+                : sales_data.total_products_sold
+            } محصول`}
             second_summary="قرار داد های نهایی"
-            second_summary_detail={`${sales_data.total_factors} فاکتور`}
+            second_summary_detail={`${
+              sales_data.total_factors == null ? 0 : sales_data.total_factors
+            } فاکتور`}
             DeatilPage="/dashboard/invoice/list"
           />
           <DashboardCharts

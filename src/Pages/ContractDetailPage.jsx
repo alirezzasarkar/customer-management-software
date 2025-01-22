@@ -44,7 +44,7 @@ const ContractDetailPage = () => {
           ...factor,
           customer_name: customer.full_name,
           contract_date: convertToShamsi(factor.contract_date),
-          price: factor.price.toLocaleString("fa-IR") + " ریال",
+          price: factor.price.toLocaleString("fa-IR") + " تومان",
           file_url: factor.files ? `${factor.files}` : null,
         };
 

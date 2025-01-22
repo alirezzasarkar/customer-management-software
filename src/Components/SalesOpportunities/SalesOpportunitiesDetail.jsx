@@ -62,7 +62,7 @@ const SalesOpportunitiesDetail = ({ data, onDelete }) => {
             <span className="text-sm text-blue-800 font-semibold">
               مبلغ تخمینی
             </span>
-            <p className="text-gray-700 mt-2">{data.estimated_amount} ریال</p>
+            <p className="text-gray-700 mt-2">{data.estimated_amount} تومان</p>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">

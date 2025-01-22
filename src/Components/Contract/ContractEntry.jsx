@@ -21,7 +21,7 @@ const ContractEntry = ({
   files,
   uploadMessage,
 }) => {
-  console.log(products);
+  products;
 
   return (
     <div>
@@ -46,7 +46,7 @@ const ContractEntry = ({
               selectedItems={selectedProducts}
             />
             <DashboardInputs
-              lable_text="مبلغ فاکتور (ریال)"
+              lable_text="مبلغ فاکتور (تومان)"
               placeholder_text="مبلغ را وارد کنید"
               value={formData.price}
               onChange={(e) => onInputChange("price", e.target.value)}

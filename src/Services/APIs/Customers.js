@@ -7,7 +7,6 @@ export const addCustomers = async (payload) => {
       "/customerprofile/customers/",
       payload
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching customers:", error);
@@ -30,7 +29,6 @@ export const getCustomers = async () => {
 export const getCustomerDetail = async (id) => {
   try {
     const response = await apiClient.get(`/customerprofile/customers/${id}/`);
-    response.data;
     return response.data;
   } catch (error) {
     console.error("Error fetching customer details:", error);
@@ -69,7 +67,6 @@ export const updateCustomer = async (id, payload) => {
       `/customerprofile/customers/${id}/`,
       payload
     );
-    console.log("Customer Updated:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error updating customer:", error);

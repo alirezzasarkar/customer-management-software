@@ -7,7 +7,7 @@ import Table from "./../Common/Table";
 const columns = [
   { id: "product_name", label: "نام محصول" },
   { id: "quantity", label: "تعداد" },
-  { id: "price", label: "قیمت محصول (ریال)" },
+  { id: "price", label: "قیمت محصول (تومان)" },
 ];
 
 const ContractDetail = ({ data, products, onDelete }) => {
@@ -30,7 +30,7 @@ const ContractDetail = ({ data, products, onDelete }) => {
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-blue-800 font-semibold">
-              مبلغ فاکتور (ریال)
+              مبلغ فاکتور (تومان)
             </span>
             <p className="text-gray-700 mt-2">{data.price}</p>
           </div>

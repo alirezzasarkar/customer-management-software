@@ -75,7 +75,7 @@ const ProductListEntry = ({
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardInputs
-              lable_text="قیمت محصول (ریال)"
+              lable_text="قیمت محصول (تومان)"
               value={formData.productPrice}
               placeholder_text="قیمت محصول را وارد کنید"
               onChange={(e) => onInputChange("productPrice", e.target.value)}

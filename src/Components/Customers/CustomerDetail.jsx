@@ -8,7 +8,7 @@ import { FaUser } from "react-icons/fa";
 
 const columns = [
   { id: "contract_date", label: "تاریخ ثبت" },
-  { id: "price", label: "مبلغ فاکتور (ریال)" },
+  { id: "price", label: "مبلغ فاکتور (تومان)" },
   { id: "description", label: "توضیحات" },
 ];
 

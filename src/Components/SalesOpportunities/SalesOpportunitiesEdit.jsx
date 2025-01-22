@@ -39,7 +39,7 @@ const SalesOpportunitiesEdit = ({
             />
 
             <DashboardInputs
-              lable_text="مبلغ تخمینی (ریال)"
+              lable_text="مبلغ تخمینی (تومان)"
               placeholder_text="مبلغ خود را وارد کنید"
               value={formData.estimatedAmount}
               onChange={(e) => onInputChange("estimatedAmount", e.target.value)}

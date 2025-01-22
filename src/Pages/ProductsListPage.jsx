@@ -35,7 +35,7 @@ const ProductsListPage = () => {
           id: item.id,
           product_name: item.product_name,
           brand: item.brand,
-          price: item.price.toLocaleString("fa-IR") + " ریال",
+          price: item.price.toLocaleString("fa-IR") + " تومان",
           category: Array.isArray(item.category)
             ? item.category
                 .map((catId) => categoryMap[catId] || "نامشخص")

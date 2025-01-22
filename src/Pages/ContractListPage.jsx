@@ -34,7 +34,7 @@ const ContractListPage = () => {
           id: item.id,
           name: customerMap[item.costumer] || "نامشخص",
           date: convertToShamsi(item.contract_date),
-          amount: item.price.toLocaleString("fa-IR") + " ریال",
+          amount: item.price.toLocaleString("fa-IR") + " تومان",
           description: item.description,
         }));
 
