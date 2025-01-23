@@ -44,7 +44,7 @@ const Sidebar = () => {
           isMobileOpen ? "translate-x-0 absolute" : "translate-x-full"
         } md:translate-x-0 md:relative absolute transition-transform duration-300 flex flex-col space-y-10 items-center py-4`}
       >
-        <img src="/images/AdklayLogo.svg" alt="Logo" className="mb-4" />
+        <img src="/images/logo.png" alt="Logo" className="mb-4" />
 
         <SidebarItem
           to="/dashboard"
