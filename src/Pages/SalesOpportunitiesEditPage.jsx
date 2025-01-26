@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SalesOpportunitiesEdit from "../Components/SalesOpportunities/SalesOpportunitiesEdit";
 import { getCustomers } from "../Services/APIs/Customers";
 import { getProducts } from "../Services/APIs/Products";
 import {
   getSalesOpportunityDetail,
   updateSalesOpportunity,
 } from "./../Services/APIs/SalesOpportunities";
-import SalesOpportunitiesEdit from "../Components/SalesOpportunities/SalesOpportunitiesEdit";
 import Loading from "./../Components/Common/Loading";
 
 const SalesOpportunitiesEditPage = () => {
@@ -18,10 +18,12 @@ const SalesOpportunitiesEditPage = () => {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedPriority, setSelectedPriority] = useState(null);
+  const [selectedBuyerType, setSelectedBuyerType] = useState(null);
   const [formData, setFormData] = useState({
     followUpDate: "",
     estimatedAmount: "",
     description: "",
+    buyer_type: "",
   });
   const [loading, setLoading] = useState(true);
 
@@ -29,6 +31,11 @@ const SalesOpportunitiesEditPage = () => {
     { id: "low_priority", name: "کم" },
     { id: "mid_priority", name: "متوسط" },
     { id: "high_priority", name: "زیاد" },
+  ];
+
+  const buyerTypes = [
+    { id: "KH", name: "خرده" },
+    { id: "OM", name: "عمده" },
   ];
 
   useEffect(() => {
@@ -41,7 +48,7 @@ const SalesOpportunitiesEditPage = () => {
             getSalesOpportunityDetail(id),
           ]);
 
-        "Fetched Opportunity Data:", opportunityData;
+        console.log("Fetched Opportunity Data:", opportunityData);
 
         const formattedProducts = productsData.map((product) => ({
           id: product.id,
@@ -65,6 +72,7 @@ const SalesOpportunitiesEditPage = () => {
               : "",
             estimatedAmount: opportunityData.estimated_amount.toString(),
             description: opportunityData.description || "",
+            buyer_type: opportunityData.buyer_type || "",
           });
 
           const customer = formattedCustomers.find(
@@ -76,6 +84,11 @@ const SalesOpportunitiesEditPage = () => {
             (p) => p.id === opportunityData.opportunity_priority
           );
           setSelectedPriority(priority || null);
+
+          const buyerType = buyerTypes.find(
+            (b) => b.id === opportunityData.buyer_type
+          );
+          setSelectedBuyerType(buyerType || null);
 
           const productsSelected =
             opportunityData.new_items
@@ -139,14 +152,47 @@ const SalesOpportunitiesEditPage = () => {
     setSelectedPriority(priority);
   };
 
+  const handleBuyerTypeSelect = (buyerType) => {
+    setSelectedBuyerType(buyerType);
+    handleInputChange("buyer_type", buyerType.id);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!selectedBuyerType) {
+      Swal.fire({
+        icon: "warning",
+        title: "نوع خریدار انتخاب نشده",
+        text: "لطفاً نوع خریدار را انتخاب کنید.",
+      });
+      return;
+    }
+
+    if (!selectedCustomer) {
+      Swal.fire({
+        icon: "warning",
+        title: "مشتری انتخاب نشده",
+        text: "لطفاً مشتری را انتخاب کنید.",
+      });
+      return;
+    }
+
+    if (selectedProducts.length === 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "محصول انتخاب نشده",
+        text: "لطفاً حداقل یک محصول را انتخاب کنید.",
+      });
+      return;
+    }
 
     const formattedDate = formData.followUpDate
       ? new Date(formData.followUpDate).toISOString().split("T")[0]
       : "";
 
     const payload = {
+      buyer_type: formData.buyer_type,
       follow_up_date: formattedDate,
       estimated_amount: parseFloat(formData.estimatedAmount) || 0,
       opportunity_priority: selectedPriority?.id || "",
@@ -186,6 +232,9 @@ const SalesOpportunitiesEditPage = () => {
       customers={customers || []}
       products={products || []}
       priorities={priorityOptions}
+      buyer_type={buyerTypes}
+      selectedBuyerType={selectedBuyerType}
+      onBuyerTypeSelect={handleBuyerTypeSelect}
       onCustomerSelect={handleCustomerSelect}
       onProductSelect={handleProductSelect}
       onPrioritySelect={handlePrioritySelect}

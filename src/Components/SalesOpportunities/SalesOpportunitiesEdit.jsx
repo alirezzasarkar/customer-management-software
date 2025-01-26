@@ -10,6 +10,9 @@ const SalesOpportunitiesEdit = ({
   customers,
   products,
   priorities,
+  buyer_type,
+  selectedBuyerType,
+  onBuyerTypeSelect,
   onCustomerSelect,
   onProductSelect,
   onPrioritySelect,
@@ -25,7 +28,7 @@ const SalesOpportunitiesEdit = ({
       <Title title="ویرایش فرصت فروش" />
       <div className="bg-gray-100 p-5 sm:mx-6 rounded-md">
         <form onSubmit={onSubmit} className="flex flex-col gap-7">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 ">
             <DashboardDropDown
               label_text="نام و نام خانوادگی مشتری"
               items={customers}
@@ -33,9 +36,17 @@ const SalesOpportunitiesEdit = ({
               selectedItem={selectedCustomer}
             />
 
+            <DashboardDropDown
+              label_text="نوع خرید مشتری"
+              items={buyer_type}
+              onSelect={onBuyerTypeSelect}
+              selectedItem={selectedBuyerType}
+            />
+
             <PersianDatePicker
               label_text="تاریخ پیگیری"
               onChange={(date) => onInputChange("followUpDate", date)}
+              value={formData.followUpDate}
             />
 
             <DashboardInputs
@@ -71,7 +82,7 @@ const SalesOpportunitiesEdit = ({
 
           <div className="flex justify-center gap-3 mt-10">
             <DashboardButton
-              inner_text="ثبت تغییرات "
+              inner_text="ثبت تغییرات"
               icon="/images/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"
