@@ -9,8 +9,9 @@ const CampaignEdit = ({
   onSubmit,
   formData,
   onInputChange,
-  onCustomerSelect,
-  customers,
+  onTargetRankSelect,
+  targetRanks,
+  selectedTargetRanks,
 }) => {
   return (
     <div>
@@ -39,20 +40,18 @@ const CampaignEdit = ({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <DashboardDropDownList
               label_text="مخاطبین هدف"
-              items={customers}
-              onSelect={onCustomerSelect}
-              selectedItems={customers.filter((customer) =>
-                formData.customers.includes(customer.id)
-              )}
-              // width="sm:w-full lg:w-[30%]"
+              items={targetRanks}
+              onSelect={onTargetRankSelect}
+              selectedItems={selectedTargetRanks}
+              isMulti={true}
             />
             <DashboardTextarea
               label_text="متن پیام"
               placeholder_text="وارد کردن محتوای پیام"
               onChange={(e) => onInputChange("message", e.target.value)}
               value={formData.message}
-              // width="lg:w-[31%] w-full"
             />
+            <div></div>
           </div>
 
           <div className="flex justify-center gap-3 mt-10">
@@ -61,6 +60,7 @@ const CampaignEdit = ({
               icon="/images/Tick.svg"
               bg_color="bg-[#13A538]"
               button_type="submit"
+              hover_state="hover:bg-[#288c41]"
             />
           </div>
         </form>

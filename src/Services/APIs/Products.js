@@ -39,6 +39,7 @@ export const getCategory = async () => {
 export const getProductDetail = async (id) => {
   try {
     const response = await apiClient.get(`/products/${id}`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching product detail:", error);
@@ -51,7 +52,7 @@ export const updateProduct = async (product_id, payload) => {
   try {
     const response = await apiClient.put(`/products/${product_id}`, payload, {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
       },
     });
     return response.data;

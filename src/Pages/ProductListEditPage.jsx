@@ -1,3 +1,5 @@
+// Pages/ProductListEditPage.jsx
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -10,7 +12,6 @@ import {
 
 const ProductListEditPage = () => {
   const { id } = useParams();
-  const [productData, setProductData] = useState(null);
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [statuses] = useState([
@@ -28,7 +29,8 @@ const ProductListEditPage = () => {
     productDescription: "",
     category: [], // آرایه‌ای از شناسه دسته‌بندی‌ها
   });
-  const [productImage, setProductImage] = useState(null);
+  const [currentImage, setCurrentImage] = useState(null); // existing image URL
+  const [newImage, setNewImage] = useState(null); // new image File
   const [loading, setLoading] = useState(false);
 
   // دریافت دسته‌بندی‌ها
@@ -56,7 +58,6 @@ const ProductListEditPage = () => {
     const fetchProductDetails = async () => {
       try {
         const product = await getProductDetail(id);
-        setProductData(product);
 
         setFormData({
           productName: product.product_name || "",
@@ -67,10 +68,24 @@ const ProductListEditPage = () => {
           productDescription: product.description || "",
           category: product.category ? product.category.map((cat) => +cat) : [],
         });
+
         const statusFound = statuses.find((s) => s.id === product.status);
         setSelectedStatus(statusFound || null);
-        // اگر در سرور آدرس تصویر یا فایل ذخیره شده باشد، مقدار مربوطه ست می‌شود
-        setProductImage(product.product_image || null);
+
+        // تنظیم URL تصویر
+        if (product.product_image) {
+          const isAbsoluteUrl = /^(?:[a-z]+:)?\/\//i.test(
+            product.product_image
+          );
+          const baseUrl = "https://jalilvand-crm.liara.run"; // تغییر دهید به آدرس واقعی API خود
+          const imageUrl = isAbsoluteUrl
+            ? product.product_image
+            : `${baseUrl}${product.product_image}`;
+          console.log("Image URL:", imageUrl); // برای بررسی
+          setCurrentImage(imageUrl);
+        } else {
+          setCurrentImage(null);
+        }
       } catch (error) {
         console.error("Error fetching product data:", error);
         Swal.fire({
@@ -101,7 +116,7 @@ const ProductListEditPage = () => {
 
   // آپلود تصویر محصول
   const handleImageUpload = (file) => {
-    setProductImage(file);
+    setNewImage(file);
   };
 
   // انتخاب دسته‌بندی‌ها
@@ -138,8 +153,15 @@ const ProductListEditPage = () => {
     formData.category.forEach((catId) => {
       formPayload.append("category", catId);
     });
-    if (productImage) {
-      formPayload.append("product_image", productImage);
+
+    // فقط در صورتی که تصویر جدید آپلود شده باشد، آن را به FormData اضافه کنید
+    if (newImage instanceof File) {
+      formPayload.append("product_image", newImage);
+    }
+
+    // برای دیباگ: بررسی مقادیر FormData
+    for (let pair of formPayload.entries()) {
+      console.log(`${pair[0]}:`, pair[1]);
     }
 
     setLoading(true);
@@ -165,6 +187,8 @@ const ProductListEditPage = () => {
   return (
     <div>
       <ProductListEdit
+        product_name={formData.productName}
+        product_image={currentImage} // URL تصویر موجود
         categories={categories}
         statuses={statuses}
         selectedStatus={selectedStatus}
@@ -176,7 +200,7 @@ const ProductListEditPage = () => {
         formData={formData}
         loading={loading}
         loadingCategories={loadingCategories}
-        productImage={productImage}
+        productImage={newImage} // فایل تصویر جدید
       />
     </div>
   );
