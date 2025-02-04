@@ -19,9 +19,9 @@ const Dashboard = ({
           <DashboardBox
             title="کل درآمد"
             summary="مبلغ کل فروش های انجام شده"
-            summary_detail={`${sales_data.total_sales.toLocaleString(
-              "fa-IR"
-            )} ریال`}
+            // summary_detail={`${sales_data.total_sales.toLocaleString(
+            //   "fa-IR"
+            // )} ریال`}
             DeatilPage="/dashboard/invoice/list"
           />
           <DashboardBox

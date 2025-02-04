@@ -4,7 +4,6 @@ import DashboardDropDown from "../Common/DashboardDropDown";
 import DashboardDropDownCount from "../Common/DashboardDropDownCount";
 import DashboardInputs from "../Common/DashboardInputs";
 import DashboardTextarea from "../Common/DashboardTextarea";
-import PersianDatePicker from "../Common/DatePicker";
 import Title from "../Common/Title";
 
 const ContractEdit = ({

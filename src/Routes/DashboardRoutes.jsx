@@ -6,6 +6,14 @@ import DashboardPage from "../Pages/DashboardPage";
 import NotificationEntryPage from "../Pages/NotificationEntryPage";
 import NotificationListPage from "../Pages/NotificationListPage";
 import ProductsEntryPage from "../Pages/ProductsEntryPage";
+import ReportListEntryPage from "../Pages/ReportListEntryPage";
+import ReportsDetailPage from "../Pages/ReportsDetailPage";
+import ReportsListEditPage from "../Pages/ReportsListEditPage";
+import ReportsListPage from "../Pages/ReportsListPage";
+import TodosDetailPage from "../Pages/TodosDetailPage";
+import TodosEditPage from "../Pages/TodosEditPage";
+import TodosEntryPage from "../Pages/TodosEntryPage";
+import TodosListPage from "../Pages/TodosListPage";
 import Layout from "./../Components/Layout/Layout";
 import CampaignDetailPage from "./../Pages/CampaignDetailPage";
 import CampaignEditPage from "./../Pages/CampaignEditPage";
@@ -109,6 +117,16 @@ const DashboardRoutes = () => {
         <Route path="/products/detail/:id" element={<ProductsDetailPage />} />
 
         <Route path="/products/edit/:id" element={<ProductListEditPage />} />
+
+        <Route path="/reports/entry" element={<ReportListEntryPage />} />
+        <Route path="/reports/list" element={<ReportsListPage />} />
+        <Route path="/reports/detail/:id" element={<ReportsDetailPage />} />
+        <Route path="/reports/edit/:id" element={<ReportsListEditPage />} />
+
+        <Route path="/todos/entry" element={<TodosEntryPage />} />
+        <Route path="/todos/list" element={<TodosListPage />} />
+        <Route path="/todos/detail/:id" element={<TodosDetailPage />} />
+        <Route path="/todos/edit/:id" element={<TodosEditPage />} />
       </Routes>
     </Layout>
   );

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SidebarItem from "./SidebarItem";
-import { FiMenu, FiX } from "react-icons/fi";
 
 const Sidebar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -125,6 +125,24 @@ const Sidebar = () => {
           subItems={[
             { label: "ثبت فاکتور", to: "/dashboard/invoice/entry" },
             { label: "لیست فاکتور ها", to: "/dashboard/invoice/list" },
+          ]}
+        />
+        <SidebarItem
+          to="/dashboard/reports/list"
+          icon="/images/Sidbar/report.svg"
+          label="گزارش کار"
+          subItems={[
+            { label: "ثبت گزارش کار", to: "/dashboard/reports/entry" },
+            { label: "لیست گزارش کار", to: "/dashboard/reports/list" },
+          ]}
+        />
+        <SidebarItem
+          to="/dashboard/todos/list"
+          icon="/images/Sidbar/task-list--task-list-work.svg"
+          label="وظایف"
+          subItems={[
+            { label: "ثبت وظایف", to: "/dashboard/todos/entry" },
+            { label: "لیست وظایف", to: "/dashboard/todos/list" },
           ]}
         />
 
